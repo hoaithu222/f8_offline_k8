@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action = " " method = "get">
+        <div>
+            <label for = "name" >Họ Tên</label>
+            <input id =name type = "text" name = "name" placeholder="Họ Tên...." />
+        </div>
+        <div>
+            <label for = "email" >Email</label>
+            <input id =email type = "email" name = "email" placeholder="Email...." />
+        </div>
+        <div>
+            <label for = "age" >Tuổi</label>
+            <input id =age type = "number" name = "age" placeholder="Tuổi...." min = "18" max = "30"/>
+        </div>
+        <div>
+            <label >Giới Tính</label>
+            <label><input type = "radio" name = "gender" value = "0"/>Không xác định</label>
+            <label><input type = "radio" name = "gender" value = "1"/>Nam</label>
+            <label><input type = "radio" name = "gender" value = "2"/>Nữ</label>
+        </div>
+        <div>
+            <label>Địa điểm học</label>
+            <label><input type = "checkbox" name = "address" value = "0"/>Hà nội</label>
+            <label><input type = "checkbox" name = "address" value = "1"/>Thành phố hồ chí minh</label>
+            <label><input type = "checkbox" name = "address" value = "2" checked/>Đà nẵng</label>
+        </div>
+        <div>
+            <label for ="message">Tin Nhắn</label>
+            <textarea name = "message" id = "message" cols = "30" rows="10" placeholder="Tin Nhắn"></textarea>
+        </div>
+        <div>
+            <label for = "Tinh">Tỉnh/Thành phố</label>
+            <select name = "Tinh" id = "Tinh" multiple>
+                <option value = " " hidden>Chọn tỉnh thành phố</option>
+                <optgroup label = "Miền Bắc">
+                    <option value = " ">Hà nội</option>
+                    <option value = " ">Lạng sơn</option>
+                </optgroup>
+                <optgroup label = "Miền trung">
+                    <option value = " ">Nghệ an</option>
+                    <option value = " ">Thanh hóa</option>
+                    <option value = " ">Đà nẵng</option>
+                </optgroup>
+            </select>
+        </div>
+
+        <button>Đăng Nhập</button>
+    </form>
+</body>
+</html>

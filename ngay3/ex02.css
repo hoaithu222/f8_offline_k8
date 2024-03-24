@@ -1,0 +1,12 @@
+.bg-image {
+  /* background-image: linear-gradient(180deg, #000000, #7fba00); */
+  background-image: url(image/img2.jpg);
+  /* background-size: 100% auto; */
+  background-size: 200px auto;
+  border: 5px solid #742063;
+  width: 1200px;
+  height: 700px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+}

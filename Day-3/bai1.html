@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form liên hệ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+    form {
+        margin: 50px;
+    }
+
+    input.name,
+    h2.name {
+        width: 750px;
+        height: 30px;
+    }
+
+    td.row5 {
+        display: none;
+    }
+
+    button.mes {
+        width: 150px;
+        height: 40px;
+        color: #ffffff;
+        background-color: #0CB8B5;
+        border: #ffffff;
+    }
+
+    td.infor {
+        color: #B9B9B9;
+    }
+</style>
+
+<body>
+    <form>
+        <h1>CONTACT US</h1>
+        <table cellpadding="0" cellspacing="1">
+            <thead>
+                <tr>
+                    <th width="25%" style="text-align: left;">
+                        <h2>Contact Info</h2>
+                    </th>
+                    <th width="25%" style="text-align: left;">
+                        <h2 class="name">Having Any Query! Or Book an appointmenmt</h2>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="infor">
+                        <p> <i class="fa-solid fa-location-dot"></i> 321 Awesome Street<br>New York,NY 17022</p>
+                    </td>
+                    <td><input class="name" type="text" name="name" placeholder="Your name" /></td>
+                </tr>
+                <tr>
+                    <td class="infor">
+                        <p><i class="fa-regular fa-envelope"></i> info@companyname.com</p>
+                    </td>
+                    <td><input class="name" type="email" name="email" placeholder="Your Email" /></td>
+                </tr>
+                <tr>
+                    <td class="infor">
+                        <p><i class="fa-solid fa-phone"></i> +1 800 123 1234</p>
+                    </td>
+                    <td>
+                        <input class="name" type="text" name="Subject" placeholder="Subject" />
+                    </td>
+                </tr>
+                <tr>
+                    <td claas="row">
+                    </td>
+                    <td>
+                        <textarea name="message" cols="101" rows="8" placeholder="Messange"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="row"></td>
+                    <td>
+                        <button class="mes">Send Messange</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</body>
+
+</html>

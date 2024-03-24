@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="https://api-gateway.fullstack.edu.vn/action_page.php" method="get">
+        <div>
+            <label for="name">Họ tên :</label>
+            <input id="name" type="text" name="name" placeholder="Ho_Ten" required maxlength="5" />
+            <!-- disabled không hiện-->
+        </div>
+        <div>
+            <label for="Email">Email:</label>
+            <input id="Email" type="email" name="email" placeholder="Email" />
+        </div>
+        <div>
+            <label for="age">Tuổi :</label>
+            <input id="age" type="number" name="age" placeholder="Tuổi" min="18" max=50 step="0.1" />
+        </div>
+        <div>
+            <label for="Mk">Email:</label>
+            <input id="Mk" type="password" name="mật khẩu" placeholder="Mật khẩu" />
+        </div>
+        <div>
+            <label for="date">Date:</label>
+            <input id="date" type="date" name="date" placeholder="date" />
+        </div>
+        <div>
+            <label for="avatar">Avatar :</label>
+            <input id="avatar" type="file" name="avatar" placeholder="avatar" />
+        </div>
+        <div>
+            <label for="gia">price :</label>
+            <input id="gia" type="range" name="gia" placeholder="gia" value="0" step="0.1" />
+        </div>
+        <div>
+            <label>Giới tính</label>
+            <label><input type="radio" name="gender" value="0" />Không xác định</label>
+            <label><input type="radio" name="gender" value="1" checked />Nam</label>
+            <label><input type="radio" name="gender" value="2" />Nữ</label>
+        </div>
+        <div>
+            <label>Bạn biết đến F8 do đâu: </label>
+            <label><input type="checkbox" name="source[]">Facebook</label>
+            <label><input type="checkbox" name="source[]">website</label>
+        </div>
+        <div>
+            <label for="thành phố"> Chọn tỉnh thành phố</label>
+            <select id="thành phố">
+                <option value="0">Hà nội</option>
+                <option value="1">Đà nẵng</option>
+                <option value="2" selected>Thành phố HỒ CHÍ MINH</option>
+                <option value="3">Lạng sơn</option>
+
+            </select>
+        </div>
+        <div>
+            <label for="message">Tin Nhắn</label>
+            <textarea id="message" name="message" cols="30" rows="10" placeholder="Tin Nhắn"></textarea>
+        </div>
+        <button>Đăng nhập</button>
+        <button type="reset">Reset</button>
+    </form>
+</body>
+
+</html>
