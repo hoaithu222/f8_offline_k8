@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form đặt bàn</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        form {
+            border: 1px solid #fff;
+            width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #322114;
+            font-family: 'Alfa Slab One', serif;
+        }
+
+        h3 {
+            color: #322114;
+            font-family: 'Bebas Neue', sans-serif;
+        }
+
+        input {
+            font-family: 'Bebas Neue', sans-serif;
+            width: 180px;
+        }
+
+        button {
+            border: 1px #B0332B;
+            font-family: 'Alfa Slab One', serif;
+            background: #B0332B;
+            color: #fff;
+            width: 180px;
+        }
+
+        table {
+            width: 100%;
+            max-width: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <h3>RESERVATION</h3>
+        <h1>Book your table</h1>
+        <table>
+            <tr>
+                <td><input type="text" name="name" placeholder="NAME" /></td>
+                <td><input type="email" name="email" placeholder="EMAIL" /></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="date" placeholder="DATE" /></td>
+
+                <td><input type="text" name="time" placeholder="TIME" /></td>
+            </tr>
+            <tr>
+                <td><input type="number" name="people" placeholder="PEOPLE" /></td>
+                <td><button>Find A Table</button></td>
+            </tr>
+        </table>
+
+    </form>
+
+</body>
+
+</html>

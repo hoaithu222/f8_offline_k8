@@ -1,0 +1,67 @@
+/* .title ::before {
+  content: A;
+}
+.title ::after {
+  content: A;
+} */
+/* .title::after {
+  content: " ";
+  display: block;
+  height: 4px;
+  width: 50px;
+  background: red;
+}
+p::first-line {
+  color: red;
+}
+p::first-letter {
+  font-weight: bold;
+  font-size: 2rem;
+}
+p::selection {
+  color: yellow;
+  background: black;
+}
+.email::placeholder {
+  color: red;
+  font-style: italic;
+} 
+*/
+/* .btn:hover {
+  background: green;
+}
+.btn1:active {
+  background: green;
+}
+.btn2:focus {
+  background: green;
+}
+h2:focus {
+  color: red;
+} */
+
+/* .form input[disabled] {
+  border: 1px solid red;
+} */
+/* .form input :disabled {
+  border: 1px solid red;
+} */
+/* .products h2:not(.active) {
+  color: red;
+} */
+/* .products h2:first-of-type {
+  color: red;
+}
+.products h2:last-of-type {
+  color: green;
+} */
+/* .products h2:nth-of-type(3) {
+  color: red;
+}
+ */
+/* .products h2:nth-child(2n + 1) {
+  color: red;
+} */
+.color:nth-of-type(1):checked ~ .content {
+  content: red;
+}
