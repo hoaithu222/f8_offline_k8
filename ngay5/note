@@ -1,0 +1,12 @@
+Đơn vị tuyệt đối
+
+- px
+- pt
+  Đơn vị tương đối
+  -em : tỷ lệ với thành phần cha(selector html)
+  -rem : tỷ lệ với mặc định trình duyệt
+  -% : tỷ lệ với thành phần cha
+- 1em 1 rem : tỷ lệ với phông size cơ sở
+
+Thuộc tính line-height : thiết lập chiểu cao cho chữ(Giãn dòng)
++Cú pháp : line-height --> không đặt kích thước tuyệt đối

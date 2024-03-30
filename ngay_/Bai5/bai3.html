@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+    <style>
+        .box {
+            border: 1px solid orange;
+            color: white;
+            width: 1560px;
+            height: 25px;
+            border-radius: 10px;
+            background-color: orange;
+            position: sticky;
+            top: 0px;
+            left: 10px;
+            z-index: 99;
+
+        }
+
+        label {
+            margin: 10px;
+        }
+
+        .box1 {
+            top: 100px;
+            left: 10px;
+            width: 1560px;
+            height: 1000px;
+            background-color: grey;
+            border-radius: 10px;
+        }
+
+        .box1 .sub1 {
+            position: static;
+            background-color: brown;
+            color: white;
+            width: 40px;
+            padding: 40px;
+            border-radius: 10px;
+        }
+
+        .box1 .sub2 {
+            position: relative;
+            background-color: red;
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            width: 40px;
+            left: 1250px;
+            top: -50px;
+        }
+
+        .box1 .sub3 {
+            position: relative;
+            background-color: green;
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            width: 40px;
+            left: 1250px;
+            top: 650px;
+        }
+
+        .box1 .sub4 {
+            position: relative;
+            background-color: blue;
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            width: 40px;
+            left: 50px;
+            top: 480px;
+        }
+
+        .icon {
+            background-color: green;
+            padding: 10px;
+            border: 1px solid green;
+            border-radius: 30px;
+            position: fixed;
+            right: 30px;
+            bottom: 20px;
+            width: 20px;
+            z-index: 89;
+        }
+
+        .box2 {
+            background-color: blue;
+            padding: 50px;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .box2::before {
+            content: "";
+            background-color: black;
+            display: block;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            position: absolute;
+            opacity: 0.2;
+            left: 20px;
+            top: 0px
+        }
+
+        .box2::after {
+            content: "";
+            background-color: black;
+            display: block;
+            border-radius: 50%;
+            width: 240px;
+            height: 240px;
+            position: absolute;
+            opacity: 0.2;
+            right: -10px;
+            bottom: -90px;
+        }
+
+        .box2 .inner-box2 {
+            position: relative;
+            color: white;
+            z-index: 1;
+        }
+
+        .box2 .inner-box2::first-letter {
+            font-size: 50px;
+        }
+
+        .box2 .inner-box2::first-line {
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <label> Trang chủ</label>
+        <label>Giới thiệu</label>
+        <label>Sản phẩm</label>
+        <label>Tin Tức</label>
+        <label>Liên hệ</label>
+    </div>
+    <div class="box1">
+        <div class="sub1">
+            1
+        </div>
+        <div class="sub2">
+            2
+        </div>
+        <div class="sub3">
+            3
+        </div>
+        <div class="sub4">
+            4
+        </div>
+    </div>
+    <div class="icon"><i class="fa-solid fa-phone-flip"></i></div>
+    <div class="box2">
+        <div class="inner-box2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione, minus. Provident
+            natus quidem error quia
+            quisquam eveniet consectetur adipisci nisi doloribus nemo itaque a minima, alias cumque laboriosam
+            doloremque, nobis magni unde sint eos! Ducimus aliquam repellat atque recusandae voluptate non cum nihil
+            tempore at dicta quis dolorum deleniti necessitatibus earum dignissimos autem, excepturi perspiciatis ut
+            dolor, facilis, libero repudiandae! Ad perspiciatis aliquam qui totam accusantium nulla delectus! Ea saepe
+            quam corrupti aut, ab ipsa delectus distinctio dignissimos libero molestiae vitae perspiciatis magni, minima
+            quasi temporibus odio commodi consequatur tempora corporis quibusdam accusantium amet iste rerum! Inventore
+            laborum in dolorem.</div>
+    </div>
+
+</body>
+
+</html>

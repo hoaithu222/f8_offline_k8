@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* ul li:first-child {
+            color: red;
+        }
+
+        ul li:last-child {
+            color: green;
+        }
+
+        ul li:nth-child(2n) {
+            color: blue;
+        } */
+        /* .box span {
+            background-color: orange;
+
+        } */
+        .box::before {
+            content: "Nội dung đằng trước";
+            background-color: orangered;
+            padding-top: 20px;
+            display: inline-block;
+        }
+
+        .text::selection {
+            background-color: brown;
+            color: white;
+        }
+
+        .text {
+            opacity: 0.2;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>Item1</li>
+        <li>Item2</li>
+        <li>Item3</li>
+        <li>Item4</li>
+        <li>Item5</li>
+    </ul>
+    <div class="box">
+        <!-- <span>Nội dung đằng trước</span> -->
+        Nội dung 1
+    </div>
+    <p class="text">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam illo praesentium omnis, eos numquam beatae et
+        soluta explicabo eum. Eligendi animi perspiciatis porro tempore debitis earum ad numquam et magni!
+
+    </p>
+
+</body>
+
+</html>

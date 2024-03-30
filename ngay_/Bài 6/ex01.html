@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .element-parent {
+            border: 5px solid red;
+        }
+
+        .element-child {
+            color: white;
+            font-size: 20px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .element-a {
+            height: 100px;
+            background: #b4b400;
+        }
+
+        .element-b {
+            height: 150px;
+            background: #3535f3;
+        }
+
+        .element-c {
+            height: 200px;
+            background: #00a31e;
+        }
+
+        .element-a {
+            float: left;
+        }
+
+        .element-b {
+            float: right;
+        }
+
+        .element-c {
+            /* clear: both; */
+            float: right;
+        }
+
+        .clear-both {
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="element-parent">
+        <div class="element-child element-a">Phần tử A</div>
+        <div class="element-child element-b">Phần tử B</div>
+        <div class="element-child element-c">Phần tử C</div>
+        <div class="clear-both"></div>
+    </div>
+</body>
+
+</html>
