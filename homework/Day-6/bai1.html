@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lobster&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            font-family: "Lato", sans-serif;
+            color: gray;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 600px;
+            height: 700px;
+            padding: 20px;
+            border: 1px solid #000;
+        }
+
+        .content {
+            margin-left: 30px;
+        }
+
+        .frm {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+
+        }
+
+        h1 {
+            font-family: "Lobster", sans-serif;
+            color: #000;
+        }
+
+        span {
+            color: red;
+        }
+
+        .ipt {
+            width: 500px;
+            display: inline-flex;
+            margin-bottom: 20px;
+            margin-left: 30px;
+        }
+
+
+        i {
+            border: 1px solid rgb(222, 217, 217);
+            padding: 10px;
+            background-color: rgb(222, 217, 217);
+        }
+
+        .ipt input,
+        .ipt select,
+        .ipt textarea {
+            display: inline-block;
+            width: 500px;
+            border: 1px solid rgb(222, 217, 217);
+        }
+
+        .ipt input,
+        .ipt select {
+            height: 40px;
+        }
+
+        .ipt input[type="checkbox"] {
+            width: 20px;
+
+        }
+
+        .submit .left {
+            display: flex;
+            align-items: center;
+        }
+
+        .submit .right {
+            margin-left: auto;
+            align-self: center;
+        }
+
+        .submit .right button {
+            width: 100px;
+            padding: 5px;
+            background-color: orangered;
+            color: white;
+            border: none;
+        }
+
+        .name {
+            position: relative;
+        }
+
+        .name input {
+            padding: 10px;
+        }
+
+        .fake-element {
+            position: absolute;
+            top: -50px;
+            left: 30px;
+            background-color: black;
+            color: white;
+            padding: 10px 15px;
+            /* opacity: 0;
+            transform: all; */
+            display: none;
+        }
+
+        .fake-element::after {
+            content: "";
+            position: absolute;
+            display: block;
+            width: 0px;
+            height: 0px;
+            border: 10px solid;
+            border-top-color: transparent;
+            border-left-color: transparent;
+            border-right-color: transparent;
+            border-bottom-color: #000;
+            transform: rotate(180deg);
+            top: 100%;
+            left: 20px;
+        }
+
+        .name input:hover+.fake-element,
+        .name input:focus+.fake-element {
+            display: block;
+        }
+
+        .name:hover i {
+            background-color: #000;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <h1>Hey there</h1>
+        <p><span>We'd like to hear from you.</span>Send us your message or just say hy with our contact from or directly
+            via phone, we love to chat.</p>
+    </div>
+    <form class="frm">
+        <div class="ipt name">
+            <i class="fa-solid fa-user " style="color: white;"></i>
+            <input type="text" name="ten" placeholder="Your name">
+            <div class="fake-element">Enter your name</div>
+        </div>
+
+        <div class="email ipt">
+            <i class="fa-solid fa-envelope" style="color: white;"></i>
+            <input type="email" name="email" placeholder="your@domain.com">
+
+        </div>
+        <div class="phone ipt">
+
+            <i class="fa-solid fa-mobile-screen-button" style="color: white;"></i>
+            <input type="text" name="phone" placeholder="+4400123">
+
+        </div>
+        <div class="subject ipt">
+
+            <i class="fa-solid fa-book" style="color: white;"></i>
+
+            <select>
+                <option>Subject</option>
+                <option>Otomat</option>
+                <option>Toán rời rạc</option>
+                <option>Lý thuyết cơ sở dữ liệu</option>
+                <option>Cơ sở lý thuyết truyền tin</option>
+            </select>
+
+
+        </div>
+        <div class="message ipt">
+
+            <i class="fa-solid fa-message" style="color: white;"></i></li>
+            <textarea name="message" placeholder="Message" rows="10" cols="50"></textarea></li>
+
+        </div>
+        <div class="submit ipt">
+            <div class="left">
+                <input type="checkbox">
+                <label>Send me a copy of this message</label>
+            </div>
+            <div class="right">
+                <button>SEND</button>
+            </div>
+        </div>
+
+    </form>
+
+</body>
+
+</html>

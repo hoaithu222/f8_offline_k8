@@ -1,0 +1,47 @@
+/*
+-border-radius --> bo góc thuộc tính css3
+
+-
+-
+
+*/
+.box {
+  width: 200px;
+  height: 300px;
+  border: 5px solid red;
+  border-radius: 50%;
+  /* border-radius: 10px 20px 30px 40px; */
+  /* border-top-left-radius: 10px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 40px;
+   */
+}
+.btn {
+  width: 100px;
+  height: 45px;
+  border: 0;
+  background: green;
+  color: azure;
+  border-radius: 99px;
+  cursor: pointer;
+}
+.btn:hover {
+  background-color: blue;
+}
+.btn-sm {
+  height: 25px;
+}
+.btn-bg {
+  height: 45px;
+}
+.btn-outline {
+  background: transparent;
+  color: green;
+  border-color: currentColor;
+  border: 1px solid;
+}
+.btn-outline:hover {
+  background-color: green;
+  color: white;
+}

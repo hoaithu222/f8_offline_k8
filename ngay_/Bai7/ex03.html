@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .container {
+            background-color: #7C4991;
+            /* padding: 20px; */
+            border-radius: 5px;
+            display: flex;
+            /* flex-direction: column-reverse; */
+            /* flex-wrap: wrap-reverse; */
+            justify-content: space-evenly;
+            height: 300px;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            /* align-content: space-evenly; */
+        }
+
+        /* .item:nth-child(2) {
+            align-self: flex-start;
+        } */
+        .item:nth-child(1) {
+            order: 2;
+        }
+
+        .item:nth-child(2) {
+            order: 1;
+        }
+
+        .item:nth-child(3) {
+            order: 0;
+        }
+
+        .item {
+            background-color: #F7941F;
+            border: 3px solid #fff;
+            padding: 10px;
+            margin: 10px;
+            font-size: 28px;
+            color: #000;
+            border-radius: 5px;
+            text-align: center;
+            width: 150px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="item">Item 1</div>
+        <div class="item">Item 2</div>
+        <div class="item">Item 3</div>
+        <!-- <div class="item">Item 4</div>
+        <div class="item">Item 5</div>
+        <div class="item">Item 6</div>
+        <div class="item">Item 7</div>
+        <div class="item">Item 8</div>
+        <div class="item">Item 9</div>
+        <div class="item">Item 10</div>
+        <div class="item">Item 11</div>
+        <div class="item">Item 12</div> -->
+
+    </div>
+</body>
+
+</html>

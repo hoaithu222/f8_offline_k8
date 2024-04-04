@@ -1,0 +1,18 @@
+/* thuộc  tính background atractment:
+scroll fixed
+Thuộc tính background : color, image, position/ size repeat attrachment
+
+
+*/
+
+.banner {
+  /* height: 2000px;
+  background-color: red;
+  background-image: url(https://fastly.picsum.photos/id/287/200/300.jpg?hmac=9JSSeZMseJ8l_WTFAMmF3HXoyYmKFzQxmagpyWBefTA);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed; */
+  background: red
+    url("https://fastly.picsum.photos/id/287/200/300.jpg?hmac=9JSSeZMseJ8l_WTFAMmF3HXoyYmKFzQxmagpyWBefTA")
+    no-repeat fixed 0 0 / cover;
+}

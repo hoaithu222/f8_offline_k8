@@ -1,0 +1,44 @@
+/* tạo đường viền cho các thẻ html
+3 thành phần cấu tạo của border
+
+border-style: solid none double dashed dotted
+border-color 
+border-width
+các thuộc tính mở rộng :
+border-style
+border-top-style
+border-left-style
+border-right-style
+border-bottom-style
+border-top-color
+border-left-color
+border-right-color
+border-bottom-color
+border-top-width
+border-left-width
+border-right-width
+border-bottom-width
+border-top : width style color;
+border-left : width style color;
+border-right : width style color;
+border-bottom : width style color;
+
+*/
+.box {
+  /* border: 1px double red; */
+  /* border-color: red green yellow white;
+  border-width: 30px; */
+  /* border-style: solid dotted double dashed; */
+  width: 0px;
+  height: 0px;
+  border: 50px solid;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: blue;
+  border-top-width: 0px;
+  /* border-width: 0px; */
+  /* border-left-width: 20px;
+  border-right-width: 30px;
+  border-bottom-width: 60px; */
+}

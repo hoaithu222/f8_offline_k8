@@ -1,0 +1,57 @@
+/* thiết lập chiều rộng chiều cao
+-min-width: chiều rộng nhỏ nhất
+-max-width : chiều rộng lớn nhất
+-min-height: chiều cao nhỏ nhất
+-max-height : chiều cao lớn nhất
+- các thuộc tính kích thước chỉ hoạt động với thẻ blook
+- vh(viewport hieght) vw(viewport width) tỷ lệ với khung nhìn
+thẻ img có 2 loại:
+- non-replace: a span b i u,...
+- replace : img iframe video input
+*/
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  height: 2000px;
+}
+.box {
+  border: 1px solid red;
+  width: 100vw;
+  height: 200px;
+}
+.box a {
+  border: 1px solid green;
+  width: 40%;
+  display: inline block;
+}
+.box .content {
+  border: 1px solid red;
+  /* width: 100vw; */
+/* img {
+  width: 100px;
+}
+iframe {
+  width: 700px;
+} */
+/* 
+
+
+*/
+.box {
+  width: 1000px;
+  /* border: 1px solid red; */
+  width: 0;
+  min-width: 150px;
+  max-width: 300px;
+  background-color: red;
+}
+.image {
+  width: 300px;
+  border: 1px solid red;
+}
+.image img {
+  max-width: 100%;
+}
