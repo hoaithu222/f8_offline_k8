@@ -1,0 +1,143 @@
+.box {
+  position: relative;
+  background-image: url("http://uiwebsoft.com/justlog/login-one/images/login-bg2.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  color: #272323;
+  font-family: "Nunito Sans", sans-serif;
+  border: 1px solid transparent;
+}
+
+.sub_box {
+  position: absolute;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  width: 800px;
+  height: 400px;
+  left: 300px;
+  top: 200px;
+  display: flex;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.content {
+  position: relative;
+  background-color: #ff574d;
+  color: white;
+  width: 300px;
+  text-align: center;
+  padding: 50px;
+}
+
+.form {
+  width: 500px;
+  background-color: white;
+  text-align: center;
+}
+.sub_box .circle {
+  position: absolute;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  color: #ff574d;
+  background-color: white;
+  text-align: center;
+  font-size: 15px;
+  padding: 6px 10px;
+  top: 45%;
+  left: 43%;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  z-index: 99;
+}
+
+.form h2 {
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+.content .read-more {
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 4px;
+  color: #ff574d;
+  padding: 10px 0;
+  padding: 10px 20px;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.form .read-more {
+  text-decoration: none;
+  color: #000;
+}
+
+.icon {
+  position: absolute;
+  top: 300px;
+  left: 80px;
+  font-size: 15px;
+  opacity: 0.8;
+}
+
+.fa-brands {
+  border: 1px solid rgb(107, 101, 101);
+  border-radius: 4px;
+  background-color: rgb(69, 62, 62);
+  padding: 5px;
+  margin-right: 10px;
+  margin-left: 5px;
+  color: #fff;
+}
+
+p {
+  font-size: 13px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.jl {
+  border: 1px solid white;
+  background-color: white;
+  color: #ff574d;
+  border-radius: 5px;
+  padding: 0px 6px;
+  font-size: 30px;
+}
+
+.text {
+  color: #ff574d;
+}
+
+.input input {
+  padding: 10px;
+  width: 350px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  margin-left: 5px;
+  box-shadow: rgba(237, 233, 233, 0.621) 0px 5px 15px;
+}
+
+.btn button {
+  padding: 10px;
+  /* Điều chỉnh padding để kích thước của nút giống với input */
+  width: calc(100% - 60px);
+  border: none;
+  background-color: #ff574d;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.your {
+  border: 2px solid #ff574d;
+  border-top: transparent;
+  border-left: transparent;
+  border-right: transparent;
+  padding-bottom: 10px;
+}

@@ -1,0 +1,21 @@
+/* xử lys nội dung bị tràn
+-visible
+-hidden
+-scroll: tạo thanh cuộn để xem nội dung bị ẩn
+- auto: tạo thanh cuộn khi nội dung bị ẩn khi nội dung bị tràn
+-overflow-x : xử lý thanh cuộn ngang
+- overflow-y: xử lý thanh cuộn dọc
+
+
+*/
+
+.box {
+  height: 250px;
+  width: 200px;
+  border: 1px solid red;
+  overflow: auto;
+  overflow-x: hidden;
+}
+.box ul {
+  width: 400px;
+}

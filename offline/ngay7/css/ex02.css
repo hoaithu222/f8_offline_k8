@@ -1,0 +1,15 @@
+/* 
+fifter: tạo bộ lọc cho các thẻ html
+- grayscale:number nhận từ 0-1 or 0-100%
+-opancity(number): từ 0-1
+- blur(): phỉa có đơn vị 
+*/
+.box {
+  color: red;
+}
+.box:hover {
+  /* filter: blur(1px); */
+  /* áp dụng với tất cả thẻ html*/
+  /* opacity: 0.4; */
+  filter: blur(1px) opacity(0.5) grayscale(1);
+}

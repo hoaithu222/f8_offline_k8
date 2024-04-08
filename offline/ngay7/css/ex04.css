@@ -1,0 +1,82 @@
+/* 
+thuộc tinh margin : căn lề
+margin:value
+margin:value value2
+margin: value value2 value3 
+margin: value value2 value3 value4
+
+4 thuộc tính mở rộng
+margin-top:
+margin-right:
+margin-left
+margin-bottom
+- đơn vị phần trăm ỷ lệ theo width của cha
+- Chấp nhận giá trị âm và auto
+--> padding không thể âm nhưng margin thì có thể âm
+- thu hẹp lề
+  th1: 2 thành phần đứng cạnh nhau 
+   - 2 giá trị cùng dấu thì lấy -->giá trị tuyệt đối lớn hơn
+   - 2 giá trị trái dấu sẽ cộng lại
+margin-top và bottom chỉ hoạt động với block
+-Thuộc tính box-sizing : chọn kích thươc của box theo content hay theo border
+ + conten-box: mặc định 
+ + border-box: theo border(tính từ border)
+ đẩy content vào trong và tăng chiều cao lên 
+
+*/
+
+/* .box {
+  border: 1px solid red;
+  padding: 30px;
+  width: 300px;
+  /* căn giữa thẻ block với điều kiện width nhỏ hơn thành phần cha*/
+/* margin-right: auto;
+  margin-left: auto; */
+/* margin: 0 auto;
+  margin-inline: auto;
+  margin-block: 30px;
+
+
+} */
+/* * {
+  padding: 0;
+  margin: 0;
+}
+h2:first-of-type {
+  border: 1px solid red;
+  margin-bottom: -40px;
+}
+h2:last-of-type {
+  border: 1px solid red;
+  margin-top: -10px;
+} */
+.banner {
+  background: green;
+  color: white;
+  text-align: center;
+  /* border: 1px solid transparent; */
+  /* display: inline-block;
+  width: 100%; */
+  /* display: flex;
+  justify-content: center; */
+  /* position: absolute;
+  width: 100%; */
+  /* overflow: auto; */
+  /* float: left;
+  width: 100%; */
+}
+* {
+  padding: 0;
+  margin: 0;
+}
+h3 {
+  margin: 30px 0;
+  padding: 30px 0;
+}
+.content {
+  box-sizing: border-box;
+  width: 300px;
+  border: 5px solid red;
+  padding: 40px;
+  margin: 5px;
+}
