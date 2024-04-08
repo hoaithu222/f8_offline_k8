@@ -1,7 +1,5 @@
 .box {
   position: relative;
-  background-size: cover;
-  background-position: center;
   height: 100vh;
   color: #272323;
   font-family: "Nunito Sans", sans-serif;
