@@ -6,6 +6,7 @@
 }
 .box {
   width: 1467px;
+  height: auto;
 }
 .box .container {
   padding: 10px 80px;
