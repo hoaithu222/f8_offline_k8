@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Asap", sans-serif;
+  box-sizing: border-box;
+}
+.box {
+  width: 100%;
+  height: 100%;
+}
+.container {
+  background: url(../images/DJI_0030-fixed2-mini-20190727T100030844048.jpeg)
+    no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 74%;
+  position: fixed;
+}
+.box .inner-image {
+  margin: 0;
+  position: absolute;
+  bottom: -3px;
+  left: 100px;
+}
+.box .inner-content {
+  position: absolute;
+  bottom: 50px;
+  left: 350px;
+  color: white;
+  margin-left: 10px;
+}
+.box .inner-content h1 {
+  margin-bottom: 20px;
+}
+.box .inner-content .content-left {
+  margin-right: 40px;
+  float: left;
+}
+.box .inner-content .content-right {
+  float: right;
+}
+.box .inner-content span {
+  font-weight: 600;
+  font-size: 25px;
+}
+.box .box-menu {
+  background: white;
+  padding: 20px 0;
+  position: absolute;
+  bottom: 160px;
+  right: 0;
+  width: 100%;
+}
+.box .box-menu ol {
+  display: flex;
+  list-style: none;
+  text-align: center;
+  justify-content: flex-end;
+  margin-right: 60px;
+}
+.box .box-menu ol li {
+  margin-right: 30px;
+  font-weight: 600;
+}
+.box .box-menu a {
+  text-decoration: none;
+  color: #000;
+}
+.box .box-menu ol li a:active {
+  color: orangered;
+  padding-bottom: 10px;
+  border-bottom: 3px solid orangered;
+}

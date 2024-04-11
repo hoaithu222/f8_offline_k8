@@ -1,0 +1,40 @@
+/* Thuộc tính float trôi các thẻ html về phía bên trái học phía bên phải thành phần cha
+   none:mặc định
+   left:bên trái
+   right:bên phải
+-Thuộc tính clear ngân không cho các thẻ html ngăn không trôi theo float
+  none:mạc định 
+  left:bên trái 
+  right:bên phải
+  both :cả hai bên 
+  Lưu ý chỉ hoạt động với thẻ block
+  overflow: auto; chiều cao của cha được khôi phục
+*/
+.box {
+  width: 300px;
+  /* height: 300px; */
+  border: 1px solid red;
+  margin: 30px auto;
+  /* overflow: auto; */
+}
+.column-a {
+  width: 30%;
+  height: 100px;
+  background: green;
+  float: right;
+}
+.column-b {
+  width: 30%;
+  height: 150px;
+  background: olivedrab;
+  float: right;
+}
+/* .clear {
+  display: block;
+  clear: both;
+} */
+.box::after {
+  content: "";
+  display: block;
+  clear: both;
+}

@@ -1,0 +1,53 @@
+/* khi khích thước là auto thì sử dụng cả top và bottom thì sẽ dãn đầy kích thước
+khi cố định kích thước thì sẽ theo top và left
+fixed sẽ nhận body làm cha và cố định khi kéo thanh cuộn
+ */
+.box {
+  border: 1px solid red;
+  width: 300px;
+  height: 300px;
+  margin: 30px auto;
+  position: relative;
+}
+.item {
+  padding: 10px 20px;
+  background: green;
+  border: 1px solid #fff;
+  width: 100px;
+
+  box-sizing: border-box;
+}
+.item:nth-child(2) {
+  /* position: relative;
+  margin-left: 20px;
+  top: 0; sử dụng phần trăm là so với thành phần cha + thêm vị trí nó đúng
+  left: calc(100% - 100px); */
+  /* height: 50px; */
+  position: relative;
+
+  /* bottom: 0; */
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+}
+.item:nth-child(3) {
+  /* position: relative;
+    margin-left: 20px;
+    top: 0; sử dụng phần trăm là so với thành phần cha + thêm vị trí nó đúng
+    left: calc(100% - 100px); */
+  /* height: 50px; */
+  position: relative;
+
+  /* bottom: 0; */
+  top: 0px;
+  left: 10px;
+}
+/* Thuộc tinh position 
+-static:không có position
+-relative : vị trí tương đối--> thay đổi vị trí không thay đổi bố cục và cách vị trí tương đối với chính nó, sử dụng phần trăm là so với thành phần cha
+
+
+-absolute: vị trí tương đối
+-fixed: vị trí cố định 
+khi sử dụng position trừ static thì có các thuộc tính top left right bottom z-index inset
+*/

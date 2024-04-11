@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .box-model {
+        position: fixed;
+        inset: 0;
+        display: none;
+      }
+      .box-model .model {
+        width: 80%;
+        background: white;
+        border: 1px solid #ccc;
+        margin: 30px auto;
+        position: relative;
+        z-index: 1;
+        padding: 20px;
+      }
+      .box-model .overlay {
+        background: #7777777b;
+        position: fixed;
+        inset: 0;
+      }
+      .box-model .model-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+      }
+      .box-model .model-header .button {
+        font-weight: 500;
+        font-size: 20px;
+      }
+      .box-model .model-header .button:hover {
+        color: red;
+      }
+      input:checked + .box-model {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Học lập trình để đi làm</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic ex tempore
+      veritatis neque architecto odit debitis. Reiciendis similique illum, saepe
+      ad quasi laborum iure architecto. Molestiae quae in adipisci quidem!
+    </p>
+    <button><label for="check">Open Model</label></button>
+    <input type="checkbox" id="check" hidden />
+    <div class="box-model">
+      <div class="model">
+        <div class="model-header">
+          <h2>Model Title</h2>
+          <label for="check" class="button">&times;</label>
+        </div>
+        <div class="model-body">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque commodi
+          aspernatur assumenda reprehenderit quas, itaque, saepe amet debitis
+          quis sapiente quidem. Adipisci, ipsam quibusdam animi modi sint
+          voluptate reiciendis delectus!
+        </div>
+      </div>
+      <label class="overlay" for="check"></label>
+    </div>
+  </body>
+</html>
