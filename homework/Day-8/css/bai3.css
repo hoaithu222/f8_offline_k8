@@ -4,6 +4,9 @@
   box-sizing: border-box;
   font-family: "Asap", sans-serif;
 }
+.box {
+  width: 1467px;
+}
 .box .container {
   padding: 10px 80px;
 }
