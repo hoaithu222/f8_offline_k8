@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+h2 {
+  position: relative;
+  color: green;
+  font-size: 2.5srem;
+  margin-top: 50px;
+}
+h2 > span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 100%;
+  transition: top 0.3s ease;
+  overflow: hidden;
+}
+h2 > span > span {
+  color: red;
+  position: absolute;
+}

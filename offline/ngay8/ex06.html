@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .menu {
+        width: 80%;
+        margin: 30px auto;
+        background: #34495e;
+        font-size: 0;
+        border-radius: 5px;
+      }
+      .menu > ul > li {
+        display: inline-block;
+      }
+      .menu ul li a {
+        color: white;
+        text-decoration: none;
+        display: block;
+        padding: 10px 15px;
+        font-size: initial;
+      }
+      .menu ul li a:hover {
+        background-color: #1abc9c;
+        border-radius: 5px;
+      }
+      .menu > ul ul {
+        position: absolute;
+        background: wheat;
+      }
+      .menu > ul ul li {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="menu">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Blog</a></li>
+        <li>
+          <a href="#">Products</a>
+          <ul>
+            <li><a href="#">Product1</a></li>
+            <li><a href="#">Product2</a></li>
+            <li><a href="#">Product3</a></li>
+          </ul>
+        </li>
+        <li><a href="#">News</a></li>
+        <li><a href="#">ContactS</a></li>
+      </ul>
+    </nav>
+  </body>
+</html>

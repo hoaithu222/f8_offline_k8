@@ -1,0 +1,128 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.box {
+  max-width: 1200px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Inter", sans-serif;
+}
+.box a {
+  text-decoration: none;
+  color: gray;
+  border: 1px solid transparent;
+  background-color: rgb(223, 219, 219);
+  border-radius: 45px;
+  padding: 5px;
+  cursor: pointer;
+  transition: 1s linear;
+  transition-property: background-color;
+}
+.container .inner-wrap {
+  width: 500px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.container .inner-image {
+  width: 300px;
+  position: relative;
+}
+.container .inner-image img {
+  width: 400px;
+  height: auto;
+}
+.container .inner-image .inner-image-sub img {
+  background-size: cover;
+  position: absolute;
+  width: 250px;
+  height: 450px;
+  top: 100px;
+  left: -150px;
+}
+.container .inner-image .inner-image-sub .inner-blue {
+  position: absolute;
+  top: 110px;
+  left: -140px;
+  background-color: rgb(84, 84, 219);
+  color: white;
+  width: 230px;
+  height: 430px;
+  z-index: 9;
+}
+.container .inner-image .inner-image-sub .inner-blue p {
+  color: white;
+  position: absolute;
+  bottom: 40px;
+  right: 20px;
+  text-align: right;
+}
+.container .inner-image .inner-image-sub .inner-blue span {
+  font-size: 80px;
+  font-weight: 600;
+  opacity: 0.6;
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+.container .inner-wrap .inner-content {
+  display: flex;
+  justify-content: end;
+  flex-wrap: wrap;
+  position: relative;
+}
+.container .inner-wrap .inner-content:nth-child(-n + 3)::after {
+  content: "";
+  border-right: 2px solid gray;
+  right: 100px;
+  top: 40px;
+  position: absolute;
+  height: 100px;
+}
+.container .inner-wrap .inner-content .inner-head {
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+}
+
+.container .inner-wrap .inner-content span {
+  color: gray;
+}
+.container .inner-wrap .inner-content i {
+  border-radius: 50%;
+  background-color: rgb(223, 219, 219);
+  padding: 5px;
+}
+.container .inner-wrap .inner-content .inner-head .inner-title {
+  font-family: "Space Grotesk", sans-serif;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+.container .inner-wrap .inner-content .inner-desc {
+  width: 300px;
+  margin-right: 100px;
+  margin-bottom: 20px;
+}
+.container .inner-wrap .inner-content .inner-button {
+  margin-right: 120px;
+  margin-bottom: 20px;
+}
+.box a {
+  text-decoration: none;
+  color: gray;
+  border: 1px solid transparent;
+  background-color: rgb(223, 219, 219);
+  border-radius: 45px;
+  padding: 5px;
+  cursor: pointer;
+  transition: 0.5s linear;
+  transition-property: background-color, color;
+  overflow: hidden;
+}
+.container .inner-wrap .inner-content :hover a {
+  background-color: rgba(159, 159, 33, 0.836);
+  color: white;
+}

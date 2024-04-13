@@ -1,0 +1,34 @@
+.box {
+  width: 100px;
+  height: 40px;
+  background: gray;
+  border-radius: 99px;
+  display: block;
+  margin: 30px auto;
+  position: relative;
+  overflow: hidden;
+}
+.box .btn {
+  position: absolute;
+  display: block;
+  left: 1px;
+  top: 1px;
+  width: 38px;
+  height: 38px;
+  background-color: white;
+  border-radius: 50%;
+  transition: left 0.3s ease;
+}
+.box .bg {
+  position: absolute;
+  inset: 0;
+  background: green;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.box input:checked ~ .btn {
+  left: calc(100% - 39px);
+}
+.box input:checked ~ .bg {
+  opacity: 1;
+}

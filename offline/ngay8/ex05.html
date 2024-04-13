@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .header {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .header .inner-menu .inner-list {
+        list-style: none;
+        display: flex;
+        justify-content: start;
+        border: 1px solid transparent;
+        background-color: rgb(120, 120, 183);
+      }
+      .header .inner-menu ol li {
+        border: 1px solid transparent;
+        padding: 10px 15px;
+        border-radius: 8px;
+        position: relative;
+      }
+      .header .inner-menu ol li a {
+        text-decoration: none;
+        color: white;
+        cursor: pointer;
+        font-size: 25px;
+      }
+      .header .inner-menu ol li:hover {
+        background-color: brown;
+      }
+      .header .inner-menu .inner-product {
+        position: absolute;
+        top: 60px;
+        left: 30px;
+        list-style-type: none;
+      }
+      .header .inner-menu a:hover + .inner-product {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="inner-menu">
+        <ol class="inner-list">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Blog</a></li>
+          <li>
+            <a href="#">Products</a>
+            <ol class="inner-product">
+              <li><a href="#">Product1</a></li>
+              <li><a href="#">Product2</a></li>
+              <li><a href="#">Product3</a></li>
+            </ol>
+          </li>
+          <li><a href="#">News</a></li>
+          <li><a href="#">Contact</a></li>
+        </ol>
+      </div>
+    </div>
+  </body>
+</html>
