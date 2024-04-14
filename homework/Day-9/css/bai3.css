@@ -21,35 +21,93 @@
   font-size: 20px;
   margin-bottom: 50px;
 }
-.box .inner-form table {
-  width: 900px;
-  border-spacing: 20px;
-}
 .box input,
 .box textarea,
 .box select {
   border: none;
   outline: none;
 }
-.box .inner-form table td {
-  border: 2px solid gray;
-  border-radius: 8px;
-  overflow: hidden;
+.box .inner-form .inner-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-bottom: 40px;
 }
-.box .inner-form table tr td input[type="text"],
-.box .inner-form table tr td input[type="email"],
-.box .inner-form table tr td select {
+.box .inner-form .sub-box .inner-input {
+  position: relative;
+}
+.box .inner-form .sub-box .inner-input input {
+  border: 1px solid gray;
+  width: 500px;
+  height: 50px;
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 10px;
+  transition: 0.8s linear;
+  transition-property: border;
+}
+.box .inner-form .sub-box .inner-textarea {
+  position: relative;
+}
+.box .inner-form .sub-box .inner-textarea textarea {
+  border: 1px solid gray;
+  border-radius: 10px;
+  width: 1070px;
+  height: 194px;
+  padding: 15px;
+  font-size: 13px;
+  margin-left: 65px;
+  transition: 0.8s linear;
+  transition-property: border;
+}
+.box .inner-form .sub-box select {
+  border: 1px solid gray;
   width: 500px;
   height: 50px;
   padding: 10px;
   font-size: 18px;
+  border-radius: 10px;
 }
 
-.box .inner-form table tr td textarea {
-  width: 1020px;
-  height: 194px;
-  padding: 15px;
-  font-size: 18px;
+.box .inner-form .sub-box .inner-input label {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  font-size: 13px;
+  opacity: 0;
+  transition: 0.4s linear;
+  transition-property: opacity;
+}
+.box .inner-form .sub-box .inner-input input:focus {
+  border-color: rgb(163, 139, 236) !important;
+}
+.box .inner-form .sub-box select:focus {
+  border-color: rgb(163, 139, 236) !important;
+}
+.box .inner-form .sub-box .inner-input input:focus + label {
+  opacity: 1;
+}
+.box .inner-form .sub-box .inner-input input:focus::placeholder {
+  opacity: 0;
+}
+
+.box .inner-form .sub-box .inner-textarea label {
+  position: absolute;
+  top: 5px;
+  left: 80px;
+  font-size: 13px;
+  opacity: 0;
+  transition: 0.4s linear;
+  transition-property: opacity;
+}
+.box .inner-form .sub-box .inner-textarea textarea:focus + label {
+  opacity: 1;
+}
+.box .inner-form .sub-box .inner-textarea textarea:focus {
+  border-color: rgb(163, 139, 236) !important;
+}
+.box .inner-form .sub-box .inner-textarea textarea:focus::placeholder {
+  opacity: 0;
 }
 button {
   display: none;
@@ -60,6 +118,6 @@ button {
   padding: 20px;
   width: 150px;
   text-align: center;
-  margin: 10px 450px;
+  margin: 20px 500px;
   border-radius: 45px;
 }

@@ -20,38 +20,48 @@
             </div>
             <div class="inner-form">
                 <form>
-                    <table>
-                        <tr>
-                            <td>
+                    <div class="inner-container">
+                        <div class="sub-box ">
+                            <div class="inner-input">
                                 <input type="text" name="First Name" placeholder="First Name *" />
-                            </td>
-                            <td>
+                                <label>First Name *</label>
+                            </div>
+                        </div>
+                        <div class="sub-box ">
+                            <div class="inner-input">
                                 <input type="text" name="Last Name" placeholder="Last Name *" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
+                                <label>Last Name *</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="inner-container">
+                        <div class="sub-box ">
+                            <div class="inner-input">
                                 <input type="email" name="Email" placeholder="Email *" />
-                            </td>
-                            <td>
-                                <select>
-                                    <option>Sales</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <textarea placeholder="Message *" name="Message"></textarea>
-                            </td>
-                        </tr>
-                    </table>
+                                <label>Email *</label>
+                            </div>
+                        </div>
+                        <div class="sub-box ">
+                            <select>
+                                <option>Sales</option>
+                                <option>Students</option>
+                                <option>Doctor</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="sub-box ">
+                        <div class="inner-textarea">
+                            <textarea placeholder="Message *" name="Message" rows="10" cols="136"></textarea>
+                            <label>Message *</label>
+                        </div>
+                    </div>
                     <div class="inner-button"><button>Send Message</button>Send Message</div>
-
-
                 </form>
             </div>
         </div>
     </div>
+
 </body>
 
 </html>
