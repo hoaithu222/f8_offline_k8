@@ -1,0 +1,65 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: grey;
+}
+.box {
+  width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.box .inner-head {
+  text-align: center;
+}
+.box .inner-head h1 {
+  font-size: 50px;
+  margin-bottom: 30px;
+  color: black;
+}
+.box .inner-head p {
+  font-size: 20px;
+  margin-bottom: 50px;
+}
+.box .inner-form table {
+  width: 900px;
+  border-spacing: 20px;
+}
+.box input,
+.box textarea,
+.box select {
+  border: none;
+  outline: none;
+}
+.box .inner-form table td {
+  border: 2px solid gray;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.box .inner-form table tr td input[type="text"],
+.box .inner-form table tr td input[type="email"],
+.box .inner-form table tr td select {
+  width: 500px;
+  height: 50px;
+  padding: 10px;
+  font-size: 18px;
+}
+
+.box .inner-form table tr td textarea {
+  width: 1020px;
+  height: 194px;
+  padding: 15px;
+  font-size: 18px;
+}
+button {
+  display: none;
+}
+.box .inner-form .inner-button {
+  color: white;
+  background-color: blue;
+  padding: 20px;
+  width: 150px;
+  text-align: center;
+  margin: 10px 450px;
+  border-radius: 45px;
+}

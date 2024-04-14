@@ -1,0 +1,121 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.box {
+  width: 1200px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 20px 0;
+}
+.box a {
+  text-decoration: none;
+  color: white;
+}
+.box .inner-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.box .inner-wrap .inner-box {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 35px 35px;
+  width: 350px;
+  height: 250px;
+  margin-bottom: 50px;
+  position: relative;
+}
+.box .inner-wrap .inner-box .inner-head {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+.box .inner-wrap .inner-box .inner-title {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.box .inner-wrap .inner-box .inner-desc {
+  color: gray;
+}
+
+.box .inner-wrap .inner-info-box .inner-content {
+  border: 1px solid white;
+  padding: 15px 10px;
+  position: absolute;
+  width: 330px;
+  height: 220px;
+  z-index: 99;
+}
+.box .inner-wrap .inner-info-box .inner-more i {
+  border: 1px solid white;
+  padding: 5px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+.box .inner-wrap .inner-info-box .inner-more:hover i {
+  color: gray;
+  background-color: white;
+}
+.box .inner-wrap .inner-info-box .inner-desc {
+  color: white;
+}
+.box .inner-wrap .inner-info-box .inner-desc h3 {
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+.box .inner-wrap .inner-info-box .inner-desc p {
+  font-size: 18px;
+  margin-bottom: 50px;
+}
+.box .inner-wrap .inner-info-box .inner-color {
+  background-color: #a28d44;
+  width: 350px;
+  height: 250px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.6;
+  z-index: 0;
+}
+/* .box .inner-wrap .inner-info-box {
+  display: none;
+} */
+.box .inner-wrap .inner-info-box {
+  background-image: url(https://picsum.photos/350/250);
+  width: 350px;
+  height: 250px;
+  background-size: cover;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 5%;
+  padding: 10px;
+  opacity: 0;
+  transition: 0.3s linear;
+  transition-property: top, opacity;
+}
+.box .inner-wrap .inner-info-box .inner-content {
+  border: 1px solid white;
+  padding: 15px 10px;
+  position: absolute;
+  width: 330px;
+  height: 220px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 5%;
+  opacity: 0;
+  transition: 0.5s linear;
+  transition-property: top, opacity;
+  z-index: 99;
+}
+.box .inner-wrap .inner-box:hover .inner-info-box {
+  opacity: 1;
+  top: 0;
+}
+.box .inner-wrap .inner-box:hover .inner-info-box .inner-content {
+  opacity: 1;
+  top: 0;
+}
