@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 .box {
-  max-width: 1200px;
+  max-width: 1500px;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -21,13 +21,13 @@
   transition: 1s linear;
   transition-property: background-color;
 }
-.container .inner-wrap {
-  width: 500px;
+.container {
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-between;
 }
+
 .container .inner-image {
-  width: 300px;
+  width: 500px;
   position: relative;
 }
 .container .inner-image img {
@@ -64,65 +64,72 @@
   font-weight: 600;
   opacity: 0.6;
 }
-.container {
+.container .inner-wrap {
+  width: 600px;
   display: flex;
-  justify-content: space-between;
-}
-.container .inner-wrap .inner-content {
-  display: flex;
-  justify-content: end;
   flex-wrap: wrap;
-  position: relative;
-}
-.container .inner-wrap .inner-content:nth-child(-n + 3)::after {
-  content: "";
-  border-right: 2px solid gray;
-  right: 100px;
-  top: 40px;
-  position: absolute;
-  height: 100px;
-}
-.container .inner-wrap .inner-content .inner-head {
-  display: flex;
-  justify-content: space-around;
-  align-items: baseline;
 }
 
-.container .inner-wrap .inner-content span {
-  color: gray;
+.container .inner-wrap .inner-content table td a:hover {
+  background-color: rgba(159, 159, 33, 0.836);
+  color: white;
 }
+
 .container .inner-wrap .inner-content i {
   border-radius: 50%;
   background-color: rgb(223, 219, 219);
   padding: 5px;
 }
-.container .inner-wrap .inner-content .inner-head .inner-title {
+.container .inner-wrap .inner-content h2 {
   font-family: "Space Grotesk", sans-serif;
-  margin-right: 20px;
+  margin-top: 10px;
   margin-bottom: 20px;
 }
-.container .inner-wrap .inner-content .inner-desc {
-  width: 300px;
-  margin-right: 100px;
+
+.container .inner-wrap .inner-content table td {
+  vertical-align: top;
+}
+.container .inner-wrap .inner-content table td:nth-child(1) {
+  width: 330px;
+  height: 150px;
+  margin-right: 100%;
+  text-align: right;
+  transition: transform 0.5s linear;
+}
+.container .inner-wrap .inner-content table tr:hover td:nth-child(1) {
+  transform: translateX(310px);
+}
+.container .inner-wrap .inner-content table td:nth-child(1) p {
   margin-bottom: 20px;
 }
-.container .inner-wrap .inner-content .inner-button {
-  margin-right: 120px;
-  margin-bottom: 20px;
+.container .inner-wrap .inner-content table tr td:nth-child(2) {
+  display: block;
+  /* text-align: center; */
+  position: relative;
 }
-.box a {
-  text-decoration: none;
-  color: gray;
-  border: 1px solid transparent;
-  background-color: rgb(223, 219, 219);
-  border-radius: 45px;
-  padding: 5px;
-  cursor: pointer;
-  transition: 0.5s linear;
-  transition-property: background-color, color;
-  overflow: hidden;
+.container .inner-wrap .inner-content table td:nth-child(2) i {
+  /* margin-right: 20px; */
+  margin-top: 10px;
+  margin-left: 10px;
 }
-.container .inner-wrap .inner-content :hover a {
-  background-color: rgba(159, 159, 33, 0.836);
-  color: white;
+
+.container .inner-wrap .inner-content table tr:hover td:nth-child(3) .year {
+  transform: translateX(-130px);
+}
+.container .inner-wrap .inner-content table tr td:nth-child(3) .year {
+  margin-top: 15px;
+  margin-left: 10px;
+  transition: transform 0.5s linear;
+}
+
+.container .inner-wrap .inner-content table tr td span {
+  margin-top: 20px;
+}
+.container .inner-wrap .inner-content table td .inner-border:nth-child(2) {
+  display: block;
+  position: absolute;
+  border-right: 2px solid #f0f2f5;
+  height: 90px;
+  top: 30px;
+  left: 20px;
 }

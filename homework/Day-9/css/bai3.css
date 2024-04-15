@@ -44,7 +44,7 @@
   font-size: 20px;
   border-radius: 10px;
   transition: 0.8s linear;
-  transition-property: border;
+  transition-property: border, background-color;
 }
 .box .inner-form .sub-box .inner-textarea {
   position: relative;
@@ -58,7 +58,7 @@
   font-size: 13px;
   margin-left: 65px;
   transition: 0.8s linear;
-  transition-property: border;
+  transition-property: border, background-color;
 }
 .box .inner-form .sub-box select {
   border: 1px solid gray;
@@ -67,6 +67,8 @@
   padding: 10px;
   font-size: 18px;
   border-radius: 10px;
+  transition: 0.8s linear;
+  transition-property: border, background-color;
 }
 
 .box .inner-form .sub-box .inner-input label {
@@ -80,9 +82,11 @@
 }
 .box .inner-form .sub-box .inner-input input:focus {
   border-color: rgb(163, 139, 236) !important;
+  background-color: rgb(206, 237, 248);
 }
 .box .inner-form .sub-box select:focus {
   border-color: rgb(163, 139, 236) !important;
+  background-color: rgb(206, 237, 248);
 }
 .box .inner-form .sub-box .inner-input input:focus + label {
   opacity: 1;
@@ -105,6 +109,7 @@
 }
 .box .inner-form .sub-box .inner-textarea textarea:focus {
   border-color: rgb(163, 139, 236) !important;
+  background-color: rgb(206, 237, 248);
 }
 .box .inner-form .sub-box .inner-textarea textarea:focus::placeholder {
   opacity: 0;
