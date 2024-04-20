@@ -1,0 +1,55 @@
+/* Thay đổi hình dạng html
+- xoay 
+- nghiêng
+- thu nhỏ
+- phóng to
+transform : value
+- rotate()
+-rotateX()
+-rotateY()
+scale(x,y);
+scaleX(value)
+scaleY(value)
+skew(x,y)
+skewX
+skewY
+translate(x,y):dịch chuyển
+translateX
+translateY
+- Các thuộc tính tách ra:
+rotate : tương ứng với transform :rotate()
+scale : tương ứng với transform: scale()
+translate : tương ứng với transform :translate()
+
+Thuộc tính transform-origin: x y --> chọn vị trí của trục khi thưc hiện transform các giá trị giống y hệt thuộc tính background-position
+
+*/
+.box {
+  width: 300px;
+  height: 300px;
+  background: green;
+  color: white;
+  margin: 30px auto;
+  font-size: 2rem;
+  transition: all 0.4s linear;
+  position: relative;
+  top: 0;
+  left: 0;
+  transform-origin: 30% 0;
+}
+.container {
+  padding: 100px;
+  border: 1px solid red;
+}
+.container:hover .box {
+  transform: rotate(45deg);
+
+  /* transform: rotateX(90deg); */
+  /* rotate:90deg; thuộc tính tách ra từ tranform */
+  /* rotate: 90deg; */
+  /* transform: rotate(45deg) scale(1.5, 1.1); */
+  /* transform: skew(30deg, 0); */
+  /* transform: translate(100%); */
+  /* top: 100px;
+  left: 100px; */
+}

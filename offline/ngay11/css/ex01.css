@@ -1,0 +1,102 @@
+/* Flex flexible box model 
+- kỹ thuật css
+- chia layout trang web linh hoạt, đáp ứng nhiều giao diện khác nhau
+- dễ dàng tùy biến trên nhiều màn hình khác nhau (responsive)
+
+
+1.các thuộc tính trong nhóm container
+-display : flex | inline-flex --> kích hoạt flex 
+- flex-direction : tùy chỉnh hướng của trục chính (chọn trục chính theo hướng nào)
++ row: hàng 
++ row-reverse:
++ column: cột 
++ column-reverse:
+- justify-content: căn chỉnh các item theo hướng song song với trục chính
++ flex-start
++ center
++ flex-end
++ space-around:
++ space-between:
++ space-evenly:
++ start:--> khác với flex-start chỉ khác khi reverse
++ end
+- flex-wrap: wrap các item nếu bị tràn ra khỏi container
++ nowrap
++ wrap
++ wrap-reverse
+- align-items: Căn chỉnh các item theo chiều vuông góc với trục chính(căn chỉnh các item)
++ stretch: (măc định)
++ flex-start 
++ flex-end
++ center
++ baseline
+- align-content: căn chỉnh theo hàng, cả hàng item
++ stretch : mặc định
++ flex-start
++ center
++ flex-end
++ space-around:
++ space-between:
++ space-evenly:
++ start:--> khác với flex-start chỉ khác khi reverse
++ end
+- gap : khoảng cách giữa các item
++ row-gap:khoảng cách giữa các hàng 
++ column-gap: khoảng cách giữa các cột 
+
+2.các thuộc tính trong nhóm flex item
+-flex-grow:number
+-flex-shrink:
+-flex-basis:thiết lập kích thước ban đầu của item phụ thuộc vào flex-direction --> sẽ bị chặn bởi min-width và max-with min-height max-height
+-flex:grow shrink basis;
+-align-seft : căn chỉnh item cụ thể theo hướng vuông góc với trục chính 
+-order: sắp xếp các item âm sẽ xếp lên trước
+*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.box {
+  width: 400px;
+  height: 400px;
+  border: 1px solid red;
+  margin: 30px auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+
+  /* flex-wrap: wrap; */
+  /* gap: 10px 20px; */
+  /* row-gap: 10px;
+  column-gap: 20px; */
+  /* align-content: space-evenly; */
+}
+.item {
+  padding: 15px;
+  background: green;
+  color: #fff;
+  border: 1px solid #fff;
+  min-width: 50px;
+  flex: 1 0 auto;
+  /* flex-basis: 40px; */
+  /* flex-grow: 1; */
+  /* flex-shrink: 0; */
+  /* max-width: 60px; */
+  /* width: 70px; */
+}
+/* .item:nth-child(2) {
+  padding: 30px 15px;
+  flex-grow: 0.5;
+} */
+.item:nth-child(3) {
+  /* align-self: center; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  order: -1;
+}
+.item:nth-child(1) {
+  order: 1;
+}
