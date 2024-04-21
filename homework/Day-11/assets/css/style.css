@@ -260,13 +260,13 @@ a {
   left: 0px;
   transform: rotate(0deg);
   z-index: 0;
-  display: none;
-  transition-property: rotate, left;
+  opacity: 0;
+  transition-property: rotate, left, opacity;
   transition: 0.3s ease-in-out;
 }
 
 .section-two .inner-wrap .inner-content .inner-list:hover .overlay {
-  display: block;
+  opacity: 1;
   rotate: -5deg;
   left: 15px;
 }
