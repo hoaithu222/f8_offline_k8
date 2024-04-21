@@ -230,7 +230,7 @@ a {
   width: calc(100% / 3 - 100px);
   height: 310px;
   position: relative;
-  z-index: 9;
+  z-index: 10;
 }
 
 .section-two .inner-wrap .inner-content .inner-list .inner-box {
