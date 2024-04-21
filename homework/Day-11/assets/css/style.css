@@ -187,7 +187,105 @@ a {
 
 /* End section one */
 /* Section two */
+.container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .section-two {
+  background-color: #fdecec;
+}
+
+.section-two .inner-wrap {
+  padding: 150px 0;
+}
+
+.section-two .inner-wrap .inner-head {
+  text-align: center;
+  padding: 0 250px;
+  margin-bottom: 50px;
+}
+
+.section-two .inner-wrap .inner-head p {
+  color: #f94f50;
+  font-size: 18px;
+}
+
+.section-two .inner-wrap .inner-head h2 {
+  color: #2e2e2e;
+  font-size: 45px;
+}
+
+.section-two .inner-wrap .inner-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #fdecec;
+  padding-top: 20px;
+  padding-bottom: 200px;
+}
+
+.section-two .inner-wrap .inner-content .inner-list {
+  width: calc(100% / 3 - 100px);
+  height: 310px;
+  position: relative;
+  z-index: 9;
+}
+
+.section-two .inner-wrap .inner-content .inner-list .inner-box {
+  position: absolute;
+  background-color: white;
+  padding: 30px;
+  text-align: center;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  width: 100%;
+  height: 300px;
+  top: 0;
+  left: 0;
+  z-index: 9;
+}
+
+.section-two .inner-wrap .inner-content .inner-list .overlay {
+  position: absolute;
+  background-color: #f94f50;
+  padding: 30px;
+  text-align: center;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  transform: rotate(0deg);
+  z-index: 0;
+  display: none;
+  transition-property: rotate, left;
+  transition: 0.3s ease-in-out;
+}
+
+.section-two .inner-wrap .inner-content .inner-list:hover .overlay {
+  display: block;
+  rotate: -5deg;
+  left: 15px;
+}
+.section-two .inner-wrap .inner-content .inner-box img {
+  height: 70px;
+  width: auto;
+  margin: 20px 0;
+}
+
+.section-two .inner-wrap .inner-content .inner-box h3 {
+  color: #2e2e2e;
+  margin: 20px 0;
+}
+
+.section-two .inner-wrap .inner-content .inner-box p {
+  font-size: 15px;
+  margin-bottom: 30px;
+}
+/* .section-two {
   background-color: #fdecec;
 }
 .section-two .inner-wrap {
@@ -247,7 +345,7 @@ a {
 .section-two .inner-wrap .inner-content .inner-box p {
   font-size: 15px;
   margin-bottom: 30px;
-}
+} */
 /* End Section two */
 /* Section three */
 .section-three .inner-wrap {
