@@ -1,0 +1,131 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: 0;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+html {
+  font-size: 10px;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: "Roboto", sans-serif;
+  color: #333;
+  line-height: 1.2;
+}
+a {
+  color: #333;
+  text-decoration: none;
+}
+ul,
+ol {
+  list-style: none;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
+.header {
+  padding: 15px 0;
+}
+.header .header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header .header-row .menu {
+  margin-left: auto;
+}
+.header .header-row .menu ul {
+  display: flex;
+}
+.header .header-row .menu ul a {
+  display: block;
+  padding: 0 20px;
+  font-weight: 500;
+}
+.header .header-row .contact .btn {
+  display: block;
+  background: #75b7eb;
+  padding: 10px 30px;
+  border-radius: 99px;
+  color: #fff;
+  font-weight: 500;
+  margin-left: 20px;
+}
+.header .header-row .menu-toggle {
+  display: none;
+  position: fixed;
+  right: 0px;
+  top: 20px;
+}
+.header .header-row .overlay {
+  opacity: 0;
+  position: fixed;
+  inset: 0;
+  background: #00000073;
+  transition: 0.4s ease;
+  visibility: hidden;
+  transition-property: visibility, opacity;
+}
+/* Breakpoints
+>= 992px => desktop
+<992px và >= 768px ==> tablet
+<768px ==> mobie
+
+*/
+@media screen and (max-width: 991px) {
+  .container {
+    padding: 0 15px;
+  }
+  .header .header-row .menu {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    min-width: 200px;
+    background: black;
+    translate: -100%;
+    transition: translate 0.4s ease;
+    z-index: 1;
+  }
+  .header .header-row .menu ul {
+    display: block;
+    padding: 20px 0;
+  }
+  .header .header-row .menu ul li a {
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .header .header-row .contact {
+    margin-left: auto;
+    margin-right: 20px;
+  }
+  .header .header-row .menu-toggle {
+    display: block;
+    font-size: 2.5rem;
+  }
+  .header .header-row input[type="checkbox"]:checked + .menu {
+    translate: 0;
+  }
+  .header .header-row input[type="checkbox"]:checked ~ .overlay {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+@media screen and (max-width: 767px) {
+  .header .header-row .contact {
+    display: none;
+  }
+}

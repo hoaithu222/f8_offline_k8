@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Document</title>
+    <style>
+        .header {
+            background: var(--bg-one);
+            padding: 0 50px;
+            width: 100%;
+            height: auto;
+            position: fixed;
+            top: 0;
+            left: 0;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+
+        .header .inner-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header .inner-wrap .inner-logo a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header .inner-wrap .inner-logo span {
+            color: var(--color-text);
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .header .inner-wrap .inner-logo span:hover {
+            color: var(--text-one);
+        }
+
+        .header .inner-wrap .inner-logo img {
+            width: 50px;
+        }
+
+        .header .inner-wrap .inner-menu ol {
+            display: flex;
+        }
+
+        .header .inner-wrap .inner-menu ol li a {
+            display: inline-block;
+            padding: 35px 20px;
+            color: var(--color-text);
+            font-size: 18px;
+            font-weight: 500;
+            transition-property: color, background-color;
+            transition: 0.4s ease-in-out;
+        }
+
+        .header .inner-wrap .inner-menu ol li a {
+            color: var(--color-text);
+            font-weight: 500px;
+            font-size: 18px;
+        }
+
+        .header .inner-wrap .inner-menu ol li a:hover {
+            background-color: white;
+            color: var(--text-one);
+        }
+
+        .header .inner-wrap .inner-social ol {
+            display: flex;
+        }
+
+        .header .inner-wrap .inner-social ol li {
+            margin-left: 10px;
+        }
+
+        .header .inner-wrap .inner-social ol li a {
+            display: inline-flex;
+            width: 40px;
+            height: 40px;
+            background: white;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+        }
+
+        .header .inner-wrap .menu-toggle i {
+            font-size: 24px;
+        }
+
+        .header .inner-wrap .menu-toggle #menu-icon,
+        .header .inner-wrap .menu-toggle #close-icon {
+            display: none;
+        }
+
+        @media screen and (max-width: 992px) {
+            .header {
+                padding: 30px 20px;
+            }
+
+            .header .inner-wrap .menu-toggle #menu-icon {
+                display: block;
+            }
+
+            /* .header .inner-wrap .menu-toggle #close-icon {
+    display: none;
+  } */
+            .header .inner-wrap .inner-menu {
+                position: absolute;
+                top: 100%;
+                width: 100%;
+                left: 0;
+                background-color: var(--bg-one);
+                opacity: 0;
+                transition: 0.4s ease;
+                transition-property: top, opacity;
+            }
+
+            #check:checked~.inner-menu {
+                opacity: 1;
+            }
+
+            /* #check:checked ~ .inner-menu {
+    top: 100%;
+  } */
+            .header .inner-wrap .inner-menu ol {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .header .inner-wrap .inner-menu ol li a {
+                padding: 15px 5px;
+            }
+
+            .header .inner-wrap .inner-social {
+                position: absolute;
+                /* top: -2000%; */
+                top: 290%;
+                width: 100%;
+                background-color: var(--bg-one);
+                left: 0;
+                transition: 0.4s ease;
+                opacity: 0;
+                transition-property: opacity, top;
+            }
+
+            #check:checked~.inner-social {
+                opacity: 1;
+            }
+
+            #check:checked~.menu-toggle #menu-icon {
+                display: none;
+            }
+
+            #check:checked~.menu-toggle #close-icon {
+                display: block;
+            }
+
+            /* #check:checked ~ .inner-social {
+    top: 290%;
+  } */
+            .header .inner-wrap .inner-social ol {
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="inner-wrap">
+            <div class="inner-logo">
+                <a href="#">
+                    <img src="assets/image/logo (1).png" alt="logo">
+                    <span>SoftwareM4</span>
+                </a>
+            </div>
+            <input type="checkbox" id="check" hidden />
+            <div class="menu-toggle">
+                <label for="check" id="menu-icon"><i class="fa-solid fa-bars"></i></label>
+                <label for="check" id="close-icon"><i class="fa-solid fa-x"></i></label>
+            </div>
+            <div class="inner-menu">
+                <ol>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ol>
+            </div>
+            <div class="inner-social">
+                <ol>
+                    <li><a href="#" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                </ol>
+            </div>
+
+        </div>
+    </header>
+    <!-- End header-->
+
+
+</body>
+
+</html>

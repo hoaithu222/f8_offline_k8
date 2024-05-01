@@ -1,0 +1,60 @@
+:root {
+    --color-one: #f5d7c2;
+    --color-two: #FF8484;
+    --color-text: #232323;
+    --text-hover: #ccc7c7;
+    --text-one: #777777;
+    --color-bg: #f0f2f5;
+    --color-bg-two: #dce8eb;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "DM Sans", sans-serif;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    color: #232323;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 1200px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .container {
+        max-width: 720px;
+
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        max-width: 540px;
+
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .container {
+        max-width: 100%;
+        padding: 0 30px;
+
+    }
+}
