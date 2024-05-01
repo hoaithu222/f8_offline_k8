@@ -183,6 +183,10 @@ input {
         width: 100%;
     }
 
+    .header .inner-wrap .inner-content .inner-search input {
+        width: 100%;
+    }
+
     .header .inner-wrap .inner-logo i {
         display: block;
     }
