@@ -1,0 +1,13 @@
+.item {
+    display: flex;
+
+}
+
+.item img {
+    height: 140px;
+    background-size: cover;
+}
+
+.item p {
+    width: 50%;
+}

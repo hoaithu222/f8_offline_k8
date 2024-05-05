@@ -1,0 +1,28 @@
+/* 
+1. đổ bóng khối 
+
+
+box-shadow: h-offset v-offset blur(độ nhòe) spread(kích thước) color 
+h-offset: vị trí của bóng theo chiều ngang
+v-offset : vị trí của bóng theo chiều dọc
+2.Dổ bong chữ
+-text-shadow:h-offset v-offset blur color
+
+ */
+
+.box {
+    width: 200px;
+    height: 200px;
+    background: #fff;
+    margin: 30px auto;
+    /* box-shadow: 0px 0px 10px 10px red; */
+    box-shadow: 5px 5px 5px red, 10px 10px 5px blueviolet, 15px 15px 5px plum;
+    /* box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset; */
+}
+
+h2 {
+    font-size: 3rem;
+    color: #fff;
+    text-align: center;
+    text-shadow: 1px 1px 1px black, 1px -1px 1px black, -1px 1px 1px black, -1px -1px 1px black;
+}
