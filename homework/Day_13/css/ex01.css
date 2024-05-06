@@ -22,6 +22,7 @@ ol {
     background: url(../image/landing-background.jpg);
     background-size: cover;
     min-height: 100vh;
+    overflow: hidden;
 
 }
 
@@ -34,6 +35,7 @@ ol {
 .landing-page .inner-main {
     display: flex;
     flex-wrap: wrap;
+
 
 }
 
@@ -87,15 +89,17 @@ ol {
 
 }
 
-.inner-content .inner-button .login:hover {
+#Login:checked~.inner-main .inner-content .inner-button .login {
     background-color: white;
     color: #a1a2a7;
 }
 
-.inner-content .inner-button .register:hover {
+#Register:checked~.inner-main .inner-content .inner-button .register {
     background-color: white;
     color: #a1a2a7;
 }
+
+
 
 .inner-wrap {
     width: 100%;
@@ -238,6 +242,7 @@ ol {
 
 .inner-wrap .box-login .box-form .inner-info .forgot-password a {
     color: #ADAFCA;
+    font-weight: 600;
 }
 
 .inner-wrap .box-login .box-form .inner-info .forgot-password a:hover {
@@ -248,16 +253,23 @@ ol {
     display: block;
     color: #fff;
     background-color: rgb(102, 98, 237);
+    border: 2px solid transparent;
     text-align: center;
     padding: 15px 0;
     font-weight: 700;
     border-radius: 10px;
     margin-bottom: 20px;
-    transition: background-color 0.4s ease-in-out;
+    transition: 0.4s ease-in-out;
+    transition-property: background-color;
+
 }
 
 .inner-wrap .box-login .box-form .inner-button:hover {
     background-color: #5753E4;
+}
+
+.inner-wrap .box-login .box-form .inner-button:active {
+    border: 2px solid #000;
 }
 
 .inner-wrap .box-login .box-form .inner-social ol {
@@ -323,7 +335,7 @@ ol {
     position: absolute;
     top: 15px;
     left: 0;
-    width: 50px;
+    width: 65px;
     border: 1px solid #e3e2e2;
 }
 
@@ -332,7 +344,7 @@ ol {
     position: absolute;
     top: 15px;
     right: 0;
-    width: 50px;
+    width: 65px;
     border: 1px solid #e3e2e2;
 }
 
@@ -347,21 +359,21 @@ ol {
     transform: translate(20%);
     transition: 0.3s ease-in-out;
     transition-property: transform, opacity;
-    height: 650px;
+    height: 700px;
 }
 
-#Register:checked~.box-register {
+#Register:checked~.inner-main .inner-wrap .box-register {
     opacity: 1;
     transform: translate(0%);
     visibility: visible;
 }
 
-#Register:checked~.box-login {
+#Register:checked~.inner-main .inner-wrap .box-login {
     transform: translate(20%);
     opacity: 0;
 }
 
-#Login:checked~.box-register {
+#Login:checked~.inner-main .inner-wrap .box-register {
     transform: translate(20%);
     opacity: 0;
     visibility: hidden;
@@ -484,6 +496,7 @@ ol {
     text-align: center;
     padding: 15px 0;
     font-weight: 700;
+    border: 2px solid transparent;
     border-radius: 10px;
     margin-bottom: 20px;
     transition: background-color 0.4s ease-in-out;
@@ -493,8 +506,12 @@ ol {
     background-color: #1BC5D4;
 }
 
+.inner-wrap .box-register .box-form .inner-button:active {
+    border: 2px solid #000;
+}
+
 .inner-wrap .box-register .box-form .inner-desc {
-    font-size: 10px;
+    font-size: 14px;
 
 }
 
