@@ -1,0 +1,41 @@
+.box {
+    width: 300px;
+    height: 300px;
+    margin: 50px auto;
+    display: flex;
+    align-items: flex-end;
+
+
+}
+
+.box span {
+    width: 15px;
+    height: 70px;
+    display: inline-block;
+    background-color: red;
+    border-radius: 10px;
+    animation-name: col;
+    animation-timing-function: ease-in-out;
+    margin-left: 10px;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+
+}
+
+.box .col2 {
+    animation-delay: 0.1s;
+}
+
+.box .col3 {
+    animation-delay: 0.2s;
+}
+
+.box .col4 {
+    animation-delay: 0.3s;
+}
+
+@keyframes col {
+    30% {
+        height: 20px;
+    }
+}

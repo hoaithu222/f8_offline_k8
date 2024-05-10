@@ -1,0 +1,76 @@
+/* animation là nhóm các thuộc tính để xây dựng các hiệu ứng trên trang web 
+1.keyframes ---> thiết kế kịch bản hiệu ứng 
+@keyframes tenehieuung{
+    from{
+    }
+
+    part2%{
+    }
+    part3%{
+    }
+    part n%{
+
+    }
+    to{
+
+    }
+}
+2. thuộc tính animation : sẽ áp dụng animation và selector 
+animation-name: tên hiệu ứng
+animation-duration:tổng thời gian thực hiện hiệu ứng
+animation-timing-function: tốc độ giống transform
+animation-delay:trễ khi thực hiện hiệu ứng
+animation-iteration-count:số lần chạy (mặc định là 1 chạy vô hạn :infinite)
+
+
+*/
+.box {
+
+    width: 300px;
+    height: 300px;
+    margin: 30px auto;
+    border: 1px solid red;
+    position: relative;
+}
+
+.box span {
+    width: 45px;
+    height: 45px;
+    display: block;
+    background: green;
+    position: absolute;
+    animation-name: move;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes move {
+    0% {
+        top: 0;
+        left: 0;
+    }
+
+    25% {
+        top: 0;
+        left: 100%;
+        translate: -100%;
+    }
+
+    50% {
+        top: 100%;
+        left: 100%;
+        translate: -100% -100%;
+    }
+
+    75% {
+        top: 100%;
+        left: 0%;
+        translate: 0% -100%;
+    }
+
+    to {
+        top: 0%;
+        left: 0%;
+    }
+}
