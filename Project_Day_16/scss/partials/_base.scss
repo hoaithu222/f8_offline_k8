@@ -1,0 +1,94 @@
+html {
+    font-size: 62.5%;
+
+}
+
+body {
+    font-family: "Inter", sans-serif;
+}
+
+input,
+textarea,
+select {
+    font-family: inherit;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+ol,
+li {
+    list-style: none;
+
+}
+
+@media screen and (max-width:1600px) {
+    .container {
+        max-width: 1200px;
+    }
+
+    html {
+        font-size: 62.5%;
+    }
+}
+
+@media screen and (max-width:1400px) {
+    .container {
+        max-width: 1000px;
+    }
+
+    html {
+        font-size: 50%;
+    }
+}
+
+@media screen and (max-width:1200px) {
+    html {
+        font-size: 43.75%;
+    }
+
+    .container {
+        max-width: 880px;
+    }
+}
+
+@media screen and (max-width:992px) {
+    html {
+        font-size: 37.5%;
+    }
+
+    .container {
+        max-width: 690px;
+    }
+}
+
+@media screen and (max-width:760px) {
+    html {
+        font-size: 31.25%;
+    }
+
+    .container {
+        max-width: 100%;
+        padding-left: 45px;
+        padding-right: 45px;
+    }
+}
+
+@media screen and (max-width:500px) {
+    html {
+        font-size: 25%;
+    }
+
+    .container {
+        max-width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
