@@ -1,0 +1,16 @@
+//partials
+@use "partials/base";
+// @use "partials/mixin";
+@use "partials/reset";
+// @use "partials/variables";
+//components
+@use "components/breakcomnet";
+@use "components/card_item";
+
+//layout
+@use "layouts/footer";
+@use "layouts/header";
+// pages
+@use "pages/about";
+@use "pages/home";
+@use "pages/products";

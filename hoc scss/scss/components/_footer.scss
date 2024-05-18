@@ -1,0 +1,15 @@
+@forward "../partials/variables";//chuyển tiếp các member  từ file varibles để bất kỳ file nào impport  file footer có thể sử dụng 
+@use "../partials/variables";
+
+
+
+.footer {
+    padding: 50px 0px;
+    background: variables.$primaryColor;
+}
+/*sử dụng để import cả folder 
+-B1: tạo ra file _index.scss
+-B2: forward tất cả các file và _index
+-B3: chỗ nào cần import cả file _index.scss
+
+*/

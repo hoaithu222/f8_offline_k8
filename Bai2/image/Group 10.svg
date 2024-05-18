@@ -1,0 +1,19 @@
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 10">
+<g id="Ellipse 37" filter="url(#filter0_d_511_2016)">
+<circle cx="40" cy="32" r="28" fill="white"/>
+</g>
+<path id="Polygon 1" d="M46.5 31.134C47.1667 31.5189 47.1667 32.4811 46.5 32.866L37.5 38.0622C36.8333 38.4471 36 37.966 36 37.1962L36 26.8038C36 26.034 36.8333 25.5529 37.5 25.9378L46.5 31.134Z" fill="#627193"/>
+</g>
+<defs>
+<filter id="filter0_d_511_2016" x="0" y="0" width="80" height="80" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="8"/>
+<feGaussianBlur stdDeviation="6"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.384314 0 0 0 0 0.443137 0 0 0 0 0.576471 0 0 0 0.1 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_511_2016"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_511_2016" result="shape"/>
+</filter>
+</defs>
+</svg>

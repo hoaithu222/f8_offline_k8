@@ -142,8 +142,8 @@ body {
     .header .inner-wrap .inner-menu {
         position: absolute;
         display: block;
-        width: 100%;
-        height: 0;
+        width: 50%;
+        height: 100%;
         top: 100%;
         background-color: #222222;
         transition: height 0.3s ease-in-out;

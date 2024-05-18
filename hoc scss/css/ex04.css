@@ -1,0 +1,13 @@
+header {
+  padding: 30px 0;
+  font-size: 16px;
+}
+header .inner {
+  background: red;
+}
+
+body {
+  color: red;
+}
+
+/*# sourceMappingURL=ex04.css.map */

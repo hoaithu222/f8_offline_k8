@@ -1,0 +1,16 @@
+@use "variables" as bien; //để file header sử dụng
+@forward "variables"; //để file import file header sửu dụng
+$headerBg : blue;
+// %center {
+//     margin: 0 auto;
+//     margin: 1000px;
+// }
+$-font-size: 16px; //private member (Không cho file khác sử dụng )
+
+header {
+    padding: 30px 0;
+    font-size: $-font-size;
+    .inner {
+        background: bien.$primaryColor;
+    }
+}

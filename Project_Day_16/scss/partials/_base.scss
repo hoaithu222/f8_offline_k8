@@ -11,6 +11,8 @@ input,
 textarea,
 select {
     font-family: inherit;
+    border: none;
+    outline: none;
 }
 
 .container {
@@ -27,6 +29,11 @@ ol,
 li {
     list-style: none;
 
+}
+
+button {
+    border: none;
+    background: none;
 }
 
 @media screen and (max-width:1600px) {

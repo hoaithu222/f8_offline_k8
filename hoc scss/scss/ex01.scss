@@ -1,0 +1,65 @@
+@import "partials/reset";
+// đây là comment scss 
+/* 
+đây là comment css
+*/ 
+// cú pháp lồng selector
+
+//biến 
+// !lưu ý : nên viết theo quy tắc camelCase
+$primaryColor:red; //biến toàn cục (global variable)
+
+.header{
+    padding:30px 0;
+    background: $primaryColor;
+    .topbar{
+        $textColor:#333;//biến cục bộ (Local variable)
+        background: yellow;
+        a{
+            text-decoration: none;
+
+
+            color:$textColor;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+    .header-inner{
+        background-color: red;
+        img{
+            max-width: 100%;
+            height: auto;
+        }
+        nav{
+            &.primary-menu{
+                ul{
+                    >li{
+                        >a{
+                            color:#333;
+                            &::before{
+                                content: "";
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+$number : 10;
+body{
+    font-size:#{$number * 10 + 0%} ;
+}
+$selector :"column-a";
+$property: "background";
+#{$selector}{
+    color:red;
+    #{$property}:gray;
+}
+$prefix:"col-";
+$number : 12;
+//.col-12
+#{ "." + $prefix + $number}{
+    width: 50%;
+}

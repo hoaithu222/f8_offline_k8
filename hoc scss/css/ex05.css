@@ -1,0 +1,24 @@
+.ports {
+  padding: 30px 0;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.header {
+  background-color: green;
+  padding: 100px 0;
+  border: gray;
+}
+.header .header-logo {
+  max-width: 100%;
+  height: auto;
+}
+
+.products {
+  color: green;
+  padding: 30px 0;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+/*# sourceMappingURL=ex05.css.map */

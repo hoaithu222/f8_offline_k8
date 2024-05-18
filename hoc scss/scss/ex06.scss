@@ -1,0 +1,6 @@
+@use "components/footer";
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: footer.$primaryColor;
+}

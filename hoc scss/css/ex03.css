@@ -1,0 +1,24 @@
+@media screen and (min-width: 1200px) {
+  .header {
+    padding: 0;
+  }
+  .header .menu {
+    display: block;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .header {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+  }
+  .header .menu {
+    display: block;
+  }
+}
+.footer {
+  max-width: 1200px;
+  margin: 30px auto;
+}
+
+/*# sourceMappingURL=ex03.css.map */

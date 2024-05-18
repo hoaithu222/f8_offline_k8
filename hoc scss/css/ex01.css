@@ -1,0 +1,54 @@
+@charset "UTF-8";
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+}
+
+/* 
+đây là comment css
+*/
+.header {
+  padding: 30px 0;
+  background: red;
+}
+.header .topbar {
+  background: yellow;
+}
+.header .topbar a {
+  text-decoration: none;
+  color: #333;
+}
+.header .topbar a:hover {
+  text-decoration: underline;
+}
+.header .header-inner {
+  background-color: red;
+}
+.header .header-inner img {
+  max-width: 100%;
+  height: auto;
+}
+.header .header-inner nav.primary-menu ul > li > a {
+  color: #333;
+}
+.header .header-inner nav.primary-menu ul > li > a::before {
+  content: "";
+}
+
+body {
+  font-size: 100%;
+}
+
+column-a {
+  color: red;
+  background: gray;
+}
+
+.col-12 {
+  width: 50%;
+}
+
+/*# sourceMappingURL=ex01.css.map */

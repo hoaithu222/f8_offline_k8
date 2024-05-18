@@ -1,0 +1,16 @@
+@use "components/header"; //namespace lấy theo tên file
+//truy cập biến mixin function ngăn bên ngoài truy cập
+
+
+@use "page/home/header.scss" as headerPage; //đổi tên namespace thường áp dụng khi trùng tên file
+
+
+.products {
+    color: headerPage.$primaryColor;
+    @include header.section-base;
+}
+
+.ports {
+    @extend %section_base;
+    // background: header.$_secondaryColor;
+}

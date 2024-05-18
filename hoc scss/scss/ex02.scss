@@ -1,0 +1,101 @@
+// Toán tử 
+// số học : +, - , * , / , % chia lấy dư
+// toán tử so sánh >=, <= ,== , > , <, !=
+// Kiểu dữ liệu : chuỗi (đưa vào dấu nháy) boolean(true, false) số
+// Lý luận : and, or, not 
+
+
+
+// $check:true;
+// câu lệnh rẽ nhánh
+// $number :21;
+// @if($number>= 10 and $number <= 15){
+//     .box{
+//         color:red;
+//     }
+// }
+// @else{
+//     .column{
+//         width:100%;
+//     }
+// }
+// Vòng lặp 
+// $start:1;
+// $end : 12;
+// @for $i from $start through $end{
+//     .col-#{$i}{
+        
+//         @if($i % 2 == 0){
+//             width: $i * 5%;
+
+//         }
+//         @else{
+//             width: $i * 2px;
+//         }
+//         @if($i == 12){
+//             padding:30px;
+//         }
+//     }
+// }
+// @for $i from 1 through 12{
+//     .box-#{$i}{
+//     @for $j from 1 through 12{
+//         .col-#{$j}{
+//             padding: 0;
+//         }
+//     }
+// }
+// }
+// $sizes:40px 60px 80px;
+// $length:length($sizes); //trả về tổng số phần tử
+// $count:0;
+// @each $size in $sizes{
+//     $count : $count+1;
+//     .box-#{$size}{
+//         @if($count == $length){
+//             font-size: 0;
+//         }
+//         font-size: 2 * $size;
+//     }
+// }
+// $sizes:(small,40px,normal),(medium, 60px, 500),(large,80px,700);
+// @each $name,$size,$weight in $sizes{
+//     .col-#{$name}{
+//         font-size: $size;
+//         font-weight: $weight;
+//     }
+// }
+// $sizes: {
+//     small:40px,
+//     medium:60px,
+//     large:80px,
+// };
+// @each $name,$size in $sizes{
+//     .col-#{$name}{
+//         font-size:$size;
+//     }
+// }
+// $breakpoints: (
+//     sm:576px,
+//     md:768px,
+//     lg:992px,
+//     xl:1200px,
+//     xxl:1400px,
+
+
+// );
+// @each $name,$width in $breakpoints{
+//     @media screen and (min-width:#{$width}){
+//         @for $i from 1 through 12{
+//             .col
+
+//         }
+        
+//     }
+// }
+
+
+
+
+
+

@@ -1,0 +1,43 @@
+/* 
+Thuộc tính đổ bóng 
+1.Khối
+box-shadow: h-offset v-offset blur spread color
+- h-offset vị trí của bóng theo chiểu ngang
+- h-offset vị trí của bóng theo chiểu dọc
+- blur :độ nhòe
+- spread: kích thước
+- color:màu
+2.text
+text-shadow : h-offset v-offset blur color
+
+
+
+- độ ưu tiên trong css 
++ 0.important
++ 1.inline
++ 2.id
++ 3.class
++ 4.tag
+*/
+
+
+
+
+.box {
+    width: 300px;
+    height: 300px;
+    margin: 30px auto;
+    background: green;
+    box-shadow: 5px 5px 5px red, 10px 10px 5px blue, 15px 15px 5px green;
+}
+
+h1 {
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000, 1px 0px 1px #000, 0px 1px 1px #000, -1px -1px 1px #000, 0px -1px 1px #000, -1px 0px 1px #000, 2px 0px 1px #000, 0px 2px 1px #000, 2px 2px 1px #000, -2px 0px 1px #000, -2px -2px 1px #000, 0px -2px 1px #000;
+    font-size: 4rem;
+}
+
+#box {
+    background: red;
+}
