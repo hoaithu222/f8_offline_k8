@@ -152,7 +152,7 @@ li {
 }
 
 .container {
-  max-width: 1400px;
+  max-width: 1140px;
   margin: 0 auto;
 }
 
@@ -259,6 +259,10 @@ a, .header .container .inner-menu ol li .active {
 }
 .header .container .inner-menu ol li .active::before {
   width: 50%;
+}
+.header .container .menu-toggle i {
+  font-size: 2.6rem;
+  display: none;
 }
 .header .container .inner-start .signIn {
   color: #627193;
@@ -833,11 +837,252 @@ a, .header .container .inner-menu ol li .active {
   text-align: center;
 }
 .section-six .inner-wrap .inner-box .button {
-  padding: 2.3rem 8.9rem;
+  padding: 2.3rem 8.8rem;
   display: inline-block;
   border-radius: 2rem;
+  margin: 0 auto;
+}
+.section-six .inner-wrap .inner-box .button a, .section-six .inner-wrap .inner-box .button .header .container .inner-menu ol li .active, .header .container .inner-menu ol li .section-six .inner-wrap .inner-box .button .active {
+  font-size: 2rem;
+  font-weight: 600;
 }
 
 /*end section six*/
+/*section seven */
+.section-seven {
+  padding: 8rem 0;
+}
+.section-seven .inner-head {
+  padding: 5rem 20rem;
+  text-align: center;
+}
+.section-seven .inner-head .inner-title {
+  color: #00005C;
+  font-size: 4.6rem;
+  font-weight: 700;
+  padding: 1rem 0;
+}
+.section-seven .inner-head .inner-desc {
+  color: #627193;
+  font-size: 1.8rem;
+  line-height: 3.4rem;
+  font-weight: 500;
+}
+.section-seven .inner-wrap {
+  display: flex;
+  justify-content: space-between;
+  column-gap: 8rem;
+  margin-bottom: 8rem;
+  margin-top: 5rem;
+}
+.section-seven .inner-wrap .inner-box {
+  width: calc(33.3333333333% - 5.3rem);
+}
+.section-seven .inner-wrap .inner-box .inner-image {
+  width: 35rem;
+  height: 16.8rem;
+  margin-bottom: 2rem;
+  position: relative;
+  top: 0;
+  left: 0;
+  text-align: center;
+}
+.section-seven .inner-wrap .inner-box .inner-image img {
+  object-fit: cover;
+  width: 31rem;
+  height: 16.6rem;
+}
+.section-seven .inner-wrap .inner-box .inner-image::before {
+  content: "";
+  width: 35rem;
+  height: 18.6rem;
+  border-radius: 10px;
+  background: #E1ECFF;
+  position: absolute;
+  top: -2rem;
+  left: 0rem;
+  z-index: -1;
+}
+.section-seven .inner-wrap .inner-box .inner-content {
+  width: 32rem;
+  padding: 0 2rem;
+}
+.section-seven .inner-wrap .inner-box .inner-content .inner-title {
+  font-size: 2.4rem;
+  color: #00005C;
+  font-weight: 600;
+  line-height: 3.6rem;
+}
+.section-seven .inner-wrap .inner-box .inner-content .inner-desc {
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 2.8rem;
+  color: #627193;
+}
+.section-seven .inner-button {
+  text-align: center;
+}
+
+/*end section seven */
+/*section eight*/
+.section-eight {
+  padding: 10rem 0;
+}
+.section-eight .inner-head {
+  text-align: center;
+  margin-bottom: 7rem;
+}
+.section-eight .inner-head .inner-title {
+  font-size: 4.6rem;
+  color: #00005C;
+  font-weight: 700;
+}
+.section-eight .inner-wrap {
+  display: flex;
+  column-gap: 3rem;
+}
+.section-eight .inner-wrap .inner-box {
+  width: calc(33.3333333333% - 2rem);
+  padding: 5rem 5rem 3rem 4rem;
+  background-color: #fff;
+  border-radius: 2rem;
+}
+.section-eight .inner-wrap .inner-box .head {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  align-items: flex-start;
+}
+.section-eight .inner-wrap .inner-box .head .item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: start;
+}
+.section-eight .inner-wrap .inner-box .head .item .image {
+  margin-right: 1.7rem;
+}
+.section-eight .inner-wrap .inner-box .head .item .content .inner-name {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #00005C;
+  margin-bottom: 0.6rem;
+}
+.section-eight .inner-wrap .inner-box .head .item .content .inner-job {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #627193;
+}
+.section-eight .inner-wrap .inner-box .inner-desc {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #627193;
+}
+
+/*end section eight*/
+/*section form*/
+.section-form .container {
+  background-color: #EBEEFC;
+  border-radius: 2rem;
+}
+.section-form .container .inner-wrap {
+  padding: 8.9rem 0;
+}
+.section-form .container .inner-wrap .inner-title {
+  padding-top: 8.9rem;
+  padding: 0 21rem;
+  text-align: center;
+  font-size: 4.6rem;
+  font-weight: 700;
+  line-height: 5.6rem;
+  color: #00005C;
+  margin-bottom: 7rem;
+}
+.section-form .container .inner-wrap .form {
+  display: flex;
+  margin: 0 28rem;
+  background-color: #fff;
+  border-radius: 1.5rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem;
+}
+.section-form .container .inner-wrap .form .box {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.section-form .container .inner-wrap .form .box img {
+  margin-left: 1.3rem;
+  margin-right: 1.8rem;
+}
+.section-form .container .inner-wrap .form input {
+  border: none;
+  outline: none;
+  font-size: 1.8rem;
+  color: #627193;
+}
+
+/*end section form*/
+/*footer*/
+.footer {
+  padding-top: 100px;
+}
+.footer .inner-wrap {
+  margin-bottom: 8.9rem;
+  display: flex;
+}
+.footer .inner-wrap .box-one {
+  width: 40%;
+  padding-right: 15rem;
+}
+.footer .inner-wrap .box-one .inner-desc {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #627193;
+  line-height: 2.8rem;
+  margin-bottom: 3rem;
+}
+.footer .inner-wrap .box-one .inner-title {
+  color: #00005C;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.3rem;
+}
+.footer .inner-wrap .box-one .menu {
+  display: flex;
+  column-gap: 1.8rem;
+}
+.footer .inner-wrap .box-two {
+  width: 60%;
+  display: flex;
+  column-gap: 6rem;
+  justify-content: space-between;
+}
+.footer .inner-wrap .box-two .inner-box {
+  width: calc(33.3333333333% - 4rem);
+}
+.footer .inner-wrap .box-two .inner-box .inner-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #00005C;
+  margin-bottom: 2.5rem;
+}
+.footer .inner-wrap .box-two .inner-box ol li {
+  margin-bottom: 1rem;
+}
+.footer .inner-wrap .box-two .inner-box ol li a, .footer .inner-wrap .box-two .inner-box .header .container .inner-menu ol li .active, .header .container .inner-menu .footer .inner-wrap .box-two .inner-box ol li .active {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #627193;
+  line-height: 2.8rem;
+}
+.footer .inner-footer {
+  display: flex;
+  background-color: #00005C;
+  color: #fff;
+  padding: 2rem 0;
+}
+
+/*end footer*/
 
 /*# sourceMappingURL=style.css.map */
