@@ -1,4 +1,4 @@
-function lapNguoc(n){
+function latNguoc(n){
     var result = 0;
     while(n){
         result = result * 10 + n % 10;
@@ -7,5 +7,5 @@ function lapNguoc(n){
     return result;
 }
 var n = Number(prompt("Nhập giá trị của n :"));
-console.log(lapNguoc(n));
-document.write(lapNguoc(n));
+console.log(latNguoc(n));
+document.write(latNguoc(n));
