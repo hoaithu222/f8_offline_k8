@@ -117,14 +117,17 @@ else {
        console.log(" Mươi");
        document.write(" Mươi");
    }
-   else if(a[0] !== 0 && a[1] === 0 && a[2] === 0 && a[3] !== 0){
+   else if((a[0] !== 0 && a[1] === 0 && a[2] === 0 && a[3] !== 0)|| (a[0] !== 0 && a[1] !== 0 && a[2] === 0 && a[3] !== 0)){
     console.log(" Lẻ ");
     document.write(" Lẻ ");
     convert(a[3]);
-      }
-      else{
+    }
+    // else if(a[0] !== 0 && a[1] !== 0 && a[2] === 0 && a[3] !== 0){
+        
+    // }
+    else{
         convert(a[2]);
         convert(a[3]);
-      }
+    }
     }
 }
