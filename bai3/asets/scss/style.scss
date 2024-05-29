@@ -1,0 +1,283 @@
+@import 'reset.scss';
+@import 'base.scss';
+@import 'variables';
+@import 'mixin';
+
+/*header*/
+.header {
+
+    .container {
+        padding: 4rem 0;
+
+        .inner-wrap {
+            display: flex;
+            align-items: center;
+
+            .inner-logo {
+                a {
+                    color: $textOne;
+                    font-size: 2.7rem;
+                    font-weight: 400;
+
+                    span {
+                        font-weight: 700;
+                    }
+                }
+            }
+
+            .inner-menu {
+                margin-left: auto;
+
+                ol {
+                    display: flex;
+                    column-gap: 6rem;
+
+                    a {
+                        color: $textOne;
+                        font-size: 1.6rem;
+                        font-weight: 400;
+                        letter-spacing: 0.16px;
+
+                    }
+
+                }
+            }
+        }
+    }
+
+}
+
+/*end header*/
+/*section one*/
+.section-one {
+    margin-bottom: 15rem;
+
+    .inner-wrap {
+        display: flex;
+
+        .inner-content {
+            padding-top: 12rem;
+            padding-left: 7rem;
+            padding-right: 9.5rem;
+
+            .inner-title {
+                color: $textOne;
+                font-weight: 500;
+                font-size: 4rem;
+                margin-bottom: 4rem;
+            }
+
+            .inner-desc {
+                color: $colorText;
+                font-size: 1.6rem;
+                font-weight: 400;
+                line-height: 2.6rem;
+                margin-bottom: 3.3rem;
+            }
+
+            .button {
+                border-radius: 6rem;
+                background: #2639ED;
+                border: 2px solid #2639ED;
+                color: #fff;
+                display: inline-flex;
+                padding: 2rem 4rem;
+                justify-content: center;
+                align-items: center;
+                gap: 1rem;
+                font-size: 2rem;
+                font-weight: 400;
+                letter-spacing: 1.3px;
+                transition: 0.3s linear;
+                transition-property: color, background-color;
+
+                &:hover {
+                    background-color: #fff;
+                    color: #2639ED;
+                }
+
+            }
+
+        }
+
+        .inner-image {
+            margin-left: auto;
+            position: relative;
+            top: 0;
+            left: 0;
+
+            .imageOne {
+                position: absolute;
+                top: 0;
+                left: -5.5rem;
+                z-index: -1;
+            }
+
+            .imageTwo {
+                position: absolute;
+                bottom: -8rem;
+                right: 10.2rem;
+                z-index: -1;
+            }
+
+        }
+    }
+}
+
+/*end section one*/
+/*section two*/
+.section-two {
+    .inner-wrap {
+        display: flex;
+        align-items: center;
+        column-gap: 6rem;
+
+        .inner-content {
+            width: 26%;
+
+            .inner-title {
+                font-size: 4rem;
+                color: $textOne;
+                font-weight: 500;
+                margin-bottom: 1.7rem;
+
+            }
+
+            .inner-desc {
+                font-size: 1.8rem;
+                color: $colorText;
+                font-weight: 400;
+                line-height: 2.8rem;
+            }
+        }
+
+        .inner-social {
+            width: 73%;
+            margin-left: auto;
+            display: inline-flex;
+            align-items: center;
+            column-gap: 6rem;
+
+        }
+    }
+
+}
+
+/*end section two*/
+/*section three*/
+.section-three {
+    margin-top: 10rem;
+    position: relative;
+    top: 0;
+    left: 0;
+
+    .imgOne {
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: -4;
+    }
+
+    .imgTwo {
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+    }
+
+    .imgThree {
+        position: absolute;
+        bottom: 0;
+        right: 10rem;
+    }
+
+    .inner-wrap {
+        display: flex;
+        align-items: center;
+
+        .inner-content {
+            width: 27%;
+            padding-left: 7rem;
+            padding-right: 9rem;
+
+            .inner-title {
+                font-size: 4rem;
+                color: $textOne;
+                font-weight: 500;
+                line-height: 5rem;
+                margin-bottom: 3.1rem;
+            }
+
+            .inner-desc {
+                color: $colorText;
+                font-size: 1.6rem;
+                line-height: 2.6rem;
+                font-weight: 400;
+            }
+        }
+
+        .inner-list {
+            width: 70%;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0 18rem;
+
+
+
+            .inner-box {
+                align-self: center;
+                padding: 4rem 3.2rem;
+                width: 26rem;
+                height: 30rem;
+                background: #fff;
+                border-radius: 40px;
+                border: 1px solid #F2F2F2;
+                background: #FFF;
+                box-shadow: 0px 10px 50px 0px rgba(0, 0, 0, 0.05);
+                text-align: center;
+
+
+                .inner-image {
+                    width: 121px; 
+                    height: 121px;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 2rem;
+                    text-align: center;
+
+                }
+
+                .image-one {
+                    background: #F1F7FF;
+                }
+
+                .image-two {
+                    background: #FFF7E3;
+                }
+
+                .image-three {
+                    background: #FFF2F8;
+                }
+
+                .image-four {
+                    background: #DEFFEE;
+                }
+
+                .title {
+                    font-size: 2.4rem;
+                    color: $textOne;
+                    text-align: center;
+                }
+
+                .desc {
+                    color: $colorText;
+                    text-align: center;
+
+                }
+            }
+        }
+    }
+}
+
+/*end section three*/

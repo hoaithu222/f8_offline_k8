@@ -1,0 +1,73 @@
+@import 'variables.scss';
+
+
+html {
+    font-size: 62.5%;
+    font-family: "Roboto", sans-serif;
+    background: $colorBg;
+}
+
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.ol,
+ul {
+    list-style: none;
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+// @media screen and (max-width:1440px) {
+//     .container {
+//         max-width: 1300px;
+//     }
+
+//     html {
+//         font-size: 62.5%;
+//     }
+// }
+
+@media screen and (max-width:1200px) {
+    .container {
+        max-width: 1060px;
+    }
+
+    html {
+        font-size: 56.25%;
+    }
+}
+
+@media screen and (max-width:992px) {
+    .container {
+        max-width: 825px;
+    }
+
+    html {
+        font-size: 50%;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .container {
+        max-width: 648px;
+    }
+
+    html {
+        font-size: 43.75%;
+    }
+}
+
+@media screen and (max-width:568px) {
+    .container {
+        max-width: 468px;
+    }
+
+    html {
+        font-size: 37.5%;
+    }
+}
