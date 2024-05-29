@@ -46,11 +46,12 @@ if (isNaN(n) || n === null || n === " ") {
     console.log("Vui lòng nhập một số hợp lệ.");
     document.write("Vui lòng nhập một số hợp lệ.");
 }
-if (n == 0) {
+else if(n === 0){
     console.log("Không");
     document.write("Không");
 }
-var a = [];
+else{
+    var a = [];
 while (n) {
     a.push(n % 10);
     n = Math.floor(n / 10);
@@ -60,13 +61,14 @@ a.reverse();
 
 if (a.length === 1) {
     convert(a[0]);
+    
 }
 else if (a.length === 2) {
     if (a[0] === 1 && a[1] === 0) {
         console.log(" Mười");
         document.write(" Mười");
     }
-    else if(a[1] !== 0 && a[1] !== 1 && a[2] === 0) {
+    else if(a[0] !== 0 && a[0] !== 1 && a[1] === 0) {
         convert(a[0]);
         console.log(" Mươi");
         document.write(" Mươi");
@@ -130,4 +132,6 @@ else {
         convert(a[3]);
     }
     }
+}
+
 }
