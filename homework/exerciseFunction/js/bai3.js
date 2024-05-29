@@ -66,7 +66,7 @@ else if (a.length === 2) {
         console.log(" Mười");
         document.write(" Mười");
     }
-    else if(a[1] !== 0 && a[1] !== 1 && a[1] === 0) {
+    else if(a[1] !== 0 && a[1] !== 1 && a[2] === 0) {
         convert(a[0]);
         console.log(" Mươi");
         document.write(" Mươi");
@@ -127,5 +127,4 @@ else {
         convert(a[3]);
       }
     }
-    
 }
