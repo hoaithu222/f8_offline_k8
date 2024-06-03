@@ -23,32 +23,6 @@
             textElement.innerText = text;
             var pos = 0;
 
-            function colorChange() {
-                var start = -1;
-                var end = -1;
-                for (let i = pos; i <= text.length; i++) {
-                    if (start === -1 && text[i] !== ' ' && text[i] !== undefined) {
-                        start = i;
-                    }
-                    if (start !== -1 && (text[i] === ' ' || text[i] === undefined)) {
-                        end = i;
-                        break;
-                    }
-                }
-
-                if (start !== -1 && end !== -1) {
-                    var word = `<span class="color">${text.substring(start, end)}</span>`;
-                    var newWord = text.substring(0, start) + word + text.substring(end);
-
-                    textElement.innerHTML = newWord;
-
-                    pos = end + 1;
-                    if (pos >= text.length) {
-                        pos = 0;
-                    }
-                }
-            }
-
             setInterval(function colorChange() {
                 var start = -1;
                 var end = -1;
