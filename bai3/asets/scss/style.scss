@@ -166,7 +166,9 @@
 /*end section two*/
 /*section three*/
 .section-three {
-    margin-top: 10rem;
+    margin-top: 20rem;
+    margin-bottom: 10rem;
+
     position: relative;
     top: 0;
     left: 0;
@@ -181,14 +183,16 @@
     .imgTwo {
         position: absolute;
         z-index: -1;
-        top: 0;
+        top: 21rem;
         left: 0;
     }
 
     .imgThree {
         position: absolute;
-        bottom: 0;
+        bottom: 8rem;
         right: 10rem;
+        z-index: -6;
+
     }
 
     .inner-wrap {
@@ -196,7 +200,7 @@
         align-items: center;
 
         .inner-content {
-            width: 27%;
+            width: 30%;
             padding-left: 7rem;
             padding-right: 9rem;
 
@@ -217,10 +221,12 @@
         }
 
         .inner-list {
-            width: 70%;
+            width: 67%;
             display: flex;
             flex-wrap: wrap;
-            padding: 0 18rem;
+            column-gap: 3.4rem;
+            row-gap: 3rem;
+            // padding: 0 18rem;
 
 
 
@@ -235,10 +241,25 @@
                 background: #FFF;
                 box-shadow: 0px 10px 50px 0px rgba(0, 0, 0, 0.05);
                 text-align: center;
+                position: relative;
+
+                .title {
+                    padding: 3rem 3.8rem;
+                    color: #000;
+                    font-size: 2.4rem;
+                    font-weight: 500;
+                }
+
+                .desc {
+                    font-size: 1.6rem;
+                    color: #757575;
+                    line-height: 2.3rem;
+                }
+
 
 
                 .inner-image {
-                    width: 121px; 
+                    width: 121px;
                     height: 121px;
                     display: inline-flex;
                     align-items: center;
@@ -276,8 +297,130 @@
 
                 }
             }
+
+            .box-one,
+            .box-three {
+                top: -6.1rem;
+            }
+
+            .box-two,
+            .box-four {
+                top: -14rem;
+            }
         }
     }
 }
 
 /*end section three*/
+/*section four*/
+.section-four {
+    padding: 5rem;
+
+    .inner-wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .inner-image {
+            width: 50%;
+            position: relative;
+
+            .image-one {
+                position: absolute;
+                left: 75%;
+                bottom: 0;
+                z-index: -3;
+
+            }
+
+            .image-two {
+                position: absolute;
+                top: 36%;
+                right: 48%;
+            }
+        }
+
+        .inner-content {
+            width: 45%;
+            padding: 0 6rem;
+            position: relative;
+
+            .inner-title {
+
+                font-size: 4rem;
+                color: #000;
+                font-weight: 500;
+                line-height: normal;
+                padding-right: 6rem;
+                margin-bottom: 3rem;
+            }
+
+            .inner-desc {
+                color: $colorText;
+                font-size: 1.6rem;
+                line-height: 2.6rem;
+            }
+
+            .inner-image {
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: -6;
+            }
+        }
+
+    }
+}
+
+/*end section four*/
+/*section five*/
+.section-five {
+    padding: 5rem 0;
+
+    .inner-head {
+        text-align: center;
+        padding: 5rem 35rem;
+
+        .inner-title {
+            font-size: 4rem;
+            color: #000;
+            margin-bottom: 2rem;
+
+        }
+
+        .inner-desc {
+            color: #757575;
+            line-height: 2.9rem;
+            font-size: 1.6rem;
+        }
+    }
+
+    .inner-wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .inner-box {
+            width: calc(100% / 3 - 4rem);
+        }
+
+        .inner-content {
+            padding: 5rem;
+
+            .inner-title {
+                font-size: 2.4rem;
+                color: #000;
+                margin-bottom: 2rem;
+            }
+
+            .inner-desc {
+                font-size: 1.6rem;
+                color: #757575;
+                margin-bottom: 4rem;
+            }
+        }
+
+    }
+}
+
+/*end section five*/

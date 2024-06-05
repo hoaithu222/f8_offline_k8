@@ -181,33 +181,37 @@ var getA =  function(callback){
 
 var getB = function(callback){
     setTimeout(function(){
+        console.log("GetB");
         if(typeof callback === "function"){
             callback();
         }
-        console.log("GetB");
+        
     },500);
 }
 
 var getC =  function(callback){
     setTimeout(function(){
+        console.log("GetC");
         if(typeof callback === "function"){
             callback();
         }
-        console.log("GetC");
     },1500);
-}
-var getD = function(){
+};
+var getD = function(text){
     console.log("getD",text);
 };
-getA(function(){
-    getB(getC(function(){
-        getD("F8");
-    }));
-});
+
+getA(function() {
+    getB(function() {
+        getC(function() {
+                getD("F8"); 
+            });
+        });
+    });
 /*
 -Định nghĩa hàm con bên trong hàm khác (quan trọng)
 -Closure (quan trọng )
--Kỹ thuật Thurk Function 
+-Kỹ thuật Thurk Function  
 -IIFE
 -giải thuật đệ quy
 

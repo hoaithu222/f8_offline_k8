@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function tinhTong() {
+            let tong = 0;
+            for (var i = 0; i < arguments.length; i++) {
+                tong += arguments[i];
+            }
+            return tong;
+        }
+        let ketQua = tinhTong(1, 2, 3, 4, 5);
+        document.write(ketQua);
+    </script>
+</body>
+
+</html>

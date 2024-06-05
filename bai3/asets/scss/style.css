@@ -479,11 +479,11 @@ a {
 /*end section four*/
 /*section five*/
 .section-five {
-  padding: 5rem 0;
+  padding: 100px 0;
 }
 .section-five .inner-head {
   text-align: center;
-  padding: 5rem 35rem;
+  padding: 35rem;
 }
 .section-five .inner-head .inner-title {
   font-size: 4rem;
@@ -497,24 +497,9 @@ a {
 }
 .section-five .inner-wrap {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 .section-five .inner-wrap .inner-box {
-  width: calc(33.3333333333% - 4rem);
-}
-.section-five .inner-wrap .inner-content {
-  padding: 5rem;
-}
-.section-five .inner-wrap .inner-content .inner-title {
-  font-size: 2.4rem;
-  color: #000;
-  margin-bottom: 2rem;
-}
-.section-five .inner-wrap .inner-content .inner-desc {
-  font-size: 1.6rem;
-  color: #757575;
-  margin-bottom: 4rem;
+  width: calc(33.3333333333% - 2rem);
 }
 
 /*end section five*/
