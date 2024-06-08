@@ -38,7 +38,7 @@
 // fullname = fullname.trim();
 // fullname = fullname.charAt(0).toUpperCase();
 // fullname.slice(1);
-// for(var i = 0; i <fullname.length; i++){
+// for(var i = 0; i < fullname.length; i++){
 //     var char = fullname.charAt(i);
 //     var charNext = fullname.charAt(i+1);
 //     if(char === " " && charNext !==" "){
@@ -47,6 +47,7 @@
 //     }
 // }
 
+// console.log(fullname);
 // console.log(fullname);
 // Bài tập 2 : kiểm tra độ mạnh yếu mật khẩu 
 /*

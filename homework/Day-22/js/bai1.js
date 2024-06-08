@@ -1,7 +1,4 @@
 
-
-
-
 var n = Number(prompt("Nhập số phần tử của mảng a : "));
 var a = [];
 var cnt= [];
@@ -22,6 +19,9 @@ for(var i = 0; i < m; i++){
     var tmp = Number(prompt(`Nhập giá trị thứ ${i + 1} :`));
     b.push(tmp);
     cnt2[b[i]] = 1;
+    if(b[i] > max){
+        max = b[i];
+    }
 }
 for(var i = 0; i <= max; i++){
     if(cnt[i] === 1 && cnt2[i] === 1){

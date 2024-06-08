@@ -23,7 +23,7 @@ console.log(myArray[0]);
 for(var i = 0; i < myArray.length; i++){
     console.log(myArray[i]);
 }
-// vòng lặp for in : trả về in dex
+// vòng lặp for in : trả về index
 console.log("for-in")
 for(var index in myArray){
     console.log(index,myArray[index]);

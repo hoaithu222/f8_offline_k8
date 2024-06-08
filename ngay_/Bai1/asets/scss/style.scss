@@ -1,0 +1,216 @@
+@import 'reset.scss';
+@import 'base.scss';
+@import 'variables';
+
+/*header*/
+.header {
+    padding: 2.8rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+
+    .inner-wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .inner-menu {
+            ol {
+                display: flex;
+                column-gap: 5.6rem;
+
+                a {
+                    font-size: 1.6rem;
+                    color: $textTwo;
+                    line-height: 1.6rem;
+
+                    &:hover {
+                        color: $textOne;
+                    }
+
+                }
+
+                .active {
+                    color: $textOne;
+                }
+            }
+
+        }
+
+
+        .menu-toggle {
+            i {
+                font-size: 3rem;
+                display: none;
+            }
+        }
+
+    }
+}
+
+@media screen and (max-width:992px) {
+    .header {
+        .inner-wrap {
+            justify-content: flex-start;
+
+            .inner-logo {
+                margin-right: auto;
+            }
+
+            .inner-menu {
+                position: absolute;
+                padding: 2rem 0;
+                top: 100%;
+                left: 0;
+                background-color: $colorBg ;
+                width: 0%;
+                overflow: hidden;
+                transition: 0.3s ease-in-out;
+                transform: translateZ(-100%);
+
+                transition-property: width, transform;
+
+                ol {
+                    display: block;
+                    text-align: center;
+
+                    li {
+                        line-height: 4rem;
+
+                        a {
+                            color: #fff;
+
+                        }
+                    }
+                }
+            }
+
+            #check:checked~.inner-menu {
+                width: 100%;
+                transform: translateZ(0);
+
+
+            }
+
+            .menu-toggle {
+                i {
+                    display: block;
+                    margin-left: 3rem;
+                }
+            }
+        }
+    }
+}
+
+/*end header*/
+/*button*/
+.button {
+    padding: 1.6rem 4.2rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    border-radius: 27px;
+    border: 2px solid $colorOne;
+    box-shadow: 0px 16px 40px -8px rgba(56, 126, 250, 0.28);
+
+}
+
+.button-one {
+    color: #fff;
+    background-color: $colorOne;
+    transition: 0.3s ease-in-out;
+    transition-property: color, background-color;
+
+    &:hover {
+        color: $colorOne;
+        background-color: #fff;
+    }
+
+}
+
+.button-two {
+    color: $colorOne;
+    background-color: #fff;
+    transition-property: color, background-color;
+    transition: 0.3s ease-in-out;
+
+    &:hover {
+        color: #fff;
+        background-color: $colorOne;
+
+    }
+}
+
+/*end button*/
+
+/*section one*/
+.section-one {
+    padding-top: 20rem;
+    padding-bottom: 10rem;
+
+    .inner-wrap {
+        display: flex;
+
+        .inner-content {
+            width: 50%;
+
+            .inner-title {
+                font-size: 7rem;
+                color: $textOne;
+                font-weight: 700;
+                line-height: 8.2rem;
+                margin-bottom: 2rem;
+            }
+
+            .inner-desc {
+                font-size: 2rem;
+                font-weight: 400;
+                line-height: 3.2rem;
+                color: $textTwo;
+                margin-bottom: 4rem;
+            }
+
+            .box {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                border: 2px solid rgb(235, 229, 229);
+                border-radius: 45px;
+                width: 80%;
+                padding: 7px;
+
+                .box-one {
+                    display: flex;
+                    margin-left: auto;
+                    align-items: center;
+
+
+
+                    .icon {
+                        width: 4rem;
+                        height: 4rem;
+                        border-radius: 50%;
+                        background-color: #fff;
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        i {
+                            color: $colorOne;
+                            font-size: 2.6rem;
+                        }
+
+                    }
+                }
+            }
+        }
+
+        .inner-image {
+            width: 50%;
+        }
+    }
+
+
+}
+
+/*end section one*/

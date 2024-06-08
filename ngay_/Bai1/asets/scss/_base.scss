@@ -1,0 +1,98 @@
+@import 'variables.scss';
+
+html {
+    font-size: 62.5%;
+    font-family: "Poppins", sans-serif;
+}
+
+.container {
+    max-width: 1170px;
+    margin: 0 auto;
+}
+
+ul,
+ol {
+    list-style: none;
+    outline: none;
+}
+
+input,
+textarea,
+select,
+button {
+    font-family: inherit;
+    border: none;
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+@media screen and (max-width:1440px) {
+    .container {
+        max-width: 1170px;
+        margin: 0 auto;
+    }
+
+}
+
+@media screen and (max-width:1200px) {
+    .container {
+        max-width: 960px;
+        margin: 0 auto;
+    }
+
+    html {
+        font-size: 56.25%;
+    }
+
+}
+
+@media screen and (max-width:992px) {
+    .container {
+        max-width: 780px;
+        margin: 0 auto;
+    }
+
+    html {
+        font-size: 50%;
+    }
+
+}
+
+@media screen and (max-width:768px) {
+    .container {
+        max-width: 580px;
+        margin: 0 auto;
+    }
+
+    html {
+        font-size: 43.75%;
+    }
+
+}
+
+@media screen and (max-width:568px) {
+    .container {
+        max-width: 100%;
+        padding: 0 50px;
+        margin: 0 auto;
+    }
+
+    html {
+        font-size: 37.5%;
+    }
+}
+
+@media screen and (max-width:480px) {
+    .container {
+        max-width: 100%;
+        padding: 0 35px;
+        margin: 0 auto;
+    }
+
+    html {
+        font-size: 37.5%;
+    }
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .post {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 20px;
+        }
+
+        .post img {
+            width: 200px;
+            height: auto;
+            margin-right: 20px;
+        }
+
+        .post:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="posts-container"></div>
+    <script src="js/bai4.js"></script>
+</body>
+
+</html>
