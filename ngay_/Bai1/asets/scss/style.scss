@@ -179,11 +179,21 @@
                 width: 80%;
                 padding: 7px;
 
+                .button {
+
+                    border-radius: 50px;
+
+                }
+
                 .box-one {
                     display: flex;
                     margin-left: auto;
                     align-items: center;
-
+                    border-radius: 45px;
+                    background: $colorOne;
+                    width: 10rem;
+                    height: 3rem;
+                    border: 1px solid red;
 
 
                     .icon {
@@ -198,6 +208,7 @@
                         i {
                             color: $colorOne;
                             font-size: 2.6rem;
+
                         }
 
                     }
