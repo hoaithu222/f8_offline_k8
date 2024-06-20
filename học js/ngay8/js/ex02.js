@@ -18,28 +18,28 @@
 // };
 
 // user.getName().getEmail.bind(user).call();
-Object.prototype.combineValue = function(){
+Object.prototype.combineValue = function () {
 
-        var result = [];
-        var _this = this;
-        Object.keys(this).forEach(function(key){
-         var value = _this[key];
-         if(typeof value !== "function"){
-             result.push(value);
-         }
-        });
-        return result;
-     };
+  var result = [];
+  var _this = this;
+  Object.keys(this).forEach(function (key) {
+    var value = _this[key];
+    if (typeof value !== "function") {
+      result.push(value);
+    }
+  });
+  return result;
+};
 
 var user = {
-    name:"Hoàng An",
-    email:"hoagan.web@gmail.com",
-    age:32,
+  name: "Hoàng An",
+  email: "hoagan.web@gmail.com",
+  age: 32,
 
 };
 var product = {
-    name :"SP 1",
-    price :12000,
+  name: "SP 1",
+  price: 12000,
 
 };
 console.log(user.combineValue());

@@ -14,7 +14,7 @@ var tênObject = {
 ===> Object Literal
 // mảng là số nhiều còn object là số ít
 
-*/ 
+*/
 // var user = {
 //     name:"Vũ thị hoài thu",
 //     email:"thu0102@gmail.com",
@@ -43,19 +43,19 @@ var tênObject = {
 // console.dir(Object);
 
 // nối 2 object 
-var object1= {
-    name:"Hoàng an",
-    email:"Hoangan@gmail.con",
+var object1 = {
+    name: "Hoàng an",
+    email: "Hoangan@gmail.con",
 }
 var object2 = {
-    age:32,
-    role:"Teacher",
+    age: 32,
+    role: "Teacher",
 }
 var object3 = {};
-for(var key in object1){
+for (var key in object1) {
     object3[key] = object1[key];
 };
-for(var key in object2){
+for (var key in object2) {
     object3[key] = object2[key];
 };
 console.log(object3);
@@ -84,10 +84,10 @@ var obj = object3;
 var user = {};
 // kiểm tra object user có phần tử hay không?
 
-if(Object.keys(user).length){
+if (Object.keys(user).length) {
     console.log("Có phần tử");
 }
-else{
+else {
     console.log("Không có");
 }
 
@@ -117,13 +117,13 @@ console.log(Object.fromEntries(arr));
 
 // Object.assign(target,source): có nhiều tham số ==> Copy object source nối vào target,đồng thời cũng trả về object mới chính là object sau khi nối
 var obj1 = {
-    name:"Hoàng an",
-    email :"hoangan@gmail.com",
+    name: "Hoàng an",
+    email: "hoangan@gmail.com",
 }
 var obj2 = {
-    
-    role :'teacher',
-    address :"Ha Noi",
+
+    role: 'teacher',
+    address: "Ha Noi",
 }
 // Nối obj2 vào obj1 
 
@@ -133,15 +133,15 @@ var obj2 = {
 
 // nối obj1 và obj2 vào obj3 mà không làm thay đổi obj1 
 var obj3 = {};
-Object.assign(obj3,obj1,obj2);
+Object.assign(obj3, obj1, obj2);
 // console.log(obj3);
 //  console.log(obj1);
 //  
 
 var query = {
-    category :1,
-    keyword:"Khóa Học FullStack",
-    status:true,
+    category: 1,
+    keyword: "Khóa Học FullStack",
+    status: true,
 }
 
 
@@ -153,15 +153,15 @@ var query = {
 var getQuery = Object.entries(query);
 
 // Duyệt qua từng phần tử và xử lý giá trị
-var queryString = getQuery.map(function(item) {
+var queryString = getQuery.map(function (item) {
     var key = item[0];
     var value = item[1];
-    
+
     // Nếu giá trị là chuỗi, thay thế khoảng trắng bằng '+'
     if (typeof value === 'string') {
         value = value.split(' ').join('+');
     }
-    
+
     // Trả về chuỗi "key=value"
     return key + "=" + value;
 });
@@ -171,9 +171,10 @@ queryString = queryString.join('&');
 
 console.log(queryString);
 
-var queryString = Object.entries(query).map(function(item){
+var queryString = Object.entries(query).map(function (item) {
     return item.join("=");
 })
-.join("&")
-  .replaceAll(" ","+");
-  console.log(queryString);
+    .join("&")
+    .replaceAll(" ", "+");
+console.log(queryString);
+
