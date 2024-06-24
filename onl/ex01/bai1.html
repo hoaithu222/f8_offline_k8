@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .light {
+            background: lightblue;
+
+        }
+
+        .dark {
+            background: darkblue;
+            color: #fff;
+        }
+
+        .test-2 {
+            background-color: pink;
+
+        }
+
+        .box-1 .box-2 h2 .link {
+            background-color: aquamarine;
+        }
+
+        .box-1 .box-2 h2 .link.active {
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <h3 id="h3">Nội dung thẻ h3</h3>
+    <script>
+
+        const h3 = document.querySelector("#h3");
+        h3.style.color = "pink";
+        console.log(h3);
+    </script>
+    <!-- <div class="product-item" data-id="1234" data-category="123">
+        Ảnh
+        Tiêu Đề
+        Giá
+    </div>
+    <div class="product-item" data-id="5678" data-category="123">
+        Ảnh
+        Tiêu Đề
+        Giá
+    </div> 
+    <script>
+
+
+
+        // const productList = document.querySelectorAll(".product-item");
+        // var arr = Array.from(productList).map(function (item) {
+        //     const dataId = item.getAttribute("data-id");
+        //     return dataId;
+        // });
+        // // console.log(arr);
+        // // sửa
+        // var newArr = Array.from(productList).map(function (item) {
+        //     const dataCategory = item.setAttribute("data-category", "567");
+        //     return dataCategory;
+        // });
+
+    </> -->
+
+    <!-- 
+    <h2 id="h2">Nội dung thẻ h2</h2>
+    <div class="box">
+
+    </div>
+    <script>
+        const h2 = document.querySelector("#h2");
+        console.log(h2);
+
+        const contentH2 = h2.innerHTML;
+        console.log(contentH2);
+        h2.innerHTML = "Nội dung mới";
+        console.log(h2.innerHTML);
+        const box = document.querySelector(".box");
+        box.innerHTML = contentH2;
+    </script> -->
+
+
+
+    <!-- <div class="light" id="box">Nội dung thẻ div</div>
+
+    <ul id="menu">
+        <li>Mục 1</li>
+        <li>Mục 2</li>
+        <li>Mục 3</li>
+        <li>Mục 4</li>
+    </ul>
+    <h2>Thẻ h2 01</h2>
+    <h2>Thẻ h2 02</h2>
+    <h2>Thẻ h2 03</h2>
+    <h2>Thẻ h2 04</h2>
+    <h2>Thẻ h2 05</h2>
+    <h3 class="test">Thẻ h3 01</h3>
+    <h1 class="test">Thẻ h3 02</h1>
+    <h2 class="test">Thẻ h3 03</h2>
+    <h5 class="test">Thẻ h3 04</h5>
+    <div class="box-1">
+        <div class="box-2">
+            <h2>
+                <a href="#" class="link">Nội dung thẻ</a>
+
+            </h2>
+            <h2>
+                <a href="#" class="link">Nội dung thẻ</a>
+
+            </h2>
+        </div>
+    </div> -->
+
+    <!-- <script>
+        // const box = document.getElementById("box");
+        // console.log(box);
+        // box.classList.add("dark");
+        // const menu = document.getElementById("menu");
+        // console.log(menu);
+        // const listH2 = document.getElementsByTagName("h2");
+        // console.log(listH2);
+        // const listTest = document.getElementsByClassName("test");
+        // console.log(listTest);
+        // for (var i = 0; i < listTest.length; i++) {
+        //     if (i === 1) {
+        //         listTest[i].classList.add("test-2");
+        //     }
+        // };
+        // const active = document.querySelector(".box-1 .box-2 h2 .link");
+        // active.classList.add("active");
+    </script> -->
+
+</body>
+
+</html>

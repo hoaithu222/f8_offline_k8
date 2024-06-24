@@ -17,7 +17,7 @@ Array.prototype.reduce2 = function (callback, initialValue) {
     return prev;
 };
 var a = [1, 2, 3, 4, 5];
-var result = a.reduce2(function (prev, current) {
+var result = a.reduce2(function (prev, current, index, value) {
     return prev + current;
 });
 console.log(result);
