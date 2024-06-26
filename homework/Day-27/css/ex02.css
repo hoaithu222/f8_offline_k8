@@ -1,0 +1,148 @@
+.container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+input {
+    border: none;
+    outline: none;
+}
+
+
+
+.container a {
+    text-decoration: none;
+    color: #808080;
+    font-size: 30px;
+}
+
+.container img {
+    width: 15%;
+}
+
+.box {
+    display: none;
+    /* Đảm bảo hộp ban đầu không hiển thị */
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0000009a;
+    z-index: 10;
+}
+
+.box .inner-wrap {
+    position: relative;
+    width: 35%;
+    background-color: #fff;
+    margin: 100px auto;
+    border-radius: 20px;
+    padding: 30px 20px;
+}
+
+.box .inner-wrap .inner-logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.box .inner-wrap .inner-logo img {
+    width: 40%;
+}
+
+.box .inner-wrap .inner-logo i {
+    font-size: 30px;
+    margin-right: 20px;
+    cursor: pointer;
+    /* Thêm cursor pointer để biểu tượng đóng có thể nhấp được */
+}
+
+.box .inner-wrap .inner-list {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.box .inner-wrap .inner-list .item-one,
+.box .inner-wrap .inner-list .item-two {
+    width: 50%;
+    background-color: #EEEEEE;
+    text-align: center;
+    padding: 20px;
+}
+
+.box .inner-wrap .inner-list .active {
+    background-color: #1A7900;
+    color: #fff;
+}
+
+.box .inner-wrap .inner-list .active button {
+    color: #fff;
+}
+
+.box .inner-wrap .inner-list button {
+    font-size: 26px;
+    color: #848484;
+    font-weight: 500;
+}
+
+.box .inner-wrap .input {
+    padding: 20px 0;
+}
+
+.box .inner-wrap .input label {
+    font-size: 20px;
+}
+
+.box .inner-wrap .input .input-email input,
+.box .inner-wrap .input .input-pass input,
+.box .inner-wrap .input .input-name input {
+    width: 100%;
+    border: 2px solid rgb(230, 223, 223);
+    padding: 15px 40px 15px 15px;
+    margin-top: 10px;
+    border-radius: 7px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.box .inner-wrap .input .input-pass {
+    position: relative;
+}
+
+.box .inner-wrap .input .input-pass i {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #808080;
+    cursor: pointer;
+}
+
+.box .inner-wrap .sign {
+    display: block;
+    padding: 15px;
+    width: calc(100% - 40px);
+    background-color: #1A7900;
+    margin: 0 auto;
+    border-radius: 7px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 40px;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+}

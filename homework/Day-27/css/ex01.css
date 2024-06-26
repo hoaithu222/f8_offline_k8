@@ -1,0 +1,172 @@
+.container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+}
+
+button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+input {
+    border: none;
+    outline: none;
+}
+
+.container a {
+    text-decoration: none;
+    color: #808080;
+    font-size: 30px;
+}
+
+.container img {
+    width: 15%;
+}
+
+.box {
+    display: none;
+}
+
+.box.active {
+    display: block;
+}
+
+.box .over-display {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0000009a;
+}
+
+.box .inner-wrap .form-login,
+.box .inner-wrap .register {
+    width: 35%;
+    background-color: #fff;
+    margin: 50px auto;
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    padding: 30px 0;
+    z-index: 20;
+    display: none;
+}
+
+.box .inner-wrap .form-login.active,
+.box .inner-wrap .register.active {
+    display: block;
+}
+
+.box .inner-wrap .message {
+    font-size: 20px;
+    color: #1A7900;
+    padding: 20px;
+}
+
+.box .inner-wrap .inner-logo {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    column-gap: 130px;
+    margin-bottom: 50px;
+}
+
+.box .inner-wrap .inner-logo img {
+    width: 40%;
+}
+
+.box .inner-wrap .inner-logo i {
+    font-size: 30px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.box .inner-wrap .inner-list {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.box .inner-wrap .inner-list .item-one,
+.box .inner-wrap .inner-list .item-two {
+    width: 50%;
+    background-color: #EEEEEE;
+    text-align: center;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.box .inner-wrap .inner-list .active {
+    background-color: #1A7900;
+    color: #fff;
+}
+
+.box .inner-wrap .inner-list .active button {
+    color: #fff;
+}
+
+.box .inner-wrap .inner-list button {
+    font-size: 26px;
+    color: #848484;
+    font-weight: 600;
+}
+
+.box .inner-wrap .form-login.active {
+    height: 600px;
+}
+
+.box .inner-wrap .register.active {
+    height: 700px;
+}
+
+.box .inner-wrap .input {
+    padding: 20px;
+}
+
+.box .inner-wrap .input label {
+    font-size: 20px;
+}
+
+.box .inner-wrap .input .input-email input,
+.box .inner-wrap .input .input-pass input,
+.box .inner-wrap .input .input-name input {
+    width: calc(100% - 20px);
+    border: 2px solid rgb(230, 223, 223);
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 7px;
+    box-sizing: border-box;
+}
+
+.box .inner-wrap .input .input-pass {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    inset: 0;
+}
+
+.box .inner-wrap .input .input-pass i {
+    color: #808080;
+    cursor: pointer;
+    position: absolute;
+    top: 27px;
+    right: 40px;
+}
+
+.box .inner-wrap .sign {
+    display: block;
+    padding: 15px;
+    width: calc(100% - 80px);
+    background-color: #1A7900;
+    margin: 0 auto;
+    border-radius: 7px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 40px;
+    cursor: pointer;
+}

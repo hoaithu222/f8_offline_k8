@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tài liệu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/ex02.css">
+</head>
+
+<body>
+    <div class="container">
+        <img src="image/logo.png" alt="hình ảnh" />
+        <a href="#" class="log-in" id="log-in-btn">
+            <i class="fa-solid fa-user"></i>
+            <span>Đăng Nhập</span>
+        </a>
+    </div>
+    <div class="box" id="box">
+        <div class="inner-wrap">
+            <form class="form-login active" id="form-login">
+                <div class="inner-logo">
+                    <img src="image/logo.png" alt="hình ảnh" />
+                    <i class="fa-solid fa-x" id="close-login"></i>
+                </div>
+                <div class="inner-list">
+                    <div class="item-one active">
+                        <button class="btn-log" id="login-tab-login">Đăng Nhập</button>
+                    </div>
+                    <div class="item-two">
+                        <button class="btn-register" id="register-tab-login">Đăng Ký</button>
+                    </div>
+                </div>
+                <div class="input">
+                    <label>Email</label>
+                    <div class="input-email">
+                        <input type="email" name="email" id="email-login" placeholder="Email" />
+                        <span class="error-message"></span>
+                    </div>
+                </div>
+                <div class="input">
+                    <label>Mật khẩu</label>
+                    <div class="input-pass">
+                        <input type="password" name="password" id="password-login" placeholder="Mật khẩu" />
+                        <i class="fa-solid fa-eye" id="toggle-password-login"></i>
+                        <span class="error-message"></span>
+                    </div>
+                </div>
+                <button type="button" class="sign">Đăng Nhập</button>
+            </form>
+            <form class="register" id="form-register" style="display:none;">
+                <div class="inner-logo">
+                    <img src="image/logo.png" alt="hình ảnh" />
+                    <i class="fa-solid fa-x" id="close-register"></i>
+                </div>
+                <div class="inner-list">
+                    <div class="item-one">
+                        <button class="btn-log" id="login-tab-register">Đăng Nhập</button>
+                    </div>
+                    <div class="item-two active">
+                        <button class="btn-register" id="register-tab-register">Đăng Ký</button>
+                    </div>
+                </div>
+                <div class="input">
+                    <label>Họ và tên</label>
+                    <div class="input-name">
+                        <input type="text" name="name" id="name-register" placeholder="Họ và tên" />
+                        <span class="error-message"></span>
+                    </div>
+                </div>
+                <div class="input">
+                    <label>Email</label>
+                    <div class="input-email">
+                        <input type="email" name="email" id="email-register" placeholder="Email" />
+                        <span class="error-message"></span>
+                    </div>
+                </div>
+                <div class="input">
+                    <label>Mật khẩu</label>
+                    <div class="input-pass">
+                        <input type="password" name="password" id="password-register" placeholder="Mật khẩu" />
+                        <i class="fa-solid fa-eye" id="toggle-password-register"></i>
+                        <span class="error-message"></span>
+                    </div>
+                </div>
+                <button type="button" class="sign">Đăng Ký</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/ex02.js"></script>
+</body>
+
+</html>
