@@ -10,38 +10,32 @@ document.addEventListener("DOMContentLoaded", function () {
     var eyeIcons = document.querySelectorAll(".fa-eye");
     var eyeSlashIcons = document.querySelectorAll(".fa-eye-slash");
 
-    // Chọn phần tử message để hiển thị thông báo
     var messageLogin = document.querySelector(".form-login .message");
     var messageRegister = document.querySelector(".register .message");
 
-    // Hiển thị form đăng nhập và box khi click vào link đăng nhập
     aEl.addEventListener("click", function () {
         box.classList.add("active");
         loginForm.classList.add("active");
         registerForm.classList.remove("active");
-        resetRegisterForm(); // Reset form đăng ký khi chuyển sang đăng nhập
+        resetRegisterForm();
     });
 
-    // Ẩn box khi click vào lớp phủ mờ
     overlay.addEventListener("click", function () {
         closeModal();
     });
 
-    // Đóng modal khi click vào biểu tượng đóng
     iconClose.forEach(function (icon) {
         icon.addEventListener("click", function () {
             closeModal();
         });
     });
 
-    // Đóng modal khi nhấn phím Escape
     document.addEventListener("keyup", function (e) {
         if (e.key === "Escape") {
             closeModal();
         }
     });
 
-    // Hàm đóng modal và reset form
     function closeModal() {
         box.classList.remove("active");
         loginForm.classList.remove("active");
@@ -50,29 +44,27 @@ document.addEventListener("DOMContentLoaded", function () {
         resetRegisterForm();
     }
 
-    // Chuyển đổi giữa form đăng nhập và đăng ký
     btnLogin.forEach(function (button) {
         button.addEventListener("click", function (e) {
-            e.preventDefault(); // Ngăn chặn hành động mặc định của button
+            e.preventDefault();
             registerForm.classList.remove("active");
             loginForm.classList.add("active");
-            resetRegisterForm(); // Reset form đăng ký khi chuyển sang đăng nhập
+            resetRegisterForm();
         });
     });
 
     btnRegister.forEach(function (button) {
         button.addEventListener("click", function (e) {
-            e.preventDefault(); // Ngăn chặn hành động mặc định của button
+            e.preventDefault();
             loginForm.classList.remove("active");
             registerForm.classList.add("active");
-            resetLoginForm(); // Reset form đăng nhập khi chuyển sang đăng ký
+            resetLoginForm();
         });
     });
 
-    // Reset form đăng nhập
     function resetLoginForm() {
         loginForm.reset();
-        messageLogin.innerHTML = ""; // Xóa thông báo
+        messageLogin.innerHTML = "";
         var loginInputs = loginForm.querySelectorAll('input');
         loginInputs.forEach(function (input) {
             input.style.borderColor = '';
@@ -81,13 +73,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 errorMessage.innerHTML = '';
             }
         });
-        resetEyeIcons(); // Đặt lại biểu tượng mắt
+        resetEyeIcons();
     }
 
-    // Reset form đăng ký
     function resetRegisterForm() {
         registerForm.reset();
-        messageRegister.innerHTML = ""; // Xóa thông báo
+        messageRegister.innerHTML = "";
         var registerInputs = registerForm.querySelectorAll('input');
         registerInputs.forEach(function (input) {
             input.style.borderColor = '';
@@ -96,47 +87,42 @@ document.addEventListener("DOMContentLoaded", function () {
                 errorMessage.innerHTML = '';
             }
         });
-        resetEyeIcons(); // Đặt lại biểu tượng mắt
+        resetEyeIcons();
     }
 
-    // Đặt lại biểu tượng mắt và kiểu hiển thị mật khẩu
     function resetEyeIcons() {
         eyeIcons.forEach(function (icon) {
-            var input = icon.parentNode.querySelector('input');
+            var input = icon.parentElement.querySelector('input');
             if (input.type === "text") {
                 input.type = "password";
             }
             icon.classList.add("active");
-            var nextIcon = icon.parentNode.querySelector('.fa-eye-slash');
+            var nextIcon = icon.parentElement.querySelector('.fa-eye-slash');
             nextIcon.classList.remove("active");
         });
 
         eyeSlashIcons.forEach(function (icon) {
-            var input = icon.parentNode.querySelector('input');
+            var input = icon.parentElement.querySelector('input');
             if (input.type === "text") {
                 input.type = "password";
             }
             icon.classList.remove("active");
-            var prevIcon = icon.parentNode.querySelector('.fa-eye');
+            var prevIcon = icon.parentElement.querySelector('.fa-eye');
             prevIcon.classList.add("active");
         });
     }
 
-    // Ngăn không cho form submit tải lại trang
     loginForm.addEventListener("submit", function (e) {
         e.preventDefault();
-        // Xử lý form đăng nhập ở đây
         messageLogin.innerHTML = "Đăng nhập thành công";
     });
 
     registerForm.addEventListener("submit", function (e) {
         e.preventDefault();
-        // Xử lý form đăng ký ở đây
         messageRegister.innerHTML = "Đăng ký thành công";
         console.log("Đăng ký thành công");
     });
 
-    // Kiểm tra định dạng email
     function isValidEmail(email) {
         var atSymbol = email.indexOf('@');
         if (atSymbol < 1) return false;
@@ -149,9 +135,8 @@ document.addEventListener("DOMContentLoaded", function () {
         return true;
     }
 
-    // Hàm kiểm tra input
     function validateInput(input) {
-        var errorMessage = input.closest('.input').querySelector('.error-message'); // Chọn phần tử error-message
+        var errorMessage = input.closest('.input').querySelector('.error-message');
         if (input.value.trim() === '') {
             input.style.borderColor = 'red';
             errorMessage.innerHTML = 'Vui lòng nhập thông tin';
@@ -164,65 +149,59 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Hàm kiểm tra tất cả các input trong form
     function validateForm(form) {
         var inputs = form.querySelectorAll('input');
         inputs.forEach(function (input) {
-            validateInput(input); // Kiểm tra từng input
+            validateInput(input);
         });
     }
 
-    // Áp dụng validateForm khi một input trong form mất focus
     function addBlurEvent(form) {
         var inputs = form.querySelectorAll('input');
         inputs.forEach(function (input) {
             input.addEventListener('blur', function () {
-                validateForm(form); // Kiểm tra toàn bộ form khi một input mất focus
+                validateForm(form);
             });
         });
     }
 
-    // Áp dụng validateForm khi một input trong form thay đổi
     function addInputEvent(form) {
         var inputs = form.querySelectorAll('input');
         inputs.forEach(function (input) {
             input.addEventListener('input', function () {
-                validateForm(form); // Kiểm tra toàn bộ form khi một input thay đổi
+                validateForm(form);
             });
         });
     }
 
-    // Sự kiện hiển thị/ẩn mật khẩu cho biểu tượng mắt
     eyeIcons.forEach(function (icon) {
         icon.addEventListener("click", function () {
-            var input = icon.parentNode.querySelector('input');
+            var input = icon.parentElement.querySelector('input');
             if (input.type === "password") {
                 input.type = "text";
             } else {
                 input.type = "password";
             }
             icon.classList.toggle("active");
-            var nextIcon = icon.parentNode.querySelector('.fa-eye-slash');
+            var nextIcon = icon.parentElement.querySelector('.fa-eye-slash');
             nextIcon.classList.toggle("active");
         });
     });
 
-    // Sự kiện hiển thị/ẩn mật khẩu cho biểu tượng mắt có dấu gạch chéo
     eyeSlashIcons.forEach(function (icon) {
         icon.addEventListener("click", function () {
-            var input = icon.parentNode.querySelector('input');
+            var input = icon.parentElement.querySelector('input');
             if (input.type === "password") {
                 input.type = "text";
             } else {
                 input.type = "password";
             }
             icon.classList.toggle("active");
-            var prevIcon = icon.parentNode.querySelector('.fa-eye');
+            var prevIcon = icon.parentElement.querySelector('.fa-eye');
             prevIcon.classList.toggle("active");
         });
     });
 
-    // Áp dụng validateForm và sự kiện cho từng form riêng biệt
     addBlurEvent(loginForm);
     addInputEvent(loginForm);
     addBlurEvent(registerForm);
