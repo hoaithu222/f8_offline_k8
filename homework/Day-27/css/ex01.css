@@ -116,7 +116,7 @@ input {
 }
 
 .box .inner-wrap .form-login.active {
-    height: 500px;
+    height: 550px;
 }
 
 .box .inner-wrap .register.active {
@@ -155,6 +155,11 @@ input {
     position: absolute;
     top: 27px;
     right: 40px;
+    display: none;
+}
+
+.box .inner-wrap .input .input-pass i.active {
+    display: block;
 }
 
 .box .inner-wrap .sign {
@@ -169,4 +174,10 @@ input {
     font-weight: 500;
     margin-top: 40px;
     cursor: pointer;
+}
+
+.error-message {
+    font-size: 14px;
+    color: red;
+    margin-top: 5px;
 }
