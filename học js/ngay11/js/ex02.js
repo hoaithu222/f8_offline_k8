@@ -43,9 +43,7 @@ var handleMarkCompleted = function (checkbox) {
 // gợi ý
 // event : change
 // Property :checked
-/*
-không dược dùng 
-*/
+
 
 
 

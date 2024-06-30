@@ -1,0 +1,72 @@
+.inner-head {
+    display: flex;
+}
+
+.content {
+    padding: 5px;
+    height: 45px;
+    resize: none;
+    width: 400px;
+    outline: none;
+}
+
+.btn {
+    height: 58px;
+    width: 100px;
+    margin-left: 20px;
+    background-color: rgb(42, 237, 172);
+    border-radius: 10px;
+    border: 1px solid wheat;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+
+.list-task {
+    width: 600px;
+
+
+}
+
+.list-task h4 {
+    text-transform: uppercase;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.list-task ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+}
+
+.list-task ul li {
+    display: flex;
+    background-color: #f1f1f1f1;
+    margin-bottom: 10px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.list-task ul li div {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 5px;
+
+}
+
+.list-task ul li a {
+    text-decoration: none;
+    display: block;
+    color: #999
+}
+
+.list-task ul li a:last-child {
+    background-color: red;
+    border-radius: 10px;
+    padding: 5px;
+    color: #fff;
+}

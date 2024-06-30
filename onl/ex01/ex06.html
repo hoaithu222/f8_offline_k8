@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Multi-step Form</title>
+    <style>
+        .step {
+            display: none;
+        }
+
+        .step.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Multi-step Form</h1>
+    <form id="multiStepForm">
+        <div class="step active">
+            <h2>Step 1</h2>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+            <button type="button" class="next">Next</button>
+        </div>
+        <div class="step">
+            <h2>Step 2</h2>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+            <button type="button" class="prev">Previous</button>
+            <button type="button" class="next">Next</button>
+        </div>
+        <div class="step">
+            <h2>Step 3</h2>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+            <button type="button" class="prev">Previous</button>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+
+    <script>
+        // Truy cập các phần tử
+        var form = document.getElementById('multiStepForm');
+        var steps = form.getElementsByClassName('step');
+        var nextButtons = form.getElementsByClassName('next');
+        var prevButtons = form.getElementsByClassName('prev');
+        var currentStep = 0;
+
+        // Hiển thị bước hiện tại
+        function showStep(step) {
+            steps[step].classList.add('active');
+            if (step > 0) {
+                steps[step - 1].classList.remove('active');
+            }
+            if (step < steps.length - 1) {
+                steps[step + 1].classList.remove('active');
+            }
+        }
+
+        // Thêm sự kiện click vào nút "Next"
+        Array.from(nextButtons).forEach(function (button) {
+            button.addEventListener('click', function () {
+                currentStep++;
+                showStep(currentStep);
+            });
+        });
+
+        // Thêm sự kiện click vào nút "Previous"
+        Array.from(prevButtons).forEach(function (button) {
+            button.addEventListener('click', function () {
+                currentStep--;
+                showStep(currentStep);
+            });
+        });
+
+        // Hiển thị bước đầu tiên
+        showStep(currentStep);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins, sans-serif;
+}
+
+body {
+    background-color: #8758FF;
+}
+
+ul {
+    list-style: none;
+}
+
+input {
+    border: none;
+    outline: none;
+
+}
+
+button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.box {
+    width: 40%;
+    margin: 60px auto;
+    background-color: #1A1A40;
+    padding: 50px;
+    text-align: center;
+    border-radius: 10px;
+
+
+}
+
+.box h1 {
+    color: #fff;
+    font-size: 35px;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+.box .inner-form {
+    display: flex;
+    border: 1.5px solid #8758FF;
+    justify-content: space-between;
+    margin-bottom: 30px;
+
+}
+
+.box .inner-form input {
+    width: 75%;
+    padding: 10px;
+    background-color: #1A1A40;
+    color: #fff;
+    font-size: 18px;
+}
+
+.box .inner-form button {
+    background-color: #8758FF;
+    color: #fff;
+    font-size: 18px;
+    padding: 0 10px;
+}
+
+.box .inner-list .menu {
+    width: 100%;
+
+
+}
+
+.box .inner-list .menu .inner-item {
+    display: flex;
+    background-color: #8758FF;
+    border-radius: 5px;
+    color: #fff;
+    padding: 15px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.box .inner-list .menu .inner-item p {
+    width: 90%;
+    text-align: left;
+}
+
+.box .inner-list .menu .inner-item .inner-icon {
+    width: 10%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.box .inner-list .menu .inner-item .inner-icon i {
+    font-size: 18px;
+}
+
+.inner-name.completed {
+    text-decoration: line-through;
+    color: grey;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .btn {
+            cursor: all-scroll;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 20;
+        }
+
+        .box {
+            position: absolute;
+            inset: 0;
+            display: flex;
+
+        }
+
+        .box::before,
+        .box::after {
+            content: "";
+            display: block;
+            width: 50%;
+        }
+
+        .box.active::after {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <h1>Event Object</h1> -->
+    <button class="btn">Đăng ký khóa học</button>
+    <div class="box">
+    </div>
+    <script src="js/ex01.js"></script>
+</body>
+
+</html>

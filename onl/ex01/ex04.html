@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thay đổi CSS</title>
+    <style>
+        .btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .content {
+            padding: 20px;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            transition: background-color 0.5s;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn">Thay đổi màu nền</button>
+    <div class="content">Nội dung</div>
+
+    <script>
+        var btn = document.querySelector(".btn");
+        var content = document.querySelector(".content");
+
+        btn.addEventListener("click", function () {
+            content.style.backgroundColor = content.style.backgroundColor === 'yellow' ? '#f8f9fa' : 'yellow';
+        });
+    </script>
+</body>
+
+</html>

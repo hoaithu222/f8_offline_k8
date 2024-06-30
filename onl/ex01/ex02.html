@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xử lý form và hiển thị kết quả</title>
+    <style>
+        .btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="myForm">
+        <input type="text" id="name" placeholder="Nhập tên">
+        <input type="email" id="email" placeholder="Nhập email">
+        <button type="submit" class="btn">Gửi</button>
+    </form>
+    <div class="result" id="result"></div>
+
+    <script>
+        var form = document.getElementById("myForm");
+        var result = document.getElementById("result");
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            result.innerHTML = "<p>Tên: " + name + "</p><p>Email: " + email + "</p>";
+        });
+    </script>
+</body>
+
+</html>

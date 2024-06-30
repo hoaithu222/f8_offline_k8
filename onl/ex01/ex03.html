@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thay đổi hình ảnh</title>
+    <style>
+        .image {
+            width: 200px;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="image/image1.jpg" class="image" id="image" alt="Hình ảnh">
+
+    <script>
+        var image = document.getElementById("image");
+
+        image.addEventListener("mouseover", function () {
+            image.src = "image/image2.jpg";
+        });
+
+        image.addEventListener("mouseout", function () {
+            image.src = "image/image1.jpg";
+        });
+    </script>
+</body>
+
+</html>

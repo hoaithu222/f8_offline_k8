@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thêm và xóa nhiều phần tử</title>
+    <style>
+        .btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .list {
+            margin-top: 20px;
+        }
+
+        .list-item {
+            margin: 5px 0;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn" id="add">Thêm phần tử</button>
+    <button class="btn" id="remove">Xóa phần tử</button>
+    <div class="list" id="list">
+        <div class="list-item">Phần tử 1</div>
+        <div class="list-item">Phần tử 2</div>
+    </div>
+
+    <script>
+        var addButton = document.getElementById("add");
+        var removeButton = document.getElementById("remove");
+        var list = document.getElementById("list");
+        var counter = 3;
+
+        addButton.addEventListener("click", function () {
+            for (var i = 0; i < 3; i++) {
+                var newItem = document.createElement("div");
+                newItem.className = "list-item";
+                newItem.innerHTML = "Phần tử " + counter++;
+                list.appendChild(newItem);
+            }
+        });
+
+        removeButton.addEventListener("click", function () {
+            for (var i = 0; i < 3; i++) {
+                if (list.lastElementChild) {
+                    list.removeChild(list.lastElementChild);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

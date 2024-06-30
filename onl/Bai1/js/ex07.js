@@ -92,3 +92,21 @@ document.addEventListener('mousemove', function (event) {
 B1. lắng nghe sự kiện giữ và khéo chuột 
 
 */
+
+var btn = document.querySelector(".btn");
+var initialX = 0;
+var initialY = 0;
+btn.addEventListener("mousedown", function (e) {
+    // add event kéo (mousemove)
+    document.addEventListener("mousemove", handleDrag);
+    initialX = e.offsetX;
+    initialY = e.offsetY;
+});
+document.addEventListener("mouseup", function () {
+    document.removeEventListener("mousemove", handleDrag);
+});
+var handleDrag = function (e) {
+    var clientX = e.clientX;
+    var clientY = e.clientY;
+    btn.style.translate = `${clientX - initialX - 10}px ${clientY - initialY - 10}px`;
+}

@@ -29,51 +29,51 @@
 //5.outerText khá giống innerText set trả về khác
 // console.log(contentEl.outerHTML);
 // contentEl.outerText = '<h2>Học JS không khó</h2>';//không còn content nữa thay thế luôn
-// var btn = document.querySelector(".btn");
-// var contentEl = document.querySelector(".content");
+var btn = document.querySelector(".btn");
+var contentEl = document.querySelector(".content");
 //  ===> cách 1
-// var content = contentEl.innerHTML;
-// btn.addEventListener("click", function () {
-//     if (!contentEl.innerHTML) {
-//         contentEl.innerHTML = content;
-//         this.innerText = "Ẩn";
-//     }
-//     else {
-//         contentEl.innerText = "";
-//         this.innerText = "Hiện";
-//     }
-// });
+var content = contentEl.innerHTML;
+btn.addEventListener("click", function () {
+    if (!contentEl.innerHTML) {
+        contentEl.innerHTML = content;
+        this.innerText = "Ẩn";
+    }
+    else {
+        contentEl.innerText = "";
+        this.innerText = "Hiện";
+    }
+});
 
 
 //  ===> cách 2
-// var btn = document.querySelector(".btn");
-// var contentEl = document.querySelector(".content");
-// var check = true;
-// var oldContent = contentEl.innerHTML;
+var btn = document.querySelector(".btn");
+var contentEl = document.querySelector(".content");
+var check = true;
+var oldContent = contentEl.innerHTML;
 
-// var clickBtn = function () {
-//     if (check) {
-//         btn.innerHTML = "hiện";
-//         contentEl.innerHTML = " ";
-//     }
-//     else {
-//         btn.innerHTML = "ẩn";
-//         contentEl.innerHTML = oldContent;
-//     }
-//     check = !check;
-// }
-// btn.addEventListener("click", clickBtn);
+var clickBtn = function () {
+    if (check) {
+        btn.innerHTML = "hiện";
+        contentEl.innerHTML = " ";
+    }
+    else {
+        btn.innerHTML = "ẩn";
+        contentEl.innerHTML = oldContent;
+    }
+    check = !check;
+}
+btn.addEventListener("click", clickBtn);
 
-// var countEl = document.querySelector("h1 span");
-// var count = 0;
-// countEl.innerText = count;
+var countEl = document.querySelector("h1 span");
+var count = 0;
+countEl.innerText = count;
 
-// var plusBtn = document.querySelector(".plus-btn");
-// var minusBtn = document.querySelector(".minus-btn");
-// plusBtn.addEventListener("click", function () {
-//     countEl.innerText = count++;
-// });
-// minusBtn.addEventListener("click", function () {
-//     countEl.innerText = count--;
-// });
+var plusBtn = document.querySelector(".plus-btn");
+var minusBtn = document.querySelector(".minus-btn");
+plusBtn.addEventListener("click", function () {
+    countEl.innerText = count++;
+});
+minusBtn.addEventListener("click", function () {
+    countEl.innerText = count--;
+});
 

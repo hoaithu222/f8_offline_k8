@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* .focus {
+            background-color: yellow;
+        } */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            display: flex;
+
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 500;
+            font-size: 30px;
+        }
+
+        .box .menu {
+            position: absolute;
+            width: 30%;
+            background-color: pink;
+            height: 100%;
+            transition-property: transform, opacity;
+            transform: translateX(-100%);
+            opacity: 0;
+            transition: 0.3s ease;
+            z-index: 2;
+
+        }
+
+        .box ul li {
+            border-bottom: 1px solid gray;
+            padding: 30px;
+        }
+
+        .box .menu.active {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .btn {
+
+            position: fixed;
+            top: 30px;
+            right: 20px;
+            z-index: 20;
+        }
+
+        .btn i {
+            font-size: 30px;
+
+        }
+
+        .fa-x {
+
+            margin: 20px;
+            font-size: 25px;
+            position: absolute;
+            right: 0;
+            z-index: 20;
+
+
+        }
+
+        .over-lay {
+            position: absolute;
+            background-color: #0000006b;
+            inset: 0;
+            display: none;
+        }
+
+        .over-lay.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box" class="box">
+        <button class="btn"><i class="fa-solid fa-bars"></i></button>
+        <ul class="menu">
+            <i class="fa-solid fa-x"></i>
+            <li><a href="">Item 1 </a></li>
+            <li><a href="">Item 2 </a></li>
+            <li><a href="">Item 3 </a></li>
+        </ul>
+    </div>
+    <div class="over-lay"></div>
+    <script>
+        var btn = document.querySelector(".btn");
+        var menuEL = document.querySelector(".menu");
+        var closeEl = document.querySelector(".fa-x");
+        var overEl = document.querySelector(".over-lay");
+
+        btn.addEventListener("click", function () {
+            menuEL.classList.add("active");
+            overEl.classList.add("active");
+        });
+        closeEl.addEventListener("click", function () {
+            menuEL.classList.remove("active");
+            overEl.classList.remove("active");
+        });
+        overEl.addEventListener("click", function () {
+            menuEL.classList.remove("active");
+            overEl.classList.remove("active");
+
+        });
+
+
+
+    </script>
+
+
+
+    <!-- <input name="name" type="text" placeholder="Nhập họ tên" class="input" />
+    <script>
+        var inputEl = document.querySelector("input");
+        inputEl.onfocus = function () {
+            this.style.border = "1px red solid";
+            this.classList.add("focus");
+
+        }
+        inputEl.onblur = function () {
+
+            this.classList.remove("focus");
+
+        }
+
+
+    </> -->
+
+
+
+    <!-- <script>
+        window.onload = function () {
+            const menu = document.querySelector("#menu");
+            console.log(menu);
+        }
+    </script>
+    <ul id="menu">
+        <li>Item1</li>
+        <li>Item2</li>
+        <li>Item3</li>
+        <li>Item4</li>
+    </ul> -->
+
+
+
+</body>
+
+</html>
