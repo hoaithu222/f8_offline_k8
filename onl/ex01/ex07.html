@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>To-Do List</title>
+    <style>
+        .completed {
+            text-decoration: line-through;
+            color: grey;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>To-Do List</h1>
+    <input type="text" id="newTask" placeholder="Add a new task">
+    <button id="addTaskButton">Add Task</button>
+    <ul id="taskList"></ul>
+    <script>
+        // Truy cập các phần tử
+        var newTaskInput = document.getElementById('newTask');
+        var addTaskButton = document.getElementById('addTaskButton');
+        var taskList = document.getElementById('taskList');
+
+        // Thêm sự kiện click vào nút "Add Task"
+        addTaskButton.addEventListener('click', function () {
+            var taskText = newTaskInput.value.trim();
+            if (taskText !== '') {
+                // Tạo một phần tử li mới
+                var newTask = document.createElement('li');
+                newTask.textContent = taskText;
+
+                // Thêm nút xóa
+                var deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.style.margin = '10px';
+                deleteButton.addEventListener('click', function () {
+                    taskList.removeChild(newTask);
+                });
+
+                // Thêm sự kiện click để đánh dấu hoàn thành
+                newTask.addEventListener('click', function () {
+                    newTask.classList.toggle('completed');
+                });
+
+                // Thêm nút xóa vào mục li
+                newTask.appendChild(deleteButton);
+
+                // Thêm mục li mới vào danh sách
+                taskList.appendChild(newTask);
+
+                // Xóa nội dung trong ô nhập liệu
+                newTaskInput.value = '';
+            }
+        });
+
+    </script>
+</body>
+
+</html>

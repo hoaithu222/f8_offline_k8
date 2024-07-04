@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+            padding: 5px 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .menu {
+            width: 200px;
+            background-color: #000;
+            padding: 15px;
+            margin: 60px auto;
+        }
+
+        .menu li {
+            padding: 10px 0;
+
+        }
+
+        .menu li.has-children>a::after {
+            content: "▼";
+            color: #fff;
+            float: right;
+            font-size: 0.85rem;
+        }
+
+        .menu li.has-children.active>a::after {
+            rotate: 180deg;
+        }
+
+
+        .menu ul {
+            background-color: green;
+            /* display: none; */
+            height: 0;
+            overflow: hidden;
+            transition: height 0.3s ease;
+        }
+
+        /* .menu li.active>ul {
+            display: block;
+            height: 130px;
+        } */
+    </style>
+</head>
+
+<body>
+    <ul class="menu">
+        <li><a href="">Menu 1</a></li>
+        <li><a href="">Menu 2</a>
+            <ul>
+                <li><a href="#">Menu2.1</a></li>
+                <li><a href="#">Menu2.2</a></li>
+                <li><a href="#">Menu2.3</a></li>
+            </ul>
+        </li>
+        <li><a href="">Menu 3</a>
+            <ul>
+                <li><a href="">Menu 3.1</a></li>
+                <li><a href="">Menu 3.2</a></li>
+                <li><a href="">Menu 3.3</a></li>
+            </ul>
+        </li>
+        <li><a href="">Menu 4</a></li>
+    </ul>
+
+    <script src="js/ex02.js"></script>
+
+</body>
+
+</html>

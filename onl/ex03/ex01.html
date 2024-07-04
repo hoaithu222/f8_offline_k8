@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/ex01.css">
+</head>
+
+<body>
+    <h2>Vui lòng nhập thông tin</h2>
+    <form class="inner-form">
+        <div class="step active">
+            <label for="name">Tên:</label>
+            <input type="text" name="name" id="name" placeholder="Vui lòng nhập tên...">
+            <button class="next">Next</button>
+        </div>
+        <div class="step">
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" placeholder="Vui lòng nhập email...">
+            <button class="prev">Previous</button>
+            <button class="next">Next</button>
+        </div>
+        <div class="step">
+            <label for="password">Mật Khẩu:</label>
+            <input type="password" name="password" id="password" placeholder="Vui lòng nhập mật khẩu...">
+            <button class="prev">Previous</button>
+
+            <button class="submit" type="submit">Submit</button>
+        </div>
+
+    </form>
+
+
+    <script src="js/ex01.js"></script>
+
+</body>
+
+</html>

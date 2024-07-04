@@ -40,14 +40,14 @@
     </form>
 
     <script>
-        // Truy cập các phần tử
+        // Truy9 cập các9 phần tử
         var form = document.getElementById('multiStepForm');
         var steps = form.getElementsByClassName('step');
         var nextButtons = form.getElementsByClassName('next');
         var prevButtons = form.getElementsByClassName('prev');
         var currentStep = 0;
 
-        // Hiển thị bước hiện tại
+        // 9Hiển thị9 bướ9c hiện tại
         function showStep(step) {
             steps[step].classList.add('active');
             if (step > 0) {
@@ -58,7 +58,7 @@
             }
         }
 
-        // Thêm sự kiện click vào nút "Next"
+        // 9Thêm sự9 kiện click vào nút "Next"
         Array.from(nextButtons).forEach(function (button) {
             button.addEventListener('click', function () {
                 currentStep++;

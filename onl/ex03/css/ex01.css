@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+input {
+    border: none;
+    outline: none;
+}
+
+button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+h2 {
+    padding: 50px;
+}
+
+.inner-form {
+    width: 30%;
+    margin: 0 50px;
+    border: 2px solid rgba(255, 251, 251, 0.687);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    padding: 30px;
+    background-color: rgb(164, 211, 241);
+}
+
+.step {
+    display: none;
+}
+
+.step.active {
+    display: block;
+}
+
+.step label {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.step input {
+    display: block;
+    width: 80%;
+    padding: 10px 15px;
+    background-color: rgba(11, 147, 177, 0.55);
+    margin: 10px 0;
+    color: #ffcd;
+    font-size: 20px;
+}
+
+.step .next,
+.step .prev,
+.step .submit {
+    color: #fff;
+    background: gray;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
