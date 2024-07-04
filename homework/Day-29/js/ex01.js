@@ -12,13 +12,15 @@ var animationID;
 for (var i = 0; i < totalSlides; i++) {
     var dot = document.createElement('span');
     dot.classList.add('dot');
-    if (i === 0) dot.classList.add('active');
+    if (i === 0) {
+        dot.classList.add('active');
+    }
     dot.setAttribute('data-slide', i);
-    dot.addEventListener('click', (function (i) {
+    dot.addEventListener('click', function (i) {
         return function () {
             changeSlide(i);
-        }
-    })(i));
+        };
+    }(i));
     dotsContainer.appendChild(dot);
 }
 
@@ -33,8 +35,11 @@ document.querySelector('.prev').addEventListener('click', function () {
 });
 
 function changeSlide(index) {
-    if (index >= totalSlides) index = 0;
-    if (index < 0) index = totalSlides - 1;
+    if (index >= totalSlides) {
+        index = 0;
+    } else if (index < 0) {
+        index = totalSlides - 1;
+    }
     currentSlide = index;
     updateSliderPosition();
     updateDots();
@@ -45,10 +50,13 @@ function updateSliderPosition() {
 }
 
 function updateDots() {
-    dots.forEach(function (dot) {
-        dot.classList.remove('active');
+    dots.forEach(function (dot, index) {
+        if (index === currentSlide) {
+            dot.classList.add('active');
+        } else {
+            dot.classList.remove('active');
+        }
     });
-    dots[currentSlide].classList.add('active');
 }
 
 function touchStart(index) {
@@ -58,7 +66,7 @@ function touchStart(index) {
         isDragging = true;
         sliderWrapper.style.cursor = 'all-scroll';
         animationID = requestAnimationFrame(animation);
-    }
+    };
 }
 
 function touchMove(event) {
@@ -74,13 +82,12 @@ function touchEnd() {
     cancelAnimationFrame(animationID);
     var movedBy = currentTranslate - prevTranslate;
 
-
     if (movedBy < -window.innerWidth / 10 && currentSlide < totalSlides - 1) {
         currentSlide += 1;
-    }
-    if (movedBy > window.innerWidth / 10 && currentSlide > 0) {
+    } else if (movedBy > window.innerWidth / 10 && currentSlide > 0) {
         currentSlide -= 1;
     }
+
     setPositionByIndex();
 }
 
@@ -90,7 +97,9 @@ function getPositionX(event) {
 
 function animation() {
     setSliderPosition();
-    if (isDragging) requestAnimationFrame(animation);
+    if (isDragging) {
+        requestAnimationFrame(animation);
+    }
 }
 
 function setSliderPosition() {
@@ -109,9 +118,11 @@ slides.forEach(function (slide, index) {
     slideImage.addEventListener('dragstart', function (e) {
         e.preventDefault();
     });
+
     slide.addEventListener('touchstart', touchStart(index));
     slide.addEventListener('touchend', touchEnd);
     slide.addEventListener('touchmove', touchMove);
+
     slide.addEventListener('mousedown', touchStart(index));
     slide.addEventListener('mouseup', touchEnd);
     slide.addEventListener('mouseleave', touchEnd);
