@@ -16,11 +16,9 @@ for (var i = 0; i < totalSlides; i++) {
         dot.classList.add('active');
     }
     dot.setAttribute('data-slide', i);
-    dot.addEventListener('click', function (i) {
-        return function () {
-            changeSlide(i);
-        };
-    }(i));
+    dot.addEventListener('click', function () {
+        changeSlide(i);
+    });
     dotsContainer.appendChild(dot);
 }
 
@@ -122,7 +120,6 @@ slides.forEach(function (slide, index) {
     slide.addEventListener('touchstart', touchStart(index));
     slide.addEventListener('touchend', touchEnd);
     slide.addEventListener('touchmove', touchMove);
-
     slide.addEventListener('mousedown', touchStart(index));
     slide.addEventListener('mouseup', touchEnd);
     slide.addEventListener('mouseleave', touchEnd);
