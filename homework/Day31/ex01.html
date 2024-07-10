@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td button {
+            width: 100%;
+        }
+
+        #cart_table th,
+        #cart_table td {
+            padding: 3px;
+            text-align: left;
+        }
+
+        #cart_table th:nth-child(4),
+        #cart_table td:nth-child(4) {
+            width: 13%;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>DANH SÁCH SẢN PHẨM</h2>
+    <table cellpadding="0" cellspacing="0" width="100%" border="1" id="product_table">
+        <thead>
+            <tr>
+                <th width="5%">STT</th>
+                <th>Tên sản phẩm</th>
+                <th width="10%">Giá</th>
+                <th width="10%">Thêm giỏ hàng</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Sản phẩm 1</td>
+                <td>1000</td>
+                <td>
+                    <input type="number" value="1" id="quantity_1" />
+                    <button class="btn-one" data-id="1" data-name="Sản phẩm 1" data-price="1000">Thêm vào giỏ</button>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Sản phẩm 2</td>
+                <td>2000</td>
+                <td>
+                    <input type="number" value="1" id="quantity_2" />
+                    <button class="btn-one" data-id="2" data-name="Sản phẩm 2" data-price="2000">Thêm vào giỏ</button>
+                </td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Sản phẩm 3</td>
+                <td>3000</td>
+                <td>
+                    <input type="number" value="1" id="quantity_3" />
+                    <button class="btn-one" data-id="3" data-name="Sản phẩm 3" data-price="3000">Thêm vào giỏ</button>
+                </td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Sản phẩm 4</td>
+                <td>4000</td>
+                <td>
+                    <input type="number" value="1" id="quantity_4" />
+                    <button class="btn-one" data-id="4" data-name="Sản phẩm 4" data-price="4000">Thêm vào giỏ</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h2>GIỎ HÀNG</h2>
+    <div class="cart">
+
+    </div>
+
+    <script src="js/ex01.js"></script>
+</body>
+
+</html>
