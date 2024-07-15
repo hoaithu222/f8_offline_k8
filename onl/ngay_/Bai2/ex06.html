@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phát thanh âm nhạc ví dụ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-HUJNKjVYB4v61dvlM4PnEwBzrH/a+23UVjL82cM3jLwKpPjH5of15qNVVLMRlDckRJ2/n+XqBaP7dBTAdEKlyA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* CSS để thiết kế giao diện người dùng */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .audio-player {
+            width: 400px;
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background-color: #ddd;
+            position: relative;
+            cursor: pointer;
+            margin: 20px 0;
+        }
+
+        .progress {
+            height: 100%;
+            width: 0;
+            background-color: #4CAF50;
+        }
+
+        .time-display {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .play-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: #4CAF50;
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="audio-player">
+        <!-- Phần tử <audio> để phát thanh âm nhạc -->
+        <audio id="audio" src="mp3/mp3.mp3"></audio>
+        <!-- Thanh thanh tiến độ phát lại âm thanh -->
+        <div class="progress-bar" id="progressBar">
+            <div class="progress"></div>
+        </div>
+        <!-- Hiển thị thời gian hiện tại và tổng thời gian của audio -->
+        <div class="time-display">
+            <span id="currentTime">00:00</span>
+            <span id="playIcon" class="play-button"><i class="fas fa-play"></i></span>
+            <span id="duration">00:00</span>
+        </div>
+    </div>
+
+    <!-- Script JavaScript -->
+    <script>
+        // Lấy các phần tử DOM cần thiết
+        var audio = document.getElementById('audio');
+        var progressBar = document.getElementById('progressBar');
+        var progress = document.querySelector('.progress');
+        var currentTimeDisplay = document.getElementById('currentTime');
+        var durationDisplay = document.getElementById('duration');
+        var playIcon = document.getElementById('playIcon');
+
+        // Hàm định dạng thời gian (phút:giây)
+        function formatTime(seconds) {
+            var mins = Math.floor(seconds / 60);
+            var secs = Math.floor(seconds % 60);
+            var formattedTime = `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            return formattedTime;
+        }
+
+        // Cập nhật thanh progress và hiển thị thời gian
+        function updateProgress() {
+            var currentTime = audio.currentTime;
+            var duration = audio.duration;
+            var progressPercent = (currentTime / duration) * 100;
+            progress.style.width = `${progressPercent}%`;
+            currentTimeDisplay.textContent = formatTime(currentTime);
+        }
+
+        // Cập nhật hiển thị thời lượng khi metadata của audio được tải
+        audio.addEventListener('loadedmetadata', function () {
+            durationDisplay.textContent = formatTime(audio.duration);
+        });
+
+        // Hàm xử lý khi nhấn nút phát / dừng
+        function togglePlay() {
+            if (audio.paused) {
+                audio.play();
+                playIcon.innerHTML = '<i class="fas fa-pause"></i>';
+            } else {
+                audio.pause();
+                playIcon.innerHTML = '<i class="fas fa-play"></i>';
+            }
+        }
+
+        // Sự kiện click vào nút phát / dừng
+        playIcon.addEventListener('click', function () {
+            togglePlay();
+        });
+
+        // Sự kiện click vào thanh progress để tua
+        progressBar.addEventListener('click', function (e) {
+            var progressBarWidth = progressBar.clientWidth;
+            var clickX = e.offsetX;
+            var seekTime = (clickX / progressBarWidth) * audio.duration;
+            audio.currentTime = seekTime;
+            updateProgress(); // Cập nhật thanh progress và thời gian hiển thị sau khi tua
+        });
+
+        // Cập nhật thanh progress và thời gian hiển thị trong suốt quá trình phát
+        audio.addEventListener('timeupdate', function () {
+            updateProgress();
+        });
+    </script>
+</body>
+
+</html>

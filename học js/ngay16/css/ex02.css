@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding-top: 40px;
+}
+
+nav {
+    background-color: yellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    inset: 0;
+
+}
+
+#section-1,
+#section-2,
+#section-3 {
+    height: 100vh;
+}

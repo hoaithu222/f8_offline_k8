@@ -1,0 +1,702 @@
+@import '@fortawesome/fontawesome-free/css/all.css';
+
+.navbar {
+    flex-direction: row !important;
+}
+
+.navbar-toggler {
+    order: 2;
+}
+
+.navbar-collapse {
+    order: 3;
+    flex-basis: auto;
+}
+
+.navbar-nav {
+    order: 1;
+}
+
+.navbar-brand {
+    margin-right: auto;
+}
+
+body {
+    background-color: #8f4df8;
+}
+
+.main-search-input {
+    background: #fff;
+    padding: 0 120px 0 0;
+    border-radius: 1px;
+    margin-top: 200px;
+    box-shadow: 0px 0px 0px 6px rgba(255, 255, 255, 0.3);
+}
+
+.fl-wrap {
+    float: left;
+    width: 100%;
+    position: relative;
+}
+
+.main-search-input:before {
+    content: '';
+    position: absolute;
+    bottom: -40px;
+    width: 50px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.41);
+    left: 50%;
+    margin-left: -25px;
+}
+
+.main-search-input-item {
+    float: left;
+    width: 100%;
+    box-sizing: border-box;
+    border-right: 1px solid #eee;
+    height: 50px;
+    position: relative;
+}
+
+.main-search-input-item input:first-child {
+    border-radius: 100%;
+}
+
+.main-search-input-item input {
+    float: left;
+    border: none;
+    width: 100%;
+    height: 50px;
+    padding-left: 20px;
+}
+
+.main-search-button {
+    background: #4DB7FE;
+    width: 100%;
+    /* Đặt chiều rộng của nút là 100% */
+    display: block;
+    /* Chuyển nút sang dạng block để nó sẽ chiếm toàn bộ chiều rộng của container */
+    outline-color: black !important;
+}
+
+
+.main-search-button {
+    position: absolute;
+    right: 0px;
+    height: 50px;
+    width: 120px;
+    color: #fff;
+    top: 0;
+    border: none;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    cursor: pointer;
+}
+
+.main-search-input-wrap {
+    max-width: 500px;
+    margin: 20px auto;
+    position: relative;
+    top: -150px;
+    /* Điều chỉnh giá trị âm để di chuyển lên cao */
+}
+
+
+:focus {
+    outline: 0;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .main-search-input {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 14px 20px 10px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 0px 10px rgba(255, 255, 255, 0.0);
+    }
+
+    .main-search-input-item {
+        width: 100%;
+        border: 1px solid #eee;
+        height: 50px;
+        border: none;
+        margin-bottom: 10px;
+    }
+
+    .main-search-input-item input {
+        border-radius: 6px !important;
+        background: #fff;
+    }
+
+    .main-search-button {
+        border: none;
+        /* Loại bỏ đường viền */
+        background-color: #007bff !important;
+        /* Màu nền */
+        color: #fff !important;
+        /* Màu chữ */
+        padding: 10px 20px;
+        /* Kích thước lề */
+        border-radius: 15px;
+        /* Bo góc */
+        font-size: 14px;
+        /* Cỡ chữ */
+        cursor: pointer;
+        /* Con trỏ chuột khi hover */
+        transition: background-color 0.3s, color 0.3s;
+        /* Hiệu ứng chuyển đổi màu */
+    }
+
+    .main-search-button:hover {
+        background-color: #0056b3 !important;
+        /* Màu nền khi hover */
+    }
+}
+
+.container {
+    text-align: left;
+}
+
+.my_info {
+    text-align: left;
+}
+
+.my_info .student_name,
+.my_info .btn {
+    margin-right: 0;
+    margin-bottom: 10px;
+}
+
+.failed-row {
+    color: red !important;
+    /* Màu chữ là đỏ */
+    background-color: #ffe6e6 !important;
+    /* Màu nền là một phiên bản nhẹ của đỏ */
+    border-radius: 5px;
+    /* Bo góc viền */
+    transition: all 0.3s ease;
+    /* Hiệu ứng chuyển đổi mềm mại */
+}
+
+.failed-row:hover {
+    background-color: #ffb3b3 !important;
+    /* Màu nền khi di chuột qua */
+}
+
+.success-row {}
+
+.success-row:hover {
+    background-color: #c3e6cb !important;
+    /* Màu nền xanh lá cây sáng hơn khi di chuột qua */
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Đảm bảo các phần tử cùng chiều cao và căn giữa theo trục dọc */
+}
+
+.stat {
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+.stat-title {
+    margin-top: 8px;
+    font-size: 16px;
+    color: #333;
+}
+
+.stat-value {
+    margin-top: 4px;
+    font-size: 24px;
+    color: #007bff;
+    /* Màu xanh dương */
+}
+
+.stats {
+    display: flex;
+    flex-wrap: wrap;
+    /* Cho phép các phần tử chồng lên nhau khi không đủ không gian */
+    justify-content: space-around;
+    /* Canh giữa các phần tử theo chiều ngang */
+}
+
+.stat {
+    flex: 0 1 200px;
+    /* Đặt kích thước chiều rộng cố định cho mỗi phần tử */
+    text-align: center;
+    padding: 20px;
+    margin: 10px;
+    /* Khoảng cách giữa các phần tử */
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.8);
+    /* Màu nền */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    /* Hiệu ứng bóng */
+    border: 1px solid #ccc;
+    /* Đường viền 1px màu xám */
+    transition: background-color 0.3s;
+    /* Hiệu ứng chuyển đổi màu nền */
+}
+
+.stat:hover {
+    background-color: #95999c;
+    /* Màu xanh khi hover vào */
+}
+
+
+.stat-title {
+    margin-top: 8px;
+    font-size: 16px;
+    color: #333;
+}
+
+.stat-value {
+    margin-top: 4px;
+    font-size: 24px;
+}
+
+
+
+
+/* Thiết lập các phần tử theo chiều ngang trên màn hình có kích thước lớn hơn hoặc bằng md (medium) */
+@media (min-width: 768px) {
+    .md\:stats-horizontal {
+        flex-direction: row;
+    }
+}
+
+.stats {
+    background-color: rgba(255, 255, 255, 0.8);
+    /* Màu nền trắng với độ mờ */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    /* Hiệu ứng bóng */
+}
+
+.stats-vertical {
+    margin-top: 20px;
+    flex-direction: column;
+    /* Sắp xếp các phần tử theo chiều dọc */
+    outline: 1px solid #95999c;
+    /* Tạo outline màu xám */
+    width: 95%;
+    /* Chiều rộng tương đương với parent */
+    margin-left: 20px;
+    padding: 10px;
+    /* Khoảng cách giữa nội dung và outline */
+    box-sizing: border-box;
+    /* Đảm bảo kích thước của outline không tăng lên */
+}
+
+.stats-horizontal {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    outline: 1px solid #95999c;
+    /* Tạo outline màu xám */
+    width: 100%;
+    /* Chiều rộng tương đương với parent */
+    padding: 10px;
+    /* Khoảng cách giữa nội dung và outline */
+    box-sizing: border-box;
+    /* Đảm bảo kích thước của outline không tăng lên */
+}
+
+
+
+/* Thiết lập các phần tử theo chiều ngang trên màn hình có kích thước lớn hơn hoặc bằng md (medium) */
+@media (min-width: 768px) {
+    .md\:stats-horizontal {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+}
+
+/* Màu xanh lá cây khi hover vào .stat */
+.stat:hover {
+    background-color: #7eff80;
+}
+
+/* Màu đỏ khi hover vào .stat với class .text-secondary */
+/* Màu đỏ khi hover vào .stat có class .text-secondary */
+.failed-subjects:hover {
+    background-color: #ff8080 !important;
+    /* Đặt màu nền là màu đỏ */
+}
+
+.stat.text-secondary {
+    color: #e43c5c !important;
+}
+
+.student_gpa:hover {
+    background-color: #95999c !important;
+}
+
+.search-history {
+    text-align: center;
+}
+
+.searched {
+    text-align: left;
+    margin-top: 2px;
+}
+
+.searched {
+    max-height: 280px;
+    /* Thiết lập chiều cao tối đa của container */
+    overflow-y: auto;
+    /* Cho phép cuộn dọc khi có nhiều học sinh */
+    border-radius: 10px;
+    /* Bo góc */
+    box-shadow: 0 10px 8px rgba(0, 0, 0, 0.2);
+    /* Tạo hiệu ứng bóng */
+}
+
+
+.my_info_searched {
+    margin-top: 10px;
+    transition: background-color 0.3s;
+    /* Hiệu ứng chuyển đổi màu nền */
+    border-radius: 10px;
+    /* Bo góc */
+    box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.2) !important;
+    /* Tạo outline đẹp */
+}
+
+
+.my_info_searched:hover {
+    background-color: #f0f0f0;
+    /* Màu xám khi hover vào */
+}
+
+.main-search-input-wrap {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    /* Đảm bảo phần tử nổi lên phía trên */
+}
+
+.main-search-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Màu đen với độ mờ */
+    z-index: 9999;
+    /* Đảm bảo thanh tìm kiếm nằm trên tất cả các phần khác */
+    display: flex;
+    justify-content: center;
+    /* Canh giữa theo chiều ngang */
+    align-items: center;
+    /* Canh giữa theo chiều dọc */
+}
+
+.main-search-wrapper {
+    max-width: 80%;
+    /* Chiều rộng tối đa */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) inset, 0 0 10px rgba(0, 0, 0, 0.5);
+    /* Hiệu ứng shadow và blur */
+}
+
+.main-search-input {
+    width: 100%;
+    /* Chiều rộng của thanh tìm kiếm */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) inset, 0 0 10px rgba(0, 0, 0, 0.5);
+    /* Hiệu ứng shadow và blur */
+    background-color: #fff9ec;
+
+}
+
+.cancel-button-container {
+    display: flex !important;
+    /* Sử dụng flexbox */
+}
+
+.search-history .cancel-button {
+    background-color: red !important;
+    /* Đặt màu nền là màu đỏ */
+    color: white !important;
+    /* Đặt màu chữ là trắng */
+    border: none !important;
+    /* Loại bỏ viền */
+    padding: 8px 16px !important;
+    /* Đặt khoảng cách giữa nội dung và viền của nút */
+    border-radius: 4px !important;
+    /* Đặt góc bo tròn cho nút */
+    margin-left: auto !important;
+    /* Đẩy nút sang bên phải cùng */
+    margin-top: 5px;
+}
+
+.select-choice {
+    margin-top: 10px;
+    transition: background-color 0.3s;
+    /* Hiệu ứng chuyển đổi màu nền */
+    border-radius: 10px;
+    /* Bo góc */
+    box-shadow: 1000px 5px 10px rgba(0, 0, 0, 0.2) !important;
+    /* Tạo outline đẹp */
+}
+
+.student-card {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.avatar {
+    margin-right: 10px;
+}
+
+.avatar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.info {
+    flex: 1;
+}
+
+.name {
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 5px;
+}
+
+.class,
+.student-id {
+    font-size: 14px;
+    color: black;
+    margin-bottom: 3px;
+}
+
+.student-card-container {
+    display: flex;
+    justify-content: space-between;
+    /* Căn đều các cột */
+    gap: 20px;
+    /* Khoảng cách giữa các phần tử */
+}
+
+.student-card {
+    flex: 0 1 calc(33.33% - 20px);
+    /* Phần tử chiếm 1/3 của container và cách nhau 20px */
+    display: flex;
+    flex-direction: column;
+    /* Hiển thị phần tử dọc */
+}
+
+.avatar {
+    width: 100%;
+    /* Đảm bảo hình ảnh avatar căn giữa */
+    text-align: center;
+    /* Căn giữa hình ảnh */
+}
+
+.avatar img {
+    width: 100px;
+    /* Định kích thước cho avatar */
+    height: 100px;
+    border-radius: 50%;
+    /* Làm tròn góc để tạo hình tròn */
+}
+
+.info {
+    text-align: center;
+    /* Căn giữa thông tin */
+}
+
+.name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.class,
+.student-id,
+.gpa,
+.ranking {
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.student-card-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.student-card {
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: #FFF;
+    /* Màu nền cho thẻ */
+    border-radius: 10px;
+    /* Bo tròn các góc */
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+    /* Hiệu ứng bóng đổ */
+}
+
+.avatar img {
+    width: 100px;
+    height: 100px;
+}
+
+.info {
+    font-family: Arial, sans-serif !important;
+    color: #000 !important;
+    /* Màu chữ */
+}
+
+.name {
+    font-size: 20px !important;
+    font-weight: bold !important;
+}
+
+.class,
+.student-id {
+    font-size: 16px !important;
+}
+
+.gpa,
+.ranking {
+    font-size: 18px !important;
+}
+
+.people-button {
+    /* Định dạng kích thước và vị trí của nút */
+    width: 150px;
+    /* Điều chỉnh kích thước của nút */
+    height: 40px;
+    /* Điều chỉnh chiều cao của nút */
+    /* Màu nền xanh dương */
+    background-color: #007bff;
+    /* Khoảng cách giữa nút và nút khác */
+    margin-right: 10px;
+    /* Khoảng cách phải */
+    margin-bottom: 10px;
+    /* Khoảng cách dưới */
+    /* Thiết lập vị trí của nút */
+    position: relative;
+    /* Căn giữa nút trong phần tử cha */
+    display: inline-block;
+    /* Căn giữa nút theo chiều dọc và chiều ngang */
+    text-align: center;
+    vertical-align: middle;
+    /* Căn giữa nút trong phần tử cha */
+    margin: 0 auto;
+    /* CSS cho văn bản trong nút */
+    color: #ffffff;
+    /* Màu văn bản là trắng */
+    font-size: 16px;
+    /* Kích thước phông chữ */
+    line-height: 40px;
+    /* Chiều cao của dòng chữ */
+    /* Hiệu ứng hover */
+    transition: background-color 0.3s ease;
+    /* Hiệu ứng chuyển đổi màu nền */
+    text-align: left;
+}
+
+/* CSS cho hiệu ứng hover */
+.people-button:hover {
+    background-color: #0056b3;
+    /* Màu nền xanh dương sáng khi di chuột vào */
+}
+
+/* CSS cho nút people-button */
+.people-button {
+    /* Định dạng kích thước và vị trí của nút */
+    width: 100%;
+    /* Chiếm toàn bộ chiều rộng của phần tử cha */
+    height: 30px;
+    /* Điều chỉnh chiều cao của nút */
+    /* CSS cho văn bản trong nút */
+    color: #ffffff;
+    /* Màu văn bản là trắng */
+    font-size: 14px;
+    /* Kích thước phông chữ */
+    /* Màu nền xanh dương */
+    background-color: #007bff;
+    /* Bo góc của nút */
+    border-radius: 5px;
+    /* Hiệu ứng hover */
+    transition: background-color 0.3s ease;
+    /* Hiệu ứng chuyển đổi màu nền */
+}
+
+/* CSS cho nút cancel-button */
+
+/* CSS cho hiệu ứng hover */
+.people-button:hover {
+    background-color: #0056b3;
+    /* Màu nền xanh dương sáng khi di chuột vào */
+}
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.fa-spinner {
+    font-size: 40px;
+    /* Điều chỉnh kích thước spinner */
+    color: #333;
+    /* Màu của spinner */
+}
+
+.icon-container {
+    color: #4CAF50;
+    /* Màu xanh lá cây */
+    font-size: 20px;
+    /* Kích thước biểu tượng */
+    margin-right: 5px;
+    /* Khoảng cách giữa biểu tượng và văn bản */
+}
+
+.green-icon {
+    color: #4CAF50;
+    /* Màu xanh lá cây */
+}
+
+.red-icon {
+    color: #ffffff;
+    /* Màu đỏ */
+}
+
+.red-circle {
+    display: inline-block;
+    width: 18px;
+    /* Độ rộng của vòng tròn */
+    height: 18px;
+    /* Độ cao của vòng tròn */
+    border-radius: 50%;
+    /* Làm cho vòng tròn */
+    background-color: #FF0000;
+    /* Màu đỏ */
+    text-align: center;
+    line-height: 18px;
+    /* Căn giữa văn bản trong vòng tròn */
+}

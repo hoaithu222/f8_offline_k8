@@ -2,10 +2,11 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="css/ex01.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="css/ex01.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -22,11 +23,29 @@
                 <div class="progress">
                     <span></span>
                 </div>
+                <div class="preview-time"></div>
             </div>
             <span>00:00</span>
         </div>
     </div>
-    <audio src="./mp3/mp3.mp3" controls></audio>
+    <div class="open-karaoke">
+        <button class="btn">Hát Karaoke</button>
+    </div>
+    <div class="karaoke">
+        <div class="container">
+            <div class="karaoke-header">
+                <h2>Karaoke</h2>
+                <span class="close">
+                    <i class="fa-solid fa-chevron-down"></i>
+                </span>
+            </div>
+            <div class="karaoke-inner">
+                <div class="karaoke-line" id="line1"></div>
+                <div class="karaoke-line" id="line2"></div>
+            </div>
+        </div>
+    </div>
+    <audio src="mp3/mp3.mp3" controls hidden></audio>
     <script src="js/ex01.js"></script>
 </body>
 

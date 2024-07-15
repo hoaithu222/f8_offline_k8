@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thời gian xem trước trên thanh tiến trình</title>
+    <style>
+        .progress-bar {
+            position: relative;
+            width: 600px;
+            height: 10px;
+            background-color: #ccc;
+        }
+
+        .progress {
+            height: 100%;
+            background-color: #76c7c0;
+        }
+
+        .preview-time {
+            position: absolute;
+            top: -25px;
+            background-color: black;
+            color: white;
+            padding: 2px 5px;
+            border-radius: 3px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <video id="video" width="600" controls>
+        <source src="video/SƠN TÙNG M-TP _ ĐỪNG LÀM TRÁI TIM ANH ĐAU _ OFFICIAL MUSIC VIDEO.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="progress-bar">
+        <div class="progress"></div>
+        <div class="preview-time"></div>
+    </div>
+
+    <script>
+        var video = document.getElementById("video");
+        var progressBar = document.querySelector(".progress-bar");
+        var progress = document.querySelector(".progress");
+        var previewTimeEl = document.querySelector(".preview-time");
+
+        function formatTime(seconds) {
+            var date = new Date(0);
+            date.setSeconds(seconds);
+            return date.toISOString().substr(11, 8);
+        }
+
+        progressBar.addEventListener("mousemove", function (e) {
+            var progressBarWidth = progressBar.clientWidth;
+            var offsetX = e.offsetX;
+            var previewTime = (offsetX / progressBarWidth) * video.duration;
+            previewTimeEl.innerText = formatTime(previewTime);
+            previewTimeEl.style.left = `${offsetX}px`;
+            previewTimeEl.style.display = "block";
+        });
+
+        progressBar.addEventListener("mouseleave", function () {
+            previewTimeEl.style.display = "none";
+        });
+
+        video.addEventListener("timeupdate", function () {
+            var rate = (video.currentTime / video.duration) * 100;
+            progress.style.width = `${rate}%`;
+        });
+    </script>
+</body>
+
+</html>
