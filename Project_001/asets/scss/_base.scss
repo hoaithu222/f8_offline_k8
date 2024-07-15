@@ -1,0 +1,93 @@
+@import "variable";
+
+html {
+    font-size: 62.5%;
+
+}
+
+
+body {
+    font-family: "Inter", sans-serif;
+}
+
+input,
+textarea,
+select {
+    font-family: inherit;
+    border: none;
+    outline: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+ol,
+li {
+    list-style: none;
+
+}
+
+button {
+    border: none;
+    background: none;
+}
+
+@media screen and (max-width:1200px) {
+    .container {
+        max-width: 1090px;
+    }
+
+    html {
+        font-size: 62.5%;
+    }
+}
+
+@media screen and (max-width:992px) {
+    .container {
+        max-width: 780px;
+    }
+
+    html {
+        font-size: 50%;
+    }
+}
+
+@media screen and (max-width:768px) {
+    html {
+        font-size: 43.75%;
+    }
+
+    .container {
+        max-width: 640px;
+    }
+}
+
+
+@media screen and (max-width:580px) {
+    html {
+        font-size: 37.5%;
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 0 50px;
+    }
+}
+
+@media screen and (max-width:580px) {
+    html {
+        font-size: 37.5%;
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 0 20px;
+    }
+}
