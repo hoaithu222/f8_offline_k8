@@ -1,0 +1,159 @@
+.header {
+    padding: 3rem 0;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99999;
+    background: #fff;
+    height: 10rem;
+}
+
+.header .inner-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header .inner-wrap .inner-logo h3 {
+    font-size: 3rem;
+    color: #000;
+    font-weight: 600;
+}
+
+.header .inner-wrap .inner-logo p {
+    color: #2C2C2C;
+    font-size: 1.6rem;
+}
+
+.header .inner-wrap .inner-menu ol {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.header .inner-wrap .inner-menu ol a {
+    color: #000;
+    font-size: 1.6rem;
+    position: relative;
+    transition: color 0.5s ease-in-out;
+    text-decoration: none;
+}
+
+.header .inner-wrap .inner-menu ol a::before {
+    content: "";
+    width: 0%;
+    height: 2px;
+    background-color: #FF0000;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: width 0.5s ease-in-out, transform 0.5s ease-in-out;
+    transform: translateX(-10%);
+}
+
+.header .inner-wrap .inner-menu ol a:hover::before {
+    width: 100%;
+    transform: translateX(0);
+}
+
+.header .inner-wrap .inner-menu ol a:hover,
+.header .inner-wrap .inner-menu ol a.active {
+    color: #FF0000;
+}
+
+.header .inner-wrap .contact {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header .inner-wrap .contact button {
+    font-size: 2.6rem;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 5px 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    margin-left: 2rem;
+    display: none;
+    background: none;
+    cursor: pointer;
+}
+
+.header .inner-wrap .contact .open-icon {
+    display: block;
+}
+
+.header .inner-wrap .contact .close-icon {
+    display: none;
+}
+
+.header .inner-wrap .contact a {
+    font-size: 2rem;
+    font-weight: 500;
+    background-color: #FF0000;
+    padding: 1.5rem 2rem;
+    border: 2px solid #FF0000;
+    border-radius: 4.5rem;
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+    color: #fff;
+    text-decoration: none;
+}
+
+.header .inner-wrap .contact a:hover {
+    color: #FF0000;
+    background-color: #fff;
+}
+
+@media screen and (max-width: 992px) {
+    .header .inner-wrap .inner-menu ol {
+        position: absolute;
+        display: block;
+        top: 100%;
+        background-color: #2C2C2C;
+        left: 0;
+        right: 0;
+        height: 0;
+        text-align: center;
+        overflow: hidden;
+        transition: height 0.5s ease-in-out;
+    }
+
+    .header .inner-wrap .inner-menu ol.active {
+        height: 27rem;
+    }
+
+    .header .inner-wrap .inner-menu ol a:hover::before {
+        width: 0%;
+        transform: translateX(0);
+    }
+
+    .header .inner-wrap .inner-menu ol li a {
+        padding: 2rem;
+        display: block;
+        color: #fff;
+    }
+
+    .header .inner-wrap .contact button {
+        display: block;
+    }
+
+    .header .inner-wrap .contact .open-icon {
+        display: block;
+    }
+
+    .header .inner-wrap .contact .close-icon {
+        display: none;
+    }
+
+    .header .inner-wrap .contact button.active .open-icon {
+        display: none;
+    }
+
+    .header .inner-wrap .contact button.active .close-icon {
+        display: block;
+    }
+}
