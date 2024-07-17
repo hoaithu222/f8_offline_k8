@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="../asets/css/base.css">
     <link rel="stylesheet" href="../asets/css/header.css">
     <link rel="stylesheet" href="../asets/css/footer.css">
-    <link rel="stylesheet" href="../asets/css/main.css">
+    <link rel="stylesheet" href="../asets/css/ranking.css">
     <script defer src="../asets/js/main.js"></script>
 </head>
 
@@ -29,6 +29,65 @@
     <!-- header -->
     <div id="header-includes"></div>
     <!-- end header -->
+    <!-- section one -->
+    <section class="section-one">
+        <div class="container">
+            <div class="inner-wrap">
+                <div class="inner-box">
+                    <div class="inner-image">
+                        <img src="../asets/images/medal-second-place.png" alt="" class="top-two" />
+                    </div>
+                    <h4 class="inner-title">
+                        Nguyễn Huỳnh Yên Như
+                    </h4>
+                    <p class="classroom">AT12LU</p>
+                    <p class="code-student">
+                        AT121034
+                    </p>
+                    <p class="gpa">
+                        GPA: 4
+                    </p>
+                    <p class="ratings">TOP 2</p>
+                </div>
+                <div class="inner-box">
+                    <div class="inner-image image-one">
+                        <img src="../asets/images/gold-medal.png" alt="" class="top-one" />
+                    </div>
+                    <h4 class="inner-title">
+                        Nguyễn Xuân Đăng
+                    </h4>
+                    <p class="classroom">AT13LT</p>
+                    <p class="code-student">
+                        AT131013
+                    </p>
+                    <p class="gpa">
+                        GPA: 4
+                    </p>
+                    <p class="ratings">TOP 1</p>
+                </div>
+                <div class="inner-box">
+                    <div class="inner-image">
+                        <img src="../asets/images/external-bronze-medal-achievements-flaticons-flat-flat-icons-2.png"
+                            alt="" class="top-three" />
+                    </div>
+                    <h4 class="inner-title">
+                        Trương Anh Tuấn
+                    </h4>
+                    <p class="classroom">AT12BT</p>
+                    <p class="code-student">
+                        AT120260
+                    </p>
+                    <p class="gpa">
+                        GPA: 4
+                    </p>
+                    <p class="ratings">TOP 3</p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <!-- end section one -->
 
 
 
@@ -43,7 +102,47 @@
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('header-includes').innerHTML = data;
+
+                    // Chỉ chạy mã sau khi header đã được thêm vào DOM
+                    var btn = document.querySelector(".menu-toggle");
+                    var menu = document.querySelector(".header .inner-wrap .inner-menu ol");
+
+                    if (!btn) {
+                        console.error("Button element not found");
+                        return;
+                    }
+
+                    if (!menu) {
+                        console.error("Menu element not found");
+                        return;
+                    }
+
+                    btn.addEventListener("click", function () {
+                        menu.classList.toggle("active");
+                        btn.classList.toggle("active");
+
+                        var openIcon = btn.querySelector(".open-icon");
+                        var closeIcon = btn.querySelector(".close-icon");
+
+                        if (btn.classList.contains("active")) {
+                            openIcon.style.display = "none";
+                            closeIcon.style.display = "block";
+                        } else {
+                            openIcon.style.display = "block";
+                            closeIcon.style.display = "none";
+                        }
+                    });
                 });
+            var currentPage = window.location.pathname;
+            var navLinks = document.querySelectorAll(".header .inner-wrap .inner-menu ol a");
+
+            navLinks.forEach(function (link) {
+                if (link.getAttribute("href") === currentPage) {
+                    link.classList.add("active");
+                }
+            });
+
+
 
             fetch("../includes/footer.html")
                 .then(response => response.text())
@@ -51,6 +150,7 @@
                     document.getElementById('footer-includes').innerHTML = data;
                 });
         });
+
     </script>
 
 

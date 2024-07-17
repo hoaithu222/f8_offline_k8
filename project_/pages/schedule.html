@@ -43,7 +43,47 @@
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('header-includes').innerHTML = data;
+
+                    // Chỉ chạy mã sau khi header đã được thêm vào DOM
+                    var btn = document.querySelector(".menu-toggle");
+                    var menu = document.querySelector(".header .inner-wrap .inner-menu ol");
+
+                    if (!btn) {
+                        console.error("Button element not found");
+                        return;
+                    }
+
+                    if (!menu) {
+                        console.error("Menu element not found");
+                        return;
+                    }
+
+                    btn.addEventListener("click", function () {
+                        menu.classList.toggle("active");
+                        btn.classList.toggle("active");
+
+                        var openIcon = btn.querySelector(".open-icon");
+                        var closeIcon = btn.querySelector(".close-icon");
+
+                        if (btn.classList.contains("active")) {
+                            openIcon.style.display = "none";
+                            closeIcon.style.display = "block";
+                        } else {
+                            openIcon.style.display = "block";
+                            closeIcon.style.display = "none";
+                        }
+                    });
                 });
+            var currentPage = window.location.pathname;
+            var navLinks = document.querySelectorAll(".header .inner-wrap .inner-menu ol a");
+
+            navLinks.forEach(function (link) {
+                if (link.getAttribute("href") === currentPage) {
+                    link.classList.add("active");
+                }
+            });
+
+
 
             fetch("../includes/footer.html")
                 .then(response => response.text())
@@ -51,6 +91,7 @@
                     document.getElementById('footer-includes').innerHTML = data;
                 });
         });
+
     </script>
 
 
