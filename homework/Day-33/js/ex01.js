@@ -1,6 +1,6 @@
-const list = document.getElementById('list');
-let draggingElement = null;
-let initialMouseY = 0;
+var list = document.getElementById('list');
+var draggingElement = null;
+var initialMouseY = 0;
 
 document.querySelectorAll('.item').forEach(function (item) {
     item.addEventListener('mousedown', function (e) {
@@ -13,7 +13,7 @@ document.querySelectorAll('.item').forEach(function (item) {
 });
 
 function onMouseMove(e) {
-    const afterElement = getDragAfterElement(list, e.clientY);
+    var afterElement = getDragAfterElement(list, e.clientY);
     if (afterElement == null) {
         list.appendChild(draggingElement);
     } else {
@@ -54,11 +54,11 @@ function getDragAfterElement(container, mouseY) {
 }
 
 function updateTitlesAndItems() {
-    const items = Array.from(list.querySelectorAll('.item'));
-    const titles = items.filter(function (item) {
+    var items = Array.from(list.querySelectorAll('.item'));
+    var titles = items.filter(function (item) {
         return item.classList.contains('title');
     });
-    const subItems = items.filter(function (item) {
+    var subItems = items.filter(function (item) {
         return !item.classList.contains('title');
     });
 
