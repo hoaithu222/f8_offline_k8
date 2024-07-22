@@ -1,7 +1,5 @@
-
-// DOMContentLoad ===> Sự kiện fire khi DOM TRee được hình thành
-//load ==> sự kiện fire khi tất cả các tài nguyên trên trang web được tài xong
-
+//DOMContentLoaded ==> Sự kiện fire khi DOM Tree được hình thành
+//load ==> Sự kiện fire khi tất cả các tài nguyên trên trang web được tải xong
 var init = function () {
     var navEl = document.querySelector("nav");
     var navHeight = navEl.clientHeight;
@@ -9,8 +7,8 @@ var init = function () {
     var navItems = navEl.children;
     body.style.paddingTop = `${navHeight}px`;
     if (navItems.length) {
-        Array.from(navItems).forEach(function () {
-            navItems.addEventListener("click", function () {
+        Array.from(navItems).forEach(function (navItem) {
+            navItem.addEventListener("click", function () {
                 var sectionId = this.dataset.target;
                 if (!sectionId) {
                     return;
@@ -20,33 +18,36 @@ var init = function () {
                 window.scroll({
                     top: offsetTopSection,
                     behavior: "smooth",
-
                 });
-
-
             });
-
         });
     }
-    var el = document.querySelector("#section-2");
-    window.addEventListener("scroll", function () {
-        var Observer = new IntersectionObserver(function (entries) {
-            var entry = entries[0];
-            if (entry.isIntersecting) {
-                var sectionId = entry.target.id;
 
-                var sectionId = navEl.querySelector()
-            }
-
+    var observer = new IntersectionObserver(
+        function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    var sectionId = entry.target.id;
+                    var navItemActive = navEl.querySelector(".active");
+                    var navItem = navEl.querySelector(
+                        `button[data-target="#${sectionId}"]`
+                    );
+                    navItem.classList.add("active");
+                    if (navItemActive) {
+                        navItemActive.classList.remove("active");
+                    }
+                }
+            });
+        },
+        {
+            threshold: [0.5], //Giữa màn hình
+        }
+    );
+    var sectionList = document.querySelectorAll("section");
+    if (sectionList.length) {
+        sectionList.forEach(function (sectionEl) {
+            observer.observe(sectionEl);
         });
-
-
-
-    });
-
-
+    }
 };
-
-// Intersection Observer API
-// getBoundingClientRect() 
 document.addEventListener("DOMContentLoaded", init);

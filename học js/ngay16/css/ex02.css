@@ -1,25 +1,24 @@
 * {
-    margin: 0;
     padding: 0;
+    margin: 0;
     box-sizing: border-box;
 }
 
-body {
-    padding-top: 40px;
-}
-
 nav {
-    background-color: yellow;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background: yellow;
+    padding: 10px;
+    text-align: center;
     position: fixed;
-    inset: 0;
-
+    left: 0;
+    right: 0;
+    top: 0;
 }
 
-#section-1,
-#section-2,
-#section-3 {
-    height: 100vh;
+nav button.active {
+    color: red;
+}
+
+section {
+    min-height: 100vh;
+    padding: 15px;
 }

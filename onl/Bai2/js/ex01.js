@@ -12,30 +12,33 @@ progressBar.addEventListener("mousedown", function (e) {
         return;
     }
     isDragging = true;
-    var offsetX = e.offsetX;
-    var progressBarWidth = progressBar.clientWidth;
-    var rate = (offsetX / progressBarWidth) * 100;
-    progress.style.width = `${rate}%`;
-    document.addEventListener("mousemove", handleDrag);
     initialClientX = e.clientX;
-    moveSpace = offsetX;
-    lastMoveSpace = offsetX;
+    moveSpace = e.offsetX;
+    lastMoveSpace = moveSpace;
+
+    var progressBarWidth = progressBar.clientWidth;
+    var rate = (moveSpace / progressBarWidth) * 100;
+    progress.style.width = `${rate}%`;
+
+    document.addEventListener("mousemove", handleDrag);
+    previewTime.style.display = 'block';
 });
 
 progressSpan.addEventListener("mousedown", function (e) {
     e.stopPropagation();
     isDragging = true;
-    document.addEventListener("mousemove", handleDrag);
     initialClientX = e.clientX;
+    document.addEventListener("mousemove", handleDrag);
+    previewTime.style.display = 'block';
 });
 
 document.addEventListener("mouseup", function (e) {
     if (isDragging) {
         isDragging = false;
+        document.removeEventListener("mousemove", handleDrag);
         var progressBarWidth = progressBar.clientWidth;
         var rate = (moveSpace / progressBarWidth) * 100;
         audio.currentTime = (rate / 100) * audio.duration;
-        document.removeEventListener("mousemove", handleDrag);
         lastMoveSpace = moveSpace;
         previewTime.style.display = 'none';
     }
@@ -46,17 +49,14 @@ function handleDrag(e) {
         moveSpace = e.clientX - initialClientX + lastMoveSpace;
         var progressBarWidth = progressBar.clientWidth;
         var rate = (moveSpace / progressBarWidth) * 100;
-        if (rate < 0) {
-            rate = 0;
-        }
-        if (rate > 100) {
-            rate = 100;
-        }
+
+        if (rate < 0) rate = 0;
+        if (rate > 100) rate = 100;
+
         progress.style.width = `${rate}%`;
+
         var previewTimeValue = (rate / 100) * audio.duration;
-        previewTime.style.display = 'block';
         previewTime.style.left = `${moveSpace}px`;
-        previewTime.style.transform = `translate(-50%, -150%)`;
         previewTime.innerText = getTimeFormat(previewTimeValue);
     }
 }

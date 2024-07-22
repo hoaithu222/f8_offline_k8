@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sortable Example</title>
+    <style>
+        .sortable-item {
+            padding: 10px;
+            margin: 5px;
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            cursor: grab;
+            list-style-type: none;
+        }
+
+        .sortable-item.dragging {
+            opacity: 0.5;
+        }
+
+        .sortable-list {
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="sortable-list" id="sortable-list">
+        <li class="sortable-item" draggable="true">Bài học thứ nhất 1</li>
+        <li class="sortable-item" draggable="true">Bài học thứ hai 2</li>
+        <li class="sortable-item" draggable="true">Bài học thứ ba 3</li>
+        <li class="sortable-item" draggable="true">Bài học thứ tư 4</li>
+    </ul>
+
+    <script src="js/ex03.js"></script>
+</body>
+
+</html>
