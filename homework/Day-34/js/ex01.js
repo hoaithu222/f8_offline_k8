@@ -7,7 +7,7 @@ var content = document.querySelector(".content");
 var filenameInput = document.querySelector(".name input");
 
 btnSave.addEventListener("click", function (e) {
-  e.stopPropagation(); // Ngăn chặn sự kiện click lan ra ngoài
+  e.stopPropagation();
   innerMenu.classList.toggle("active");
 });
 
