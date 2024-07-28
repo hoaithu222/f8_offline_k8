@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const counter = document.querySelector(".counter");
   const button = document.querySelector(".btn");
-  let time = 40;
+  let time = 30;
   let active = true;
   let lastTime = performance.now();
 
