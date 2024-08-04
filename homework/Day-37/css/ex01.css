@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: rgb(104, 181, 219);
+
+}
+
+input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 20px;
+
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+
+}
+
+.inner-wrap {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.inner-box {
+    display: inline-flex;
+    background-color: bisque;
+    gap: 20px;
+    padding: 20px 30px;
+    border-radius: 45px;
+}
+
+.inner-micro {
+    position: relative;
+    top: 0;
+    left: 0;
+
+
+}
+
+.inner-micro .fa-microphone {
+    cursor: pointer;
+}
+
+.inner-micro .inner-desc {
+    position: absolute;
+    width: 200px;
+    background-color: rgb(129, 128, 128);
+    padding: 10px;
+    color: #fff;
+    border-radius: 10px;
+    top: 30px;
+    left: -100px;
+    opacity: 0;
+    transition: 0.4s ease-in-out;
+    transform: translate(-10px);
+    transition-property: opacity, transform;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+
+.inner-micro .inner-desc i {
+    position: absolute;
+    color: rgb(129, 128, 128);
+    top: -10px;
+    left: 98px;
+    font-size: 26px;
+}
+
+.fa-microphone:hover~span {
+    opacity: 1;
+    transform: translate(0);
+}
+
+.inner-content {
+    position: absolute;
+    background-color: #fff;
+    padding: 50px 30px;
+    width: 600px;
+    top: 100px;
+    right: -150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+    opacity: 0;
+    transform: translate(-20px);
+    transition: 0.4s ease-in-out;
+    transition-property: opacity transform;
+
+}
+
+.inner-content.active {
+    opacity: 1;
+    transform: translate(0);
+}
+
+.inner-content h2 {
+    color: grey
+}
+
+.inner-content .micro {
+    width: 70px;
+    height: 70px;
+    background: rgb(206, 183, 246);
+    background: linear-gradient(225deg, rgba(206, 183, 246, 1) 12%, rgba(140, 227, 228, 1) 100%);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    animation: blink 1s infinite;
+}
+
+.inner-content .micro i {
+    color: #fff;
+    font-size: 30px;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scale(1.2);
+    }
+}
