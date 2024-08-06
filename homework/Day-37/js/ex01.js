@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
   const microphoneIcon = document.querySelector("#fa-microphone");
-  const searchInput = document.querySelector('input[type="text"]');
   const listeningIndicator = document.querySelector(".inner-content");
   const listeningText = document.querySelector(".inner-content h2");
   const microIcon = document.querySelector(".inner-content .micro");
@@ -13,22 +12,27 @@ document.addEventListener("DOMContentLoaded", function () {
     recognition.interimResults = true;
     recognition.lang = "vi-VN";
 
+    let fullTranscript = "";
+
     recognition.onstart = function () {
       listeningIndicator.classList.add("active");
       listeningText.textContent = "Đang nghe...";
       microIcon.classList.add("listening");
+      fullTranscript = "";
     };
 
     recognition.onresult = function (event) {
+      fullTranscript = ""; // Reset lại trước mỗi lần nhận kết quả
       let finalTranscript = "";
       for (let i = 0; i < event.results.length; i++) {
         const transcript = event.results[i][0].transcript;
         if (event.results[i].isFinal) {
           finalTranscript += transcript;
         } else {
-          listeningText.textContent = transcript;
+          fullTranscript += transcript;
         }
       }
+      listeningText.textContent = fullTranscript || finalTranscript; // Hiển thị toàn bộ câu lệnh
       handled = handleCommand(finalTranscript.trim().toLowerCase());
     };
 
@@ -59,7 +63,24 @@ document.addEventListener("DOMContentLoaded", function () {
   function handleCommand(command) {
     let handled = false;
 
-    if (command.includes("google")) {
+    if (command.includes("google maps") || command.includes("bản đồ")) {
+      const query = command
+        .replace("google maps", "")
+        .replace("bản đồ", "")
+        .trim();
+      if (query) {
+        window.open(
+          `https://www.google.com/maps/search/${encodeURIComponent(query)}`,
+          "_blank"
+        );
+      } else {
+        window.open("https://www.google.com/maps", "_blank");
+      }
+      handled = true;
+    } else if (command.includes("google drive")) {
+      window.open("https://drive.google.com", "_blank");
+      handled = true;
+    } else if (command.includes("google")) {
       window.open("https://www.google.com", "_blank");
       handled = true;
     } else if (command.includes("facebook")) {
@@ -76,23 +97,6 @@ document.addEventListener("DOMContentLoaded", function () {
         );
       } else {
         window.open("https://www.youtube.com", "_blank");
-      }
-      handled = true;
-    } else if (command.includes("google drive")) {
-      window.open("https://drive.google.com", "_blank");
-      handled = true;
-    } else if (command.includes("google maps") || command.includes("bản đồ")) {
-      const query = command
-        .replace("google maps", "")
-        .replace("bản đồ", "")
-        .trim();
-      if (query) {
-        window.open(
-          `https://www.google.com/maps/search/${encodeURIComponent(query)}`,
-          "_blank"
-        );
-      } else {
-        window.open("https://www.google.com/maps", "_blank");
       }
       handled = true;
     } else if (
