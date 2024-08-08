@@ -125,7 +125,9 @@ h1 span {
     transition: 0.3s ease-in-out;
     transition-property: opacity, transform;
     transform: translateY(-10%);
+    margin-top: 20px;
 }
+
 
 .inner-box .list-completed.active {
     opacity: 1;
