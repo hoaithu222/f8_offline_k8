@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/ex01.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1><span>Smatyx </span>Todos App</h1>
+        <div class="inner-wrap">
+            <div class="inner-search">
+                <input type="text" class="search" placeholder="Search Todos" />
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <div class="inner-btn">
+                <button class="btn btn-add">Add Todos</button>
+            </div>
+        </div>
+        <div class="form">
+            <div class="box">
+                <div class="input">
+                    <input type="text" name="todo" placeholder="Add Todos" required />
+                </div>
+                <hr>
+                <div class="inner-button">
+                    <button class="btn-save">Save</button>
+                    <button class="btn-cancel">Cancel</button>
+                </div>
+            </div>
+        </div>
+        <div class="inner-box">
+            <ul class="todo-list" id="todo-list">
+
+            </ul>
+            <div class="todo-completed">
+                <button class="btn-completed">Completed Todos <span class="count"> 0</span> <i
+                        class="fa-regular fa-circle-right"></i></button>
+                <ul class="list-completed">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="js/ex01.js" type="module"></script>
+</body>
+
+</html>
