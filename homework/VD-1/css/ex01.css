@@ -1,0 +1,266 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    max-width: 1200px;
+}
+
+button,
+input {
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+button {
+    cursor: pointer;
+}
+
+ol,
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    width: 55%;
+    margin: 100px auto;
+    text-align: center;
+}
+
+h1 {
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+
+h1 span {
+    font-size: 40px;
+    background: -webkit-linear-gradient(#579ce6, rgb(230, 152, 246));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.inner-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.inner-wrap .inner-search {
+    width: 65%;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+.inner-wrap .inner-search input {
+    font-size: 18px;
+    padding: 15px;
+}
+
+.inner-wrap .inner-search i {
+    padding: 17px 20px;
+    background-color: #579ce6;
+    border-radius: 25px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.inner-wrap .inner-btn {
+    margin-left: 30px;
+    background-color: rgb(230, 152, 246);
+    border-radius: 45px;
+}
+
+.inner-wrap .inner-btn button {
+    color: #fff;
+    padding: 13px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.inner-box {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.inner-box .btn-completed {
+    padding: 12px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border: 1px solid rgb(206, 221, 231);
+    background-color: rgb(179, 181, 181);
+    margin-left: 10px;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.inner-box .btn-completed.btn-completed i {
+    font-size: 20px;
+    margin-left: 5px;
+    transform: rotate(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.inner-box .btn-completed span {
+    margin-left: 5px;
+}
+
+.inner-box .btn-completed.btn-completed i.active {
+    transform: rotate(90deg);
+}
+
+.inner-box .list-completed {
+    opacity: 0;
+    overflow: hidden;
+    transition: 0.3s ease-in-out;
+    transition-property: opacity, transform;
+    transform: translateY(-10%);
+    margin-top: 20px;
+}
+
+
+.inner-box .list-completed.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.inner-box .todo-list .todo-item,
+.inner-box .list-completed .item-completed {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    border-radius: 10px;
+}
+
+.inner-box .todo-list .todo-item .content,
+.inner-box .list-completed .item-completed .content {
+    padding: 20px;
+    font-size: 18px;
+}
+
+.inner-box .todo-list .todo-item .inner-list,
+.inner-box .list-completed .item-completed .inner-list {
+    padding: 10px;
+}
+
+.inner-box .todo-list .todo-item .inner-list i,
+.inner-box .list-completed .item-completed .inner-list i {
+    cursor: pointer;
+    padding: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.inner-box .todo-list .todo-item .inner-list .fa-trash-can,
+.inner-box .list-completed .item-completed .inner-list .fa-trash-can {
+    background-color: rgb(181, 11, 11);
+    color: #fff;
+    border-radius: 7px;
+}
+
+.inner-box .todo-list .todo-item .inner-list .fa-trash-can:hover,
+.inner-box .list-completed .item-completed .inner-list .fa-trash-can:hover {
+    background-color: rgba(181, 11, 11, 0.8);
+}
+
+.inner-box .todo-list .todo-item .inner-list .fa-pen-to-square,
+.inner-box .list-completed .item-completed .inner-list .fa-pen-to-square {
+    background-color: rgb(43, 23, 224);
+    color: #fff;
+    border-radius: 7px;
+}
+
+.inner-box .todo-list .todo-item .inner-list .fa-pen-to-square:hover,
+.inner-box .list-completed .item-completed .inner-list .fa-pen-to-square:hover {
+    background-color: rgba(43, 23, 224, 0.8);
+}
+
+.inner-box .todo-list .todo-item .inner-list .fa-check-to-slot,
+.inner-box .list-completed .item-completed .inner-list .fa-check-to-slot {
+    background-color: rgb(179, 181, 181);
+    color: #fff;
+    border-radius: 7px;
+}
+
+.inner-box .todo-list .todo-item .inner-list .fa-check-to-slot:hover,
+.inner-box .list-completed .item-completed .inner-list .fa-check-to-slot:hover {
+    background-color: rgba(179, 181, 181, 0.8);
+}
+
+.inner-box .todo-list .todo-item .inner-list .fa-check-to-slot.active,
+.inner-box .list-completed .item-completed .inner-list .fa-check-to-slot.active {
+    background-color: rgb(26, 232, 81);
+    color: #fff;
+    border-radius: 7px;
+}
+
+.inner-box .todo-list .todo-item .inner-list .fa-check-to-slot.active:hover,
+.inner-box .list-completed .item-completed .inner-list .fa-check-to-slot.active:hover {
+    background-color: rgba(26, 232, 81, 0.8);
+}
+
+.form {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.459);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 20;
+    display: none;
+}
+
+.form.active {
+    display: block;
+}
+
+.form .box {
+    background-color: #fff;
+    width: 400px;
+    margin: 300px auto;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+    padding-bottom: 5px;
+}
+
+.form .box input {
+    border: 1px solid rgb(191, 191, 191);
+    margin: 20px 0;
+    width: 85%;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.form .box .inner-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 20px;
+}
+
+.form .box .inner-button button {
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff;
+    border: 1px solid transparent;
+}
+
+.form .box .inner-button .btn-save {
+    background-color: green;
+}
+
+.form .box .inner-button .btn-cancel {
+    background-color: rgb(216, 216, 216);
+}
