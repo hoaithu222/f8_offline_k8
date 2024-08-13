@@ -9,44 +9,78 @@ const btnSave = form.querySelector(".btn-save");
 const btnCancel = form.querySelector(".btn-cancel");
 let editingTodoId = null;
 let todosCache = [];
+
 const fixWord = (word) => {
   return word.replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 };
 
+const toggleLoading = (show) => {
+  const loading = document.querySelector(".loading");
+  if (show) {
+    loading.classList.add("active");
+  } else {
+    loading.classList.remove("active");
+  }
+};
+
 const getTodo = async () => {
-  const response = await fetch(apiUrl + "/todos");
-  const todos = await response.json();
-  todosCache = todos;
-  drawTodos(todos);
+  try {
+    toggleLoading(true);
+    const response = await fetch(apiUrl + "/todos");
+    const todos = await response.json();
+    todosCache = todos;
+    drawTodos(todos);
+  } catch (error) {
+    alert("Lấy dữ liệu thất bại. Vui lòng thử lại.");
+  }
+  toggleLoading(false);
 };
 
 const deleteTodo = async (id) => {
-  await fetch(apiUrl + "/todos/" + id, {
-    method: "DELETE",
-  });
-  getTodo();
+  try {
+    toggleLoading(true);
+    await fetch(apiUrl + "/todos/" + id, {
+      method: "DELETE",
+    });
+    getTodo();
+  } catch (error) {
+    alert("Xóa công việc thất bại. Vui lòng thử lại.");
+  }
+  toggleLoading(false);
 };
 
 const editTodo = async (id, data) => {
-  await fetch(apiUrl + "/todos/" + id, {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
-  getTodo();
+  try {
+    toggleLoading(true);
+    await fetch(apiUrl + "/todos/" + id, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    getTodo();
+  } catch (error) {
+    alert("Sửa công việc thất bại. Vui lòng thử lại.");
+  }
+  toggleLoading(false);
 };
 
 const addTodo = async (data) => {
-  await fetch(apiUrl + "/todos", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
-  getTodo();
+  try {
+    toggleLoading(true);
+    await fetch(apiUrl + "/todos", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    getTodo();
+  } catch (error) {
+    alert("Thêm công việc thất bại. Vui lòng thử lại.");
+  }
+  toggleLoading(false);
 };
 
 const nameFind = () => {
@@ -156,15 +190,21 @@ btnSave.addEventListener("click", async function (e) {
   const todoValue = inputElement.value.trim();
 
   if (todoValue) {
-    if (editingTodoId) {
-      await editTodo(editingTodoId, { todo: todoValue });
-    } else {
-      await addTodo({ todo: todoValue, completed: false });
+    btnSave.disabled = true;
+    try {
+      if (editingTodoId) {
+        await editTodo(editingTodoId, { todo: todoValue });
+      } else {
+        await addTodo({ todo: todoValue, completed: false });
+      }
+      inputElement.value = "";
+      form.classList.remove("active");
+    } catch (error) {
+      alert("Đã xảy ra lỗi. Vui lòng thử lại.");
     }
-    inputElement.value = "";
-    form.classList.remove("active");
+    btnSave.disabled = false;
   } else {
-    alert("vui lòng nhập thông tin");
+    alert("Vui lòng nhập công việc.");
   }
 });
 

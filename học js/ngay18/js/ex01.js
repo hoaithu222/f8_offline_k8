@@ -1,59 +1,59 @@
-// var title = document.querySelector(".title");
-// HTMLElement.prototype.css = function (style) {
-//   Object.assign(this.style, style);
-// };
-// title.css({
-//   color: "red",
-//   background: "yellow",
-//   fontSize: "2rem",
-// });
+var title = document.querySelector(".title");
+HTMLElement.prototype.css = function (style) {
+  Object.assign(this.style, style);
+};
+title.css({
+  color: "red",
+  background: "yellow",
+  fontSize: "2rem",
+});
 
 // Web Component --> phải đặt 2 từ và phải có ngăn cách dấu gạch ngang
 
 // Bước 1:Khởi tạo class kế thừa từ HTMLElement
 
-// class HelloWorld extends HTMLElement {
-//   static observedAttributes = ["color", "size"];
-//   //   constructor() {
-//   //     super();
-//   //     // this.innerHTML = `<h1>Học lập trình không khó</h1>`;
-//   //   }
-//   connectedCallback() {
-//     console.log("connectedCallback");
-//     this.innerHTML = `<h1>Học lập trình không khó <button>Click me</button> </h1>`;
-//     var btn = this.querySelector("button");
-//     var _this = this;
-//     btn.addEventListener("click", function () {
-//       _this.setAttribute("color", "red");
-//       _this.setAttribute("size", "M");
-//     });
-//   }
-//   disconnectedCallback() {
-//     console.log(" disconnectedCallback");
-//   }
-//   attributeChangedCallback(name, oldValue, newValue) {
-//     console.log("attributesChangedCallback", name, oldValue, newValue);
-//   }
-// }
-// // Bước 2:Đăng kí component
-// customElements.define("hello-world", HelloWorld);
+class HelloWorld extends HTMLElement {
+  static observedAttributes = ["color", "size"];
+  constructor() {
+    super();
+    this.innerHTML = `<h1>Học lập trình không khó</h1>`;
+  }
+  connectedCallback() {
+    console.log("connectedCallback");
+    this.innerHTML = `<h1>Học lập trình không khó <button>Click me</button> </h1>`;
+    var btn = this.querySelector("button");
+    var _this = this;
+    btn.addEventListener("click", function () {
+      _this.setAttribute("color", "red");
+      _this.setAttribute("size", "M");
+    });
+  }
+  disconnectedCallback() {
+    console.log(" disconnectedCallback");
+  }
+  attributeChangedCallback(name, oldValue, newValue) {
+    console.log("attributesChangedCallback", name, oldValue, newValue);
+  }
+}
+// Bước 2:Đăng kí component
+customElements.define("hello-world", HelloWorld);
 
-// var btn = document.querySelector(".btn");
-// var root = document.querySelector("#root");
-// var isShow = false;
-// var helloWorldEl = document.createElement("hello-world");
+var btn = document.querySelector(".btn");
+var root = document.querySelector("#root");
+var isShow = false;
+var helloWorldEl = document.createElement("hello-world");
 
-// btn.addEventListener("click", function () {
-//   //   helloWorldEl.innerText = "Hello";
-//   //   root.append(helloWorldEl);
-//   if (!isShow) {
-//     root.append(helloWorldEl);
-//     isShow = true;
-//   } else {
-//     helloWorldEl.remove();
-//     isShow = false;
-//   }
-// });
+btn.addEventListener("click", function () {
+  helloWorldEl.innerText = "Hello";
+  root.append(helloWorldEl);
+  if (!isShow) {
+    root.append(helloWorldEl);
+    isShow = true;
+  } else {
+    helloWorldEl.remove();
+    isShow = false;
+  }
+});
 
 class TodoApp extends HTMLElement {
   constructor() {

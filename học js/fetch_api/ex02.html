@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" />
+</head>
+
+<body>
+    <div class="container py-3">
+        <h2>Danh sách người dùng</h2>
+        <form action="" class="filter-form mb-3">
+            <div class="row">
+                <div class="col-3">
+                    <select class="form-select" name="status">
+                        <option value="all">Tất cả trạng thái</option>
+                        <option value="active">Kích hoạt</option>
+                        <option value="inactive">Chưa kích hoạt</option>
+                    </select>
+                </div>
+                <div class="col-7">
+                    <input type="search" class="form-control" name="keyword" placeholder="Từ khóa tìm kiếm..." />
+                </div>
+                <div class="col-2 d-grid">
+                    <button type="submit" class="btn btn-primary">Tìm</button>
+                </div>
+            </div>
+        </form>
+        <div class="btn-group btn-group-sm mb-3">
+            <button class="sort-item btn btn-primary active" data-value="latest">
+                Mới nhất
+            </button>
+            <button class="sort-item btn btn-primary" data-value="oldest">
+                Cũ nhất
+            </button>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th width="5%">STT</th>
+                    <th>Tên</th>
+                    <th>Email</th>
+                    <th>Trạng thái</th>
+                    <th width="5%">Sửa</th>
+                    <th width="5%">Xóa</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <nav class="pagination-view d-flex justify-content-end"></nav>
+        <h2>Thêm người dùng</h2>
+        <form action="" class="form-update">
+            <div class="mb-3">
+                <label for="">Tên</label>
+                <input type="text" name="name" class="form-control" placeholder="Tên..." required />
+            </div>
+            <div class="mb-3">
+                <label for="">Email</label>
+                <input type="email" name="email" class="form-control" placeholder="Email..." required />
+            </div>
+            <div class="mb-3">
+                <label for="">Trạng thái</label>
+                <select name="status" class="form-select">
+                    <option value="active">Kích hoạt</option>
+                    <option value="inactive">Chưa kích hoạt</option>
+                </select>
+            </div>
+            <button class="btn btn-primary">Lưu thay đổi</button>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="js/vd1.js"></script>
+</body>
+
+</html>

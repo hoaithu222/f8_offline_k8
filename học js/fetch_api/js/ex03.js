@@ -1,87 +1,14 @@
-/*
-API 
-khi làm việc với web api ==> học http
-Client (Front-end) --> API ==> Server(back-end)
-Để giao tiếp giữa client và server --> có 2 cách
-- XHR
-- Fetch
-Chuẩn bị server 
--Tìm các dịch vụ Fake
-- Cài thư viện và tự fake 
-
-HTTP REQUEST
-- URL
-- METHOD
-- HEADER
-- BODY
-HTTP RESPONSE 
--BODY --> dữ liệu trả về từ server
--STATUS (Code,Text)
--HEADER
-
-
-
---- đẩy dữ liệu lên 
--BODY 
--STATUS(code,text)
--header
-
-
-POST,PUT,PATCH   
-
-Đẩy dữ liệu lên body phải có body và có header Content-Type
-+ application/x-www-form-urlencoded (name=Hoang+An&email = hoangan.web@gmail.com)
-+ multipart/form-data (Text,File)
-+multipart/form-data
-
-*/
-
-// const url = `http://localhost:3000/users`;
-
-// const result = fetch(url, {
-//   method: "GET",
-//   headers: {
-//     "x-api-key": "hello",
-//   },
-// });
-
-// result
-//   .then((response) => {
-//     return response.json("");
-//   })
-//   .then((users) => {
-//     console.log(users);
-//   });
-
-// const serverApi = "http://localhost:3000";
-
-// const getUser = async () => {
-//   try {
-//     const response = await fetch(serverApi + "/users");
-//     if (!response.ok) {
-//       throw new Error("Fetch to failed");
-//     }
-//     const users = await response.json();
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-// const render = (users) => {
-//   const tbody = document.querySelector(".table tbody");
-//   users.map((users) =>{
-//     return
-//   })
-
-// };
-
-// getUser();
-
 const serverApi = "http://localhost:3000";
 
 // Lấy danh sách các user
-const getUsers = async () => {
+const getUsers = async (params = {}) => {
+  let query = new URLSearchParams(params).toString();
+  if (query) {
+    query = "?" + query;
+  }
+
   try {
-    const response = await fetch(serverApi + "/users");
+    const response = await fetch(serverApi + "/users" + query);
     if (!response.ok) {
       throw new Error("Failed to fetch users");
     }
@@ -139,7 +66,35 @@ const updateUser = async (id, data) => {
     return false;
   }
 };
+// xóa 1 user
+const deleteUser = (id) => {
+  Swal.fire({
+    title: "Bạn chắc chắn không?",
+    text: "Nếu xóa thì không thể khôi phục lại!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Xóa!",
+    cancelButtonText: "Hủy",
+  }).then(async (result) => {
+    if (result.isConfirmed) {
+      // await sẽ theo hàm gần nhất với nó
+      const response = await fetch(`${serverApi}/users/${id}`, {
+        method: "DELETE",
+      });
 
+      if (response.ok) {
+        getUsers(); // Cập nhật lại danh sách người dùng
+        Swal.fire({
+          title: "Đã xóa!",
+          text: "Người dùng đã bị xóa.",
+          icon: "success",
+        });
+      }
+    }
+  });
+};
 // Hiển thị danh sách user ra giao diện
 const renderUser = (users) => {
   const tbody = document.querySelector(".table tbody");
@@ -148,8 +103,8 @@ const renderUser = (users) => {
       ({ id, name, email, status }, index) => `
       <tr>
         <td>${index + 1}</td>
-        <td>${name.replaceAll("<", "&lt;").replaceAll(">", "&gt;")}</td>
-        <td>${email.replaceAll("<", "&lt;").replaceAll(">", "&gt;")}</td>
+        <td>${name}</td>
+        <td>${email}</td>
         <td>
           <span class="badge bg-${
             status === "active" ? "success" : "warning"
@@ -217,6 +172,9 @@ const handleUpdateUser = () => {
         console.log("Đã có lỗi xảy ra, vui lòng thử lại sau");
       }
     }
+    if (action === "delete" && id) {
+      deleteUser(id);
+    }
   });
 };
 
@@ -244,7 +202,42 @@ const changeFormUpdate = (user) => {
   });
 };
 
-// Khởi chạy các hàm cần thiết khi trang được load
+const addEventFilterForm = () => {
+  const form = document.querySelector(".filter-form");
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const { status, keyword } = Object.fromEntries(new FormData(form));
+    const params = {};
+    if (status === "active" || status === "inactive") {
+      params.status = status;
+    }
+    if (keyword) {
+      params.q = keyword;
+    }
+    getUsers(params);
+  });
+};
+// sắp xếp
+const addEventSort = () => {
+  const sortItems = document.querySelectorAll(".sort-item");
+  sortItems.forEach((sortItem) => {
+    sortItem.addEventListener("click", (e) => {
+      const value = e.target.dataset.value;
+      const itemActive = document.querySelector(".sort-item.active");
+      if (itemActive) {
+        itemActive.classList.remove("active");
+      }
+      e.target.classList.add("active");
+      const params = {
+        _sort: "id",
+        _order: value === "latest" ? "desc" : "asc",
+      };
+      getUsers(params);
+    });
+  });
+};
 handleAddUser();
-getUsers();
+getUsers({ _sort: "id", _order: "desc" });
 handleUpdateUser();
+addEventFilterForm();
+addEventSort();
