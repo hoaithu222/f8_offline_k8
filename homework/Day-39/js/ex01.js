@@ -1,4 +1,9 @@
-import { calculateReadingTime, extractYouTubeIDs, getTime } from "./utils.js";
+import {
+  calculateReadingTime,
+  extractYouTubeIDs,
+  getTime,
+  toggleLoading,
+} from "./utils.js";
 
 var urlApi = "https://94grdx-8080.csb.app/blogs";
 var currentPage = 1;
@@ -6,6 +11,7 @@ var pageSize = 5;
 var isFetching = false;
 
 function getBlog(page, size) {
+  toggleLoading(true);
   isFetching = true;
   fetch(`${urlApi}?_page=${page}&_limit=${size}`)
     .then(function (response) {
@@ -15,10 +21,12 @@ function getBlog(page, size) {
       return response.json();
     })
     .then(function (result) {
+      toggleLoading(false);
       renderBlog(result);
       isFetching = false;
     })
     .catch(function (e) {
+      toggleLoading(false);
       console.error(e);
       isFetching = false;
     });

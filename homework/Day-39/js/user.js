@@ -1,4 +1,9 @@
-import { calculateReadingTime, extractYouTubeIDs, getTime } from "./utils.js";
+import {
+  calculateReadingTime,
+  extractYouTubeIDs,
+  getTime,
+  toggleLoading,
+} from "./utils.js";
 
 var urlApi = "https://94grdx-8080.csb.app/blogs";
 
@@ -7,6 +12,7 @@ var userId = searchParams.get("_id");
 console.log(userId);
 
 function getUserBlogs(userId) {
+  toggleLoading(true);
   fetch(`${urlApi}?_id=${userId}`)
     .then(function (response) {
       if (!response.ok) {
@@ -15,9 +21,11 @@ function getUserBlogs(userId) {
       return response.json();
     })
     .then(function (blogs) {
+      toggleLoading(false);
       renderUserBlogs(blogs);
     })
     .catch(function (e) {
+      toggleLoading(false);
       console.error(e);
     });
 }

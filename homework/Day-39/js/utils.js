@@ -51,5 +51,13 @@ function getTime(times) {
     minutes: minutes,
   };
 }
+const toggleLoading = (show) => {
+  const loading = document.querySelector(".loading");
+  if (show) {
+    loading.classList.add("active");
+  } else {
+    loading.classList.remove("active");
+  }
+};
 
-export { getTime, extractYouTubeIDs, calculateReadingTime };
+export { getTime, extractYouTubeIDs, calculateReadingTime, toggleLoading };
