@@ -1,6 +1,6 @@
 import { calculateReadingTime, extractYouTubeIDs, getTime } from "./utils.js";
 
-var urlApi = "http://localhost:3000/blogs";
+var urlApi = "https://94grdx-8080.csb.app/blogs";
 var currentPage = 1;
 var pageSize = 5;
 var isFetching = false;
@@ -63,10 +63,10 @@ function renderBlog(blogs) {
                               blog.content
                             }${iframes}</div>
                             <div class="inner-link">
-                                <a href="/homework/Day-39/blog/blog.html?_id=${
+                                <a href="https://hoaithu222.github.io/f8_offline_k8/homework/Day-39/blog/blog.html?_id=${
                                   blog._id
                                 }" class="view-more">#view-more ${blog.title}</a>
-                                <a href="/homework/Day-39/blog/user.html?userId=${
+                                <a href="https://hoaithu222.github.io/f8_offline_k8/homework/Day-39/blog/user.html?userId=${
                                   blog.userId._id
                                 }" class="view-user">#${blog.userId.name}</a>
                             </div>

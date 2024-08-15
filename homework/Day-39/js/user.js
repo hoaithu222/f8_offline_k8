@@ -1,6 +1,6 @@
 import { calculateReadingTime, extractYouTubeIDs, getTime } from "./utils.js";
 
-var urlApi = "http://localhost:3000/blogs";
+var urlApi = "https://94grdx-8080.csb.app/blogs";
 
 var searchParams = new URLSearchParams(window.location.search);
 var userId = searchParams.get("_id");
@@ -73,7 +73,8 @@ function renderUserBlogs(blogs) {
 }
 
 document.getElementById("home-button").addEventListener("click", function () {
-  window.location.href = "/homework/Day-39/ex01.html";
+  window.location.href =
+    "https://hoaithu222.github.io/f8_offline_k8/homework/Day-39/ex01.html";
 });
 
 getUserBlogs(userId);
