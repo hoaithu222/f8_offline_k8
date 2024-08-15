@@ -38,6 +38,8 @@ a {
 
 }
 
+
+
 .inner-head .btn-login {
     border: 1px solid #000;
     padding: 20px 40px;
@@ -60,6 +62,10 @@ a {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+}
+
+.inner-wrap .inner-box .inner-logo i {
+    font-size: 40px;
 }
 
 .inner-wrap .inner-box .inner-logo span {

@@ -59,7 +59,7 @@ function handleBlog(blogs) {
       }
       return `<div class="inner-box">
                     <div class="inner-logo">
-                        <img src="../image/OIP.jpg" alt="" width="40px" />
+                       <i class="fa-solid fa-user" style="color: #e0a2ec;"></i>
                         <span class="name">${blog.userId.name}</span>
                     </div>
                     <div class="inner-content">
