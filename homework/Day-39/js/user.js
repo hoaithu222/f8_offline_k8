@@ -1,60 +1,53 @@
 import { calculateReadingTime, extractYouTubeIDs, getTime } from "./utils.js";
 
 var urlApi = "http://localhost:3000/blogs";
-var currentPage = 1;
-var pageSize = 5;
-var isFetching = false;
 
-function getBlog(page, size) {
-  isFetching = true;
-  fetch(`${urlApi}?_page=${page}&_limit=${size}`)
+var searchParams = new URLSearchParams(window.location.search);
+var userId = searchParams.get("_id");
+console.log(userId);
+
+function getUserBlogs(userId) {
+  fetch(`${urlApi}?_id=${userId}`)
     .then(function (response) {
       if (!response.ok) {
         throw new Error("Lỗi không lấy được dữ liệu");
       }
       return response.json();
     })
-    .then(function (result) {
-      renderBlog(result);
-      isFetching = false;
+    .then(function (blogs) {
+      renderUserBlogs(blogs);
     })
     .catch(function (e) {
       console.error(e);
-      isFetching = false;
     });
 }
 
-window.addEventListener("scroll", function () {
-  if (
-    window.innerHeight + window.scrollY >= document.body.offsetHeight &&
-    !isFetching
-  ) {
-    currentPage++;
-    getBlog(currentPage, pageSize);
-  }
-});
-
-function renderBlog(blogs) {
-  const contain = document.querySelector(".inner-wrap");
+function renderUserBlogs(blogs) {
+  console.log(blogs);
+  const innerWrap = document.querySelector(".inner-wrap");
   const content = blogs
     .map(function (blog) {
       const { days, hour, minutes } = getTime(blog.timeUp);
+
       let iframes = "";
       const videoIDs = extractYouTubeIDs(blog.content);
+
       if (videoIDs.length > 0) {
         iframes = videoIDs
           .map(function (id) {
             return `<iframe width="560" height="315" src="https://www.youtube.com/embed/${id}" frameborder="0" allowfullscreen></iframe>`;
           })
           .join("");
+
         blog.content = blog.content.replace(
           /https?:\/\/(www\.)?youtu\.be\/\S+|https?:\/\/(www\.)?youtube\.com\/watch\?v=\S+/g,
           ""
         );
       }
+
       return `<div class="inner-box">
                         <div class="inner-logo">
-                            <img src="image/OIP.jpg" alt="" width="40px" />
+                            <img src="../image/OIP.jpg" alt="" width="40px" />
                             <span class="name">${blog.userId.name}</span>
                         </div>
                         <div class="inner-content">
@@ -62,14 +55,6 @@ function renderBlog(blogs) {
                             <div class="inner-desc">${
                               blog.content
                             }${iframes}</div>
-                            <div class="inner-link">
-                                <a href="/homework/Day-39/blog/blog.html?_id=${
-                                  blog._id
-                                }" class="view-more">#view-more ${blog.title}</a>
-                                <a href="/homework/Day-39/blog/user.html?userId=${
-                                  blog.userId._id
-                                }" class="view-user">#${blog.userId.name}</a>
-                            </div>
                             <div class="inner-time">
                                 <div class="day">
                                     <span class="day">${days} ngày trước</span>
@@ -84,7 +69,11 @@ function renderBlog(blogs) {
                     </div>`;
     })
     .join("");
-  contain.innerHTML += content;
+  innerWrap.innerHTML += content;
 }
 
-getBlog(currentPage, pageSize);
+document.getElementById("home-button").addEventListener("click", function () {
+  window.location.href = "/homework/Day-39/ex01.html";
+});
+
+getUserBlogs(userId);

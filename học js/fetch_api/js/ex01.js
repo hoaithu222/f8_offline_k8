@@ -36,57 +36,30 @@ POST,PUT,PATCH
 
 */
 
-// const url = `http://localhost:3000/users`;
-
-// const result = fetch(url, {
-//   method: "GET",
-//   headers: {
-//     "x-api-key": "hello",
-//   },
-// });
-
-// result
-//   .then((response) => {
-//     return response.json("");
-//   })
-//   .then((users) => {
-//     console.log(users);
-//   });
-
-// const serverApi = "http://localhost:3000";
-
-// const getUser = async () => {
-//   try {
-//     const response = await fetch(serverApi + "/users");
-//     if (!response.ok) {
-//       throw new Error("Fetch to failed");
-//     }
-//     const users = await response.json();
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-// const render = (users) => {
-//   const tbody = document.querySelector(".table tbody");
-//   users.map((users) =>{
-//     return
-//   })
-
-// };
-
-// getUser();
-
 const serverApi = "http://localhost:3000";
+const cancelBtn = document.createElement("button");
+cancelBtn.className = "btn btn-danger";
+cancelBtn.innerText = "Hủy";
 
 // Lấy danh sách các user
-const getUsers = async () => {
+const getUsers = async (query = {}) => {
   try {
-    const response = await fetch(serverApi + "/users");
+    let queryString = new URLSearchParams(query).toString();
+    if (queryString) {
+      queryString = "?" + queryString;
+    }
+    console.log(queryString);
+    const response = await fetch(`${serverApi}/users${queryString}`);
     if (!response.ok) {
       throw new Error("Failed to fetch users");
     }
     const users = await response.json();
     renderUser(users);
+    // tính tổng số trang =
+    const totalPages = Math.ceil(
+      response.headers.get("x-total-count") / query._limit
+    );
+    renderPagination(totalPages);
   } catch (e) {
     console.log(e.message);
   }
@@ -139,7 +112,21 @@ const updateUser = async (id, data) => {
     return false;
   }
 };
-
+// xóa 1 user
+const deleteUser = async (id) => {
+  try {
+    const response = await fetch(`${serverApi}/users/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return response.ok;
+  } catch (e) {
+    console.log(e.message);
+    return false;
+  }
+};
 // Hiển thị danh sách user ra giao diện
 const renderUser = (users) => {
   const tbody = document.querySelector(".table tbody");
@@ -161,7 +148,35 @@ const renderUser = (users) => {
     )
     .join("")}`;
 };
-
+const renderPagination = (totalPages) => {
+  console.log(totalPages);
+  const paginationView = document.querySelector(".pagination-view");
+  console.log(paginationView);
+  paginationView.innerHTML = `<ul class="pagination d-flex justify-content-end">
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous" data-type = "prev">
+        
+      </a>
+    </li>
+    ${Array.from(Array(totalPages).keys())
+      .map((_, index) => {
+        console.log(1);
+        const page = index + 1;
+        return ` <li class="page-item" ${page === query._page ? "active" : ""}>
+        <a class="page-link" href="#">
+        ${page}
+        </a>
+      </li>`;
+      })
+      .join("")}
+    
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>`;
+};
 // Xử lý sự kiện thêm hoặc cập nhật user
 const handleAddUser = async () => {
   const form = document.querySelector(".update-form");
@@ -201,6 +216,7 @@ const switchFormAdd = () => {
   const h3 = form.querySelector("h3");
   h3.innerText = "Thêm người dùng";
   delete form.dataset.id;
+  cancelBtn.remove();
 };
 
 // Xử lý sự kiện khi nhấn nút sửa user
@@ -217,9 +233,33 @@ const handleUpdateUser = () => {
         console.log("Đã có lỗi xảy ra, vui lòng thử lại sau");
       }
     }
+    // if (action === "delete" && id) {
+    //   const isConfirm = confirm("Bạn có muốn xóa không ?");
+    //   if (isConfirm) {
+    //     const status = await deleteUser(id);
+    //     if (status) {
+    //       console.log("Đã xóa thành công");
+    //       getUsers();
+    //     }
+    //   }
+    // }
   });
 };
 
+const handleDeleteUser = () => {
+  const tbody = document.querySelector("tbody");
+  tbody.addEventListener("click", async ({ target }) => {
+    const { action, id } = target.dataset;
+    if (action === "delete" && confirm("Bạn chắc chắn muốn xóa!")) {
+      const status = await deleteUser(id);
+      if (!status) {
+        console.log("đã có lỗi xảy ra");
+        return;
+      }
+      getUsers();
+    }
+  });
+};
 // Thay đổi form thành chế độ cập nhật user
 const changeFormUpdate = (user) => {
   const form = document.querySelector(".update-form");
@@ -229,22 +269,77 @@ const changeFormUpdate = (user) => {
   form.elements.name.value = user.name;
   form.elements.email.value = user.email;
   form.elements.status.value = user.status;
+  form.append(cancelBtn);
+};
 
-  const closeBtn = document.createElement("button");
-  closeBtn.classList.add("btn", "btn-danger");
-  closeBtn.innerText = "Hủy";
-
-  if (!form.lastElementChild.classList.contains("btn-danger")) {
-    form.append(closeBtn);
-  }
-
-  closeBtn.addEventListener("click", () => {
+const cancelUpdateForm = () => {
+  cancelBtn.addEventListener("click", () => {
     switchFormAdd();
-    closeBtn.remove();
   });
 };
 
-// Khởi chạy các hàm cần thiết khi trang được load
+const debounce = (callback, timeout = 500) => {
+  let timeoutId = null;
+  return (...args) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      callback(...args);
+    }, timeout);
+  };
+};
+
+const handleSearch = () => {
+  const keywordEl = document.querySelector(".keyword");
+  keywordEl.addEventListener(
+    "input",
+    debounce((e) => {
+      const keyword = e.target.value;
+      query.q = keyword;
+      getUsers(query);
+    })
+  );
+};
+
+const handleSort = () => {
+  const btnSortEl = document.querySelector(".btn-sort");
+  const allowed = ["latest", "oldest"];
+  btnSortEl.addEventListener("click", (e) => {
+    const sortValue = e.target.dataset.sort;
+    if (allowed.includes(sortValue)) {
+      // xử lấy Api
+      query._order = sortValue === "latest" ? "desc" : "asc";
+      getUsers(query);
+      // xử lý giao diện
+      const btnActive = btnSortEl.querySelector(".active");
+      if (btnActive) {
+        btnActive.classList.remove("active");
+      }
+      e.target.classList.add("active");
+    }
+  });
+};
+const handlePagination = () => {
+  const paginationViewEl = document.querySelector(".pagination-view");
+  paginationViewEl.addEventListener("click", (e) => {
+    e.preventDefault();
+    const page = e.target.dataset.page;
+    if (page) {
+      query._page = +page;
+      getUsers(query);
+    }
+  });
+};
+const query = {
+  _sort: "id",
+  _order: "desc",
+  _limit: 3,
+  _page: 1,
+};
+
+getUsers(query);
 handleAddUser();
-getUsers();
 handleUpdateUser();
+handleDeleteUser();
+handleSearch();
+handleSort();
+handlePagination();
