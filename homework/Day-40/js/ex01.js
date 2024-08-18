@@ -17,6 +17,7 @@ const getQuestions = async () => {
   try {
     const response = await fetch(apiUrl);
     const result = await response.json();
+
     handleQuestion(result);
   } catch (error) {
     console.error(error);
@@ -142,6 +143,7 @@ function countdown(seconds, callback) {
   tick();
 }
 
+const btnRestart = document.querySelector(".btn-restart");
 btnStart.addEventListener("click", () => {
   btnStart.style.display = "none";
   countdownTime.classList.add("active");
@@ -154,16 +156,24 @@ btnStart.addEventListener("click", () => {
     getQuestions();
   });
 });
-
 btnRestart.addEventListener("click", () => {
   currentQuestionIndex = 0;
   correctAnswers = 0;
   score = 0;
   streak = 0;
   lastStreak = 0;
+  document.querySelector(".final-score").innerText = "";
+  document.querySelector(".streak-number").innerText = "";
+  document.querySelector(".correct-number").innerText = "";
+  document.querySelector(".incorrect-number").innerText = "";
   resultBoard.style.display = "none";
   boxEl.style.display = "flex";
   btnStart.style.display = "block";
   innerWrap.style.display = "none";
   innerHead.style.display = "none";
+  innerTime.style.width = "100%";
+  const infoText = document.querySelector(".info-text");
+  if (infoText) {
+    infoText.innerText = "";
+  }
 });
