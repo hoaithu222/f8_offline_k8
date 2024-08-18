@@ -1,4 +1,4 @@
-const apiUrl = "http://localhost:3000/questions";
+const apiUrl = "https://mqkl2g-8080.csb.app/questions";
 const btnStart = document.querySelector(".btn-start");
 const countdownTime = document.querySelector(".countdown-time");
 const boxEl = document.querySelector(".inner-box");
