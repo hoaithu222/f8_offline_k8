@@ -4,11 +4,14 @@ const countdownTime = document.querySelector(".countdown-time");
 const boxEl = document.querySelector(".inner-box");
 const innerHead = document.querySelector(".inner-head");
 const innerWrap = document.querySelector(".inner-wrap");
+const resultBoard = document.querySelector(".result-board");
 let innerTime;
 let intervalId;
 let currentQuestionIndex = 0;
 let correctAnswers = 0;
 let score = 0;
+let streak = 0;
+let lastStreak = 0;
 
 const getQuestions = async () => {
   try {
@@ -33,36 +36,65 @@ const handleQuestion = (questions) => {
     });
 
     questionName.innerText = question.questionText;
+
     innerItems.forEach((item, index) => {
       item.innerText = question.answerOptions[index].answerText;
       item.onclick = () =>
         checkAnswer(item, question.answerOptions[index].isCorrect, questions);
     });
 
+    document.querySelector(".current-question").innerText =
+      currentQuestionIndex + 1;
+
     infoText.innerText = question.isMultiple
       ? "Bạn cần chọn nhiều đáp án."
       : "";
 
-    updateInnerTime(8000);
+    updateInnerTime(8000, questions);
   } else {
-    innerWrap.innerHTML = `<p>Bạn đã hoàn thành tất cả câu hỏi!</p>`;
+    innerWrap.style.display = "none";
+    innerHead.style.display = "none";
+    resultBoard.style.display = "flex";
+    document.querySelector(".final-score").innerText = score;
+    document.querySelector(".streak-number").innerText = lastStreak;
+    document.querySelector(".correct-number").innerText = correctAnswers;
+    document.querySelector(".incorrect-number").innerText = 8 - correctAnswers;
   }
 };
 
 const checkAnswer = (item, isCorrect, questions) => {
+  const innerItems = document.querySelectorAll(".answer .inner-item");
+
   if (isCorrect) {
     item.classList.add("correct");
+
     correctAnswers++;
     score += 600;
+
+    streak = lastStreak + 1;
+    lastStreak = streak;
   } else {
     item.classList.add("wrong");
+
+    innerItems.forEach((innerItem, index) => {
+      if (questions[currentQuestionIndex].answerOptions[index].isCorrect) {
+        innerItem.classList.add("correct");
+      }
+    });
+
+    lastStreak = 0;
+    streak = 0;
   }
 
-  document.querySelector(".current-question").innerText = correctAnswers;
+  const streakElements = document.querySelectorAll(".streak span");
+  streakElements.forEach((span, index) => {
+    span.style.backgroundColor = index < streak ? "green" : "transparent";
+  });
+
   document.querySelector(".number").innerText = score;
 
-  document.querySelectorAll(".answer .inner-item").forEach((item) => {
-    item.onclick = null;
+  innerItems.forEach((innerItem) => {
+    innerItem.onclick = null;
   });
 
   setTimeout(() => {
@@ -71,7 +103,7 @@ const checkAnswer = (item, isCorrect, questions) => {
   }, 1000);
 };
 
-const updateInnerTime = (duration) => {
+const updateInnerTime = (duration, questions) => {
   if (intervalId) clearInterval(intervalId);
 
   let elapsed = 0;
@@ -87,6 +119,8 @@ const updateInnerTime = (duration) => {
     if (elapsed >= duration) {
       clearInterval(intervalId);
       innerTime.style.width = "0%";
+      currentQuestionIndex++;
+      handleQuestion(questions);
     }
   }, interval);
 };
@@ -99,37 +133,37 @@ function countdown(seconds, callback) {
       setTimeout(tick, 1000);
     } else {
       countdownTime.innerText = "GO!";
-      if (callback) {
-        setTimeout(() => {
-          callback();
-          getQuestions();
-        }, 1000);
-      }
+      setTimeout(() => {
+        countdownTime.classList.remove("active");
+        callback();
+      }, 1000);
     }
   }
   tick();
 }
 
-function nextFunction() {
-  innerHead.innerHTML = `
-    <div class="inner-time"></div>
-    <div class="inner-item">
-      <div class="counter">
-        <div class="current-question">0</div>
-        <div>/</div>
-        <div class="total-question">8</div>
-      </div>
-      <div>Chuỗi</div>
-      <p class="score">Score:<span class="number">0</span></p>
-    </div>`;
-  innerTime = document.querySelector(".inner-time");
-
-  innerWrap.classList.add("active");
-  boxEl.style.display = "none";
-}
-
 btnStart.addEventListener("click", () => {
   btnStart.style.display = "none";
   countdownTime.classList.add("active");
-  countdown(3, nextFunction);
+
+  countdown(3, () => {
+    boxEl.style.display = "none";
+    innerWrap.style.display = "flex";
+    innerHead.style.display = "block";
+    innerTime = document.querySelector(".inner-time");
+    getQuestions();
+  });
+});
+
+btnRestart.addEventListener("click", () => {
+  currentQuestionIndex = 0;
+  correctAnswers = 0;
+  score = 0;
+  streak = 0;
+  lastStreak = 0;
+  resultBoard.style.display = "none";
+  boxEl.style.display = "flex";
+  btnStart.style.display = "block";
+  innerWrap.style.display = "none";
+  innerHead.style.display = "none";
 });

@@ -4,33 +4,30 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Quiz Game</title>
     <link rel="stylesheet" href="css/ex01.css">
 </head>
 
 <body>
     <div class="container">
-        <div class="inner-head">
-            <!-- <div class="inner-time"></div>
+        <div class="inner-head" style="display: none;">
+            <div class="inner-time"></div>
             <div class="inner-item">
                 <div class="counter">
-                    <div class="current-question">0</div>
+                    <div class="current-question">1</div>
                     <div>/</div>
                     <div class="total-question">8</div>
                 </div>
-                <div>Chuỗi</div>
-                <p class="score">Score:<span class="number"></span></p>
-            </div> -->
-        </div>
-        <div class="inner-wrap">
-            <div class="question-name">
-
+                <div class="streak"><span></span><span></span><span></span></div>
+                <p class="score">Score:<span class="number">0</span></p>
             </div>
+        </div>
+        <div class="inner-wrap" style="display: none;">
+            <div class="question-name"></div>
             <div class="info-text"></div>
-
             <div class="answer">
-                <div class="inner-item "></div>
-                <div class="inner-item "></div>
+                <div class="inner-item"></div>
+                <div class="inner-item"></div>
                 <div class="inner-item"></div>
                 <div class="inner-item"></div>
             </div>
@@ -38,6 +35,18 @@
         <div class="inner-box">
             <button class="btn-start">Start</button>
             <div class="countdown-time"></div>
+        </div>
+        <div class="result-board" style="display: none;">
+            <div class="inner-result">
+                <h2>Quiz Completed!</h2>
+                <div class="info-result">
+                    <p>Score: <span class="final-score">0</span></p>
+                    <p>Streak: <span class="streak-number"></span></p>
+                    <p>Correct: <span class="correct-number"></span></p>
+                    <p>Incorrect: <span class="incorrect-number"></span></p>
+                </div>
+                <button class="btn-restart">Play Again</button>
+            </div>
         </div>
     </div>
     <script src="js/ex01.js" type="module"></script>

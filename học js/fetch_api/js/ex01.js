@@ -34,55 +34,51 @@ POST,PUT,PATCH
 + multipart/form-data (Text,File)
 +multipart/form-data
 
+
+
 */
 
 const serverApi = "http://localhost:3000";
 const cancelBtn = document.createElement("button");
-cancelBtn.className = "btn btn-danger";
-cancelBtn.innerText = "Hủy";
-
-// Lấy danh sách các user
+cancelBtn.className = `btn btn-danger`;
+cancelBtn.innerText = `Hủy`;
+cancelBtn.type = "button";
 const getUsers = async (query = {}) => {
   try {
     let queryString = new URLSearchParams(query).toString();
     if (queryString) {
       queryString = "?" + queryString;
     }
-    console.log(queryString);
     const response = await fetch(`${serverApi}/users${queryString}`);
     if (!response.ok) {
-      throw new Error("Failed to fetch users");
+      throw new Error("Fetch to failed");
     }
     const users = await response.json();
-    renderUser(users);
-    // tính tổng số trang =
+    render(users);
+    //Tính số trang = Math.ceil(Tổng số bản ghi / Số bản ghi của 1 trang)
     const totalPages = Math.ceil(
       response.headers.get("x-total-count") / query._limit
     );
     renderPagination(totalPages);
   } catch (e) {
-    console.log(e.message);
+    console.log(e);
   }
 };
-
-// Lấy một user theo ID
 const getUser = async (id) => {
   try {
     const response = await fetch(`${serverApi}/users/${id}`);
     if (!response.ok) {
-      throw new Error("Failed to fetch user");
+      throw new Error("Fetch to failed");
     }
     return response.json();
-  } catch (e) {
-    console.log(e.message);
+  } catch {
     return false;
   }
 };
-
-// Thêm một user mới
+// getUser(1);
 const addUser = async (data) => {
   try {
-    const response = await fetch(serverApi + "/users", {
+    const response = await fetch(`${serverApi}/users`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -90,13 +86,10 @@ const addUser = async (data) => {
       body: JSON.stringify(data),
     });
     return response.ok;
-  } catch (e) {
-    console.log(e.message);
+  } catch {
     return false;
   }
 };
-
-// Cập nhật thông tin user
 const updateUser = async (id, data) => {
   try {
     const response = await fetch(`${serverApi}/users/${id}`, {
@@ -107,177 +100,158 @@ const updateUser = async (id, data) => {
       body: JSON.stringify(data),
     });
     return response.ok;
-  } catch (e) {
-    console.log(e.message);
+  } catch {
     return false;
   }
 };
-// xóa 1 user
 const deleteUser = async (id) => {
   try {
     const response = await fetch(`${serverApi}/users/${id}`, {
       method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
     });
     return response.ok;
-  } catch (e) {
-    console.log(e.message);
+  } catch {
     return false;
   }
 };
-// Hiển thị danh sách user ra giao diện
-const renderUser = (users) => {
-  const tbody = document.querySelector(".table tbody");
+const render = (users) => {
+  const tbody = document.querySelector("table tbody");
   tbody.innerHTML = `${users
-    .map(
-      ({ id, name, email, status }, index) => `
-      <tr>
-        <td>${index + 1}</td>
-        <td>${name.replaceAll("<", "&lt;").replaceAll(">", "&gt;")}</td>
-        <td>${email.replaceAll("<", "&lt;").replaceAll(">", "&gt;")}</td>
-        <td>
-          <span class="badge bg-${
-            status === "active" ? "success" : "warning"
-          }">${status === "active" ? "Kích hoạt" : "Chưa kích hoạt"}</span>
-        </td>
-        <td><button class="btn btn-warning" data-id="${id}" data-action="update">Sửa</button></td>
-        <td><button class="btn btn-danger" data-id="${id}" data-action="delete">Xóa</button></td>
-      </tr>`
-    )
+    .map(({ id, name, email, status }, index) => {
+      return `<tr>
+            <td>${index + 1}</td>
+            <td>${name.replaceAll("<", "&lt;").replaceAll(">", "&gt;")}</td>
+            <td>${email.replaceAll("<", "&lt;").replaceAll(">", "&gt;")}</td>
+            <td><span class="badge bg-${
+              status === "active" ? "success" : "warning"
+            }">${
+        status === "active" ? "Kích hoạt" : "Chưa kích hoạt"
+      }</span></td>
+            <td>
+              <button class="btn btn-warning btn-sm" data-id="${id}" data-action="update">Sửa</button>
+            </td>
+            <td>
+              <button class="btn btn-danger btn-sm" data-id="${id}" data-action="delete">Xóa</button>
+            </td>
+          </tr>`;
+    })
     .join("")}`;
 };
 const renderPagination = (totalPages) => {
-  console.log(totalPages);
-  const paginationView = document.querySelector(".pagination-view");
-  console.log(paginationView);
-  paginationView.innerHTML = `<ul class="pagination d-flex justify-content-end">
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous" data-type = "prev">
-        
-      </a>
-    </li>
-    ${Array.from(Array(totalPages).keys())
-      .map((_, index) => {
-        console.log(1);
-        const page = index + 1;
-        return ` <li class="page-item" ${page === query._page ? "active" : ""}>
-        <a class="page-link" href="#">
-        ${page}
-        </a>
-      </li>`;
-      })
-      .join("")}
-    
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>`;
+  const paginationViewEl = document.querySelector(".pagination-view");
+  paginationViewEl.innerHTML = `<ul class="pagination d-flex justify-content-end">
+          ${
+            query._page > 1
+              ? `<li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous" data-type="prev">
+              &laquo;
+            </a>
+          </li>`
+              : ""
+          }
+          ${Array.from(Array(totalPages).keys())
+            .map((_, index) => {
+              const page = index + 1;
+              return `<li class="page-item ${
+                page === query._page ? "active" : ""
+              }"><a class="page-link" href="#" data-page="${page}">${page}</a></li>`;
+            })
+            .join("")}
+          ${
+            query._page < totalPages
+              ? `<li class="page-item">
+            <a class="page-link" href="#" aria-label="Next" data-type="next">
+              &raquo;
+            </a>
+          </li>`
+              : ""
+          }
+        </ul>`;
 };
-// Xử lý sự kiện thêm hoặc cập nhật user
-const handleAddUser = async () => {
+const handleAddUser = () => {
   const form = document.querySelector(".update-form");
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const formData = Object.fromEntries(new FormData(form));
     const id = form.dataset.id;
-
     if (!id) {
-      // Thêm mới người dùng
       const status = await addUser(formData);
       if (status) {
-        console.log("Thêm thành công");
-        getUsers();
+        //Thêm thành công
+        query._page = 1; // chuyển về trang 1
+        query._order = "desc";
+        // chuyển thành sắp xếp mới nhất
+        getUsers(query);
         form.reset();
-      } else {
-        console.log("Thêm thất bại");
       }
     } else {
-      // Cập nhật người dùng
       const status = await updateUser(id, formData);
       if (status) {
-        console.log("Cập nhật thành công");
-        getUsers(); // Làm mới danh sách người dùng
-        switchFormAdd(); // Reset form về trạng thái thêm mới
-      } else {
-        console.log("Cập nhật thất bại");
+        getUsers(query);
+        switchFormAdd();
       }
     }
   });
 };
-
-// reset form
 const switchFormAdd = () => {
   const form = document.querySelector(".update-form");
   form.reset();
   const h3 = form.querySelector("h3");
-  h3.innerText = "Thêm người dùng";
+  h3.innerText = `Thêm người dùng`;
   delete form.dataset.id;
   cancelBtn.remove();
 };
-
-// Xử lý sự kiện khi nhấn nút sửa user
 const handleUpdateUser = () => {
-  const tbody = document.querySelector(".table tbody");
-  tbody.addEventListener("click", async (e) => {
-    const action = e.target.dataset.action;
-    const id = e.target.dataset.id;
-    if (action === "update" && id) {
-      const user = await getUser(id);
-      if (user) {
-        changeFormUpdate(user);
-      } else {
-        console.log("Đã có lỗi xảy ra, vui lòng thử lại sau");
-      }
-    }
-    // if (action === "delete" && id) {
-    //   const isConfirm = confirm("Bạn có muốn xóa không ?");
-    //   if (isConfirm) {
-    //     const status = await deleteUser(id);
-    //     if (status) {
-    //       console.log("Đã xóa thành công");
-    //       getUsers();
-    //     }
-    //   }
-    // }
-  });
-};
-
-const handleDeleteUser = () => {
-  const tbody = document.querySelector("tbody");
+  const tbody = document.querySelector("table tbody");
   tbody.addEventListener("click", async ({ target }) => {
     const { action, id } = target.dataset;
-    if (action === "delete" && confirm("Bạn chắc chắn muốn xóa!")) {
-      const status = await deleteUser(id);
-      if (!status) {
-        console.log("đã có lỗi xảy ra");
+    if (action === "update") {
+      const user = await getUser(id);
+      if (!user) {
+        alert("Đã có lỗi xảy ra. Vui lòng thử lại sau");
         return;
       }
-      getUsers();
+      changeFormUpdate(user);
     }
   });
 };
-// Thay đổi form thành chế độ cập nhật user
 const changeFormUpdate = (user) => {
   const form = document.querySelector(".update-form");
   form.dataset.id = user.id;
   const h3 = form.querySelector("h3");
-  h3.innerText = "Cập nhật người dùng";
+  h3.innerText = `Cập nhật người dùng`;
   form.elements.name.value = user.name;
   form.elements.email.value = user.email;
   form.elements.status.value = user.status;
   form.append(cancelBtn);
 };
-
 const cancelUpdateForm = () => {
   cancelBtn.addEventListener("click", () => {
     switchFormAdd();
   });
 };
+const handleDeleteUser = () => {
+  const tbody = document.querySelector("tbody");
+  tbody.addEventListener("click", async ({ target }) => {
+    const { action, id } = target.dataset;
+    if (action === "delete" && confirm("Chắc chưa?")) {
+      //Call API
+      const status = await deleteUser(id);
+      if (!status) {
+        alert("Đã có lỗi xảy ra");
+        return;
+      }
+      const totalUser = document.querySelector("tbody tr").length - 1;
+      getUsers(query);
+      if (totalUser === 0 && query._page > 1) {
+        query._page--;
+        getUsers(query);
+      }
 
+      getUsers(query);
+    }
+  });
+};
 const debounce = (callback, timeout = 500) => {
   let timeoutId = null;
   return (...args) => {
@@ -287,7 +261,6 @@ const debounce = (callback, timeout = 500) => {
     }, timeout);
   };
 };
-
 const handleSearch = () => {
   const keywordEl = document.querySelector(".keyword");
   keywordEl.addEventListener(
@@ -300,31 +273,48 @@ const handleSearch = () => {
   );
 };
 
+const renderSort = () => {
+  const btnSortEl = document.querySelector(".btn-sort");
+  btnSortEl.innerHTML = `<button class="btn btn-primary btn-new btn-sm active " data-sort="latest">Mới nhất</button>
+                    <button class="btn btn-primary btn-old btn-sm " data-sort="oldest">Cũ nhất</button>`;
+};
 const handleSort = () => {
   const btnSortEl = document.querySelector(".btn-sort");
   const allowed = ["latest", "oldest"];
   btnSortEl.addEventListener("click", (e) => {
     const sortValue = e.target.dataset.sort;
     if (allowed.includes(sortValue)) {
-      // xử lấy Api
+      //Xử lý gọi API
       query._order = sortValue === "latest" ? "desc" : "asc";
       getUsers(query);
-      // xử lý giao diện
-      const btnActive = btnSortEl.querySelector(".active");
-      if (btnActive) {
-        btnActive.classList.remove("active");
-      }
-      e.target.classList.add("active");
+      //Xử lý giao diện
+      // const btnActive = btnSortEl.querySelector(".active");
+      // if (btnActive) {
+      //   btnActive.classList.remove("active");
+      // }
+      // e.target.classList.add("active");
+      renderSort();
     }
   });
 };
-const handlePagination = () => {
+const handleNavigatePagination = () => {
   const paginationViewEl = document.querySelector(".pagination-view");
   paginationViewEl.addEventListener("click", (e) => {
     e.preventDefault();
     const page = e.target.dataset.page;
+    const type = e.target.dataset.type;
     if (page) {
       query._page = +page;
+      getUsers(query);
+    }
+
+    if (type === "prev") {
+      query._page--;
+      getUsers(query);
+    }
+
+    if (type === "next") {
+      query._page++;
       getUsers(query);
     }
   });
@@ -335,11 +325,24 @@ const query = {
   _limit: 3,
   _page: 1,
 };
-
 getUsers(query);
 handleAddUser();
 handleUpdateUser();
+cancelUpdateForm();
 handleDeleteUser();
 handleSearch();
 handleSort();
-handlePagination();
+handleNavigatePagination();
+renderSort();
+
+// bình thường các api sẽ ở trạng thái public
+
+// tuy nhiên muốn bảo vệ api sẽ cần phải thông qua các hình thức xác thực
+/*
+API KEY 
+- Basic Auth
+- Bearer --> phụ thuộc người dùng đăng nhập 
+- OAuth 2.0
+-
+
+*/
