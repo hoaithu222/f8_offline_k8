@@ -1,5 +1,5 @@
 // Địa chỉ API của máy chủ
-const serverApi = `http://localhost:3001`;
+const serverApi = `http://localhost:3000`;
 
 // Hàm để thay thế các ký tự đặc biệt HTML để tránh lỗi hiển thị
 const escapeHtml = (str) => {

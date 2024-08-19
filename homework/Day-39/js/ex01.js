@@ -5,7 +5,7 @@ import {
   toggleLoading,
 } from "./utils.js";
 
-var urlApi = "https://94grdx-8080.csb.app/blogs";
+var urlApi = "http://localhost:3000/blogs";
 var currentPage = 1;
 var pageSize = 5;
 var isFetching = false;

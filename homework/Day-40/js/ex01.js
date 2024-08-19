@@ -12,18 +12,23 @@ let correctAnswers = 0;
 let score = 0;
 let streak = 0;
 let lastStreak = 0;
+const loadingEl = document.querySelector(".loading");
 
 const getQuestions = async () => {
   try {
+    loadingEl.style.display = "flex";
     const response = await fetch(apiUrl);
     const result = await response.json();
+
+    loadingEl.style.display = "none";
 
     handleQuestion(result);
   } catch (error) {
     console.error(error);
+    // Ẩn loading nếu có lỗi xảy ra
+    loadingEl.style.display = "none";
   }
 };
-
 const handleQuestion = (questions) => {
   if (currentQuestionIndex < questions.length) {
     const question = questions[currentQuestionIndex];
