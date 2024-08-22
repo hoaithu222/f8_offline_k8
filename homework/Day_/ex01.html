@@ -5,12 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blogs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Sono:wght@200..800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/form.css">
     <link rel="stylesheet" href="css/home.css">
 </head>
 
@@ -28,13 +32,33 @@
         </div>
     </div>
     <div class="create-blog">
-
+        <!-- <div class="container">
+            <div class="box-form form">
+                <form class="form-create">
+                    <div class="input">
+                        <label for="title">Enter Your title</label>
+                        <input type="text" name="title" id="title" placeholder="Please enter your title">
+                    </div>
+                    <div class="textarea">
+                        <label for="content">Enter Your content</label>
+                        <textarea placeholder="Enter content here"></textarea>
+                    </div>
+                    <div class="submit ">
+                        <button type="submit" class="btn-save button-two">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div> -->
     </div>
     <div class="inner-blogs">
         <div class="container">
             <div class="inner-wrap">
             </div>
         </div>
+    </div>
+    <div id="notification" class="notification hidden">
+        <span id="notification-message"></span>
+        <button id="notification-close">&times;</button>
     </div>
     <div class="footer"></div>
     <div class="loading">

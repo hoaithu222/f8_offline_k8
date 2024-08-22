@@ -58,9 +58,83 @@ const getBlogs = async () => {
   }
 };
 
+document.body.addEventListener("submit", async (e) => {
+  if (e.target.classList.contains("form-create")) {
+    e.preventDefault();
+    const registerForm = document.querySelector(".form-create");
+    const { title, content } = Object.fromEntries(new FormData(registerForm));
+    try {
+      const addBlogNew = await addBlogs({ title, content });
+
+      if (addBlogNew.error) {
+        console.error(addBlogNew.error);
+        // Bạn có thể hiển thị thông báo lỗi cho người dùng ở đây
+      } else {
+        // Xử lý tạo thành công
+        console.log(addBlogNew);
+        drawBlogs([addBlogNew.data]);
+        registerForm.reset();
+        document
+          .querySelector(".create-blog .box-form")
+          .classList.remove("active"); // Ẩn form sau khi thêm bài viết
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+});
+
+const addBlogs = async (dataBlog) => {
+  try {
+    const tokenData = JSON.parse(localStorage.getItem("auth_token"));
+    if (!tokenData) throw new Error("Token not found");
+    const { access_token: accessToken } = tokenData;
+    const response = await fetch(`${serverApi}/blogs`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(dataBlog),
+    });
+    if (response.ok) {
+      return response.json();
+    } else {
+      const errorData = await response.json();
+      throw new Error(errorData.message || "Lỗi khi đăng bài viết");
+    }
+  } catch (e) {
+    console.log(e);
+    return { error: e.message };
+  }
+};
+
 const render = () => {
   const status = !!localStorage.getItem("auth_token");
   const header = document.querySelector(".header");
+  const createBoxEl = document.querySelector(".create-blog");
+  createBoxEl.innerHTML = status
+    ? `<div class="container">
+            <div class="box-form form">
+                <form class="form-create">
+                    <div class="close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+                    <div class="input">
+                        <label for="title">Enter Your title</label>
+                        <input type="text" name="title" id="title" placeholder="Please enter your title">
+                    </div>
+                    <div class="textarea">
+                        <label for="content">Enter Your content</label>
+                        <textarea name="content" id="content" placeholder="Enter content here"></textarea>
+                    </div>
+                    <div class="submit ">
+                        <button type="submit" class="btn-save button-two">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>`
+    : ``;
   header.innerHTML = status
     ? `<div class="container">
           <div class="inner-wrap">
@@ -99,6 +173,15 @@ const render = () => {
     document
       .querySelector(".button-logout")
       .addEventListener("click", handleLogout);
+    const btnCreateEl = document.querySelector(".post-blog");
+    const formCrateEl = document.querySelector(".create-blog .box-form");
+    const btnClose = document.querySelector(".create-blog .close i");
+    btnClose.addEventListener("click", () => {
+      formCrateEl.classList.remove("active");
+    });
+    btnCreateEl.addEventListener("click", () => {
+      formCrateEl.classList.add("active");
+    });
   }
 };
 
@@ -144,7 +227,7 @@ const drawBlogs = (blogs) => {
         </div>`;
     })
     .join("");
-  wrapEl.insertAdjacentHTML("beforeend", content);
+  wrapEl.insertAdjacentHTML("afterbegin", content);
 };
 
 const observer = new IntersectionObserver(
@@ -225,5 +308,4 @@ const sendRefreshToken = async () => {
 
 showProfile();
 render();
-
 getBlogs();
