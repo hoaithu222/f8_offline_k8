@@ -68,7 +68,7 @@ const drawBlogs = (blogs) => {
   const content = blogs
     .map((blog) => {
       const avatar = getRandomAvatar();
-      const { days, hour, minutes } = getTime(blog.timeUp);
+      const { days, hoursBefore, hour, minutes } = getTime(blog.timeUp);
       const truncatedTitle = truncateText(blog.title, 25);
       const truncatedUserName = truncateText(blog.userId.name, 20);
       const truncatedContent = truncateText(blog.content, 100);
@@ -86,17 +86,18 @@ const drawBlogs = (blogs) => {
               <a href="" class="view-user button-one">#${truncatedUserName}</a>
             </div>
             <div class="inner-time">
-              <div class="day">
-                <span class="day">${days} ngày trước</span>
-                <span class="hour">${hour}h ${
-        hour > 12 ? (hour > 18 ? "tối" : "chiều") : "sáng"
-      }</span>
-                <span class="minutes">${minutes} phút</span>
-              </div>
-              <div class="time-about">Khoảng ${calculateReadingTime(
-                blog.content
-              )} đọc</div>
-            </div>
+  <div class="day">
+    <span class="day">
+      ${days > 0 ? `${days} ngày trước` : ""}
+      ${hoursBefore > 0 ? `${hoursBefore} giờ trước` : ""}
+  
+    </span>
+    <span class="hour">
+      ${hour}h ${hour > 12 ? (hour > 18 ? "tối" : "chiều") : "sáng"}</span>
+    <span class="minutes">${minutes} phút</span>
+  </div>
+  <div class="time-about">Khoảng ${calculateReadingTime(blog.content)} đọc</div>
+</div>
           </div>
         </div>
       `;

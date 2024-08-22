@@ -1,0 +1,14 @@
+ .inner-wrap .item {
+     display: flex;
+     gap: 20px;
+ }
+
+ .inner-wrap .item .user img {
+     width: 45px;
+     border-radius: 50%;
+ }
+
+ .inner-wrap .item .user p {
+     font-size: 14px;
+     color: #fff;
+ }

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Sono:wght@200..800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/form.css">
+</head>
+
+<body>
+    <div class="box">
+        <div class="container">
+            <div class="inner-wrap">
+                <div class="inner-content">
+                    <div class="menu">
+                        <button class="register">
+                            Đăng nhập
+                        </button>
+                        <button class="login">
+                            Đăng kí
+                        </button>
+                    </div>
+                    <p class="desc">Hãy nhập email và mật khẩu của bạn để truy cập vào nền tảng Blogger, nơi bạn có thể
+                        tạo và chia sẻ những bài viết độc đáo của mình. Nếu bạn chưa có tài khoản, hãy đăng ký ngay để
+                        tham gia cộng đồng Blogger</p>
+                    <div class="btn-home">
+                        <button class="button">
+                            Về trang chủ
+                        </button>
+                    </div>
+
+                </div>
+                <div class="form">
+                    <form class="form-login">
+                        <div class="input">
+                            <label for="email-login">Email</label>
+                            <input type="email" name="email" id="email-login" placeholder="Vui lòng nhập email" />
+
+                        </div>
+                        <div class="input">
+                            <label for="password-login">Password</label>
+                            <input type="password" name="password" id="password-login"
+                                placeholder="Vui lòng nhập mật khẩu" />
+
+                        </div>
+                        <div class="btn-submit">
+                            <button type="submit" class="btn-login button-two">Đăng nhập</button>
+                        </div>
+                    </form>
+                    <form class="form-register">
+                        <div class="input">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" placeholder="Vui lòng nhập email" />
+
+                        </div>
+                        <div class="input">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password" placeholder="Vui lòng nhập mật khẩu" />
+
+                        </div>
+                        <div class="input">
+                            <label for="name">Name</label>
+                            <input type="text" name="name" id="name" placeholder="Vui lòng nhập tên" />
+
+                        </div>
+                        <div class="btn-submit">
+                            <button type="submit" class="btn-login button-two">Đăng Kí</button>
+                        </div>
+                    </form>
+                </div>
+                <div id="notification" class="notification hidden">
+                    <span id="notification-message"></span>
+                    <button id="notification-close">&times;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/form.js" type="module"></script>
+</body>
+
+</html>

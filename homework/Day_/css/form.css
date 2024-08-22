@@ -1,0 +1,124 @@
+.box {
+    padding-top: 100px;
+    background: rgb(238, 174, 202);
+    background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+    height: 100vh;
+
+}
+
+.box .inner-wrap {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 50px;
+    padding: 20px;
+    gap: 30px;
+}
+
+.box .inner-wrap .inner-content {
+    width: 50%;
+}
+
+.box .inner-wrap .inner-content .menu {
+    width: 70%;
+    border: 2px solid #fff;
+    border-radius: 45px;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.box .inner-wrap .inner-content p {
+    color: #fff;
+    margin-bottom: 30px;
+}
+
+
+.box .inner-wrap .inner-content .menu button {
+    padding: 20px;
+    color: #fff;
+    font-size: 20px;
+    width: 50%;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.box .inner-wrap .inner-content .menu button:hover {
+    background-color: rgba(130, 97, 250, 1);
+    transform: scale(1.01);
+}
+
+
+.box .inner-wrap .inner-content .menu button.active {
+    background-color: rgba(130, 97, 250, 0.932);
+}
+
+
+/* xử lý form */
+.form {
+    width: 50%;
+    overflow: hidden;
+}
+
+.form .form-login,
+.form .form-register {
+    border: 2px dashed #fff;
+    border-radius: 20px;
+    padding: 30px;
+    display: none;
+
+}
+
+.form-login.active,
+.form-register.active {
+    display: block;
+
+}
+
+.form .input {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    color: #f3eabd;
+    gap: 10px;
+}
+
+.form .input input {
+    padding: 20px;
+    border-radius: 30px;
+    font-size: 16px;
+}
+
+/* thông báo */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    padding: 15px 25px;
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+}
+
+.notification.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.notification #notification-close {
+    background: none;
+    border: none;
+    color: #721c24;
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: -14px;
+    right: 0px;
+    font-size: 45px;
+}
+
+.notification #notification-close:hover {
+    color: #f5c6cb;
+}
