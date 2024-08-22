@@ -1,6 +1,6 @@
-import { calculateReadingTime, getTime } from "./component.js";
+import { calculateReadingTime, getTime, handleLogout } from "./component.js";
 
-const serverApi = "https://api-auth-two.vercel.app/blogs";
+const serverApi = "https://api-auth-two.vercel.app";
 let params = {
   q: "",
   page: 1,
@@ -37,7 +37,7 @@ const getBlogs = async () => {
   document.querySelector(".loading").classList.add("active");
 
   try {
-    const api = `${serverApi}?q=${params.q}&page=${params.page}&limit=${params.limit}`;
+    const api = `${serverApi}/blogs?q=${params.q}&page=${params.page}&limit=${params.limit}`;
     const response = await fetch(api);
     const result = await response.json();
 
@@ -59,7 +59,7 @@ const getBlogs = async () => {
 };
 
 const render = () => {
-  const status = !!localStorage.getItem("login_token");
+  const status = !!localStorage.getItem("auth_token");
   const header = document.querySelector(".header");
   header.innerHTML = status
     ? `<div class="container">
@@ -91,8 +91,8 @@ const render = () => {
       e.preventDefault();
       const redirectUrl =
         window.location.hostname === "127.0.0.1"
-          ? "http://127.0.0.1:5500/homework/Day-41/form.html"
-          : "https://hoaithu222.github.io/f8_offline_k8/homework/Day-41/form.html";
+          ? "http://127.0.0.1:5500/homework/Day_/form.html"
+          : "https://hoaithu222.github.io/f8_offline_k8/homework/Day_/form.html";
       window.location.href = redirectUrl;
     });
   } else {
@@ -190,11 +190,11 @@ const showProfile = async () => {
   } else {
     const newToken = await sendRefreshToken();
     if (newToken) {
-      localStorage.setItem("auth_token", JSON.stringify(newToken));
+      localStorage.setItem("auth_token", JSON.stringify(newToken.data.token));
       showProfile();
     } else {
       localStorage.removeItem("auth_token");
-      handleLogout();
+      // handleLogout();
     }
   }
 };
@@ -223,17 +223,7 @@ const sendRefreshToken = async () => {
   }
 };
 
-const handleLogout = (e) => {
-  if (e) e.preventDefault();
-  localStorage.removeItem("auth_token");
-
-  const redirectUrl =
-    window.location.hostname === "127.0.0.1"
-      ? "http://127.0.0.1:5500/homework/Day-41/form.html"
-      : "https://hoaithu222.github.io/f8_offline_k8/homework/Day-41/form.html";
-  window.location.href = redirectUrl;
-};
-
 showProfile();
 render();
+
 getBlogs();

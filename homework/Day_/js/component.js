@@ -43,5 +43,15 @@ const toggleLoading = (show) => {
     loading.classList.remove("active");
   }
 };
+const handleLogout = (e) => {
+  if (e) e.preventDefault();
+  localStorage.removeItem("auth_token");
 
-export { getTime, calculateReadingTime, toggleLoading };
+  const redirectUrl =
+    window.location.hostname === "127.0.0.1"
+      ? "http://127.0.0.1:5500/homework/Day_/form.html"
+      : "https://hoaithu222.github.io/f8_offline_k8/homework/Day_/form.html";
+  window.location.href = redirectUrl;
+};
+
+export { getTime, calculateReadingTime, toggleLoading, handleLogout };

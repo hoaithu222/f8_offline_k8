@@ -151,7 +151,7 @@ document.body.addEventListener("submit", async (e) => {
         showNotification("Đăng nhập thành công!", true);
         const authToken = {
           access_token: loginData.data.accessToken,
-          refresh_token: loginData.data.accessToken,
+          refresh_token: loginData.data.refreshToken,
         };
         localStorage.setItem("auth_token", JSON.stringify(authToken));
 
