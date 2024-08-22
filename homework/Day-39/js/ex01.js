@@ -94,5 +94,4 @@ function renderBlog(blogs) {
     .join("");
   contain.innerHTML += content;
 }
-
 getBlog(currentPage, pageSize);

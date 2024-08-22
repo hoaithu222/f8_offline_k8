@@ -5,65 +5,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="css/ex01.css">
 </head>
 
 <body>
-    <div class="header">
-        <div class="inner-wrap">
-            <div class="inner-logo">
-                Blogger
+
+    <div class="w-50 mx-auto py-3 mt-10">
+        <form class="form-control form-login g-3">
+            <h2>Đăng Nhập</h2>
+            <div class="mb-3">
+                <label>Email</label>
+                <input type="email" name="email" class="form-control">
             </div>
-            <div class="inner-log">
-                <a href="#">
-                    <button class="submit">Sign in</button>
-                </a>
+            <div class="mb-3">
+                <label>Password</label>
+                <input type="password" name="password" class="form-control">
             </div>
-        </div>
+            <div class="d-grid">
+                <button class="btn btn-primary">
+                    Đăng nhập
+                </button>
+            </div>
+        </form>
+        <form class="form-control form-register g-3">
+            <h2>Đăng Kí</h2>
+            <div class=" mb-3">
+                <label>Email</label>
+                <input type="email" name="email" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label>Password</label>
+                <input type="password" name="password" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label>Name</label>
+                <input type="text" name="name" class="form-control">
+            </div>
+            <div class="d-grid">
+                <button class="btn btn-primary">
+                    Đăng ký
+                </button>
+            </div>
+        </form>
+
     </div>
-    <div class="inner-blogs">
-        <div class="inner-head">
-            <img src="image/photo-one.png" alt="hình ảnh" />
-            <h4 class="inner-name">
-                Nguyễn Văn A
-            </h4>
-        </div>
-        <div class="inner-content">
-            <h3 class="inner-title">
-                Nội dung chính bài viết
-            </h3>
-            <p class="inner-desc">
-                Đây là mô tả bài viết
-            </p>
-            <div class="inner-link">
-                <a href="#" class="link-blog">
-                    View Blog
 
-                </a>
-                <a href="#" class="link-user">
-                    View User
-                </a>
-            </div>
-            <div class="inner-info">
-                <div class="inner-time">
-                    <p class="day-after">
-                        4 ngày trước
-                    </p>
-                    <span class="hour">
-                        4 giờ sáng
-                    </span>
-                    <span class="minuies">
-                        30 phút
-                    </span>
-                </div>
-                <div class="inner-count">
-                    Khoảng <span class="count"></span> phút đoc
-                </div>
-
-            </div>
-
-        </div>
-    </div>
     <script src="js/ex01.js"></script>
 </body>
 
