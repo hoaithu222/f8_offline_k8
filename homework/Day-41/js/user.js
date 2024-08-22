@@ -82,7 +82,7 @@ function renderUserBlogs(blogs) {
 
 document.getElementById("home-button").addEventListener("click", function () {
   window.location.href =
-    "https://hoaithu222.github.io/f8_offline_k8/homework/Day-39/ex01.html";
+    "https://hoaithu222.github.io/f8_offline_k8/homework/Day-41/ex01.html";
 });
 
 getUserBlogs(userId);

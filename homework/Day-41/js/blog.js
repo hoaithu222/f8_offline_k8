@@ -37,7 +37,7 @@ function fetchBlogDetails(blogId) {
 }
 document.getElementById("home-button").addEventListener("click", function () {
   window.location.href =
-    "https://hoaithu222.github.io/f8_offline_k8/homework/Day-39/ex01.html";
+    "https://hoaithu222.github.io/f8_offline_k8/homework/Day-41/ex01.html";
 });
 function handleBlog(blogs) {
   const innerWrap = document.querySelector(".inner-wrap");
@@ -66,7 +66,7 @@ function handleBlog(blogs) {
                         <div class="inner-title">${blog.title}</div>
                         <div class="inner-desc">${blog.content}${iframes}</div>
                         <div class="inner-link">
-                           <a href="https://hoaithu222.github.io/f8_offline_k8/homework/Day-39/blog/user.html?userId=${
+                           <a href="https://hoaithu222.github.io/f8_offline_k8/homework/Day-41/blog/user.html?userId=${
                              blog.userId._id
                            }" class="view-user">#${blog.userId.name}</a>
                         </div>
