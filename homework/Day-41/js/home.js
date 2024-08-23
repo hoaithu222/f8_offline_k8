@@ -121,7 +121,7 @@ const handleLogout = (e) => {
   const hostname = window.location.hostname;
   const localUrl = "http://127.0.0.1:5500/homework/Day-41/form.html";
   const gitUrl =
-    "https://hoaithu222.github.io/f8_offline_k8/homework/Day-41/ex01.html";
+    "https://hoaithu222.github.io/f8_offline_k8/homework/Day-41/form.html";
 
   window.location.href = hostname === "127.0.0.1" ? localUrl : gitUrl;
 };
