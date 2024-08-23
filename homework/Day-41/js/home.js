@@ -1,6 +1,5 @@
-const serverApi = "https://api-auth-two.vercel.app";
+import { serverApi, getBlogs, drawBlogs } from "./component.js";
 
-// Hàm lấy thông tin người dùng
 const getProfile = async () => {
   try {
     const tokenData = JSON.parse(localStorage.getItem("auth_token"));
@@ -23,7 +22,56 @@ const getProfile = async () => {
   }
 };
 
-// Hàm hiển thị thông tin người dùng
+document.body.addEventListener("submit", async (e) => {
+  if (e.target.classList.contains("form-create")) {
+    e.preventDefault();
+    const registerForm = document.querySelector(".form-create");
+    const { title, content } = Object.fromEntries(new FormData(registerForm));
+    try {
+      const addBlogNew = await addBlogs({ title, content });
+
+      if (addBlogNew.error) {
+        console.error(addBlogNew.error);
+      } else {
+        console.log(addBlogNew);
+        const allBlogs = await getBlogs();
+        drawBlogs([addBlogNew.data], true);
+        registerForm.reset();
+        document
+          .querySelector(".create-blog .box-form")
+          .classList.remove("active");
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+});
+
+const addBlogs = async (dataBlog) => {
+  try {
+    const tokenData = JSON.parse(localStorage.getItem("auth_token"));
+    if (!tokenData) throw new Error("Token not found");
+    const { access_token: accessToken } = tokenData;
+    const response = await fetch(`${serverApi}/blogs`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(dataBlog),
+    });
+    if (response.ok) {
+      return response.json();
+    } else {
+      const errorData = await response.json();
+      throw new Error(errorData.message || "Lỗi khi đăng bài viết");
+    }
+  } catch (e) {
+    console.log(e);
+    return { error: e.message };
+  }
+};
+
 const showProfile = async () => {
   const user = await getProfile();
   const profileNameEl = document.querySelector(".profile-name");
@@ -32,17 +80,16 @@ const showProfile = async () => {
     profileNameEl.innerText = user.data.name;
   } else {
     const newToken = await sendRefreshToken();
-    if (newToken) {
-      localStorage.setItem("auth_token", JSON.stringify(newToken));
-      showProfile(); // Retry showing profile with the new token
+    if (newToken.data.token) {
+      localStorage.setItem("auth_token", JSON.stringify(newToken.data.token));
+      showProfile();
     } else {
       localStorage.removeItem("auth_token");
-      handleLogout(); // Redirect or show login
+      handleLogout();
     }
   }
 };
 
-// Cấp lại token mới và lưu cả hai lại
 const sendRefreshToken = async () => {
   try {
     const tokenData = JSON.parse(localStorage.getItem("auth_token"));
@@ -67,7 +114,6 @@ const sendRefreshToken = async () => {
   }
 };
 
-// Xử lý đăng xuất
 const handleLogout = (e) => {
   if (e) e.preventDefault();
   localStorage.removeItem("auth_token");
@@ -80,10 +126,18 @@ const handleLogout = (e) => {
   window.location.href = hostname === "127.0.0.1" ? localUrl : gitUrl;
 };
 
-// Xử lý sự kiện logout
 document
   .querySelector(".button-logout")
   .addEventListener("click", handleLogout);
 
-// Hiển thị thông tin người dùng khi trang được tải
+const btnCreateEl = document.querySelector(".post-blog");
+const formCreateEl = document.querySelector(".create-blog .box-form");
+const btnClose = document.querySelector(".create-blog .close i");
+btnClose.addEventListener("click", () => {
+  formCreateEl.classList.remove("active");
+});
+btnCreateEl.addEventListener("click", () => {
+  formCreateEl.classList.add("active");
+});
+
 showProfile();

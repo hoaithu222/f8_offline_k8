@@ -48,7 +48,7 @@ const getBlogs = async () => {
         .insertAdjacentHTML("beforeend", "<p>Không có bài viết nào</p>");
       return;
     }
-    drawBlogs(result.data);
+    drawBlogs(result.data, false);
     params.page++;
   } catch (e) {
     console.error("Error fetching data:", e);
@@ -72,7 +72,7 @@ document.body.addEventListener("submit", async (e) => {
       } else {
         // Xử lý tạo thành công
         console.log(addBlogNew);
-        drawBlogs([addBlogNew.data]);
+        drawBlogs([addBlogNew.data], false);
         registerForm.reset();
         document
           .querySelector(".create-blog .box-form")
@@ -185,7 +185,7 @@ const render = () => {
   }
 };
 
-const drawBlogs = (blogs) => {
+const drawBlogs = (blogs, prepend = false) => {
   const wrapEl = document.querySelector(".inner-blogs .inner-wrap");
   const content = blogs
     .map((blog) => {
@@ -194,7 +194,6 @@ const drawBlogs = (blogs) => {
       const truncatedTitle = truncateText(blog.title, 25);
       const truncatedUserName = truncateText(blog.userId.name, 20);
       const truncatedContent = truncateText(blog.content, 100);
-
       return `
         <div class="inner-box">
           <div class="user-info">
@@ -208,7 +207,7 @@ const drawBlogs = (blogs) => {
               <a href="" class="view-more button-one">#view-more ${truncatedTitle}</a>
               <a href="" class="view-user button-one">#${truncatedUserName}</a>
             </div>
-           <div class="inner-time">
+            <div class="inner-time">
               <div class="day">
                 <span class="day">
                   ${days > 0 ? `${days} ngày trước` : ""}
@@ -224,10 +223,16 @@ const drawBlogs = (blogs) => {
               )} đọc</div>
             </div>
           </div>
-        </div>`;
+        </div>
+      `;
     })
     .join("");
-  wrapEl.insertAdjacentHTML("afterbegin", content);
+
+  if (prepend) {
+    wrapEl.insertAdjacentHTML("afterbegin", content);
+  } else {
+    wrapEl.insertAdjacentHTML("beforeend", content);
+  }
 };
 
 const observer = new IntersectionObserver(
@@ -276,7 +281,7 @@ const showProfile = async () => {
       localStorage.setItem("auth_token", JSON.stringify(newToken.data.token));
       showProfile();
     } else {
-      localStorage.removeItem("auth_token");
+      // localStorage.removeItem("auth_token");
       // handleLogout();
     }
   }
@@ -306,6 +311,6 @@ const sendRefreshToken = async () => {
   }
 };
 
-showProfile();
 render();
 getBlogs();
+showProfile();
