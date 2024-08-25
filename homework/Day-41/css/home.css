@@ -1,6 +1,11 @@
  .inner-wrap .item {
      display: flex;
+     align-items: center;
      gap: 20px;
+ }
+
+ .inner-wrap .item .user {
+     cursor: pointer;
  }
 
  .inner-wrap .item .user img {
@@ -10,7 +15,7 @@
 
  .inner-wrap .item .user p {
      font-size: 14px;
-     color: #fff;
+     color: #eefcac;
  }
 
  /* form create blog */

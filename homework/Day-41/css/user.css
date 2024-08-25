@@ -1,0 +1,33 @@
+.page-user {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.page-user .info-user {
+    width: 30%;
+    margin: 20px;
+    padding: 10px;
+    border: 4px dashed rgb(148, 208, 243);
+    border-radius: 20px;
+    height: 30vh;
+    overflow: hidden;
+
+}
+
+.page-user .inner-blogs {
+    width: 68%;
+}
+
+.page-user .info-user p {
+    margin: 20px 0;
+}
+
+.page-user .info-user .name {
+    display: flex;
+    align-items: center;
+    border: 1px solid gainsboro;
+    border-radius: 20px;
+    margin-bottom: 30px;
+
+}

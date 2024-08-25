@@ -1,10 +1,5 @@
-import {
-  serverApi,
-  getBlogs,
-  drawBlogs,
-  escapeHtml,
-  redirectIfLoggedIn,
-} from "./component.js";
+import { escapeHtml, redirectIfLoggedIn } from "./component.js";
+import { serverApi, getBlogs, drawBlogs } from "./http.js";
 
 const getProfile = async () => {
   try {
@@ -29,6 +24,7 @@ const getProfile = async () => {
 };
 
 // Hàm hiển thị thông tin hồ sơ người dùng
+
 const showProfile = async () => {
   const user = await getProfile();
   const profileNameEl = document.querySelector(".profile-name");
@@ -46,7 +42,7 @@ const showProfile = async () => {
           refresh_token: newTokenData.data.token.refreshToken,
         })
       );
-      showProfile(); // Retry showing the profile with the new token
+      showProfile();
     } else {
       localStorage.removeItem("auth_token");
       handleLogout();
@@ -196,7 +192,12 @@ btnClose.addEventListener("click", () => {
 btnCreateEl.addEventListener("click", () => {
   formCreateEl.classList.add("active");
 });
-
+// lấy profile
+const userEl = document.querySelector(".user");
+userEl.addEventListener("click", async () => {
+  const user = await getProfile();
+  console.log(user);
+});
 // Thực hiện kiểm tra khi DOM được tải
 document.addEventListener("DOMContentLoaded", redirectIfLoggedIn);
 // Hiển thị thông tin người dùng khi trang được tải

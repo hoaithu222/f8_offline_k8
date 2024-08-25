@@ -54,6 +54,18 @@ const showNotification = (message, isSuccess = false) => {
 notificationClose.addEventListener("click", () => {
   notification.classList.add("hidden");
 });
+//hàm loading
+const toggleLoading = (button, isLoading) => {
+  const btnText = button.querySelector(".btn-text");
+
+  if (isLoading) {
+    btnText.textContent = "Loading...";
+    button.disabled = true;
+  } else {
+    btnText.textContent = button.id === "btn-login" ? "Đăng nhập" : "Đăng Kí";
+    button.disabled = false;
+  }
+};
 
 // Hàm tạo tài khoản
 const createUser = async (loginData) => {
@@ -83,12 +95,14 @@ document.body.addEventListener("submit", async (e) => {
   if (e.target.classList.contains("form-register")) {
     e.preventDefault();
     const registerForm = document.querySelector(".form-register");
+    const registerButton = registerForm.querySelector(".btn-register");
     let { email, password, name } = Object.fromEntries(
       new FormData(registerForm)
     );
     email = escapeHtml(email);
     password = escapeHtml(password);
     name = escapeHtml(name);
+    toggleLoading(registerButton, true);
 
     try {
       const registerData = await createUser({ email, password, name });
@@ -103,6 +117,8 @@ document.body.addEventListener("submit", async (e) => {
     } catch (e) {
       console.log(e);
       showNotification("Đã xảy ra lỗi khi đăng ký. Vui lòng thử lại.");
+    } finally {
+      toggleLoading(registerButton, false);
     }
   }
 });
@@ -140,10 +156,11 @@ document.body.addEventListener("submit", async (e) => {
   if (e.target.classList.contains("form-login")) {
     e.preventDefault();
     const loginForm = document.querySelector(".form-login");
+    const loginButton = loginForm.querySelector(".btn-login");
     let { email, password } = Object.fromEntries(new FormData(loginForm));
     email = escapeHtml(email);
     password = escapeHtml(password);
-
+    toggleLoading(loginButton, true);
     try {
       const loginData = await sendLogin({ email, password });
       if (loginData.error) {
@@ -167,6 +184,8 @@ document.body.addEventListener("submit", async (e) => {
     } catch (e) {
       console.log(e);
       showNotification("Đã xảy ra lỗi khi đăng nhập. Vui lòng thử lại.");
+    } finally {
+      toggleLoading(loginButton, false);
     }
   }
 });

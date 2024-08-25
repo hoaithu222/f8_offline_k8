@@ -1,4 +1,4 @@
-import { getBlogs, redirectIfLoggedIn } from "./component.js";
+import { getBlogs } from "./http.js";
 
 // xử lý button
 const btnLogin = document.querySelector(".btn-from");
@@ -15,3 +15,5 @@ btnLogin.addEventListener("click", (e) => {
 document.addEventListener("DOMContentLoaded", redirectIfLoggedIn);
 
 getBlogs();
+
+const viewUserBtn = document.querySelector("click", () => {});
