@@ -1,3 +1,4 @@
+import { escapeHtml } from "./component.js";
 const serverApi = "https://api-auth-two.vercel.app";
 
 // Hàm chuyển đổi giữa form đăng nhập và đăng ký
@@ -85,6 +86,9 @@ document.body.addEventListener("submit", async (e) => {
     const { email, password, name } = Object.fromEntries(
       new FormData(registerForm)
     );
+    email = escapeHtml(email);
+    password = escapeHtml(password);
+    name = escapeHtml(name);
 
     try {
       const registerData = await createUser({ email, password, name });
@@ -169,6 +173,8 @@ document.body.addEventListener("submit", async (e) => {
     e.preventDefault();
     const loginForm = document.querySelector(".form-login");
     const { email, password } = Object.fromEntries(new FormData(loginForm));
+    email = escapeHtml(email);
+    password = escapeHtml(password);
 
     try {
       const loginData = await sendLogin({ email, password });

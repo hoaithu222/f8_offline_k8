@@ -1,4 +1,4 @@
-import { serverApi, getBlogs, drawBlogs } from "./component.js";
+import { serverApi, getBlogs, drawBlogs, escapeHtml } from "./component.js";
 
 const getProfile = async () => {
   try {
@@ -27,6 +27,8 @@ document.body.addEventListener("submit", async (e) => {
     e.preventDefault();
     const registerForm = document.querySelector(".form-create");
     const { title, content } = Object.fromEntries(new FormData(registerForm));
+    title = escapeHtml(title);
+    content = escapeHtml(content);
     try {
       const addBlogNew = await addBlogs({ title, content });
 

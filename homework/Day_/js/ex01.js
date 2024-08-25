@@ -1,4 +1,9 @@
-import { calculateReadingTime, getTime, handleLogout } from "./component.js";
+import {
+  calculateReadingTime,
+  getTime,
+  handleLogout,
+  escapeHtml,
+} from "./component.js";
 
 const serverApi = "https://api-auth-two.vercel.app";
 let params = {
@@ -63,6 +68,9 @@ document.body.addEventListener("submit", async (e) => {
     e.preventDefault();
     const registerForm = document.querySelector(".form-create");
     const { title, content } = Object.fromEntries(new FormData(registerForm));
+    title = escapeHtml(title);
+    content = escapeHtml(content);
+
     try {
       const addBlogNew = await addBlogs({ title, content });
 
@@ -198,14 +206,18 @@ const drawBlogs = (blogs, prepend = false) => {
         <div class="inner-box">
           <div class="user-info">
             <img src="${avatar}" alt="avatar">
-            <h3 class="user-name">${blog.userId.name}</h3>
+            <h3 class="user-name">${escapeHtml(blog.userId.name)}</h3>
           </div>
           <div class="inner-content">
-            <p class="inner-title">${truncatedTitle}</p>
-            <p class="content">${truncatedContent}</p>
+            <p class="inner-title">${escapeHtml(truncatedTitle)}</p>
+            <p class="content">${escapeHtml(truncatedContent)}</p>
             <div class="inner-link">
-              <a href="" class="view-more button-one">#view-more ${truncatedTitle}</a>
-              <a href="" class="view-user button-one">#${truncatedUserName}</a>
+              <a href="" class="view-more button-one">#view-more ${escapeHtml(
+                truncatedTitle
+              )}</a>
+              <a href="" class="view-user button-one">#${escapeHtml(
+                truncatedUserName
+              )}</a>
             </div>
             <div class="inner-time">
               <div class="day">
@@ -219,7 +231,7 @@ const drawBlogs = (blogs, prepend = false) => {
                 <span class="minutes">${minutes} phút</span>
               </div>
               <div class="time-about">Khoảng ${calculateReadingTime(
-                blog.content
+                escapeHtml(blog.content)
               )} đọc</div>
             </div>
           </div>
