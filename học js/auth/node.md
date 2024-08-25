@@ -14,3 +14,8 @@ xử lý đăng xuất
 
 - Call API đăng xuất do backend cung cấp --> Lưu token và blacklist ở phía backend
 - Xóa token ở storage
+
+# xây dựng class là object để xử lý http request tập trung
+
+- xử lý refresh token quản lý các request tốt hơn
+-

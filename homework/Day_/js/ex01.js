@@ -122,11 +122,11 @@ const render = () => {
                     </div>
                     <div class="input">
                         <label for="title">Enter Your title</label>
-                        <input type="text" name="title" id="title" placeholder="Please enter your title">
+                        <input type="text" name="title" id="title" placeholder="Please enter your title" required>
                     </div>
                     <div class="textarea">
                         <label for="content">Enter Your content</label>
-                        <textarea name="content" id="content" placeholder="Enter content here"></textarea>
+                        <textarea name="content" id="content" placeholder="Enter content here" required></textarea>
                     </div>
                     <div class="submit ">
                         <button type="submit" class="btn-save button-two">Save</button>
