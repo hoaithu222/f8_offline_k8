@@ -67,7 +67,7 @@ document.body.addEventListener("submit", async (e) => {
   if (e.target.classList.contains("form-create")) {
     e.preventDefault();
     const registerForm = document.querySelector(".form-create");
-    const { title, content } = Object.fromEntries(new FormData(registerForm));
+    let { title, content } = Object.fromEntries(new FormData(registerForm));
     title = escapeHtml(title);
     content = escapeHtml(content);
 

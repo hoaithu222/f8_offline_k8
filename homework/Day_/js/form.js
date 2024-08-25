@@ -83,7 +83,7 @@ document.body.addEventListener("submit", async (e) => {
   if (e.target.classList.contains("form-register")) {
     e.preventDefault();
     const registerForm = document.querySelector(".form-register");
-    const { email, password, name } = Object.fromEntries(
+    let { email, password, name } = Object.fromEntries(
       new FormData(registerForm)
     );
     email = escapeHtml(email);
@@ -172,7 +172,7 @@ document.body.addEventListener("submit", async (e) => {
   if (e.target.classList.contains("form-login")) {
     e.preventDefault();
     const loginForm = document.querySelector(".form-login");
-    const { email, password } = Object.fromEntries(new FormData(loginForm));
+    let { email, password } = Object.fromEntries(new FormData(loginForm));
     email = escapeHtml(email);
     password = escapeHtml(password);
 

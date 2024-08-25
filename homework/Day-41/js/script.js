@@ -1,4 +1,4 @@
-import { getBlogs } from "./component.js";
+import { getBlogs, redirectIfLoggedIn } from "./component.js";
 
 // xử lý button
 const btnLogin = document.querySelector(".btn-from");
@@ -11,5 +11,7 @@ btnLogin.addEventListener("click", (e) => {
   const redirectUrl = hostname === "127.0.0.1" ? localUrl : gitUrl;
   window.location.href = redirectUrl;
 });
+// Thực hiện kiểm tra khi DOM được tải
+document.addEventListener("DOMContentLoaded", redirectIfLoggedIn);
 
 getBlogs();

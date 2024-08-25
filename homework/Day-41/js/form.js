@@ -1,4 +1,4 @@
-import { escapeHtml } from "./component.js";
+import { escapeHtml, redirectIfLoggedIn } from "./component.js";
 const serverApi = "https://api-auth-two.vercel.app";
 
 // Hàm chuyển đổi giữa form đăng nhập và đăng ký
@@ -83,7 +83,7 @@ document.body.addEventListener("submit", async (e) => {
   if (e.target.classList.contains("form-register")) {
     e.preventDefault();
     const registerForm = document.querySelector(".form-register");
-    const { email, password, name } = Object.fromEntries(
+    let { email, password, name } = Object.fromEntries(
       new FormData(registerForm)
     );
     email = escapeHtml(email);
@@ -135,44 +135,12 @@ const sendLogin = async (loginData) => {
   }
 };
 
-// hàm xử lý Logout
-const handleLogout = async () => {
-  try {
-    const tokenData = JSON.parse(localStorage.getItem("auth_token"));
-    if (!tokenData) throw new Error("Token not found");
-    const { access_token: accessToken } = tokenData;
-    const response = await fetch(`${serverApi}/auth/logout`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        "Content-Type": "application/json",
-      },
-    });
-
-    if (response.ok) {
-      const data = await response.json();
-      if (data.code === 200 && data.status_code === "SUCCESS") {
-        localStorage.removeItem("auth_token");
-        showNotification("Đăng xuất thành công", true);
-      } else {
-        throw new Error(data.message || "Lỗi khi đăng xuất");
-      }
-    } else {
-      const errorData = await response.json();
-      throw new Error(errorData.message || "Lỗi khi đăng xuất");
-    }
-  } catch (e) {
-    console.log(e);
-    return { error: e.message };
-  }
-};
-
 // Xử lý đăng nhập
 document.body.addEventListener("submit", async (e) => {
   if (e.target.classList.contains("form-login")) {
     e.preventDefault();
     const loginForm = document.querySelector(".form-login");
-    const { email, password } = Object.fromEntries(new FormData(loginForm));
+    let { email, password } = Object.fromEntries(new FormData(loginForm));
     email = escapeHtml(email);
     password = escapeHtml(password);
 
@@ -202,74 +170,5 @@ document.body.addEventListener("submit", async (e) => {
     }
   }
 });
-
-// Kiểm tra token và refresh nếu cần thiết
-const checkAndRefreshToken = async () => {
-  const authToken = JSON.parse(localStorage.getItem("auth_token"));
-  if (!authToken) return;
-
-  const { access_token, refresh_token } = authToken;
-
-  // Kiểm tra xem access_token có hết hạn không
-  const isTokenExpired = (token) => {
-    const payload = JSON.parse(atob(token.split(".")[1]));
-    return payload.exp * 1000 < Date.now();
-  };
-
-  if (isTokenExpired(access_token)) {
-    try {
-      const response = await fetch(`${serverApi}/auth/refresh-token`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ refreshToken: refresh_token }),
-      });
-
-      if (response.ok) {
-        const newTokenData = await response.json();
-        if (
-          newTokenData.code === 200 &&
-          newTokenData.status_code === "SUCCESS"
-        ) {
-          localStorage.setItem(
-            "auth_token",
-            JSON.stringify({
-              access_token: newTokenData.data.token.accessToken,
-              refresh_token: newTokenData.data.token.refreshToken,
-            })
-          );
-          showNotification("Token đã được làm mới.", true);
-        } else {
-          throw new Error("Không thể làm mới token.");
-        }
-      } else {
-        throw new Error("Không thể làm mới token.");
-      }
-    } catch (e) {
-      console.log(e);
-      showNotification("Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.");
-      localStorage.removeItem("auth_token");
-      switchForm("login");
-    }
-  }
-};
-
-// Ngăn người dùng truy cập trang đăng nhập/đăng ký khi đã đăng nhập
-const preventAccessWhenLoggedIn = () => {
-  const authToken = JSON.parse(localStorage.getItem("auth_token"));
-  if (authToken) {
-    const hostname = window.location.hostname;
-    const localUrl = "http://127.0.0.1:5500/homework/Day-41/home.html";
-    const gitUrl =
-      "https://hoaithu222.github.io/f8_offline_k8/homework/Day-41/home.html";
-    const redirectUrl = hostname === "127.0.0.1" ? localUrl : gitUrl;
-    window.location.href = redirectUrl;
-  }
-};
-
-// Kiểm tra token khi tải trang
-window.addEventListener("load", () => {
-  preventAccessWhenLoggedIn();
-  checkAndRefreshToken();
-});
+// Thực hiện kiểm tra khi DOM được tải
+document.addEventListener("DOMContentLoaded", redirectIfLoggedIn);

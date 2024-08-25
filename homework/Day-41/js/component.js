@@ -183,6 +183,20 @@ function escapeHtml(text) {
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
 }
+// Hàm kiểm tra và chuyển hướng nếu người dùng đã đăng nhập
+const redirectIfLoggedIn = () => {
+  const tokenData = JSON.parse(localStorage.getItem("auth_token"));
+  if (tokenData && tokenData.access_token) {
+    const hostname = window.location.hostname;
+    const localUrl = "http://127.0.0.1:5500/homework/Day-41/home.html";
+    const gitUrl =
+      "https://hoaithu222.github.io/f8_offline_k8/homework/Day-41/home.html";
+    const redirectUrl = hostname === "127.0.0.1" ? localUrl : gitUrl;
+    if (window.location.href !== redirectUrl) {
+      window.location.href = redirectUrl;
+    }
+  }
+};
 
 export {
   getTime,
@@ -192,4 +206,5 @@ export {
   drawBlogs,
   serverApi,
   escapeHtml,
+  redirectIfLoggedIn,
 };
