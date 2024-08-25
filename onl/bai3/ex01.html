@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2c2c2c;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .date-picker-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            background-color: #34495e;
+            border-radius: 5px;
+            padding: 10px;
+            width: 200px;
+        }
+
+        .date-picker-wrapper input[type="date"] {
+            border: none;
+            outline: none;
+            background-color: transparent;
+            color: #fff;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        .date-picker-wrapper input[type="date"]::-webkit-calendar-picker-indicator {
+            cursor: pointer;
+            filter: invert(1);
+        }
+
+        /* Phong cách cho phần thông báo */
+        #message {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #1abc9c;
+            /* Màu nền xanh */
+            color: #fff;
+            /* Màu chữ trắng */
+            border-radius: 5px;
+            /* Bo góc */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* Đổ bóng */
+            text-align: center;
+            font-size: 16px;
+            width: 300px;
+        }
+
+        #message.warning {
+            background-color: #e74c3c;
+            /* Màu nền đỏ cho thông báo cảnh báo */
+        }
+
+        #message.info {
+            background-color: #3498db;
+            /* Màu nền xanh dương cho thông báo thông tin */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="date-picker-wrapper">
+        <input type="date" id="datePicker">
+    </div>
+    <p id="message" class="info"></p>
+    <script src="script.js"></script>
+</body>
+
+</html>

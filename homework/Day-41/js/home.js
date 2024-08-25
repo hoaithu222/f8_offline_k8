@@ -109,16 +109,99 @@ const addBlogs = async (dataBlog) => {
   }
 };
 
+// Hàm tính thời gian đợi
+const calculateWaitTime = (targetDate) => {
+  const now = new Date();
+  const targetTime = new Date(targetDate).getTime();
+  return targetTime - now.getTime();
+};
+// Hàm tính thời gian còn lại
+const calculateRemainingTime = (targetDate) => {
+  const now = new Date();
+  const targetTime = new Date(targetDate).getTime();
+  const timeDifference = targetTime - now.getTime();
+
+  if (timeDifference <= 0) return "Thời gian chọn không hợp lệ";
+
+  const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+  const hours = Math.floor(
+    (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+  );
+  const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+
+  return `${days} days, ${hours} hours, ${minutes} minutes left`;
+};
+
+// Hiển thị thông báo
+const showNotification = (message) => {
+  const notification = document.getElementById("notification");
+  notification.innerText = message;
+  notification.style.display = "block";
+  setTimeout(() => {
+    notification.style.display = "none";
+  }, 5000);
+};
+// Xử lý chọn ngày
+const choseDate = document.querySelector(".datePicker");
+choseDate.addEventListener("change", (e) => {
+  const selectedDate = e.target.value;
+
+  if (selectedDate) {
+    const remainingTimeMessage = calculateRemainingTime(selectedDate);
+    showNotification(remainingTimeMessage);
+  }
+});
 // Hàm xử lý form tạo blog mới
 document.body.addEventListener("submit", async (e) => {
   if (e.target.classList.contains("form-create")) {
     e.preventDefault();
 
     const registerForm = document.querySelector(".form-create");
-    let { title, content } = Object.fromEntries(new FormData(registerForm));
+    let { title, content, datePicker } = Object.fromEntries(
+      new FormData(registerForm)
+    );
     title = escapeHtml(title);
     content = escapeHtml(content);
 
+    // Kiểm tra nếu người dùng chọn ngày
+    if (datePicker) {
+      const waitTime = calculateWaitTime(datePicker);
+      if (waitTime > 0) {
+        showNotification(
+          `Bài viết sẽ được đăng sau ${Math.floor(waitTime / 1000)} giây.`
+        );
+
+        // Đợi đến thời điểm đã chọn rồi mới đăng bài
+        setTimeout(async () => {
+          try {
+            const addBlogNew = await addBlogs({ title, content });
+
+            if (addBlogNew.error) {
+              console.error(addBlogNew.error);
+            } else {
+              console.log(addBlogNew);
+              const allBlogs = await getBlogs();
+              drawBlogs([addBlogNew.data], true);
+              registerForm.reset();
+              document
+                .querySelector(".create-blog .box-form")
+                .classList.remove("active");
+            }
+          } catch (error) {
+            console.error("Error submitting form:", error);
+          }
+        }, waitTime);
+
+        // Đóng form khi đã chọn ngày
+        document
+          .querySelector(".create-blog .box-form")
+          .classList.remove("active");
+
+        return; // Không thực hiện đăng bài ngay lập tức
+      }
+    }
+
+    // Nếu không chọn ngày hoặc ngày chọn đã qua, đăng bài ngay lập tức
     try {
       const addBlogNew = await addBlogs({ title, content });
 

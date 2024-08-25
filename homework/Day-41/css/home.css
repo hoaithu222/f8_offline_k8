@@ -54,7 +54,7 @@
 
  .create-blog .box-form.active {
      opacity: 1;
-     height: 500px;
+     height: 550px;
  }
 
  .create-blog .box-form .textarea {
@@ -97,5 +97,19 @@
 
  .create-blog .box-form .submit {
      text-align: center;
+     margin-bottom: 20px;
 
+ }
+
+ #notification {
+     position: fixed;
+     top: 100px;
+     right: 30px;
+     background-color: #f8d7da;
+     color: #721c24;
+     padding: 10px;
+     border-radius: 5px;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+     display: none;
+     z-index: 1000;
  }
