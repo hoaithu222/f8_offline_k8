@@ -71,14 +71,10 @@ const drawBlog = (blog) => {
       const userName = this.getAttribute("data-user-name");
       localStorage.setItem("userId", userId);
       localStorage.setItem("userName", userName);
-      if (localStorage.getItem("auth_token")) {
-        const hostname = window.location.hostname;
-        const localUrl = `http://127.0.0.1:5500/homework/Day-41/page-user.html`;
-        const gitUrl = `https://hoaithu222.github.io/f8_offline_k8/homework/Day-41/page-user.html`;
-        window.location.href = hostname === "127.0.0.1" ? localUrl : gitUrl;
-      } else {
-        alert("Bạn cần đăng nhập để xem được các bài viết");
-      }
+      const hostname = window.location.hostname;
+      const localUrl = `http://127.0.0.1:5500/homework/Day-41/page-user.html`;
+      const gitUrl = `https://hoaithu222.github.io/f8_offline_k8/homework/Day-41/page-user.html`;
+      window.location.href = hostname === "127.0.0.1" ? localUrl : gitUrl;
     });
   });
 };

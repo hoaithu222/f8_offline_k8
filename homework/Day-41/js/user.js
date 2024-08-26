@@ -9,48 +9,36 @@ const serverApi = "https://api-auth-two.vercel.app";
 
 // Hàm hiển thị thông tin hồ sơ người dùng
 
-const showProfileEl = () => {
+const showProfileEl = (data) => {
   const innerUser = document.querySelector(".info-user");
 
   innerUser.innerHTML = `
   <p class="info">Thông tin user : <i class="fa-solid fa-circle-down"></i></p>
   <div class="name">
-  
-                <img src="./image/image1.jpg" alt="avatar" width="130px" style="border-radius: 50%;" />
-                <h3>${localStorage.getItem("userName")}</h3>
-                
-            </div>
-            <p>Các bài ${localStorage.getItem(
-              "userName"
-            )} đã đăng <i class="fa-solid fa-circle-right"></i> </p>
-            `;
+       <img src="./image/image1.jpg" alt="avatar" width="130px" style="border-radius: 50%;" />
+       <h3>${localStorage.getItem("userName")}</h3>
+  </div>
+  <p>Các bài ${localStorage.getItem(
+    "userName"
+  )} đã đăng <i class="fa-solid fa-circle-right"></i> </p>`;
 };
 // lây danh sách các bài viết
-const userIdToFilter = localStorage.getItem("userId");
+const userId = localStorage.getItem("userId");
+
 const getBlogs = async () => {
   try {
-    const tokenData = JSON.parse(localStorage.getItem("auth_token"));
-    if (!tokenData) throw new Error("Token not found");
-    const { access_token: accessToken } = tokenData;
-    const response = await fetch("https://api-auth-two.vercel.app/blogs", {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    });
+    const response = await fetch(
+      `https://api-auth-two.vercel.app/users/${userId}`
+    );
 
     if (!response.ok) {
       throw new Error("Failed to fetch blogs");
     }
 
     const data = await response.json();
+    console.log(data);
 
-    // Lọc các bài viết theo userId
-    const filteredBlogs = data.data.filter(
-      (blog) => blog.userId._id === userIdToFilter
-    );
-
-    console.log("Filtered Blogs:", filteredBlogs);
-    drawBlogs(filteredBlogs);
+    drawBlogs(data.data.blogs);
   } catch (error) {
     console.error("Error:", error);
   }
@@ -59,13 +47,12 @@ const getBlogs = async () => {
 // hiển thị danh sách bài viết
 const drawBlogs = (blogs, prepend = false) => {
   const wrapEl = document.querySelector(".inner-blogs .inner-wrap");
+
   const content = blogs
     .map((blog) => {
       const avatar = getRandomAvatar();
       const { days, hoursBefore, hour, minutes } = getTime(blog.timeUp);
-      const truncatedTitle = truncateText(blog.title, 25);
-      const truncatedUserName = truncateText(blog.userId.name, 20);
-      const truncatedContent = truncateText(blog.content, 100);
+      const content = truncateText(escapeHtml(blog.content), 60);
 
       return `
         <div class="inner-box">
@@ -74,13 +61,13 @@ const drawBlogs = (blogs, prepend = false) => {
             <h3 class="user-name">${escapeHtml(blog.userId.name)}</h3>
           </div>
           <div class="inner-content">
-            <p class="inner-title">${escapeHtml(truncatedTitle)}</p>
-            <p class="content">${escapeHtml(truncatedContent)}</p>
+            <p class="inner-title">${escapeHtml(blog.title)}</p>
+            <p class="content">${content}</p>
             <div class="inner-link">
               <a href="#" class="view-more button-one" data-blog-id="${
                 blog._id
               }" data-blog-title="${blog.title}">#view-more ${escapeHtml(
-        truncatedTitle
+        blog.title
       )}</a>
             </div>
             <div class="inner-time">

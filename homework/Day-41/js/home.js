@@ -1,6 +1,7 @@
 import { escapeHtml, redirectIfLoggedIn } from "./component.js";
 import { serverApi, getBlogs, drawBlogs } from "./http.js";
 
+// Hàm lấy thông tin hồ sơ người dùng
 const getProfile = async () => {
   try {
     const tokenData = JSON.parse(localStorage.getItem("auth_token"));
@@ -24,7 +25,6 @@ const getProfile = async () => {
 };
 
 // Hàm hiển thị thông tin hồ sơ người dùng
-
 const showProfile = async () => {
   const user = await getProfile();
   const profileNameEl = document.querySelector(".profile-name");
@@ -84,11 +84,11 @@ const sendRefreshToken = async () => {
 // Hàm thêm blog mới
 const addBlogs = async (dataBlog) => {
   try {
-    const tokenData = JSON.parse(localStorage.getItem("auth_token"));
+    let tokenData = JSON.parse(localStorage.getItem("auth_token"));
     if (!tokenData) throw new Error("Token not found");
 
-    const { access_token: accessToken } = tokenData;
-    const response = await fetch(`${serverApi}/blogs`, {
+    let { access_token: accessToken } = tokenData;
+    let response = await fetch(`${serverApi}/blogs`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${accessToken}`,
@@ -98,8 +98,35 @@ const addBlogs = async (dataBlog) => {
     });
 
     if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.message || "Lỗi khi đăng bài viết");
+      if (response.status === 401) {
+        // Nếu token hết hạn, gọi hàm lấy lại token mới
+        const newTokenData = await sendRefreshToken();
+        if (newTokenData && newTokenData.data && newTokenData.data.token) {
+          localStorage.setItem(
+            "auth_token",
+            JSON.stringify({
+              access_token: newTokenData.data.token.accessToken,
+              refresh_token: newTokenData.data.token.refreshToken,
+            })
+          );
+          accessToken = newTokenData.data.token.accessToken;
+
+          // Gọi lại yêu cầu với token mới
+          response = await fetch(`${serverApi}/blogs`, {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(dataBlog),
+          });
+        }
+      }
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Lỗi khi đăng bài viết");
+      }
     }
 
     return response.json();
@@ -109,17 +136,34 @@ const addBlogs = async (dataBlog) => {
   }
 };
 
+// Đảm bảo rằng showNotification được định nghĩa trước khi sử dụng
+const showNotification = (message) => {
+  const notification = document.getElementById("notification");
+  notification.innerText = message;
+  notification.style.display = "block";
+  setTimeout(() => {
+    notification.style.display = "none";
+  }, 5000);
+};
 // Hàm tính thời gian đợi
 const calculateWaitTime = (targetDate) => {
   const now = new Date();
   const targetTime = new Date(targetDate).getTime();
-  return targetTime - now.getTime();
+  const waitTime = targetTime - now.getTime();
+  console.log("calculateWaitTime - now:", now);
+  console.log("calculateWaitTime - targetTime:", targetTime);
+  console.log("calculateWaitTime - waitTime:", waitTime);
+  return waitTime;
 };
+
 // Hàm tính thời gian còn lại
 const calculateRemainingTime = (targetDate) => {
   const now = new Date();
   const targetTime = new Date(targetDate).getTime();
   const timeDifference = targetTime - now.getTime();
+  console.log("calculateRemainingTime - now:", now);
+  console.log("calculateRemainingTime - targetTime:", targetTime);
+  console.log("calculateRemainingTime - timeDifference:", timeDifference);
 
   if (timeDifference <= 0) return "Thời gian chọn không hợp lệ";
 
@@ -129,28 +173,25 @@ const calculateRemainingTime = (targetDate) => {
   );
   const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
 
-  return `${days} days, ${hours} hours, ${minutes} minutes left`;
+  const remainingTime = `${days} days, ${hours} hours, ${minutes} minutes left`;
+  console.log("calculateRemainingTime - remainingTime:", remainingTime);
+
+  return remainingTime;
 };
 
-// Hiển thị thông báo
-const showNotification = (message) => {
-  const notification = document.getElementById("notification");
-  notification.innerText = message;
-  notification.style.display = "block";
-  setTimeout(() => {
-    notification.style.display = "none";
-  }, 5000);
-};
 // Xử lý chọn ngày
 const choseDate = document.querySelector(".datePicker");
 choseDate.addEventListener("change", (e) => {
   const selectedDate = e.target.value;
+  console.log("choseDate - selectedDate:", selectedDate);
 
   if (selectedDate) {
     const remainingTimeMessage = calculateRemainingTime(selectedDate);
-    showNotification(remainingTimeMessage);
+    console.log("choseDate - remainingTimeMessage:", remainingTimeMessage);
+    showNotification(remainingTimeMessage); // Hàm này sẽ không gây lỗi nếu được định nghĩa đúng
   }
 });
+
 // Hàm xử lý form tạo blog mới
 document.body.addEventListener("submit", async (e) => {
   if (e.target.classList.contains("form-create")) {
@@ -163,23 +204,27 @@ document.body.addEventListener("submit", async (e) => {
     title = escapeHtml(title);
     content = escapeHtml(content);
 
-    // Kiểm tra nếu người dùng chọn ngày
+    console.log("form-create - title:", title);
+    console.log("form-create - content:", content);
+    console.log("form-create - datePicker:", datePicker);
+
     if (datePicker) {
       const waitTime = calculateWaitTime(datePicker);
+      console.log("form-create - waitTime:", waitTime);
+
       if (waitTime > 0) {
         showNotification(
           `Bài viết sẽ được đăng sau ${Math.floor(waitTime / 1000)} giây.`
         );
 
-        // Đợi đến thời điểm đã chọn rồi mới đăng bài
         setTimeout(async () => {
           try {
             const addBlogNew = await addBlogs({ title, content });
+            console.log("form-create - addBlogNew:", addBlogNew);
 
             if (addBlogNew.error) {
               console.error(addBlogNew.error);
             } else {
-              console.log(addBlogNew);
               const allBlogs = await getBlogs();
               drawBlogs([addBlogNew.data], true);
               registerForm.reset();
@@ -190,39 +235,38 @@ document.body.addEventListener("submit", async (e) => {
           } catch (error) {
             console.error("Error submitting form:", error);
           }
+          hideNotification();
         }, waitTime);
 
-        // Đóng form khi đã chọn ngày
         document
           .querySelector(".create-blog .box-form")
           .classList.remove("active");
 
-        return; // Không thực hiện đăng bài ngay lập tức
+        return;
       }
-    }
+    } else {
+      try {
+        const addBlogNew = await addBlogs({ title, content });
+        console.log("form-create - addBlogNew:", addBlogNew);
 
-    // Nếu không chọn ngày hoặc ngày chọn đã qua, đăng bài ngay lập tức
-    try {
-      const addBlogNew = await addBlogs({ title, content });
-
-      if (addBlogNew.error) {
-        console.error(addBlogNew.error);
-      } else {
-        console.log(addBlogNew);
-        const allBlogs = await getBlogs();
-        drawBlogs([addBlogNew.data], true);
-        registerForm.reset();
-        document
-          .querySelector(".create-blog .box-form")
-          .classList.remove("active");
+        if (addBlogNew.error) {
+          console.error(addBlogNew.error);
+        } else {
+          const allBlogs = await getBlogs();
+          drawBlogs([addBlogNew.data], true);
+          registerForm.reset();
+          document
+            .querySelector(".create-blog .box-form")
+            .classList.remove("active");
+        }
+      } catch (error) {
+        console.error("Error submitting form:", error);
       }
-    } catch (error) {
-      console.error("Error submitting form:", error);
     }
   }
 });
 
-// hàm xử lý Logout
+// Hàm xử lý Logout
 const sendLogout = async () => {
   try {
     const tokenData = JSON.parse(localStorage.getItem("auth_token"));
@@ -275,12 +319,14 @@ btnClose.addEventListener("click", () => {
 btnCreateEl.addEventListener("click", () => {
   formCreateEl.classList.add("active");
 });
-// lấy profile
+
+// Lấy profile
 const userEl = document.querySelector(".user");
 userEl.addEventListener("click", async () => {
   const user = await getProfile();
   console.log(user);
 });
+
 // Thực hiện kiểm tra khi DOM được tải
 document.addEventListener("DOMContentLoaded", redirectIfLoggedIn);
 // Hiển thị thông tin người dùng khi trang được tải

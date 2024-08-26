@@ -23,7 +23,7 @@
     margin: 20px 0;
 }
 
-.page-user .info-user .name {
+.page-user .info-user .user-name {
     display: flex;
     align-items: center;
     border: 1px solid gainsboro;
