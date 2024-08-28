@@ -1,4 +1,4 @@
-const apiUrl = "https://88vk8v-8080.csb.app";
+const apiUrl = "http://localhost:3000";
 
 const btnCompleted = document.querySelector(".btn-completed");
 const listCompleted = document.querySelector(".list-completed");

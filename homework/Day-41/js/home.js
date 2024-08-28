@@ -266,37 +266,76 @@ document.body.addEventListener("submit", async (e) => {
   }
 });
 
-// Hàm xử lý Logout
+// Hàm xử lý đăng xuất
 const sendLogout = async () => {
   try {
+    // Lấy thông tin token từ localStorage
     const tokenData = JSON.parse(localStorage.getItem("auth_token"));
-    if (!tokenData) throw new Error("Token not found");
-    const { access_token: accessToken } = tokenData;
-    const response = await fetch(`${serverApi}/auth/logout`, {
+    if (!tokenData) throw new Error("Token không tìm thấy");
+
+    let { access_token: accessToken } = tokenData;
+
+    // Gửi yêu cầu logout với access token hiện tại
+    let response = await fetch(`${serverApi}/auth/logout`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${accessToken}`,
         "Content-Type": "application/json",
       },
     });
-    const result = await response.json();
-    console.log(result);
-  } catch (e) {
-    console.log(e);
-    return { error: e.message };
+
+    // Nếu gặp lỗi 401 (Unauthorized), có thể do token đã hết hạn
+    if (!response.ok && response.status === 401) {
+      // Thử refresh lại token
+      const newTokenData = await sendRefreshToken();
+      if (newTokenData && newTokenData.data && newTokenData.data.token) {
+        // Lưu lại token mới vào localStorage
+        localStorage.setItem(
+          "auth_token",
+          JSON.stringify({
+            access_token: newTokenData.data.token.accessToken,
+            refresh_token: newTokenData.data.token.refreshToken,
+          })
+        );
+        accessToken = newTokenData.data.token.accessToken;
+
+        // Thử lại yêu cầu logout với token mới
+        response = await fetch(`${serverApi}/auth/logout`, {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            "Content-Type": "application/json",
+          },
+        });
+      }
+    }
+
+    // Nếu logout thất bại, ném ra lỗi
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || "Lỗi khi đăng xuất");
+    }
+
+    // Nếu logout thành công, xóa token khỏi localStorage và chuyển hướng
+    localStorage.removeItem("auth_token");
+    handleLogout();
+    return response.json();
+  } catch (error) {
+    console.error("Lỗi trong quá trình đăng xuất:", error);
+    localStorage.removeItem("auth_token");
+    handleLogout();
+    return { error: error.message };
   }
 };
 
-// Hàm xử lý đăng xuất
-const handleLogout = (e) => {
-  if (e) e.preventDefault();
-  localStorage.removeItem("auth_token");
-
+// Hàm chuyển hướng sau khi đăng xuất
+const handleLogout = () => {
   const hostname = window.location.hostname;
   const localUrl = "http://127.0.0.1:5500/homework/Day-41/form.html";
   const gitUrl =
     "https://hoaithu222.github.io/f8_offline_k8/homework/Day-41/form.html";
 
+  // Chuyển hướng tới URL tương ứng
   window.location.href = hostname === "127.0.0.1" ? localUrl : gitUrl;
 };
 

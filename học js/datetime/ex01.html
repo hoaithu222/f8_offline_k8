@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .countdown {
+            margin-top: 100px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .countdown .box {
+            display: flex;
+            flex-direction: column;
+            background-color: red;
+            color: #fff;
+            padding: 20px;
+            align-items: center;
+        }
+
+        .day,
+        .hours,
+        .minutes,
+        .seconds {
+            font-size: 18px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="countdown">
+        <div class="box">
+            <span class="day"></span>
+            <span>Ngày</span>
+        </div>
+        <div class="box">
+            <span class="hours">
+
+            </span>
+            <span>Giờ</span>
+        </div>
+        <div class="box">
+            <span class="minutes">
+
+            </span>
+            <span>Phút</span>
+        </div>
+        <div class="box">
+            <span class="seconds">
+
+            </span>
+            <span>Giây</span>
+        </div>
+    </div>
+
+
+
+    <script src="js/ex01.js"></script>
+</body>
+
+</html>
