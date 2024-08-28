@@ -343,7 +343,6 @@ const handleLogout = () => {
 const btnLogout = document.querySelector(".button-logout");
 btnLogout.addEventListener("click", function () {
   sendLogout();
-  handleLogout();
 });
 
 // Xử lý sự kiện mở form tạo blog mới
