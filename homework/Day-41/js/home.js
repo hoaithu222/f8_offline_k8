@@ -1,4 +1,4 @@
-import { escapeHtml, redirectIfLoggedIn } from "./component.js";
+import { escapeHtml, redirectIfLoggedIn, formatContent } from "./component.js";
 import { serverApi, getBlogs, drawBlogs } from "./http.js";
 
 // Hàm lấy thông tin hồ sơ người dùng
@@ -25,12 +25,14 @@ const getProfile = async () => {
 };
 
 // Hàm hiển thị thông tin hồ sơ người dùng
-const showProfile = async () => {
+export const showProfile = async () => {
   const user = await getProfile();
   const profileNameEl = document.querySelector(".profile-name");
 
   if (user) {
     profileNameEl.innerText = user.data.name;
+    localStorage.setItem("idMe", user.data._id);
+    renderPage("profile");
   } else {
     const newTokenData = await sendRefreshToken();
     console.log(newTokenData);
@@ -88,6 +90,10 @@ const addBlogs = async (dataBlog) => {
     if (!tokenData) throw new Error("Token not found");
 
     let { access_token: accessToken } = tokenData;
+
+    // Áp dụng formatContent cho nội dung blog
+    dataBlog.content = formatContent(dataBlog.content);
+
     let response = await fetch(`${serverApi}/blogs`, {
       method: "POST",
       headers: {
@@ -201,8 +207,8 @@ document.body.addEventListener("submit", async (e) => {
     let { title, content, datePicker } = Object.fromEntries(
       new FormData(registerForm)
     );
+
     title = escapeHtml(title);
-    content = escapeHtml(content);
 
     console.log("form-create - title:", title);
     console.log("form-create - content:", content);
@@ -265,7 +271,6 @@ document.body.addEventListener("submit", async (e) => {
     }
   }
 });
-
 // Hàm xử lý đăng xuất
 const sendLogout = async () => {
   try {
@@ -362,8 +367,24 @@ btnCreateEl.addEventListener("click", () => {
 const userEl = document.querySelector(".user");
 userEl.addEventListener("click", async () => {
   const user = await getProfile();
+  console.log(user.data._id);
   console.log(user);
 });
+
+function renderPage(page) {
+  // const hostname = window.location.hostname;
+  // const basePath =
+  //   hostname === "127.0.0.1"
+  //     ? "/homework/Day-41"
+  //     : "/f8_offline_k8/homework/Day-41";
+
+  if (page === "profile") {
+    const path = "#/profile/@me";
+    window.location.hash = path;
+    // history.pushState(null, null, `${basePath}${path}`);
+    showProfile();
+  }
+}
 
 // Thực hiện kiểm tra khi DOM được tải
 document.addEventListener("DOMContentLoaded", redirectIfLoggedIn);

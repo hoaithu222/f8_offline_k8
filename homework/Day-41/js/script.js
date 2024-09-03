@@ -11,9 +11,5 @@ btnLogin.addEventListener("click", (e) => {
   const redirectUrl = hostname === "127.0.0.1" ? localUrl : gitUrl;
   window.location.href = redirectUrl;
 });
-// Thực hiện kiểm tra khi DOM được tải
-document.addEventListener("DOMContentLoaded", redirectIfLoggedIn);
 
 getBlogs();
-
-const viewUserBtn = document.querySelector("click", () => {});

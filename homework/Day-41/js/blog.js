@@ -3,6 +3,7 @@ import {
   getRandomAvatar,
   getTime,
   calculateReadingTime,
+  formatContent,
 } from "./component.js";
 
 const serverApi = "https://api-auth-two.vercel.app";
@@ -38,7 +39,7 @@ const drawBlog = (blog) => {
           </div>
           <div class="inner-content">
             <p class="inner-title">${escapeHtml()}</p>
-            <p class="content">${escapeHtml(blog.content)}</p>
+            <p class="content">${formatContent(blog.content)}</p>
              <div class="inner-link">
               <a href="#" class="view-user button-one" data-user-id="${
                 blog.userId._id

@@ -3,48 +3,46 @@ import {
   getRandomAvatar,
   getTime,
   calculateReadingTime,
-  truncateText,
+  // truncateText,
+  formatContent,
 } from "./component.js";
 const serverApi = "https://api-auth-two.vercel.app";
 
 // Hàm hiển thị thông tin hồ sơ người dùng
-
 const showProfileEl = (data) => {
   const innerUser = document.querySelector(".info-user");
 
   innerUser.innerHTML = `
-  <p class="info">Thông tin user : <i class="fa-solid fa-circle-down"></i></p>
-  <div class="name">
-       <img src="./image/image1.jpg" alt="avatar" width="130px" style="border-radius: 50%;" />
-       <h3>${localStorage.getItem("userName")}</h3>
-  </div>
-  <p>Các bài ${localStorage.getItem(
-    "userName"
-  )} đã đăng <i class="fa-solid fa-circle-right"></i> </p>`;
+    <p class="info">Thông tin user : <i class="fa-solid fa-circle-down"></i></p>
+    <div class="name">
+         <img src="/homework/Day-41/image/image1.jpg" alt="avatar" width="130px" style="border-radius: 50%;" />
+         <h3>${localStorage.getItem("userName")}</h3>
+    </div>
+    <p>Các bài ${localStorage.getItem(
+      "userName"
+    )} đã đăng <i class="fa-solid fa-circle-right"></i></p>`;
 };
-// lây danh sách các bài viết
+
+// Lấy danh sách các bài viết
 const userId = localStorage.getItem("userId");
 
 const getBlogs = async () => {
   try {
-    const response = await fetch(
-      `https://api-auth-two.vercel.app/users/${userId}`
-    );
-
+    const response = await fetch(`${serverApi}/users/${userId}`);
     if (!response.ok) {
       throw new Error("Failed to fetch blogs");
     }
-
     const data = await response.json();
     console.log(data);
 
     drawBlogs(data.data.blogs);
+    renderPage("profile", userId);
   } catch (error) {
     console.error("Error:", error);
   }
 };
 
-// hiển thị danh sách bài viết
+// Hiển thị danh sách bài viết
 const drawBlogs = (blogs, prepend = false) => {
   const wrapEl = document.querySelector(".inner-blogs .inner-wrap");
 
@@ -52,7 +50,7 @@ const drawBlogs = (blogs, prepend = false) => {
     .map((blog) => {
       const avatar = getRandomAvatar();
       const { days, hoursBefore, hour, minutes } = getTime(blog.timeUp);
-      const content = truncateText(escapeHtml(blog.content), 60);
+      // const content = truncateText(escapeHtml(blog.content), 60);
 
       return `
         <div class="inner-box">
@@ -62,7 +60,7 @@ const drawBlogs = (blogs, prepend = false) => {
           </div>
           <div class="inner-content">
             <p class="inner-title">${escapeHtml(blog.title)}</p>
-            <p class="content">${content}</p>
+            <p class="content">${formatContent(blog.content)}</p>
             <div class="inner-link">
               <a href="#" class="view-more button-one" data-blog-id="${
                 blog._id
@@ -112,25 +110,44 @@ const drawBlogs = (blogs, prepend = false) => {
     });
   });
 };
-// xử lý button home
+
+// Xử lý button home
 const btnHome = document.querySelector(".button-home");
 btnHome.addEventListener("click", () => {
-  if (localStorage.getItem("auth_token")) {
-    const hostname = window.location.hostname;
-    const localUrl = "http://127.0.0.1:5500/homework/Day-41/home.html";
-    const gitUrl =
-      "https://hoaithu222.github.io/f8_offline_k8/homework/Day-41/home.html";
+  const authToken = localStorage.getItem("auth_token");
+  const hostname = window.location.hostname;
+  const localUrl = authToken
+    ? "http://127.0.0.1:5500/homework/Day-41/home.html"
+    : "http://127.0.0.1:5500/homework/Day-41/index.html";
+  const gitUrl = authToken
+    ? "https://hoaithu222.github.io/f8_offline_k8/homework/Day-41/home.html"
+    : "https://hoaithu222.github.io/f8_offline_k8/homework/Day-41/index.html";
 
-    window.location.href = hostname === "127.0.0.1" ? localUrl : gitUrl;
-  } else {
-    const hostname = window.location.hostname;
-    const localUrl = "http://127.0.0.1:5500/homework/Day-41/index.html";
-    const gitUrl =
-      "https://hoaithu222.github.io/f8_offline_k8/homework/Day-41/index.html";
-
-    window.location.href = hostname === "127.0.0.1" ? localUrl : gitUrl;
-  }
+  window.location.href = hostname === "127.0.0.1" ? localUrl : gitUrl;
 });
 
+function renderPage(page, userId = null) {
+  // const hostname = window.location.hostname;
+  // const basePath =
+  //   hostname === "127.0.0.1"
+  //     ? "/homework/Day-41"
+  //     : "/f8_offline_k8/homework/Day-41";
+
+  if (page === "profile") {
+    const path = userId ? `#/profile/${userId}` : "#/profile/@me";
+    window.location.hash = path;
+    // history.pushState(null, null, `${basePath}${path}`);
+    if (userId) {
+      renderOtherUserProfile(userId);
+    }
+  }
+}
+
+function renderOtherUserProfile(userId) {
+  showProfileEl();
+  console.log("Render trang cá nhân của người dùng với ID:", userId);
+}
+
+// Gọi các hàm cần thiết
 showProfileEl();
 getBlogs();

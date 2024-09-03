@@ -40,3 +40,15 @@ Ký hiệu viết tắt của độ dài
 * ===> tương ứng với {0,}
   ? ===> tương ứng với {0,1}
   ...
+
+Ký hiệu đại diện cho tất cả các kí tự: .
+
+các kí hiệu viết tắt
+\w : thường,hoa,số,...
+\W: ngược lại của w
+\d :số
+\D: ngược lại số
+\s:Khoảng trắng
+\S:ngược lại \s
+
+viết trong hay ngoài đều đc

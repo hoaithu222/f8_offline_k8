@@ -7,10 +7,10 @@
 }
 
 a {
-    text-decoration: none;
+    /* text-decoration: none; */
     color: inherit;
     cursor: pointer;
-
+    color: rgba(172, 242, 241, 1)
 }
 
 button {

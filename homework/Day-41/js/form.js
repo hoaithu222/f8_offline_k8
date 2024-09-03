@@ -1,22 +1,40 @@
 import { escapeHtml, redirectIfLoggedIn } from "./component.js";
+
 const serverApi = "https://api-auth-two.vercel.app";
 
 // Hàm chuyển đổi giữa form đăng nhập và đăng ký
 const buttons = document.querySelectorAll(".menu button");
 const loginForm = document.querySelector(".form-login");
 const registerForm = document.querySelector(".form-register");
+function renderPage(page) {
+  let path = "";
 
-const switchForm = (formToShow) => {
+  if (page === "login") {
+    path = "#/sign-in";
+    switchForm("login", false);
+  } else if (page === "register") {
+    path = "#/sign-up";
+    switchForm("register", false);
+  }
+
+  if (path) {
+    window.location.hash = path;
+  }
+}
+
+const switchForm = (formToShow, shouldChangeURL = true) => {
   if (formToShow === "login") {
     loginForm.classList.add("active");
     registerForm.classList.remove("active");
     buttons[0].classList.add("active");
     buttons[1].classList.remove("active");
+    if (shouldChangeURL) renderPage("login");
   } else if (formToShow === "register") {
     loginForm.classList.remove("active");
     registerForm.classList.add("active");
     buttons[0].classList.remove("active");
     buttons[1].classList.add("active");
+    if (shouldChangeURL) renderPage("register");
   }
 };
 

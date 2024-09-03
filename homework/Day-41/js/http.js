@@ -5,7 +5,8 @@ import {
   escapeHtml,
   redirectIfLoggedIn,
   getRandomAvatar,
-  truncateText,
+  // truncateText,
+  formatContent,
 } from "./component.js";
 
 const serverApi = "https://api-auth-two.vercel.app";
@@ -16,6 +17,7 @@ export let params = {
 };
 let allDataLoaded = false;
 let isLoading = false;
+
 const getBlogs = async () => {
   if (isLoading || allDataLoaded) return;
 
@@ -42,38 +44,43 @@ const getBlogs = async () => {
     document.querySelector(".loading").classList.remove("active");
   }
 };
-// Hiển thị bài viết
 
+// Hiển thị bài viết
 const drawBlogs = (blogs, prepend = false) => {
   const wrapEl = document.querySelector(".inner-blogs .inner-wrap");
   const content = blogs
     .map((blog) => {
       const avatar = getRandomAvatar();
       const { days, hoursBefore, hour, minutes } = getTime(blog.timeUp);
-      const truncatedTitle = truncateText(blog.title, 25);
-      const truncatedUserName = truncateText(blog.userId.name, 20);
-      const truncatedContent = truncateText(blog.content, 100);
+      // const truncatedTitle = truncateText(blog.title, 25);
+      // const truncatedUserName = truncateText(blog.userId.name, 20);
+      // const truncatedContent = truncateText(blog.content, 100);
+
+      // Format the content using the formatContent function
+      const formattedContent = formatContent(blog.content);
+
+      // Use DOMPurify to sanitize other parts
+      const sanitizedTitle = DOMPurify.sanitize(blog.title);
+      const sanitizedUserName = DOMPurify.sanitize(blog.userId.name);
 
       return `
         <div class="inner-box">
           <div class="user-info">
             <img src="${avatar}" alt="avatar">
-            <h3 class="user-name">${escapeHtml(blog.userId.name)}</h3>
+            <h3 class="user-name">${sanitizedUserName}</h3>
           </div>
           <div class="inner-content">
-            <p class="inner-title">${escapeHtml(truncatedTitle)}</p>
-            <p class="content">${escapeHtml(truncatedContent)}</p>
+            <p class="inner-title">${sanitizedTitle}</p>             
+            <p class="content">${formattedContent}</p>
             <div class="inner-link">
               <a href="#" class="view-more button-one" data-blog-id="${
                 blog._id
-              }" data-blog-title="${blog.title}">#view-more ${escapeHtml(
-        truncatedTitle
-      )}</a>
+              }" data-blog-title="${
+        blog.title
+      }">#view-more ${sanitizedTitle}</a>
               <a href="#" class="view-user button-one" data-user-id="${
                 blog.userId._id
-              }" data-user-name="${escapeHtml(blog.userId.name)}">#${escapeHtml(
-        truncatedUserName
-      )}</a>
+              }" data-user-name="${sanitizedUserName}">#${sanitizedUserName}</a>
             </div>
             <div class="inner-time">
               <div class="day">
@@ -87,7 +94,7 @@ const drawBlogs = (blogs, prepend = false) => {
                 <span class="minutes">${minutes} phút</span>
               </div>
               <div class="time-about">Khoảng ${calculateReadingTime(
-                escapeHtml(blog.content)
+                formattedContent
               )} đọc</div>
             </div>
           </div>
@@ -133,6 +140,7 @@ const drawBlogs = (blogs, prepend = false) => {
   });
 };
 
+// IntersectionObserver để tải thêm blog khi người dùng cuộn xuống dưới
 const observer = new IntersectionObserver(
   (entries) => {
     if (entries[0].isIntersecting && !allDataLoaded) {
@@ -151,4 +159,5 @@ if (targetElement) {
 } else {
   console.error("Element not found or is not a DOM element");
 }
+
 export { drawBlogs, getBlogs, serverApi };
