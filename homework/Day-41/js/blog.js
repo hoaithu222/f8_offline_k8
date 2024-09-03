@@ -39,7 +39,7 @@ const drawBlog = (blog) => {
           </div>
           <div class="inner-content">
             <p class="inner-title">${escapeHtml()}</p>
-            <p class="content">${formatContent(blog.content)}</p>
+            <div class="content">${formatContent(blog.content)}</div>
              <div class="inner-link">
               <a href="#" class="view-user button-one" data-user-id="${
                 blog.userId._id

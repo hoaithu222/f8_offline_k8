@@ -71,7 +71,7 @@ const drawBlogs = (blogs, prepend = false) => {
           </div>
           <div class="inner-content">
             <p class="inner-title">${sanitizedTitle}</p>             
-            <p class="content">${formattedContent}</p>
+            <div class="content">${formattedContent}</div>
             <div class="inner-link">
               <a href="#" class="view-more button-one" data-blog-id="${
                 blog._id

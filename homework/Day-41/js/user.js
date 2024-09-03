@@ -15,7 +15,7 @@ const showProfileEl = (data) => {
   innerUser.innerHTML = `
     <p class="info">Thông tin user : <i class="fa-solid fa-circle-down"></i></p>
     <div class="name">
-         <img src="/homework/Day-41/image/image1.jpg" alt="avatar" width="130px" style="border-radius: 50%;" />
+         <img src="./image/image1.jpg" alt="avatar" width="130px" style="border-radius: 50%;" />
          <h3>${localStorage.getItem("userName")}</h3>
     </div>
     <p>Các bài ${localStorage.getItem(
@@ -60,7 +60,7 @@ const drawBlogs = (blogs, prepend = false) => {
           </div>
           <div class="inner-content">
             <p class="inner-title">${escapeHtml(blog.title)}</p>
-            <p class="content">${formatContent(blog.content)}</p>
+            <div class="content">${formatContent(blog.content)}</div>
             <div class="inner-link">
               <a href="#" class="view-more button-one" data-blog-id="${
                 blog._id

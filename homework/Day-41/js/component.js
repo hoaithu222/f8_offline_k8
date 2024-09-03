@@ -100,7 +100,7 @@ export function formatContent(content) {
   content = content.replaceAll(
     /((\+|0)\d{1,4}[-.\s]?)?(\(?\d{1,3}?\)?[-.\s]?)?\b\d{1,4}[-.\s]?\d{2,}[-.\s]?\d{2,}\b/g,
     (phone) => {
-      return ` <a href="tel:${phone}" class="link" target="_blank">${phone}</a> `;
+      return `<a href="tel:${phone}" class="link" target="_blank">${phone}</a>`;
     }
   );
 
@@ -108,31 +108,18 @@ export function formatContent(content) {
   content = content.replaceAll(
     /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g,
     (email) => {
-      return ` <a href="mailto:${email}" class="link" target="_blank">${email}</a> `;
+      return `<a href="mailto:${email}" class="link" target="_blank">${email}</a>`;
     }
   );
 
-  // Tìm tất cả liên kết YouTube và console.log chúng
-  // Xử lý liên kết YouTube
-  content = content.replaceAll(
-    /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:embed\/|v\/|watch\?v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/g,
-    (match, videoId) => {
-      console.log(
-        "Embedding YouTube video:",
-        `https://www.youtube.com/embed/${videoId}`
-      ); // Debug log
-      return `
-    <iframe
-      width='560'
-      height='315'
-      src='https://www.youtube.com/embed/${videoId}'
-      title='YouTube video player'
-      frameBorder='0'
-      allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-      allowFullScreen></iframe>
-  `;
-    }
-  );
+  // Tạm thời loại bỏ liên kết YouTube khỏi xử lý liên kết chung
+  const youtubeLinkRegex =
+    /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:embed\/|v\/|watch\?v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/g;
+  const youtubeLinks = [];
+  content = content.replace(youtubeLinkRegex, (match) => {
+    youtubeLinks.push(match);
+    return `__YOUTUBE_LINK_${youtubeLinks.length - 1}__`;
+  });
 
   // Xử lý tất cả các liên kết khác
   content = content.replaceAll(
@@ -145,19 +132,41 @@ export function formatContent(content) {
       if (url.endsWith("/")) {
         url = url.slice(0, -1);
       }
-      return ` <a href="${url}" class="link" target="_blank" rel="noopener noreferrer">${url.replace(
+      return `<a href="${url}" class="link" target="_blank" rel="noopener noreferrer">${url.replace(
         /^https?:\/\//,
         ""
-      )}</a> `;
+      )}</a>`;
     }
   );
+
+  // Đưa liên kết YouTube trở lại nội dung và thay thế bằng thẻ iframe
+  youtubeLinks.forEach((link, index) => {
+    const videoId = link.match(youtubeLinkRegex)[1];
+    content = content.replace(
+      `__YOUTUBE_LINK_${index}__`,
+      `
+      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
+        <iframe
+          src="https://www.youtube.com/embed/${videoId}"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          style="position: absolute; top: 0; left: 0; width: 80%; height: 100%; margin: 20px auto;">
+        </iframe>
+      </div>
+    `
+    );
+  });
 
   // Cắt nhiều dấu cách thành 1 dấu cách và cắt nhiều dấu xuống dòng thành 1 xuống dòng
   content = content.replace(/\s+/g, " ").replace(/\n+/g, "\n");
 
+  console.log(content); // Debug log để kiểm tra kết quả trước khi sanitize
+
   // Làm sạch nội dung đã định dạng bằng cách sử dụng DOMPurify
   content = DOMPurify.sanitize(content, {
-    ALLOWED_TAGS: ["a", "iframe", "br"],
+    ALLOWED_TAGS: ["a", "iframe", "br", "div"],
     ALLOWED_ATTR: [
       "href",
       "target",
@@ -165,11 +174,15 @@ export function formatContent(content) {
       "frameborder",
       "allowfullscreen",
       "rel",
+      "style",
+      "title",
+      "allow",
     ],
   });
 
   return content;
 }
+
 export {
   getTime,
   calculateReadingTime,
