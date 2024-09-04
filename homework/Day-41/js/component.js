@@ -102,9 +102,9 @@ export function formatContent(content) {
   });
 
   content = content.replaceAll(
-    /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g,
+    /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b/g,
     (email) => {
-      return `<a href="mailto:${email}" class="link" target="_blank">${email}</a>`;
+      return `<a href="mailto:${email}" class="link" target="_blank" rel="noopener noreferrer">${email}</a>`;
     }
   );
 
@@ -117,7 +117,7 @@ export function formatContent(content) {
   });
 
   content = content.replaceAll(
-    /(?:https?:\/\/|www\.)?[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(\/[^\s]*)?/g,
+    /(?:(?:(?:https?:\/\/)|(?:www\.)|(?:ftp:\/\/))[^ \s"'\(\)<>]+(?=\s|$))(?![\w@])/g,
     (url) => {
       let formattedUrl = url;
       if (
@@ -156,8 +156,6 @@ export function formatContent(content) {
   });
 
   content = content.replace(/\s+/g, " ").replace(/\n+/g, "\n");
-
-  console.log(content);
 
   content = DOMPurify.sanitize(content, {
     ALLOWED_TAGS: ["a", "iframe", "br", "div"],
