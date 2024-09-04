@@ -96,15 +96,11 @@ const redirectIfLoggedIn = () => {
   }
 };
 export function formatContent(content) {
-  // Xử lý số điện thoại
-  content = content.replaceAll(
-    /((\+|0)\d{1,4}[-.\s]?)?(\(?\d{1,3}?\)?[-.\s]?)?\b\d{1,4}[-.\s]?\d{2,}[-.\s]?\d{2,}\b/g,
-    (phone) => {
-      return `<a href="tel:${phone}" class="link" target="_blank">${phone}</a>`;
-    }
-  );
+  content = content.replaceAll(/(0|\+84)\d{9}/g, (phone) => {
+    const normalizedPhone = phone.replace(/[-.\s]/g, "");
+    return `<a href="tel:${normalizedPhone}" class="link" target="_blank">${phone}</a>`;
+  });
 
-  // Xử lý email
   content = content.replaceAll(
     /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g,
     (email) => {
@@ -112,7 +108,6 @@ export function formatContent(content) {
     }
   );
 
-  // Tạm thời loại bỏ liên kết YouTube khỏi xử lý liên kết chung
   const youtubeLinkRegex =
     /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:embed\/|v\/|watch\?v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/g;
   const youtubeLinks = [];
@@ -121,25 +116,26 @@ export function formatContent(content) {
     return `__YOUTUBE_LINK_${youtubeLinks.length - 1}__`;
   });
 
-  // Xử lý tất cả các liên kết khác
   content = content.replaceAll(
-    /(?:https?:\/\/|www\.)[^\s/$.?#].[^\s]*/g,
+    /(?:https?:\/\/|www\.)?[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(\/[^\s]*)?/g,
     (url) => {
-      // Thêm http:// nếu cần và cắt dấu "/" cuối cùng
-      if (!url.startsWith("http://") && !url.startsWith("https://")) {
-        url = "http://" + url;
+      let formattedUrl = url;
+      if (
+        !formattedUrl.startsWith("http://") &&
+        !formattedUrl.startsWith("https://")
+      ) {
+        formattedUrl = "http://" + formattedUrl;
       }
-      if (url.endsWith("/")) {
-        url = url.slice(0, -1);
+      if (formattedUrl.endsWith("/")) {
+        formattedUrl = formattedUrl.slice(0, -1);
       }
-      return `<a href="${url}" class="link" target="_blank" rel="noopener noreferrer">${url.replace(
+      return `<a href="${formattedUrl}" class="link" target="_blank" rel="noopener noreferrer">${formattedUrl.replace(
         /^https?:\/\//,
         ""
       )}</a>`;
     }
   );
 
-  // Đưa liên kết YouTube trở lại nội dung và thay thế bằng thẻ iframe
   youtubeLinks.forEach((link, index) => {
     const videoId = link.match(youtubeLinkRegex)[1];
     content = content.replace(
@@ -159,12 +155,10 @@ export function formatContent(content) {
     );
   });
 
-  // Cắt nhiều dấu cách thành 1 dấu cách và cắt nhiều dấu xuống dòng thành 1 xuống dòng
   content = content.replace(/\s+/g, " ").replace(/\n+/g, "\n");
 
-  console.log(content); // Debug log để kiểm tra kết quả trước khi sanitize
+  console.log(content);
 
-  // Làm sạch nội dung đã định dạng bằng cách sử dụng DOMPurify
   content = DOMPurify.sanitize(content, {
     ALLOWED_TAGS: ["a", "iframe", "br", "div"],
     ALLOWED_ATTR: [
