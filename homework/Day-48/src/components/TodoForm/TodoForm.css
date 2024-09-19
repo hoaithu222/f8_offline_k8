@@ -1,0 +1,14 @@
+form {
+    padding: 20px;
+    border-bottom: 3px dotted #f7f4f4;
+}
+
+input {
+    background-color: #fff;
+    outline: none;
+    width: 300px;
+    padding: 10px 15px;
+    font-size: 18px;
+    border: 2px dashed #96d0f4;
+    border-radius: 20px;
+}

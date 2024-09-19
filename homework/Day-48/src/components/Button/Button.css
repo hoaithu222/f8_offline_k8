@@ -1,0 +1,63 @@
+.custom-button {
+    background-color: #be5950;
+    color: white;
+    border: 2px solid #fff;
+    padding: 10px 15px;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+
+}
+
+.custom-button:hover {
+    background-color: #FF4D4D;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.custom-button:disabled {
+    background-color: #e0a3a3;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.btn_cancel {
+    background-color: #6dd0d2;
+    border: 2px solid #fff;
+}
+
+.btn_cancel:hover {
+    background-color: #5ab7b6;
+}
+
+.btn_update {
+    background-color: #5cb85c;
+    border: 2px solid #fff;
+}
+
+.btn_update:hover {
+    background-color: #4cae4c;
+}
+
+.btn_edit {
+    background-color: #ffb74d;
+    border: 2px solid #fff;
+}
+
+.btn_edit:hover {
+    background-color: #ff9800;
+}
+
+.btn_add {
+    background-color: #5bc0de;
+    border: 2px solid #fff;
+}
+
+.btn_add:hover {
+    background-color: #31b0d5;
+}

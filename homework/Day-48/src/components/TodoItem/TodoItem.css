@@ -1,0 +1,46 @@
+.todo-item {
+    padding: 20px;
+    margin: 20px 0;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 2px dotted #fed0d0;
+}
+
+.todo-item input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 2px solid #f0e4e4;
+    margin-bottom: 10px;
+}
+
+.actions,
+.list_btn {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 10px;
+}
+
+.box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.box .completed {
+    display: flex;
+    align-items: center;
+}
+
+.box .completed input {
+    margin-right: 10px;
+    width: 30px;
+
+}
+
+.box .completed label {
+    font-size: 20px;
+}
