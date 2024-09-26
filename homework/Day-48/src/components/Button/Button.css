@@ -61,3 +61,11 @@
 .btn_add:hover {
     background-color: #31b0d5;
 }
+
+.btn_find {
+    background-color: rgb(238, 151, 238);
+}
+
+.btn_find:hover {
+    background-color: rgba(238, 151, 238, 0.584);
+}

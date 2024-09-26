@@ -6,6 +6,7 @@ import {
   addTodo,
   updateTodo,
   deleteTodo,
+  findTodo,
 } from "./api/todoApi";
 import TodoList from "./components/TodoList";
 import TodoForm from "./components/TodoForm/TodoForm";
@@ -100,7 +101,28 @@ function App() {
       notifyError("Không thể thêm công việc. Vui lòng tải lại trang.");
     }
   };
+  const handleSreachTodo = async (todo) => {
+    if (!apiKey) {
+      notifyError("Vui lòng nhập email để thực hiện thao tác.");
+      return;
+    }
+    try {
+      setLoading(true);
+      const result = await findTodo(apiKey, todo);
+      if (result && result.data.listTodo) {
+        setTodos(result.data.listTodo);
+        notifySuccess("Tìm kiếm công việc thành công");
+        setLoading(false);
+      } else {
+        notifyError("Không thể tìm kiếm công việc");
+      }
 
+      console.log(result);
+    } catch (e) {
+      console.log(e);
+      notifyError("Không thể tìm kiếm công việc . Vui lòng tải lại trang.");
+    }
+  };
   const handleUpdateTodo = async (id, updatedTodo) => {
     if (!apiKey) {
       notifyError("Vui lòng nhập email để thực hiện thao tác.");
@@ -180,7 +202,7 @@ function App() {
 
         {apiKey && (
           <div>
-            <TodoForm onAdd={handleAddTodo} />
+            <TodoForm onAdd={handleAddTodo} onSearch={handleSreachTodo} />
             {loading ? (
               <LoadingSpinner />
             ) : (
