@@ -1,35 +1,10 @@
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import { useState } from "react";
 import Button from "../Button/Button";
 import { notifySuccess, notifyWarning } from "../../utils/notifications";
 import "./TodoForm.css";
 
 const TodoForm = ({ onAdd, onSearch }) => {
   const [text, setText] = useState("");
-  const [debouncedText, setDebouncedText] = useState("");
-  const isInitialMount = useRef(true);
-
-  useEffect(() => {
-    const timerId = setTimeout(() => {
-      setDebouncedText(text);
-    }, 300);
-
-    return () => clearTimeout(timerId);
-  }, [text]);
-
-  useEffect(() => {
-    if (isInitialMount.current) {
-      isInitialMount.current = false;
-    } else {
-      if (debouncedText !== text) {
-        onSearch(debouncedText);
-        if (debouncedText.trim()) {
-          notifySuccess("Kích hoạt chế độ tìm kiếm thành công");
-        } else {
-          notifySuccess("Kích hoạt chế độ tìm kiếm thành công");
-        }
-      }
-    }
-  }, [debouncedText, onSearch]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -40,18 +15,10 @@ const TodoForm = ({ onAdd, onSearch }) => {
     onAdd({ text, completed: false });
     setText("");
   };
-
-  const handleInputChange = (e) => {
-    setText(e.target.value);
-  };
-
-  const handleSearch = () => {
+  const handleSearch = (e) => {
+    e.preventDefault();
     onSearch(text);
-    if (text.trim()) {
-      notifySuccess("Kích hoạt chế độ tìm kiếm thành công");
-    } else {
-      notifySuccess("Kích hoạt chế độ tìm kiếm thành công");
-    }
+    notifySuccess("Kích hoạt chế độ tìm kiếm thành công");
   };
 
   return (
@@ -59,13 +26,13 @@ const TodoForm = ({ onAdd, onSearch }) => {
       <input
         type="text"
         value={text}
-        onChange={handleInputChange}
-        placeholder="Thêm một việc làm mới hoặc tìm kiếm"
+        onChange={(e) => setText(e.target.value)}
+        placeholder="Thêm một việc làm mới"
       />
       <Button type="submit" className="btn_add">
         Thêm mới
       </Button>
-      <Button type="button" className="btn_find" onClick={handleSearch}>
+      <Button className="btn_find" onClick={handleSearch}>
         Tìm Kiếm
       </Button>
     </form>
