@@ -1,0 +1,50 @@
+header {
+    background-color: rgb(124, 146, 211);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 130px;
+    z-index: 909;
+}
+
+.inner-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+}
+
+.inner-wrap .logo h2 {
+    font-size: 45px;
+    cursor: pointer;
+    background: linear-gradient(90deg, #f0bcea, #c8b7ef);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    letter-spacing: 2px;
+    transition: background 0.3s ease;
+}
+
+.inner-wrap .logo h2:hover {
+    background: linear-gradient(90deg, #90c9f1, #c36de7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.inner-wrap .cart {
+    font-size: 45px;
+    position: relative;
+    cursor: pointer;
+}
+
+.inner-wrap .cart .bag:hover {
+    color: orangered;
+}
+
+.inner-wrap .cart .number {
+    font-size: 35px;
+    position: absolute;
+    bottom: -10px;
+    left: 40px;
+}

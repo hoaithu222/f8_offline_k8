@@ -1,0 +1,143 @@
+.product-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+}
+
+.inner-box-details {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 20px;
+}
+
+
+.image-details {
+    flex: 1;
+    background-color: #fafafa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-right: 2px solid rgba(225, 166, 225, 0.2);
+
+}
+
+.image-details img {
+    width: 100%;
+    height: auto;
+    max-width: 400px;
+    border-radius: 15px;
+    object-fit: cover;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.inner-content-details {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #f7f7f7;
+
+}
+
+.brand-details {
+    font-size: 1.4rem;
+    color: #ff6b6b;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.name-details {
+    font-size: 2.4rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.desc-details {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: #666;
+    line-height: 1.6;
+}
+
+.category-details {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #888;
+}
+
+.price-details {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 20px 0;
+    color: #ff5722;
+}
+
+.button {
+
+    padding: 15px 30px;
+    background-color: #cdee47;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.button-details {
+    padding: 15px 30px;
+    background-color: #e78a44;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+
+
+a button-details {
+    background-color: #3f51b5;
+}
+
+a button-details:hover {
+    background-color: #303f9f;
+}
+
+.skeleton {
+    border-radius: 15px;
+    background: linear-gradient(90deg, rgba(240, 240, 240, 1) 25%, rgba(220, 220, 220, 1) 50%, rgba(240, 240, 240, 1) 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}

@@ -1,9 +1,9 @@
-import TodoList from "./components/TodoList";
+import Checkbox from "./components/Checkbox";
 
 export default function App() {
   return (
     <div>
-      <TodoList />
+      <Checkbox />
     </div>
   );
 }

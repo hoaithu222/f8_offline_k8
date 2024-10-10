@@ -1,0 +1,106 @@
+.title {
+    text-align: center;
+    font-size: 38px;
+    background: linear-gradient(90deg, rgba(238, 174, 202, 1) 0%, rgba(198, 180, 216, 1) 50%, rgba(148, 187, 233, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+}
+
+.products-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.products-list .product-item {
+    width: calc(100% / 4 - 30px);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10px;
+    text-align: center;
+    aspect-ratio: 5/6;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+    min-height: 350px;
+}
+
+.products-list .product-item .inner-image {
+    aspect-ratio: 4/3;
+}
+
+.products-list .product-item .inner-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-bottom: 4px solid rgb(231, 160, 245);
+    border-radius: 10px;
+    transition: transform 0.3s ease-out;
+}
+
+.products-list .product-item .inner-image img:hover {
+    transform: scale(1.1);
+}
+
+.products-list .product-item .name {
+    margin: 20px 0;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.products-list .product-item .buy {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.products-list .product-item .buy .price {
+    font-size: 30px;
+    color: brown;
+    font-weight: 700;
+}
+
+.products-list .product-item .buy .price span {
+    color: black;
+}
+
+.products-list .product-item .buy .cart {
+    font-size: 30px;
+    color: rgb(47, 185, 87);
+    cursor: pointer;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    list-style: none;
+    padding: 0;
+
+}
+
+.pagination li {
+    margin: 0 5px;
+}
+
+.pagination li a {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    color: #333;
+}
+
+.pagination li.active a {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.pagination li a:hover {
+    background-color: #ddd;
+}
