@@ -32,7 +32,8 @@ export const productReducer = createSlice({
 export const getProducts = createAsyncThunk(
     "getProducts",
     async ({ limit, page }) => {
-        const response = await fetch(`https://api-exercise-sopi.vercel.app/api/v1/products?limit=${limit}&page=${page}`);
+        const Api_url = process.env.URL_API;
+        const response = await fetch(`${Api_url}?limit=${limit}&page=${page}`);
         return response.json();
     }
 );
