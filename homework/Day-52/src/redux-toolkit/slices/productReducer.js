@@ -7,6 +7,7 @@ export const initialState = {
     error: null,
 };
 
+
 export const productReducer = createSlice({
     name: "product",
     initialState,
@@ -24,16 +25,33 @@ export const productReducer = createSlice({
             })
             .addCase(getProducts.rejected, (state, action) => {
                 state.loading = false;
-                state.error = action.error.message;
+                state.error = action.payload || action.error.message;
             });
     },
 });
-
+console.log('API URL:', import.meta.env.VITE_URL_API);
 export const getProducts = createAsyncThunk(
     "getProducts",
-    async ({ limit, page }) => {
-        const Api_url = import.meta.env.VITE_URL_API;
-        const response = await fetch(`${Api_url}?limit=${limit}&page=${page}`);
-        return response.json();
+    async ({ limit, page }, { rejectWithValue }) => {
+        try {
+            const Api_url = import.meta.env.VITE_URL_API;
+            const response = await fetch(`${Api_url}?limit=${limit}&page=${page}`);
+
+
+            if (!response.ok) {
+                throw new Error(`Network response was not ok. Status: ${response.status}`);
+            }
+
+
+            const contentType = response.headers.get("content-type");
+            if (!contentType || !contentType.includes("application/json")) {
+                const text = await response.text();
+                throw new Error(`Expected JSON, but received: ${text}`);
+            }
+
+            return await response.json();
+        } catch (error) {
+            return rejectWithValue(error.message);
+        }
     }
 );

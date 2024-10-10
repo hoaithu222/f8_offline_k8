@@ -10,8 +10,16 @@ export const getDetailsProduct = createAsyncThunk(
             }
 
             const response = await fetch(`${Api_url}/${id}`);
+            const contentType = response.headers.get("content-type");
+
             if (!response.ok) {
                 throw new Error(`Network response was not ok. Status: ${response.status}`);
+            }
+
+
+            if (!contentType || !contentType.includes("application/json")) {
+                const text = await response.text();
+                throw new Error(`Expected JSON, but received: ${text}`);
             }
 
             return await response.json();
