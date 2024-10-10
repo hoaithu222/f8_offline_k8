@@ -32,7 +32,7 @@ export const productReducer = createSlice({
 export const getProducts = createAsyncThunk(
     "getProducts",
     async ({ limit, page }) => {
-        const Api_url = process.env.URL_API;
+        const Api_url = import.meta.env.VITE_URL_API;
         const response = await fetch(`${Api_url}?limit=${limit}&page=${page}`);
         return response.json();
     }

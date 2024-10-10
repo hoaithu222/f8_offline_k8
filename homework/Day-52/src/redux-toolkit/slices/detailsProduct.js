@@ -1,5 +1,25 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 
+export const getDetailsProduct = createAsyncThunk(
+    "getDetailsProduct",
+    async ({ id }, { rejectWithValue }) => {
+        try {
+            const Api_url = import.meta.env.VITE_URL_API;
+            if (!Api_url) {
+                throw new Error('API URL is not defined');
+            }
+
+            const response = await fetch(`${Api_url}/${id}`);
+            if (!response.ok) {
+                throw new Error(`Network response was not ok. Status: ${response.status}`);
+            }
+
+            return await response.json();
+        } catch (error) {
+            return rejectWithValue(error.message);
+        }
+    }
+);
 export const initialState = {
     detailsProduct: {},
     loading: false,
@@ -27,11 +47,3 @@ export const detailsProduct = createSlice({
     },
 });
 
-export const getDetailsProduct = createAsyncThunk(
-    "getDetailsProduct",
-    async ({ id }) => {
-        const Api_url = process.env.URL_API;
-        const response = await fetch(`${Api_url}/${id}`);
-        return response.json();
-    }
-);
