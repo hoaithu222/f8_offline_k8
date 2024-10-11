@@ -6,6 +6,7 @@ import { add } from "../../redux-toolkit/slices/cartReducer";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import "./style.css";
+import { toast } from "react-toastify";
 
 const ProductDetails = () => {
   const { name, id } = useParams();
@@ -65,6 +66,9 @@ const ProductDetails = () => {
               className="button-details"
               onClick={() => {
                 dispatch(add(detailsProduct));
+                toast.success(
+                  `${detailsProduct.name} đã được thêm vào giỏ hàng!`
+                );
               }}
             >
               Add to cart

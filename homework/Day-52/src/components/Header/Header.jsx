@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 export default function Header() {
-  const quantity = useSelector((state) => state.cart.quantity);
+  const quantity = useSelector((state) => state.cart.cartProduct);
   return (
     <header>
       <div className="container">
@@ -16,7 +16,7 @@ export default function Header() {
           <Link to="cart">
             <div className="cart" style={{ color: "#fff" }}>
               <BsHandbag className="bag" />
-              <span className="number">{quantity}</span>
+              <span className="number">{quantity.length}</span>
             </div>
           </Link>
         </div>
