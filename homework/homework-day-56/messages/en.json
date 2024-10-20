@@ -1,0 +1,50 @@
+{
+  "HomePage": {
+    "title": "Hello, world!",
+    "about": "Go to the About page"
+  },
+  "HeaderPage": {
+    "siteTitle": "The Example Name",
+    "navHome": "Home"
+  },
+  "Aside": {
+    "profileTitle": "Front-end Developer",
+    "skills": "My Skills",
+    "web-title":"Web developer",
+    "web": "React.js, Next.js, Redux, Context, CSS3, HTML5,...",
+    "other-title":"Other skills",
+    "other": "Relatively good research and search skills.",
+    "histories-title":"Histories",
+    "histories": {
+      "juniorHighSchool": "Vu Son Secondary School",
+      "highSchool": "High School Dance Ceremony",
+      "college": "Academy of Cryptography Techniques"
+    }
+  },
+  "ContentMain": {
+    "title": "The Example Name"
+  },
+  "ContentSocial": {
+    "title": "Social Contact"
+  },
+  "Project": {
+    "title":"Self project",
+    "project1": {
+      "title": "Project 1",
+      "desc": "Description for Project 1 detailing the work involved, the technologies used, and the outcome achieved."
+    },
+    "project2": {
+      "title": "Project 2",
+      "desc": "Description for Project 2 covering the objectives, the tools applied, and the results obtained."
+    }
+  },
+  "Hobbies": {
+    "title":"My Hobbies",
+   "hobby1": "I enjoy reading books that expand my knowledge and broaden my perspective on various subjects.",
+    "hobby2": "I love learning new things, whether it be through online courses, workshops, or simply exploring new topics on my own.",
+    "hobby3": "I like spending time in nature, as it allows me to relax, recharge, and appreciate the beauty of the world around me."
+  },
+  "Footer": {
+    "copyright": "© 2024 The Example Name. All rights reserved."
+  }
+}

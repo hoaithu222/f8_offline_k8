@@ -1,0 +1,5 @@
+.box {
+    box-shadow: rgba(177, 177, 207, 0.25) 20px 50px 100px -20px, rgba(211, 197, 197, 0.3) 10px 30px 60px -30px;
+    border-radius: 30px;
+    padding: 30px;
+}

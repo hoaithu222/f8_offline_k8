@@ -1,0 +1,51 @@
+{
+  "HomePage": {
+    "title": "Xin chào thế giới!",
+    "about": "Đi tới trang Giới thiệu"
+  },
+  "HeaderPage": {
+    "siteTitle": "Fullstack.edu.vn F8",
+    "navHome": "Home"
+  },
+  "Aside": {
+    "profileTitle": "Lập trình viên Front-end",
+    "skills": "Các kỹ năng của tôi",
+    "web-title":"Kỹ năng làm việc",
+    "web": "React.js, Next.js, Redux, Context, CSS3, HTML5,...",
+    "other-title":"Các kỹ năng khác",
+    "other": "Khả năng nghiên cứu và tìm kiếm khá tốt. Tư duy làm việc logic,",
+    "histories-title":"Lịch sử",
+    "histories": {
+        "juniorHighSchool": "Trường THCS Vũ Sơn",
+        "highSchool": "Trường THPT Vũ Lễ",
+        "college": "Học Viện Kỹ Thuật Mật Mã"
+      }
+    
+  },
+  "ContentMain": {
+    "title": "Tên Ví dụ"
+  },
+  "ContentSocial": {
+    "title": "Liên hệ xã hội"
+  },
+  "Project": {
+    "title":"Các dự án cá nhân",
+    "project1": {
+      "title": "Dự án 1",
+      "desc": "Mô tả cho Dự án 1 về công việc thực hiện, các công nghệ đã sử dụng, và kết quả đạt được."
+    },
+    "project2": {
+      "title": "Dự án 2",
+      "desc": "Mô tả cho Dự án 2 về mục tiêu, các công cụ đã áp dụng, và kết quả thu được."
+    }
+  },
+ "Hobbies": {
+  "title": "Sở Thích Của Tôi",
+  "hobby1": "Tôi thích đọc sách để mở mang kiến thức và hiểu biết về nhiều chủ đề khác nhau.",
+    "hobby2": "Tôi thích học hỏi những điều mới, dù là qua các khóa học trực tuyến, hội thảo, hoặc chỉ đơn giản là khám phá các chủ đề mới một mình.",
+    "hobby3": "Tôi thích dành thời gian ở thiên nhiên, vì điều đó giúp tôi thư giãn, nạp lại năng lượng và cảm nhận vẻ đẹp của thế giới xung quanh."
+},
+  "Footer": {
+    "copyright": "© 2024 Fullstack.edu.vn F8. All rights reserved."
+  }
+}

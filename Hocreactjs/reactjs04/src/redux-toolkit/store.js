@@ -6,5 +6,4 @@ export const store = configureStore({
         counter: counterSlice.reducer,
         todo: todoSlice.reducer,
     }
-
 });
