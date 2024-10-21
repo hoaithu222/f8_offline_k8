@@ -1,15 +1,24 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useRouter, usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function LanguageSwitcher() {
-  const [isEn, setIsEn] = useState(true);
   const router = useRouter();
+  const pathname = usePathname();
+  const [currentLocale, setCurrentLocale] = useState("en");
+
+  useEffect(() => {
+    const locale = pathname.startsWith("/vi") ? "vi" : "en";
+    setCurrentLocale(locale);
+  }, [pathname]);
+
   const handleClick = () => {
-    const newLocale = isEn ? "vi" : "en";
-    setIsEn(!isEn);
-    router.push(`/${newLocale}`);
+    const newLocale = currentLocale === "en" ? "vi" : "en";
+    let newPath = pathname.replace(/^\/[a-z]{2}/, "");
+    newPath = `/${newLocale}${newPath}` || `/${newLocale}`;
+
+    router.push(newPath);
   };
 
   return (
@@ -22,7 +31,7 @@ export default function LanguageSwitcher() {
           borderRadius: "10px",
         }}
       >
-        {isEn ? "vi" : "en"}
+        {currentLocale === "en" ? "vi" : "en"}
       </button>
     </div>
   );
