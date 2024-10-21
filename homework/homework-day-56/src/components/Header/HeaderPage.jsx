@@ -2,8 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { FaFacebookSquare } from "react-icons/fa";
-import { FaYoutube } from "react-icons/fa";
+import { FaFacebookSquare, FaYoutube } from "react-icons/fa";
 import DarkLight from "../DarkLight";
 import LanguageSwitcher from "../LanguageSwitcher";
 import "./Header.css";
@@ -12,8 +11,16 @@ export default function HeaderPage() {
   const t = useTranslations("HeaderPage");
   const [isDark, setIsDark] = useState(true);
 
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("isDark");
+    if (savedTheme !== null) {
+      setIsDark(JSON.parse(savedTheme));
+    }
+  }, []);
+
   const handleThemeChange = (darkMode) => {
     setIsDark(darkMode);
+    localStorage.setItem("isDark", JSON.stringify(darkMode));
   };
 
   useEffect(() => {
@@ -54,7 +61,7 @@ export default function HeaderPage() {
             className={`text-2xl ${isDark ? "text-white" : "text-black"}`}
           />
         </Link>
-        <DarkLight onThemeChange={handleThemeChange} />
+        <DarkLight isDark={isDark} onThemeChange={handleThemeChange} />
         <div className="mr-4">
           <LanguageSwitcher />
         </div>
