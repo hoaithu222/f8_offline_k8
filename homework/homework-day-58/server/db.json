@@ -1,0 +1,449 @@
+{
+  "users": [
+    {
+      "given_name": "Hoài",
+      "family_name": "Thu",
+      "nickname": "thu601925",
+      "name": "Hoài Thu",
+      "picture": "https://lh3.googleusercontent.com/a/ACg8ocKc8dgpItDb1lUcnNUgRC5YdK-uoBLcjPnDkVFAjX-7WTp6DtoP=s96-c",
+      "updated_at": "2024-10-31T03:10:32.906Z",
+      "email": "thu601925@gmail.com",
+      "email_verified": true,
+      "sub": "google-oauth2|113832693344543295610",
+      "sid": "CTmFV6T85n5CWIcYWC3u1ac4XhiAzK29",
+      "id": "523f1618-e599-49f9-830a-f4195ee6539a"
+    },
+    {
+      "given_name": "Hong",
+      "family_name": "Thuy",
+      "nickname": "thuyhongthuy0202",
+      "name": "Hong Thuy",
+      "picture": "https://lh3.googleusercontent.com/a/ACg8ocJYTRsz5K_Zwgg20uYU2mqzj8_5mzVFasSIZIGbK5qFnbMLqDs=s96-c",
+      "updated_at": "2024-10-31T04:24:20.209Z",
+      "email": "thuyhongthuy0202@gmail.com",
+      "email_verified": true,
+      "sub": "google-oauth2|102414711161340951598",
+      "sid": "7jcmngGoZyCaLxxXbzm5-fAd1gzSyldA",
+      "id": "1309ca24-6ecd-45b7-be74-bd098647aff0"
+    }
+  ],
+  "mindmaps": [
+    {
+      "id": "79db1184-df0d-432f-8bd7-aa8e820572c5",
+      "name": "Mindmap không có tên",
+      "createdBy": "google-oauth2|102414711161340951598",
+      "createdAt": "2024-11-01T10:26:10.656Z",
+      "updatedAt": "2024-11-01T10:26:10.656Z",
+      "isPublic": false,
+      "nodes": [
+        {
+          "id": "0",
+          "type": "input",
+          "data": {
+            "label": "My Mindmap"
+          },
+          "position": {
+            "x": 250,
+            "y": 100
+          },
+          "style": {
+            "backgroundColor": "#8BC34A",
+            "color": "#FFF",
+            "padding": "20px",
+            "borderRadius": "8px"
+          },
+          "width": "150",
+          "height": "40"
+        }
+      ],
+      "edges": [],
+      "description": "Chưa có mô tả"
+    },
+    {
+      "id": "cb40faf1-c700-4868-b9a0-14c5469c77ac",
+      "name": "Mindmap không có tên",
+      "createdBy": "google-oauth2|113832693344543295610",
+      "createdAt": "2024-11-03T04:52:15.222Z",
+      "updatedAt": "2024-11-03T04:52:15.222Z",
+      "isPublic": true,
+      "nodes": [
+        {
+          "id": "0",
+          "type": "input",
+          "data": {
+            "label": "Nội dung 1"
+          },
+          "position": {
+            "x": 233.5,
+            "y": -10
+          },
+          "style": {
+            "backgroundColor": "#3F51B5",
+            "color": "#FFF",
+            "padding": "20px",
+            "borderRadius": "8px"
+          },
+          "width": "150",
+          "height": "40",
+          "measured": {
+            "width": 150,
+            "height": 44
+          },
+          "selected": false,
+          "dragging": false
+        },
+        {
+          "id": "1",
+          "position": {
+            "x": 7.538991475893681,
+            "y": 126
+          },
+          "data": {
+            "label": "Nội dung phần 1"
+          },
+          "origin": [
+            0.5,
+            0
+          ],
+          "style": {
+            "backgroundColor": "#3F51B5",
+            "color": "#FFF",
+            "padding": "10px",
+            "borderRadius": "8px",
+            "cursor": "pointer"
+          },
+          "measured": {
+            "width": 150,
+            "height": 40
+          },
+          "selected": true,
+          "dragging": false
+        },
+        {
+          "id": "2",
+          "position": {
+            "x": 230.5,
+            "y": 178
+          },
+          "data": {
+            "label": "Nội dung phần 2"
+          },
+          "origin": [
+            0.5,
+            0
+          ],
+          "style": {
+            "backgroundColor": "#3F51B5",
+            "color": "#FFF",
+            "padding": "10px",
+            "borderRadius": "8px",
+            "cursor": "pointer"
+          },
+          "measured": {
+            "width": 150,
+            "height": 40
+          },
+          "selected": false,
+          "dragging": false
+        },
+        {
+          "id": "3",
+          "position": {
+            "x": 471.5,
+            "y": 154
+          },
+          "data": {
+            "label": "Nội dung phần 3"
+          },
+          "origin": [
+            0.5,
+            0
+          ],
+          "style": {
+            "backgroundColor": "#ff9800",
+            "color": "#FFF",
+            "padding": "10px",
+            "borderRadius": "8px",
+            "cursor": "pointer"
+          },
+          "measured": {
+            "width": 150,
+            "height": 40
+          },
+          "selected": false,
+          "dragging": false
+        }
+      ],
+      "edges": [
+        {
+          "id": "1",
+          "source": "0",
+          "target": "1",
+          "style": {
+            "stroke": "#b1b1b7",
+            "strokeWidth": 2
+          }
+        },
+        {
+          "id": "2",
+          "source": "0",
+          "target": "2",
+          "style": {
+            "stroke": "#b1b1b7",
+            "strokeWidth": 2
+          }
+        },
+        {
+          "id": "3",
+          "source": "0",
+          "target": "3",
+          "style": {
+            "stroke": "#b1b1b7",
+            "strokeWidth": 2
+          }
+        }
+      ],
+      "description": "Chưa có mô tả",
+      "shareTitle": "",
+      "shareDescription": ""
+    },
+    {
+      "id": "cab521f0-0f9c-4da3-b514-b1dfed690372",
+      "name": "Mindmap không có tên",
+      "createdBy": "google-oauth2|113832693344543295610",
+      "createdAt": "2024-11-03T05:02:21.558Z",
+      "updatedAt": "2024-11-03T05:02:21.558Z",
+      "isPublic": false,
+      "nodes": [
+        {
+          "id": "0",
+          "type": "input",
+          "data": {
+            "label": "My Mindmap"
+          },
+          "position": {
+            "x": 250,
+            "y": 100
+          },
+          "style": {
+            "backgroundColor": "#8BC34A",
+            "color": "#FFF",
+            "padding": "20px",
+            "borderRadius": "8px"
+          },
+          "width": "150",
+          "height": "40"
+        }
+      ],
+      "edges": [],
+      "description": "Chưa có mô tả"
+    },
+    {
+      "id": "9d470833-40f5-43b4-9d9e-f1db89219050",
+      "name": "Mindmap không có tên",
+      "createdBy": "google-oauth2|102414711161340951598",
+      "createdAt": "2024-11-03T23:56:42.165Z",
+      "updatedAt": "2024-11-03T23:56:42.166Z",
+      "isPublic": false,
+      "nodes": [
+        {
+          "id": "0",
+          "type": "input",
+          "data": {
+            "label": "My Mindmap"
+          },
+          "position": {
+            "x": 250,
+            "y": 100
+          },
+          "style": {
+            "backgroundColor": "#8BC34A",
+            "color": "#FFF",
+            "padding": "20px",
+            "borderRadius": "8px"
+          },
+          "width": "150",
+          "height": "40"
+        }
+      ],
+      "edges": [],
+      "description": "Chưa có mô tả"
+    },
+    {
+      "id": "7cafc103-54bb-44dc-80f2-06fe3f1d18e0",
+      "name": "Mindmap không có tên",
+      "createdBy": "google-oauth2|113832693344543295610",
+      "createdAt": "2024-11-04T12:42:52.608Z",
+      "updatedAt": "2024-11-04T12:42:52.608Z",
+      "isPublic": false,
+      "nodes": [
+        {
+          "id": "0",
+          "type": "input",
+          "data": {
+            "label": "My Mindmap"
+          },
+          "position": {
+            "x": 252.5,
+            "y": 21.5
+          },
+          "style": {
+            "backgroundColor": "#8BC34A",
+            "color": "#FFF",
+            "padding": "20px",
+            "borderRadius": "8px"
+          },
+          "width": "150",
+          "height": "40",
+          "measured": {
+            "width": 150,
+            "height": 44
+          },
+          "selected": false,
+          "dragging": false
+        },
+        {
+          "id": "1",
+          "position": {
+            "x": 90,
+            "y": 165
+          },
+          "data": {
+            "label": "Node 1"
+          },
+          "origin": [
+            0.5,
+            0
+          ],
+          "style": {
+            "backgroundColor": "#3F51B5",
+            "color": "#FFF",
+            "padding": "10px",
+            "borderRadius": "8px",
+            "cursor": "pointer"
+          },
+          "measured": {
+            "width": 150,
+            "height": 40
+          }
+        },
+        {
+          "id": "2",
+          "position": {
+            "x": 270,
+            "y": 210
+          },
+          "data": {
+            "label": "Node 2"
+          },
+          "origin": [
+            0.5,
+            0
+          ],
+          "style": {
+            "backgroundColor": "#3F51B5",
+            "color": "#FFF",
+            "padding": "10px",
+            "borderRadius": "8px",
+            "cursor": "pointer"
+          },
+          "measured": {
+            "width": 150,
+            "height": 40
+          }
+        },
+        {
+          "id": "3",
+          "position": {
+            "x": 450.5,
+            "y": 89
+          },
+          "data": {
+            "label": "Node 3"
+          },
+          "origin": [
+            0.5,
+            0
+          ],
+          "style": {
+            "backgroundColor": "#3F51B5",
+            "color": "#FFF",
+            "padding": "10px",
+            "borderRadius": "8px",
+            "cursor": "pointer"
+          },
+          "measured": {
+            "width": 150,
+            "height": 40
+          },
+          "selected": true,
+          "dragging": false
+        }
+      ],
+      "edges": [
+        {
+          "id": "1",
+          "source": "0",
+          "target": "1",
+          "style": {
+            "stroke": "#b1b1b7",
+            "strokeWidth": 2
+          }
+        },
+        {
+          "id": "2",
+          "source": "0",
+          "target": "2",
+          "style": {
+            "stroke": "#b1b1b7",
+            "strokeWidth": 2
+          }
+        },
+        {
+          "id": "3",
+          "source": "0",
+          "target": "3",
+          "style": {
+            "stroke": "#b1b1b7",
+            "strokeWidth": 2
+          }
+        }
+      ],
+      "description": "Chưa có mô tả"
+    },
+    {
+      "id": "d9e2672d-b607-4ce5-ae0d-a47e7ce1499c",
+      "name": "Mindmap không có tên",
+      "createdBy": "google-oauth2|113832693344543295610",
+      "createdAt": "2024-11-04T13:30:54.757Z",
+      "updatedAt": "2024-11-04T13:30:54.757Z",
+      "isPublic": true,
+      "nodes": [
+        {
+          "id": "0",
+          "type": "input",
+          "data": {
+            "label": "My Mindmap"
+          },
+          "position": {
+            "x": 250,
+            "y": 100
+          },
+          "style": {
+            "backgroundColor": "#8BC34A",
+            "color": "#FFF",
+            "padding": "20px",
+            "borderRadius": "8px"
+          },
+          "width": "150",
+          "height": "40"
+        }
+      ],
+      "edges": [],
+      "description": "Chưa có mô tả",
+      "shareTitle": "",
+      "shareDescription": ""
+    }
+  ],
+  "shares": []
+}

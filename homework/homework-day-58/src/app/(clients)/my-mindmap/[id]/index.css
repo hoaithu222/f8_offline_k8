@@ -1,0 +1,277 @@
+html,
+body {
+  margin: 0;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
+}
+
+.react-flow .react-flow__handle {
+  width: 30px;
+  height: 14px;
+  border-radius: 3px;
+  background-color: #784be8;
+}
+
+.react-flow .react-flow__handle-top {
+  top: -10px;
+}
+
+.react-flow .react-flow__handle-bottom {
+  bottom: -10px;
+}
+
+.react-flow .react-flow__node {
+  height: 40px;
+  width: 150px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border-width: 2px;
+  font-weight: 700;
+}
+
+.react-flow .react-flow__edge path,
+.react-flow__connectionline path {
+  stroke-width: 2;
+}
+
+
+.wrapper {
+    width: 100%;
+    height: calc(100vh - 100px);
+    background-color: #f0f0f0;
+    position: relative;
+  }
+  
+  .app-header {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .app-header h1 {
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  .app-header p {
+    margin-top: 4px;
+    color: #666;
+  }
+  
+  .action-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .save-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .share-button {
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .custom-node {
+    padding: 10px;
+    border-radius: 8px;
+    min-width: 150px;
+  }
+  
+  .node-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+  }
+  
+  .node-buttons {
+    display: flex;
+    gap: 4px;
+    margin-left: 8px;
+  }
+  
+  .node-buttons button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .node-input {
+    background: white;
+    border: none;
+    border-radius: 4px;
+    padding: 4px;
+    width: 100%;
+  }
+  
+  .control-panel {
+    display: flex;
+    gap: 8px;
+    padding: 8px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .control-panel button {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+  }
+  
+  .control-panel button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .color-picker {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+  
+  .color-button {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+  }
+  
+  .color-button.selected {
+    border-color: #000;
+  }
+  .custom-node {
+    padding: 10px;
+    border-radius: 8px;
+    min-width: 150px;
+  }
+  
+  .node-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+  }
+  
+  .node-buttons {
+    display: flex;
+    gap: 4px;
+    margin-left: 8px;
+  }
+  
+  .node-buttons button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .node-input {
+    background: white;
+    border: none;
+    border-radius: 4px;
+    padding: 4px;
+    width: 100%;
+  }
+  
+  .edge {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .edge-line {
+    border-top: 2px solid #ccc;
+    width: 100%;
+  }
+  
+  .edge-delete-button {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    background: white;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    cursor: pointer;
+  }
+  
+  .edge.hovered .edge-line {
+    border-color: #666;
+  }
+  
+  .control-panel {
+    display: flex;
+    gap: 8px;
+    padding: 8px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .control-panel button {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+  }
+  
+  .control-panel button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .color-picker {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+  
+  .color-button {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+  }
+  
+  .color-button.selected {
+    border-color: #000;
+  }

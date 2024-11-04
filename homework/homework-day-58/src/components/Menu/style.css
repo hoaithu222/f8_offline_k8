@@ -1,0 +1,71 @@
+.inner-menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+ul li {
+    margin: 10px;
+}
+
+ul li a {
+    padding: 10px 20px;
+    border-radius: 10px;
+    transition-property: background-color, color;
+    transition-duration: 0.3s ease-in-out;
+}
+
+ul li a.active {
+    color: #fff;
+    background-color: rgb(112, 175, 234);
+}
+
+.inner-menu .auth {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    color: rgb(62, 106, 253);
+    font-weight: 500;
+}
+.inner-menu .auth .login{
+    
+    padding: 7px 10px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+.inner-menu .auth .login:hover{
+    background-color: rgb(174, 195, 224);
+}
+.inner-menu .auth .register{
+    border: 1px solid rgb(135, 135, 235);
+    padding: 7px 14px;
+    border-radius: 10px;
+}
+
+.user-info{
+    display: flex;
+    gap:20px;
+    color: rgb(62, 106, 253);
+    align-items: center;
+    font-weight: 500;
+}
+.user-info .mindmap,.user-info .logout{
+    padding: 7px 14px;
+    border-radius: 10px;
+
+}
+.user-info .mindmap:hover{
+    background-color: rgb(203, 220, 245);
+
+}
+.user-info .logout:hover{
+    background-color: rgb(203, 220, 245);
+
+}
