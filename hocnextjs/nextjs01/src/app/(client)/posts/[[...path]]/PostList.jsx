@@ -1,12 +1,11 @@
-import React from "react";
 import Button from "./Button";
-const getPost = async () => {
-  const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+
+const getPosts = async () => {
+  const response = await fetch(`https://jsonplaceholder.typicode.com/posts`);
   return response.json();
 };
-
 export default async function PostList() {
-  const postList = await getPost();
+  const postList = await getPosts();
   return (
     <div>
       {postList.map((post) => {
@@ -16,7 +15,7 @@ export default async function PostList() {
             style={{
               marginBottom: "15px",
               paddingBottom: "15px",
-              borderBottom: "1px solid gray",
+              borderBottom: "1px solid #ccc",
             }}
           >
             <h3>{post.title}</h3>

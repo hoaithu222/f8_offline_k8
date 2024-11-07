@@ -1,18 +1,10 @@
-import React from "react";
-import PostList from "./PostList";
 import PostDetail from "./PostDetail";
+import PostList from "./PostList";
 
-export default function PostPage({ params }) {
-  const { path } = params.path;
-  // console.log(path);
+export default function PostsPage({ params }) {
+  const path = params.path;
   if (path) {
-    return <PostDetail />;
+    return <PostDetail id={path[0]} />;
   }
-  return (
-    <div>
-      <h1>Posts</h1>
-      {/* <h2>{path && path[0]}</h2> */}
-      <PostList />
-    </div>
-  );
+  return <PostList />;
 }

@@ -5,19 +5,18 @@ const getPost = async (id) => {
     const response = await fetch(
       `https://jsonplaceholder.typicode.com/posts/${id}`
     );
-    const data = await response.json();
-    if (!Object.keys(data).length) {
-      throw new Error("Fetch to Failed");
+    if (!response.ok) {
+      throw new Error("Fetch To Failed");
     }
+    const data = await response.json();
     return data;
   } catch (error) {
     return false;
   }
 };
-
 export default async function PostDetail({ id }) {
   const post = await getPost(id);
-  if (!Object.keys(post).length) {
+  if (!post) {
     return notFound();
   }
   return (

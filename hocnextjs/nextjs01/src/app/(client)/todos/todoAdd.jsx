@@ -1,13 +1,13 @@
 "use client";
 
-import { clearCacheByPath, clearCacheByTags } from "@/utils/cache";
+import { clearCacheByPath, clearCacheByTag } from "@/utils/cache";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function TodoAdd() {
   const [title, setTitle] = useState("");
   const router = useRouter();
-  const handleChange = (e) => {
+  const handleChangeValue = (e) => {
     setTitle(e.target.value);
   };
   const handleSubmit = async (e) => {
@@ -20,20 +20,20 @@ export default function TodoAdd() {
       body: JSON.stringify({ title }),
     });
     if (response.ok) {
-      //   router.refresh();
-      //   router.refresh();
-      // clear cache
-      //   clearCacheByPath("/todos");
-      clearCacheByTags("/todos");
+      //clear cache
+      // clearCacheByPath("/todos");
+      clearCacheByTag("todo-list");
       router.refresh();
     }
-    const data = await response.json();
   };
-
   return (
     <div>
       <form action="" onSubmit={handleSubmit}>
-        <input type="text" placeholder="Title..." onChange={handleChange} />
+        <input
+          type="text"
+          placeholder="Title..."
+          onChange={handleChangeValue}
+        />
         <button>Add</button>
       </form>
     </div>

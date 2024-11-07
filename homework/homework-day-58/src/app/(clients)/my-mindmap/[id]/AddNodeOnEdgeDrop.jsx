@@ -34,7 +34,7 @@ export default function AddNodeOnEdgeDrop({ initialNodes, initialEdges }) {
   const [newLabel, setNewLabel] = useState('');
   const { screenToFlowPosition } = useReactFlow();
 
-  // Handle node click
+  
   const onNodeClick = useCallback((event, node) => {
     setSelectedNode(node.id);
     setNodes((nds) =>
@@ -48,7 +48,7 @@ export default function AddNodeOnEdgeDrop({ initialNodes, initialEdges }) {
     );
   }, [setNodes]);
 
-  // Handle edge click
+  
   const onEdgeClick = useCallback((event, edge) => {
     setSelectedEdge(edge.id);
     setEdges((eds) =>
@@ -63,7 +63,7 @@ export default function AddNodeOnEdgeDrop({ initialNodes, initialEdges }) {
     );
   }, [setEdges]);
 
-  // Handle node double-click for editing
+  
   const onNodeDoubleClick = useCallback((event, node) => {
     setEditingNodeId(node.id);
     setNewLabel(node.data.label);

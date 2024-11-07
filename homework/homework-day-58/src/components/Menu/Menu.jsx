@@ -3,59 +3,71 @@ import Link from "next/link";
 import "./style.css";
 import { usePathname } from "next/navigation";
 import { useUser } from '@auth0/nextjs-auth0/client';
-import { useEffect,useRef } from "react";
-import { v4 as uuidv4 } from 'uuid';
+import { useEffect } from "react";
+import useSWR, { mutate } from "swr";
+
+
+const fetcher = async (url) => {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error("Failed to fetch");
+  }
+  return response.json();
+};
 
 export default function Menu() {
-  const hasAddedUser = useRef(false);
   const { user, isLoading } = useUser();
-  
   const pathname = usePathname();
+
+  const { data: users, error } = useSWR(
+    process.env.SERVER_API ? `${process.env.SERVER_API}/users` : null,
+    fetcher,
+    {
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false
+    }
+  );
 
   const activeItem = (path) => {
     return path === pathname;
   };
 
-  const addUser = async () => {
-    const existingUsersResponse = await fetch(`${process.env.SERVER_API}/users`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-  
-    if (existingUsersResponse.ok) {
-      const existingUsers = await existingUsersResponse.json();
-  
-      
-      const userExists = existingUsers.some(
+  useEffect(() => {
+    const checkAndAddUser = async () => {
+      if (!user || !users) return;
+
+      const userExists = users.some(
         (existingUser) => existingUser.sub === user.sub || existingUser.email === user.email
       );
-  
+
       if (!userExists) {
-       
-        const addUserResponse = await fetch(`${process.env.SERVER_API}/users`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(user),
-        });
-        return addUserResponse.ok;
+        try {
+          const response = await fetch(`${process.env.SERVER_API}/users`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(user),
+          });
+
+          if (response.ok) {
+            mutate(`${process.env.SERVER_API}/users`);
+          }
+        } catch (error) {
+          console.error("Error adding user:", error);
+        }
       }
-    }
-    return false;
-  };
-  
-  useEffect(() => {
-    if (user && !hasAddedUser.current) {
-      addUser();
-      hasAddedUser.current = true; 
-    }
-  }, [user]);
+    };
+
+    checkAndAddUser();
+  }, [user, users]);
 
   if (isLoading) {
     return <div>Đang tải...</div>;
+  }
+
+  if (error) {
+    console.error("Error fetching users:", error);
   }
 
   return (

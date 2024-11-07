@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import "./Menu.css";
 
 export default function Menu() {
   const pathname = usePathname();
@@ -9,7 +8,7 @@ export default function Menu() {
     return path === pathname;
   };
   return (
-    <div>
+    <>
       <h3>Menu</h3>
       <ul>
         <li>
@@ -24,13 +23,13 @@ export default function Menu() {
         </li>
         <li>
           <Link
-            className={activeItem("/product") ? "active" : ""}
-            href="/product"
+            className={activeItem("/products") ? "active" : ""}
+            href="/products"
           >
             Sản phẩm
           </Link>
         </li>
       </ul>
-    </div>
+    </>
   );
 }

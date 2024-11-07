@@ -1,16 +1,11 @@
 "use client";
 
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function Button({ id }) {
   const router = useRouter();
-  const handleClick = (id) => {
+  const handleClick = () => {
     router.push(`/posts/${id}`);
   };
-
-  return (
-    <div>
-      <button onClick={handleClick}>Chi tiết</button>
-    </div>
-  );
+  return <button onClick={handleClick}>Chi tiết</button>;
 }

@@ -1,12 +1,12 @@
-import TodoAdd from "./todoAdd";
+import TodoAdd2 from "./TodoAdd2";
 import TodoList from "./TodoList";
 
-export default function TodoPage() {
+export default function TodosPage() {
   return (
     <div>
-      <h1>TodoList</h1>
+      <h1>Todo List</h1>
       <TodoList />
-      <TodoAdd />
+      <TodoAdd2 />
     </div>
   );
 }

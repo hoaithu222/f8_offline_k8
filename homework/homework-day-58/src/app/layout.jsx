@@ -1,6 +1,7 @@
 import "./globals.css";
 import { UserProvider } from '@auth0/nextjs-auth0/client';
 
+
 export const metadata = {
   title: "Mindmap Flow",
   description: "Mindmap Flow - Tạo và quản lý sơ đồ tư duy dễ dàng",
@@ -36,9 +37,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      
       <UserProvider>
         <body>{children}</body>
       </UserProvider>
+    
     </html>
   );
 }

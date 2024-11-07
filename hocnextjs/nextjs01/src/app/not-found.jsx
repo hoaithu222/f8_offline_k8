@@ -1,7 +1,8 @@
 export default function NotFoundPage() {
   return (
     <div>
-      <h1>Trang không tồn tại</h1>
+      <h1>Not Found</h1>
+      <h2>Lỗi rồi nhé</h2>
     </div>
   );
 }
